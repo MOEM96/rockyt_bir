@@ -3,18 +3,35 @@ import '../types';
 
 const Hero: React.FC = () => {
   return (
-    <div className="w-full h-[80vh] md:h-[700px] relative flex justify-center items-center -mt-20 md:-mt-24 mb-0 overflow-hidden">
+    <div className="w-full h-[50vh] md:h-[700px] relative flex justify-center items-center -mt-20 md:-mt-24 mb-0 overflow-hidden">
       {/* Wrapper to constrain and mask the lottie */}
       <div className="w-full h-full relative">
-        <lottie-player
-          src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68ece6c98328b7f07810b227_Blow%20up%20Desktop.json"
-          background="transparent"
-          speed="1"
-          style={{ width: '100%', height: '100%' }}
-          hover="true"
-          preserveAspectRatio="xMidYMid slice"
-          className="opacity-90"
-        ></lottie-player>
+        
+        {/* Mobile Lottie: Use 'meet' to fit the animation within the viewport width without zooming in */}
+        <div className="block md:hidden w-full h-full flex items-center justify-center">
+            <lottie-player
+              src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68ece6c98328b7f07810b227_Blow%20up%20Desktop.json"
+              background="transparent"
+              speed="1"
+              style={{ width: '100%', height: '100%' }}
+              hover="true"
+              preserveAspectRatio="xMidYMid meet"
+              className="opacity-90"
+            ></lottie-player>
+        </div>
+
+        {/* Desktop Lottie: Use 'slice' to cover the large hero area */}
+        <div className="hidden md:block w-full h-full">
+            <lottie-player
+              src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68ece6c98328b7f07810b227_Blow%20up%20Desktop.json"
+              background="transparent"
+              speed="1"
+              style={{ width: '100%', height: '100%' }}
+              hover="true"
+              preserveAspectRatio="xMidYMid slice"
+              className="opacity-90"
+            ></lottie-player>
+        </div>
         
         {/* Stronger Edge Blending / Masking - Hidden on mobile */}
         {/* Top Fade */}
