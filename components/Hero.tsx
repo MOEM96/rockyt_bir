@@ -24,6 +24,9 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
             <div className="flex flex-col w-full gap-4 mb-12">
                 <button 
                     onClick={onBookDemo}
+                    data-cal-link="rock-yt-admanager/15min"
+                    data-cal-namespace="15min"
+                    data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
                     className="w-full bg-brand-yellow text-brand-black font-bold py-4 rounded-full text-lg hover:bg-[#fcd34d] transition-colors btn-hover-skew"
                 >
                     <span>Book free consultation</span>
@@ -80,6 +83,9 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
             <div className="flex items-center gap-6 pointer-events-auto">
                 <button 
                     onClick={onBookDemo}
+                    data-cal-link="rock-yt-admanager/15min"
+                    data-cal-namespace="15min"
+                    data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
                     className="bg-brand-yellow text-brand-black font-bold px-8 py-4 rounded-full text-lg hover:bg-[#fcd34d] transition-colors btn-hover-skew shadow-xl shadow-brand-yellow/10"
                 >
                     <span>Book free consultation</span>

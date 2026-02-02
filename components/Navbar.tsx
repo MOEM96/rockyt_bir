@@ -53,6 +53,9 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate }) => {
           <div className="hidden lg:flex items-center gap-4">
             <button 
               onClick={onBookDemo}
+              data-cal-link="rock-yt-admanager/15min"
+              data-cal-namespace="15min"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
               className="bg-brand-yellow text-brand-black px-6 py-2.5 rounded-full text-sm font-bold hover:bg-[#fcd34d] transition-colors btn-hover-skew"
             >
               <span>Book a demo</span>
@@ -89,6 +92,9 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate }) => {
               <div className="mt-8">
                    <button 
                       onClick={() => { onBookDemo(); setIsMobileMenuOpen(false); }}
+                      data-cal-link="rock-yt-admanager/15min"
+                      data-cal-namespace="15min"
+                      data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
                       className="bg-brand-yellow text-brand-black px-8 py-3 rounded-full text-lg font-bold hover:bg-[#fcd34d] transition-colors"
                   >
                       Book a demo

@@ -83,7 +83,13 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
         <div className="w-full md:w-1/3 flex flex-col gap-4 relative z-10">
            <h3 className="text-3xl md:text-4xl font-bold tracking-tight">Explore creative insights</h3>
            <p className="text-lg font-medium opacity-80">Unlock the power of your ad data with real-time visual analytics.</p>
-           <button onClick={onBookDemo} className="mt-4 bg-brand-black text-white px-6 py-3 rounded-full font-bold w-fit hover:bg-black/80 transition-colors btn-hover-skew">
+           <button 
+             onClick={onBookDemo} 
+             data-cal-link="rock-yt-admanager/15min"
+             data-cal-namespace="15min"
+             data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
+             className="mt-4 bg-brand-black text-white px-6 py-3 rounded-full font-bold w-fit hover:bg-black/80 transition-colors btn-hover-skew"
+            >
              <span>Start Analyzing</span>
            </button>
         </div>
@@ -352,6 +358,9 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
       {/* Bottom CTA */}
       <div 
         onClick={onBookDemo}
+        data-cal-link="rock-yt-admanager/15min"
+        data-cal-namespace="15min"
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
         className="col-span-1 md:col-span-4 border-2 border-dashed border-white/20 rounded-[32px] p-8 flex items-center justify-center hover:border-white/40 transition-colors group cursor-pointer min-h-[160px]"
       >
         <h3 className="text-2xl font-semibold tracking-tight text-gray-400 group-hover:text-white transition-colors">Book demo</h3>
@@ -368,6 +377,9 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
 
       <div 
         onClick={onBookDemo}
+        data-cal-link="rock-yt-admanager/15min"
+        data-cal-namespace="15min"
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
         className="col-span-1 md:col-span-4 bg-brand-yellow text-brand-black rounded-[32px] p-8 flex items-center justify-center hover:bg-[#fcd34d] transition-colors cursor-pointer min-h-[160px] btn-hover-skew"
       >
         <h3 className="text-2xl font-semibold tracking-tight"><span>Book demo</span></h3>

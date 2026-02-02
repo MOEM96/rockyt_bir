@@ -253,7 +253,13 @@ const CasesPage: React.FC<CasesPageProps> = ({ onBookDemo }) => {
             <a href="https://app.rockyt.com/signup" className="bg-brand-yellow text-brand-black px-8 py-4 rounded-full text-lg font-bold hover:bg-[#fcd34d] transition-colors btn-hover-skew">
               <span>Try for Free</span>
             </a>
-            <button onClick={onBookDemo} className="bg-transparent border border-white/20 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/5 transition-colors flex items-center justify-center gap-3 group">
+            <button 
+              onClick={onBookDemo} 
+              data-cal-link="rock-yt-admanager/15min"
+              data-cal-namespace="15min"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
+              className="bg-transparent border border-white/20 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/5 transition-colors flex items-center justify-center gap-3 group"
+            >
               <span>Book a Demo</span>
               <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/6716718ea408f53194adfec6_sales.png" alt="Sales" className="w-6 h-6 rounded-full group-hover:scale-110 transition-transform" />
             </button>

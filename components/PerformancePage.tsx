@@ -393,7 +393,13 @@ const PerformancePage: React.FC<PerformancePageProps> = ({ onBookDemo }) => {
           {/* CTA */}
           <section className="bg-brand-black border border-dashed border-white/20 rounded-[32px] p-12 text-center hover:border-brand-yellow/50 transition-colors group">
              <h2 className="text-4xl font-bold text-white mb-6 group-hover:text-brand-yellow transition-colors">Ready to scale?</h2>
-             <button onClick={onBookDemo} className="bg-brand-yellow text-brand-black px-8 py-4 rounded-full text-lg font-bold hover:bg-[#fcd34d] transition-colors btn-hover-skew">
+             <button 
+               onClick={onBookDemo} 
+               data-cal-link="rock-yt-admanager/15min"
+               data-cal-namespace="15min"
+               data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
+               className="bg-brand-yellow text-brand-black px-8 py-4 rounded-full text-lg font-bold hover:bg-[#fcd34d] transition-colors btn-hover-skew"
+              >
                 <span>Book a demo</span>
              </button>
           </section>

@@ -56,6 +56,9 @@ const HubPage: React.FC<HubPageProps> = ({ onBookDemo }) => {
           
           <button 
             onClick={onBookDemo}
+            data-cal-link="rock-yt-admanager/15min"
+            data-cal-namespace="15min"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
             className="bg-transparent border border-white/20 hover:border-white text-white px-8 py-4 rounded-full text-lg font-medium transition-all btn-hover-skew mb-16"
           >
             <span>Get started with Hub</span>
@@ -260,6 +263,9 @@ const HubPage: React.FC<HubPageProps> = ({ onBookDemo }) => {
         <div className="mt-12">
           <button 
             onClick={onBookDemo}
+            data-cal-link="rock-yt-admanager/15min"
+            data-cal-namespace="15min"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
             className="bg-transparent border border-white/20 hover:border-white text-white px-8 py-4 rounded-full text-lg font-medium transition-all btn-hover-skew"
           >
             <span>Create your Rockyt hub</span>
