@@ -321,15 +321,31 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
         <p className="text-lg font-bold text-white font-serif tracking-wide uppercase leading-snug mt-2">ad accounts<br/>connected</p>
       </div>
 
-      {/* Customers Strip */}
-      <div className="col-span-1 md:col-span-12 bg-brand-black rounded-[32px] p-8 border border-white/10 flex flex-col justify-center items-center gap-8 overflow-hidden">
-        <h3 className="text-xl font-semibold tracking-tight text-center text-white">Our customers</h3>
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-          <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848beced_6720e123b0ca4231f3a00bc7_Logo%202%202.png" className="h-6 md:h-8 w-auto brightness-0 invert" alt="Logo" />
-          <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bea94c7fbfef848becd4_logo.avif" className="h-6 md:h-8 w-auto brightness-0 invert" alt="Logo" />
-          <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848bece7_scentbird.png" className="h-6 md:h-8 w-auto brightness-0 invert" alt="Logo" />
-          <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848becf1_Design%20290x292.png" className="h-6 md:h-8 w-auto brightness-0 invert" alt="Logo" />
-          <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bea94c7fbfef848becd9_plantin.avif" className="h-6 md:h-8 w-auto brightness-0 invert" alt="Logo" />
+      {/* Customers Strip - Updated Visual */}
+      <div className="col-span-1 md:col-span-12 bg-white rounded-[32px] p-8 md:p-16 border border-white/10 flex flex-col justify-center items-center overflow-hidden">
+        {/* Removed header as per screenshot */}
+        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-x-24 md:gap-y-16 w-full max-w-6xl">
+            {/* Liven */}
+            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848beced_6720e123b0ca4231f3a00bc7_Logo%202%202.png" className="h-8 md:h-10 w-auto object-contain" alt="Liven" />
+            
+            {/* Scentbird */}
+            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848bece7_scentbird.png" className="h-6 md:h-8 w-auto object-contain" alt="Scentbird" />
+            
+            {/* Loop - from case study, ensure it's visible on white */}
+            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e630347ae261f1cba047d3_loop-earplugs-svg.svg" className="h-6 md:h-8 w-auto object-contain" alt="Loop" />
+            
+            {/* Keiki - from case study or customer list */}
+            {/* The list had logo.avif, case study had keiki_logotype.svg. The svg is likely better quality. */}
+            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bb67180715f131e3e1e9_keiki_logotype.svg" className="h-8 md:h-12 w-auto object-contain" alt="Keiki" />
+            
+            {/* Plantin */}
+            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bea94c7fbfef848becd9_plantin.avif" className="h-8 md:h-10 w-auto object-contain" alt="Plantin" />
+            
+            {/* AdParlor (Agency) - Make black */}
+            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e51ce0ac361e304aab6dd1_adparlor_new_logo_white_text.svg" className="h-8 md:h-10 w-auto object-contain brightness-0" alt="AdParlor" />
+            
+            {/* The mysterious Design 290x292.png from original customer list */}
+            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848becf1_Design%20290x292.png" className="h-8 md:h-10 w-auto object-contain" alt="Partner" />
         </div>
       </div>
 
