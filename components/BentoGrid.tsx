@@ -1,7 +1,11 @@
 import React from 'react';
 import '../types';
 
-const BentoGrid: React.FC = () => {
+interface BentoGridProps {
+  onBookDemo: () => void;
+}
+
+const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-min relative z-20">
       
@@ -17,23 +21,25 @@ const BentoGrid: React.FC = () => {
         </div>
       </div>
 
-      {/* Card 2: Platforms */}
+      {/* Card 2: Platforms (Updated Layout) */}
       <div className="col-span-1 md:col-span-8 bg-brand-black rounded-[32px] p-8 bento-card flex flex-col min-h-[400px] border border-white/10 relative overflow-hidden">
-        <h3 className="text-2xl font-semibold tracking-tight text-white relative z-10">Across every advertising platform</h3>
+        <h3 className="text-2xl font-semibold tracking-tight text-white relative z-10 text-center md:text-left mb-8">Across every advertising platform</h3>
         
-        {/* Logos Grid filling the space */}
-        <div className="flex-grow flex flex-wrap items-center justify-center content-center gap-x-12 gap-y-10 px-4 py-8 relative z-10">
-          <iconify-icon icon="logos:meta-icon" width="56" height="32"></iconify-icon>
-          <iconify-icon icon="logos:google-icon" width="40" height="40"></iconify-icon>
-          <iconify-icon icon="logos:tiktok-icon" width="40" height="40"></iconify-icon>
-          <iconify-icon icon="fa-brands:snapchat-ghost" width="44" height="44" style={{ color: 'white' }}></iconify-icon>
-          <iconify-icon icon="logos:pinterest" width="40" height="40"></iconify-icon>
-          <iconify-icon icon="logos:linkedin-icon" width="40" height="40"></iconify-icon>
-          <iconify-icon icon="logos:twitter" width="40" height="40"></iconify-icon>
-          <iconify-icon icon="logos:microsoft-icon" width="40" height="40"></iconify-icon>
+        {/* Logos Grid - Bigger and Better Aligned */}
+        <div className="flex-grow flex items-center justify-center relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-12 w-full max-w-3xl mx-auto items-center justify-items-center">
+            <iconify-icon icon="logos:meta-icon" width="64"></iconify-icon>
+            <iconify-icon icon="logos:google-icon" width="48"></iconify-icon>
+            <iconify-icon icon="logos:tiktok-icon" width="48"></iconify-icon>
+            <iconify-icon icon="fa-brands:snapchat-ghost" width="52" style={{ color: 'white' }}></iconify-icon>
+            <iconify-icon icon="logos:pinterest" width="48"></iconify-icon>
+            <iconify-icon icon="logos:linkedin-icon" width="48"></iconify-icon>
+            <iconify-icon icon="logos:twitter" width="48"></iconify-icon>
+            <iconify-icon icon="logos:microsoft-icon" width="48"></iconify-icon>
+          </div>
         </div>
         
-        <p className="text-sm text-gray-400 font-medium mt-auto relative z-10">Bïrch is an official partner of all these platforms</p>
+        <p className="text-sm text-gray-400 font-medium mt-8 relative z-10 text-center md:text-left">Rockyt is an official partner of all these platforms</p>
       </div>
 
       {/* Card 3: Improve Tracking */}
@@ -72,165 +78,88 @@ const BentoGrid: React.FC = () => {
         </div>
       </div>
 
-      {/* New Card: Creative Insights */}
-      <div className="col-span-1 md:col-span-12 bg-brand-yellow rounded-[32px] p-6 md:p-10 bento-card flex flex-col relative overflow-hidden text-brand-black">
-        <h3 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8">Explore creative insights</h3>
+      {/* New Card: Creative Insights (Redesigned Visuals) */}
+      <div className="col-span-1 md:col-span-12 bg-brand-yellow rounded-[32px] p-8 md:p-12 bento-card flex flex-col md:flex-row gap-12 relative overflow-hidden text-brand-black items-center">
+        <div className="w-full md:w-1/3 flex flex-col gap-4 relative z-10">
+           <h3 className="text-3xl md:text-4xl font-bold tracking-tight">Explore creative insights</h3>
+           <p className="text-lg font-medium opacity-80">Unlock the power of your ad data with real-time visual analytics.</p>
+           <button onClick={onBookDemo} className="mt-4 bg-brand-black text-white px-6 py-3 rounded-full font-bold w-fit hover:bg-black/80 transition-colors btn-hover-skew">
+             <span>Start Analyzing</span>
+           </button>
+        </div>
         
-        {/* Dashboard UI Container */}
-        <div className="bg-white rounded-2xl p-6 shadow-2xl w-full flex flex-col gap-8">
+        {/* Dashboard UI Container - Cleaned Up */}
+        <div className="w-full md:w-2/3 bg-white rounded-3xl p-6 shadow-2xl flex flex-col gap-6 rotate-1 hover:rotate-0 transition-transform duration-500">
           
           {/* Top Bar: Thumbs & Controls */}
-          <div className="flex flex-wrap justify-between items-center gap-4">
-            {/* Thumbnails */}
-            <div className="flex items-center gap-2">
-               {[1,2,3,4,5].map((i) => (
-                 <div key={i} className="w-10 h-10 rounded-lg border border-gray-100 bg-gray-50 overflow-hidden relative shadow-sm group cursor-pointer hover:ring-2 ring-brand-blue ring-offset-1 transition-all">
-                    <div className={`w-full h-full bg-gradient-to-br ${
-                        i===1 ? 'from-purple-500 to-indigo-600' :
-                        i===2 ? 'from-blue-400 to-cyan-300' :
-                        i===3 ? 'from-red-500 to-rose-400' :
-                        i===4 ? 'from-amber-400 to-orange-200' :
-                        'from-emerald-500 to-green-400'
-                    } opacity-90 group-hover:opacity-100`}>
-                      {i === 1 && <iconify-icon icon="solar:folder-bold" style={{color: 'white', position: 'absolute', bottom: '2px', left: '2px', fontSize: '10px'}}></iconify-icon>}
-                      {i === 2 && <iconify-icon icon="solar:folder-bold" style={{color: 'white', position: 'absolute', bottom: '2px', left: '2px', fontSize: '10px'}}></iconify-icon>}
-                      {i === 3 && <iconify-icon icon="solar:folder-bold" style={{color: 'white', position: 'absolute', bottom: '2px', left: '2px', fontSize: '10px'}}></iconify-icon>}
-                    </div>
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-[-8px]">
+               {[1,2,3].map((i) => (
+                 <div key={i} className={`w-12 h-12 rounded-full border-2 border-white relative shadow-md -ml-3 first:ml-0 overflow-hidden`}>
+                    <img src={`https://randomuser.me/api/portraits/men/${i*20}.jpg`} className="w-full h-full object-cover" alt="User" />
                  </div>
                ))}
+               <div className="w-12 h-12 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center -ml-3 text-xs font-bold text-gray-500 shadow-md">+5</div>
             </div>
-
-            {/* Controls */}
-            <div className="flex items-center gap-2">
-                 <div className="flex items-center justify-center w-8 h-8 bg-gray-100 rounded-md text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
-                    <iconify-icon icon="solar:graph-up-bold" width="18"></iconify-icon>
-                 </div>
-                 <div className="flex items-center justify-center w-8 h-8 bg-white border border-gray-200 rounded-md text-gray-400 hover:bg-gray-50 transition-colors cursor-pointer">
-                    <iconify-icon icon="solar:list-bold" width="18"></iconify-icon>
-                 </div>
+            <div className="flex gap-2">
+                 <div className="p-2 bg-gray-50 rounded-lg text-gray-400"><iconify-icon icon="solar:calendar-linear" width="20"></iconify-icon></div>
+                 <div className="p-2 bg-gray-50 rounded-lg text-gray-400"><iconify-icon icon="solar:settings-linear" width="20"></iconify-icon></div>
             </div>
           </div>
 
-          {/* Chart Section */}
-          <div className="flex flex-col gap-2">
-             <div className="flex justify-between items-center">
-                <button className="flex items-center gap-1.5 text-xs font-semibold text-gray-700 bg-transparent hover:bg-gray-50 px-2 py-1 rounded transition-colors">
-                    Spend <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon>
-                </button>
+          {/* Chart Section - Simplified & Cleaner */}
+          <div className="flex flex-col gap-4">
+             <div className="flex items-end justify-between">
+                <div>
+                   <div className="text-sm text-gray-400 font-medium">Total Spend</div>
+                   <div className="text-3xl font-bold text-gray-900">$42,593.00</div>
+                </div>
+                <div className="flex items-center gap-1 text-green-500 text-sm font-bold bg-green-50 px-2 py-1 rounded-md">
+                   <iconify-icon icon="solar:trending-up-bold"></iconify-icon> +12.5%
+                </div>
              </div>
              
-             <div className="relative h-48 w-full mt-2">
-                {/* Grid Lines */}
-                <div className="absolute inset-0 flex flex-col justify-between text-[10px] text-gray-400 font-medium">
-                   <div className="w-full border-b border-gray-100 flex items-start pb-1">4,000</div>
-                   <div className="w-full border-b border-gray-100"></div>
-                   <div className="w-full border-b border-gray-100"></div>
-                   <div className="w-full border-b border-gray-100 flex items-end pt-1">0</div>
-                </div>
-                
-                {/* Chart Lines (SVG) */}
-                <svg className="absolute inset-0 w-full h-full overflow-visible p-[1px]" preserveAspectRatio="none" viewBox="0 0 100 100">
-                    {/* Purple Line */}
-                    <path 
-                        d="M0 100 L20 80 L40 65 L60 50 L80 35 L100 32" 
-                        fill="none" 
-                        stroke="#8B5CF6" 
-                        strokeWidth="2"
-                        vectorEffect="non-scaling-stroke"
-                        strokeLinecap="round"
-                    />
-                    {/* Blue Line */}
-                    <path 
-                        d="M0 100 L25 75 L50 70 L75 50 L100 45" 
-                        fill="none" 
-                        stroke="#4450F2" 
-                        strokeWidth="2"
-                        vectorEffect="non-scaling-stroke"
-                        strokeLinecap="round"
-                    />
-                    {/* Orange Line */}
-                    <path 
-                        d="M0 100 L30 90 L50 60 L70 65 L90 40 L100 25" 
-                        fill="none" 
-                        stroke="#F59E0B" 
-                        strokeWidth="2"
-                        vectorEffect="non-scaling-stroke"
-                        strokeLinecap="round"
-                    />
+             <div className="relative h-40 w-full">
+                {/* Simplified Chart */}
+                <svg className="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 50">
+                    <defs>
+                        <linearGradient id="gradientPurple" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.2" />
+                            <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M0 50 L10 40 L25 45 L40 30 L60 35 L80 15 L100 20 V 50 H 0 Z" fill="url(#gradientPurple)" />
+                    <path d="M0 50 L10 40 L25 45 L40 30 L60 35 L80 15 L100 20" fill="none" stroke="#8B5CF6" strokeWidth="3" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
                 </svg>
-                
-                {/* X Axis Labels */}
-                <div className="absolute -bottom-6 left-0 right-0 flex justify-between text-[10px] text-gray-400 font-medium px-2">
-                    <span>Nov 25</span>
-                    <span className="pl-8">Nov 28</span>
-                    <span>Dec 1</span>
-                </div>
-             </div>
-
-             {/* Legend */}
-             <div className="flex items-center gap-8 text-[10px] font-medium justify-end pt-6">
-                <div className="flex items-center gap-1.5 text-green-600 font-bold">
-                   <iconify-icon icon="solar:arrow-down-linear"></iconify-icon> Spend
-                </div>
-                <div className="flex items-center gap-1.5 text-gray-400">
-                   Link clicks
-                </div>
-                <div className="flex items-center gap-1.5 text-gray-400">
-                   CTR
-                </div>
              </div>
           </div>
 
-          {/* List Section */}
-          <div className="flex flex-col border-t border-gray-100 pt-2">
-             {/* Header Row (Implicit) */}
-             <div className="flex justify-end gap-8 text-[10px] text-gray-400 font-medium mb-2 px-2">
-                 <span className="w-16 text-right">Spend</span>
-                 <span className="w-8 text-right hidden sm:block">Link clicks</span>
-                 <span className="w-8 text-right hidden sm:block">CTR</span>
-             </div>
-
-             {/* Row 1 */}
-             <div className="flex items-center gap-4 p-2.5 hover:bg-gray-50 rounded-lg transition-colors group cursor-pointer border-b border-gray-50 last:border-0">
-                <div className="flex-shrink-0 text-blue-500 bg-blue-50 rounded p-0.5">
-                   <iconify-icon icon="solar:check-square-bold" width="16"></iconify-icon>
+          {/* List Section - Cleaner */}
+          <div className="space-y-3">
+             <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-xl">
+                <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+                    <iconify-icon icon="solar:gallery-bold" width="20"></iconify-icon>
                 </div>
-                <div className="w-10 h-10 rounded-lg bg-blue-100 flex-shrink-0 overflow-hidden border border-gray-200">
-                    <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d559fa30d0a90dc94c0402_1b63513b0449f57c179fd17eaa96aca8_ad%20automation.png" className="w-full h-full object-cover" alt="Ad" />
+                <div className="flex-grow">
+                    <div className="text-sm font-bold text-gray-900">Summer Campaign_V2</div>
+                    <div className="text-xs text-gray-500">Facebook • Image</div>
                 </div>
-                <div className="flex-grow min-w-0 flex flex-col gap-0.5">
-                    <div className="flex items-center gap-1">
-                        <span className="text-xs font-bold text-green-600 truncate">Conversions_Women25-40_ImageV1_ABTest</span>
-                        <iconify-icon icon="solar:alt-arrow-right-linear" className="text-gray-300 text-[10px]"></iconify-icon>
-                    </div>
-                    <div className="text-[10px] text-gray-400 font-medium">Image • Used in 4 ads</div>
-                </div>
-                <div className="flex-shrink-0 flex gap-8 items-center">
-                    <div className="text-xs font-bold text-gray-800 w-16 text-right">$900.50</div>
-                    <div className="text-xs font-medium text-gray-500 w-8 text-right hidden sm:block">2.1</div>
-                    <div className="text-xs font-medium text-gray-500 w-8 text-right hidden sm:block">1.1</div>
+                <div className="text-right">
+                    <div className="text-sm font-bold text-gray-900">2.4%</div>
+                    <div className="text-xs text-gray-500">CTR</div>
                 </div>
              </div>
-             
-             {/* Row 2 */}
-             <div className="flex items-center gap-4 p-2.5 hover:bg-gray-50 rounded-lg transition-colors group cursor-pointer">
-                <div className="flex-shrink-0 text-yellow-500 bg-yellow-50 rounded p-0.5">
-                   <iconify-icon icon="solar:check-square-bold" width="16"></iconify-icon>
+             <div className="flex items-center gap-4 p-3 bg-white border border-gray-100 rounded-xl">
+                <div className="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600">
+                    <iconify-icon icon="solar:videocamera-bold" width="20"></iconify-icon>
                 </div>
-                 <div className="w-10 h-10 rounded-lg bg-orange-100 flex-shrink-0 overflow-hidden border border-gray-200">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop" className="w-full h-full object-cover" alt="Ad" />
+                <div className="flex-grow">
+                    <div className="text-sm font-bold text-gray-900">Product Demo Reel</div>
+                    <div className="text-xs text-gray-500">TikTok • Video</div>
                 </div>
-                <div className="flex-grow min-w-0 flex flex-col gap-0.5">
-                    <div className="flex items-center gap-1">
-                        <span className="text-xs font-bold text-green-600 truncate">Conversions_Women25-40_ImageV2_ABTest</span>
-                         <iconify-icon icon="solar:alt-arrow-right-linear" className="text-gray-300 text-[10px]"></iconify-icon>
-                    </div>
-                    <div className="text-[10px] text-gray-400 font-medium">Image • Used in 4 ads</div>
-                </div>
-                 <div className="flex-shrink-0 flex gap-8 items-center">
-                    <div className="text-xs font-bold text-gray-800 w-16 text-right">$750.00</div>
-                    <div className="text-xs font-medium text-gray-500 w-8 text-right hidden sm:block">2.0</div>
-                    <div className="text-xs font-medium text-gray-500 w-8 text-right hidden sm:block">1.2</div>
+                <div className="text-right">
+                    <div className="text-sm font-bold text-gray-900">3.1%</div>
+                    <div className="text-xs text-gray-500">CTR</div>
                 </div>
              </div>
           </div>
@@ -292,7 +221,7 @@ const BentoGrid: React.FC = () => {
             alt="Keiki Case Study" 
           />
         </div>
-        <p className="text-lg font-medium leading-tight mb-6">With Bïrch marketing team spend 30% less time managing ads</p>
+        <p className="text-lg font-medium leading-tight mb-6">With Rockyt marketing team spend 30% less time managing ads</p>
         <div className="mt-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img 
@@ -327,7 +256,7 @@ const BentoGrid: React.FC = () => {
             alt="Loop Case Study" 
           />
         </div>
-        <p className="text-lg font-medium leading-tight mb-6">Loop Earplugs scale 200% faster with Bïrch automation</p>
+        <p className="text-lg font-medium leading-tight mb-6">Loop Earplugs scale 200% faster with Rockyt automation</p>
         <div className="mt-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img 
@@ -362,7 +291,7 @@ const BentoGrid: React.FC = () => {
             alt="AdParlor Case Study" 
           />
         </div>
-        <p className="text-lg font-medium leading-tight mb-6">Bïrch has made high-volume campaign management seamless</p>
+        <p className="text-lg font-medium leading-tight mb-6">Rockyt has made high-volume campaign management seamless</p>
         <div className="mt-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img 
@@ -378,18 +307,18 @@ const BentoGrid: React.FC = () => {
         </div>
       </div>
 
-      {/* Stats Row */}
+      {/* Stats Row (Fonts Updated) */}
       <div className="col-span-1 md:col-span-4 bg-brand-black text-white rounded-[32px] p-8 bento-card flex flex-col items-center justify-center text-center aspect-square border border-white/10">
         <div className="text-5xl font-semibold tracking-tighter mb-2 text-brand-yellow">$2B</div>
-        <p className="text-sm font-medium text-gray-400">annual<br/>ad spend</p>
+        <p className="text-lg font-bold text-white font-serif tracking-wide uppercase leading-snug mt-2">Managed<br/>ad spend</p>
       </div>
       <div className="col-span-1 md:col-span-4 bg-brand-black text-white rounded-[32px] p-8 bento-card flex flex-col items-center justify-center text-center aspect-square border border-white/10">
         <div className="text-5xl font-semibold tracking-tighter mb-2 text-brand-pink">240M</div>
-        <p className="text-sm font-medium text-gray-400">automated actions<br/>per year</p>
+        <p className="text-lg font-bold text-white font-serif tracking-wide uppercase leading-snug mt-2">Saved Ad Spend<br/>per year</p>
       </div>
       <div className="col-span-1 md:col-span-4 bg-brand-black text-white rounded-[32px] p-8 bento-card flex flex-col items-center justify-center text-center aspect-square border border-white/10">
         <div className="text-5xl font-semibold tracking-tighter mb-2 text-brand-blue">15K</div>
-        <p className="text-sm font-medium text-gray-400">ad accounts<br/>connected</p>
+        <p className="text-lg font-bold text-white font-serif tracking-wide uppercase leading-snug mt-2">ad accounts<br/>connected</p>
       </div>
 
       {/* Customers Strip */}
@@ -405,7 +334,10 @@ const BentoGrid: React.FC = () => {
       </div>
 
       {/* Bottom CTA */}
-      <div className="col-span-1 md:col-span-4 border-2 border-dashed border-white/20 rounded-[32px] p-8 flex items-center justify-center hover:border-white/40 transition-colors group cursor-pointer min-h-[160px]">
+      <div 
+        onClick={onBookDemo}
+        className="col-span-1 md:col-span-4 border-2 border-dashed border-white/20 rounded-[32px] p-8 flex items-center justify-center hover:border-white/40 transition-colors group cursor-pointer min-h-[160px]"
+      >
         <h3 className="text-2xl font-semibold tracking-tight text-gray-400 group-hover:text-white transition-colors">Book demo</h3>
       </div>
       
@@ -418,8 +350,11 @@ const BentoGrid: React.FC = () => {
         </div>
       </div>
 
-      <div className="col-span-1 md:col-span-4 bg-brand-yellow text-brand-black rounded-[32px] p-8 flex items-center justify-center hover:bg-[#fcd34d] transition-colors cursor-pointer min-h-[160px] btn-hover-skew">
-        <h3 className="text-2xl font-semibold tracking-tight"><span>Try Bïrch</span></h3>
+      <div 
+        onClick={onBookDemo}
+        className="col-span-1 md:col-span-4 bg-brand-yellow text-brand-black rounded-[32px] p-8 flex items-center justify-center hover:bg-[#fcd34d] transition-colors cursor-pointer min-h-[160px] btn-hover-skew"
+      >
+        <h3 className="text-2xl font-semibold tracking-tight"><span>Book demo</span></h3>
       </div>
     </div>
   );

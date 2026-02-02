@@ -1,4 +1,5 @@
 import React from 'react';
+import '../types';
 
 const Footer: React.FC = () => {
   return (
@@ -7,7 +8,12 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-12 gap-10">
           <div className="col-span-2 md:col-span-4">
             {/* Logo placeholder */}
-            <div className="w-8 h-8 rounded-full bg-white mb-6"></div>
+            <div className="flex items-center gap-2 mb-6">
+                <div className="w-8 h-8 rounded-full bg-brand-yellow flex items-center justify-center text-brand-black">
+                    <iconify-icon icon="solar:rocket-bold-duotone" width="20"></iconify-icon>
+                </div>
+                <span className="text-xl font-bold">Rockyt</span>
+            </div>
           </div>
           
           <div className="col-span-2 md:col-span-2">
@@ -42,14 +48,14 @@ const Footer: React.FC = () => {
             </div>
             <div className="flex flex-col gap-3">
               <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Affiliate program</a>
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Bïrch experts</a>
+              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Rockyt experts</a>
             </div>
           </div>
         </div>
 
         <div className="mt-20 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-4xl font-bold tracking-tight">Birch</div>
-          <div className="text-sm text-gray-500">© Birch Team, Inc. All rights reserved</div>
+          <div className="text-4xl font-bold tracking-tight">Rockyt</div>
+          <div className="text-sm text-gray-500">© Rockyt Inc. All rights reserved</div>
         </div>
       </div>
     </footer>
