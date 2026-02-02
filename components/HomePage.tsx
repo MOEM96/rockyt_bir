@@ -9,7 +9,7 @@ interface HomePageProps {
 const HomePage: React.FC<HomePageProps> = ({ onBookDemo }) => {
   return (
     <div className="max-w-[1200px] mr-auto ml-auto">
-      <Hero />
+      <Hero onBookDemo={onBookDemo} />
       <BentoGrid onBookDemo={onBookDemo} />
     </div>
   );
