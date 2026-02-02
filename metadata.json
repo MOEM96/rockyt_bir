@@ -1,0 +1,5 @@
+{
+  "name": "Birch (Revealbot) Clone",
+  "description": "A high-fidelity recreation of the Birch/Revealbot landing page featuring a responsive bento-grid layout, custom animations, and Tailwind styling.",
+  "requestFramePermissions": []
+}
