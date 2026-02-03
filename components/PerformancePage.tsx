@@ -95,20 +95,292 @@ const PerformancePage: React.FC<PerformancePageProps> = ({ onBookDemo }) => {
         {/* Main Content Area */}
         <div className="flex-grow space-y-16 w-full lg:max-w-4xl">
           
-          {/* Overview / Video */}
+          {/* Overview / Dashboard */}
           <section id="overview" className="scroll-mt-32">
             <div className="bg-brand-black border border-white/10 rounded-[32px] overflow-hidden">
-              <div className="p-8 md:p-12">
-                <h2 className="text-2xl font-bold text-white mb-6">Video overview</h2>
-                <div className="relative aspect-video rounded-2xl overflow-hidden bg-black/50 border border-white/5">
-                  <iframe 
-                    className="w-full h-full"
-                    src="https://www.youtube.com/embed/AFCZIFBLmU8?modestbranding=1&rel=0" 
-                    title="Overview of Rockyt features"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen
-                  ></iframe>
+              <div className="p-4 md:p-6">
+                
+                {/* Dashboard Visualization */}
+                <div className="bg-[#EBF1F5] p-6 rounded-[24px] overflow-hidden text-slate-800 font-sans w-full">
+                  <div className="flex flex-col lg:flex-row gap-6">
+                    {/* Left Column - Metrics */}
+                    <div className="flex-grow flex flex-col gap-6 w-full">
+                      {/* Cards Grid */}
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        
+                        {/* Recommendations */}
+                        <div className="col-span-2 bg-[#051C74] rounded-2xl p-5 text-white relative overflow-hidden flex flex-col justify-between min-h-[160px] shadow-sm">
+                           {/* Jellyfish/Blue blob effect */}
+                           <div className="absolute right-0 top-0 w-48 h-48 bg-blue-500/50 rounded-full blur-[60px] translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+                           <div className="relative z-10">
+                              <div className="text-xs opacity-70 mb-1">Results</div>
+                              <div className="font-semibold text-lg leading-tight">Recommendations</div>
+                              <div className="text-yellow-300 text-xs mt-1">✦✦</div>
+                           </div>
+                           <div className="relative z-10 mt-auto">
+                              <div className="text-[10px] cursor-pointer bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 hover:bg-white/20 transition-colors w-fit">
+                                Tap to generate
+                              </div>
+                           </div>
+                        </div>
+
+                        {/* Spend */}
+                        <div className="col-span-1 bg-white rounded-2xl p-4 flex flex-col justify-between shadow-sm min-h-[140px]">
+                           <div className="flex justify-between items-start">
+                              <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                                <iconify-icon icon="solar:wallet-bold" width="16"></iconify-icon>
+                              </div>
+                           </div>
+                           <div>
+                              <div className="text-[10px] text-gray-500 font-bold mb-1">Spend</div>
+                              <div className="flex items-end justify-between gap-1 flex-wrap">
+                                 <div className="text-sm md:text-base font-bold">$6,160.81</div>
+                                 <div className="text-[9px] font-bold bg-green-100 text-green-600 px-1.5 py-0.5 rounded">+0%</div>
+                              </div>
+                           </div>
+                        </div>
+
+                        {/* Clicks */}
+                        <div className="col-span-1 bg-white rounded-2xl p-4 flex flex-col justify-between shadow-sm min-h-[140px]">
+                           <div className="flex justify-between items-start">
+                              <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                                <iconify-icon icon="solar:cursor-bold" width="16"></iconify-icon>
+                              </div>
+                           </div>
+                           <div>
+                              <div className="text-[10px] text-gray-500 font-bold mb-1">Clicks</div>
+                              <div className="flex items-end justify-between gap-1 flex-wrap">
+                                 <div className="text-sm md:text-base font-bold">9,118</div>
+                                 <div className="text-[9px] font-bold bg-green-100 text-green-600 px-1.5 py-0.5 rounded">+0%</div>
+                              </div>
+                           </div>
+                        </div>
+
+                        {/* Leads */}
+                        <div className="col-span-2 bg-[#022c22] rounded-2xl p-5 text-white relative overflow-hidden flex flex-col justify-between min-h-[160px] shadow-sm">
+                           {/* Abstract green lines */}
+                           <div className="absolute inset-0 bg-gradient-to-br from-green-900 to-black opacity-50"></div>
+                           <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-green-500/20 to-transparent"></div>
+                           <div className="relative z-10">
+                              <div className="font-semibold text-lg">Leads</div>
+                              <iconify-icon icon="solar:chart-2-bold" width="16" className="opacity-50 mt-1"></iconify-icon>
+                           </div>
+                           <div className="relative z-10 flex items-end justify-between mt-auto">
+                              <div>
+                                 <div className="text-2xl md:text-3xl font-bold">1,573</div>
+                                 <div className="text-[10px] font-bold bg-green-500 text-white px-1.5 py-0.5 rounded w-fit mt-1">+0%</div>
+                              </div>
+                              <div className="text-[10px] bg-white text-black px-3 py-1.5 rounded-lg font-bold flex items-center gap-1 cursor-pointer">
+                                Download <iconify-icon icon="solar:download-linear"></iconify-icon>
+                              </div>
+                           </div>
+                        </div>
+
+                        {/* Cpc */}
+                        <div className="col-span-1 bg-white rounded-2xl p-4 flex flex-col justify-between shadow-sm min-h-[140px]">
+                           <div className="flex justify-between items-start">
+                              <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                                <iconify-icon icon="solar:dollar-minimalistic-bold" width="16"></iconify-icon>
+                              </div>
+                           </div>
+                           <div>
+                              <div className="text-[10px] text-gray-500 font-bold mb-1">Cpc</div>
+                              <div className="flex items-end justify-between gap-1">
+                                 <div className="text-sm md:text-base font-bold">$0.68</div>
+                                 <div className="flex flex-col items-end">
+                                    <div className="text-[9px] font-bold bg-green-100 text-green-600 px-1.5 py-0.5 rounded mb-0.5">-62.22%</div>
+                                    <div className="text-[7px] text-blue-500 font-bold">vs Benchmarks</div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        {/* Ctr */}
+                        <div className="col-span-1 bg-white rounded-2xl p-4 flex flex-col justify-between shadow-sm min-h-[140px]">
+                           <div className="flex justify-between items-start">
+                              <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                                <iconify-icon icon="solar:cursor-bold" width="16"></iconify-icon>
+                              </div>
+                           </div>
+                           <div>
+                              <div className="text-[10px] text-gray-500 font-bold mb-1">Ctr</div>
+                              <div className="flex items-end justify-between gap-1">
+                                 <div className="text-sm md:text-base font-bold">3.50%</div>
+                                 <div className="flex flex-col items-end">
+                                    <div className="text-[9px] font-bold bg-green-100 text-green-600 px-1.5 py-0.5 rounded mb-0.5">100.00%</div>
+                                    <div className="text-[7px] text-blue-500 font-bold">vs Benchmarks</div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        {/* Reach */}
+                        <div className="col-span-1 bg-white rounded-2xl p-4 flex flex-col justify-between shadow-sm min-h-[140px]">
+                           <div className="flex justify-between items-start">
+                              <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                                <iconify-icon icon="solar:users-group-rounded-bold" width="16"></iconify-icon>
+                              </div>
+                           </div>
+                           <div>
+                              <div className="text-[10px] text-gray-500 font-bold mb-1">Reach</div>
+                              <div className="flex items-end justify-between gap-1 flex-wrap">
+                                 <div className="text-sm md:text-base font-bold">84,506</div>
+                                 <div className="text-[9px] font-bold bg-green-100 text-green-600 px-1.5 py-0.5 rounded">+0%</div>
+                              </div>
+                           </div>
+                        </div>
+
+                        {/* Cost Per Lead */}
+                        <div className="col-span-1 bg-white rounded-2xl p-4 flex flex-col justify-between shadow-sm min-h-[140px]">
+                           <div className="flex justify-between items-start">
+                              <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                                <iconify-icon icon="solar:dollar-minimalistic-bold" width="16"></iconify-icon>
+                              </div>
+                           </div>
+                           <div>
+                              <div className="text-[10px] text-gray-500 font-bold mb-1">Cost Per Lead</div>
+                              <div className="flex items-end justify-between gap-1 flex-wrap">
+                                 <div className="text-sm md:text-base font-bold">$3.26</div>
+                                 <div className="text-[9px] font-bold bg-green-100 text-green-600 px-1.5 py-0.5 rounded">+0%</div>
+                              </div>
+                           </div>
+                        </div>
+
+                      </div>
+
+                      {/* Filter Bar */}
+                      <div className="bg-white rounded-xl p-2 md:p-3 flex flex-wrap gap-2 justify-between items-center shadow-sm">
+                         <button className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-lg text-xs font-bold text-gray-600">
+                            Spend <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon>
+                         </button>
+                         <div className="flex bg-gray-100 rounded-lg p-1">
+                             <button className="px-3 py-1 text-[10px] font-bold text-gray-500">Day</button>
+                             <button className="px-3 py-1 text-[10px] font-bold bg-blue-500 text-white rounded-md shadow-sm">Week</button>
+                             <button className="px-3 py-1 text-[10px] font-bold text-gray-500">Month</button>
+                             <button className="px-3 py-1 text-[10px] font-bold text-gray-500">Year</button>
+                         </div>
+                      </div>
+                    </div>
+
+                    {/* Right Column - Status */}
+                    <div className="w-full lg:w-80 flex-shrink-0 flex flex-col gap-4">
+                       
+                       {/* Campaign Status */}
+                       <div className="bg-white rounded-2xl p-5 shadow-sm">
+                          <div className="flex items-center justify-between mb-6">
+                             <h3 className="font-bold text-sm">Campaign Status</h3>
+                             <div className="w-10 h-5 bg-gray-200 rounded-full relative cursor-pointer">
+                                <div className="w-4 h-4 bg-white rounded-full absolute top-0.5 left-0.5 shadow-sm"></div>
+                             </div>
+                          </div>
+                          
+                          <h4 className="text-xs font-bold text-gray-500 mb-4">Ad Activity</h4>
+                          
+                          <div className="relative pl-4 border-l-2 border-gray-100 space-y-6">
+                             {/* Activity Item 1 */}
+                             <div className="relative">
+                                <div className="absolute -left-[21px] top-0 w-3 h-3 rounded-full border-2 border-gray-300 bg-white">
+                                  <iconify-icon icon="solar:ring-bold-duotone" width="12" className="-ml-px -mt-px opacity-50"></iconify-icon>
+                                </div>
+                                <div className="flex justify-between items-start gap-2">
+                                   <div>
+                                      <div className="text-xs font-bold text-gray-800">Updated campaign</div>
+                                      <div className="text-[9px] text-gray-400 mt-0.5 leading-tight">Campaign name updated successfully.</div>
+                                   </div>
+                                   <div className="text-[8px] text-gray-400 whitespace-nowrap">Nov 25, 2024</div>
+                                </div>
+                             </div>
+                             {/* Activity Item 2 */}
+                             <div className="relative">
+                                <div className="absolute -left-[21px] top-0 w-3 h-3 rounded-full border-2 border-gray-300 bg-white">
+                                  <iconify-icon icon="solar:ring-bold-duotone" width="12" className="-ml-px -mt-px opacity-50"></iconify-icon>
+                                </div>
+                                <div className="flex justify-between items-start gap-2">
+                                   <div>
+                                      <div className="text-xs font-bold text-gray-800">Updated creative</div>
+                                      <div className="text-[9px] text-gray-400 mt-0.5 leading-tight">Campaign creative updated successfully.</div>
+                                   </div>
+                                   <div className="text-[8px] text-gray-400 whitespace-nowrap">Nov 25, 2024</div>
+                                </div>
+                             </div>
+                             {/* Activity Item 3 */}
+                             <div className="relative">
+                                <div className="absolute -left-[21px] top-0 w-3 h-3 rounded-full border-2 border-gray-300 bg-white">
+                                  <iconify-icon icon="solar:ring-bold-duotone" width="12" className="-ml-px -mt-px opacity-50"></iconify-icon>
+                                </div>
+                                <div className="flex justify-between items-start gap-2">
+                                   <div>
+                                      <div className="text-xs font-bold text-gray-800">Updated creative</div>
+                                      <div className="text-[9px] text-gray-400 mt-0.5 leading-tight">Campaign creative updated successfully.</div>
+                                   </div>
+                                   <div className="text-[8px] text-gray-400 whitespace-nowrap">Dec 04, 2024</div>
+                                </div>
+                             </div>
+                             {/* Activity Item 4 */}
+                             <div className="relative">
+                                <div className="absolute -left-[21px] top-0 w-3 h-3 rounded-full border-2 border-gray-300 bg-white">
+                                  <iconify-icon icon="solar:ring-bold-duotone" width="12" className="-ml-px -mt-px opacity-50"></iconify-icon>
+                                </div>
+                                <div className="flex justify-between items-start gap-2">
+                                   <div>
+                                      <div className="text-xs font-bold text-gray-800">Status Updated</div>
+                                      <div className="text-[9px] text-gray-400 mt-0.5 leading-tight">Campaign has Paused</div>
+                                   </div>
+                                   <div className="text-[8px] text-gray-400 whitespace-nowrap">Dec 11, 2024</div>
+                                </div>
+                             </div>
+                             {/* Activity Item 5 */}
+                             <div className="relative">
+                                <div className="absolute -left-[21px] top-0 w-3 h-3 rounded-full border-2 border-gray-300 bg-white">
+                                  <iconify-icon icon="solar:ring-bold-duotone" width="12" className="-ml-px -mt-px opacity-50"></iconify-icon>
+                                </div>
+                                <div className="flex justify-between items-start gap-2">
+                                   <div>
+                                      <div className="text-xs font-bold text-gray-800">Status Updated</div>
+                                      <div className="text-[9px] text-gray-400 mt-0.5 leading-tight">Campaign has Active</div>
+                                   </div>
+                                   <div className="text-[8px] text-gray-400 whitespace-nowrap">Dec 11, 2024</div>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+
+                       {/* Actual Results vs Forecasted */}
+                       <div className="bg-[#bbf7d0] rounded-2xl p-4 text-[#064e3b] shadow-sm">
+                           <div className="flex justify-between items-center mb-4">
+                              <div className="text-[10px] font-bold flex items-center gap-1">
+                                Actual Results vs Forecasted Result
+                                <iconify-icon icon="solar:info-circle-linear"></iconify-icon>
+                              </div>
+                              <iconify-icon icon="solar:square-top-down-linear" width="12"></iconify-icon>
+                           </div>
+                           
+                           <div className="flex gap-1.5 mb-4 overflow-x-auto">
+                               <button className="text-[9px] font-bold px-2 py-1 bg-white/50 rounded-md whitespace-nowrap">Day</button>
+                               <button className="text-[9px] font-bold px-2 py-1 bg-white/50 rounded-md whitespace-nowrap">Last 7 Days</button>
+                               <button className="text-[9px] font-bold px-2 py-1 bg-black text-white rounded-md whitespace-nowrap">Last 30 Days</button>
+                           </div>
+
+                           <div className="bg-green-500 text-white rounded-xl p-3 flex items-center gap-3 shadow-sm mb-3">
+                               <div className="w-8 h-8 rounded-full bg-green-700 flex items-center justify-center text-white">
+                                  <iconify-icon icon="solar:dollar-minimalistic-bold" width="16"></iconify-icon>
+                                </div>
+                               <div className="font-bold text-sm">Savings = $720.78</div>
+                           </div>
+                           
+                           <div className="space-y-2">
+                               <div className="bg-white/80 rounded-lg p-2 text-[9px] flex justify-between items-center shadow-sm">
+                                   <span className="font-medium">Spend $301.87 (+0.62% Compared to forecasted result)</span>
+                               </div>
+                               <div className="bg-white/80 rounded-lg p-2 text-[9px] flex justify-between items-center shadow-sm">
+                                   <span className="font-medium">Clicks 508 (+101.65% Compared to forecasted result)</span>
+                               </div>
+                           </div>
+                       </div>
+                    </div>
+                  </div>
                 </div>
+
               </div>
             </div>
           </section>

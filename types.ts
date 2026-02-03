@@ -16,20 +16,20 @@ interface LottiePlayerProps extends React.DetailedHTMLProps<React.HTMLAttributes
   [key: string]: any;
 }
 
+interface WistiaPlayerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+  'media-id'?: string;
+  'wistia-popover'?: string;
+  aspect?: string | number;
+  [key: string]: any;
+}
+
 declare global {
   namespace JSX {
     interface IntrinsicElements {
       'iconify-icon': IconifyIconProps;
       'lottie-player': LottiePlayerProps;
-    }
-  }
-}
-
-declare module 'react' {
-  namespace JSX {
-    interface IntrinsicElements {
-      'iconify-icon': IconifyIconProps;
-      'lottie-player': LottiePlayerProps;
+      'wistia-player': WistiaPlayerProps;
+      [elemName: string]: any;
     }
   }
 }

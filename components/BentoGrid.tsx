@@ -21,25 +21,46 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
         </div>
       </div>
 
-      {/* Card 2: Platforms (Updated Layout) */}
-      <div className="col-span-1 md:col-span-8 bg-brand-black rounded-[32px] p-8 bento-card flex flex-col min-h-[400px] border border-white/10 relative overflow-hidden">
-        <h3 className="text-2xl font-semibold tracking-tight text-white relative z-10 text-center md:text-left mb-8">Across every advertising platform</h3>
+      {/* Card 2: AI Content Hub */}
+      <div className="col-span-1 md:col-span-8 bg-brand-black rounded-[32px] p-8 md:p-10 bento-card flex flex-col min-h-[400px] border border-white/10 relative overflow-hidden group">
         
-        {/* Logos Grid - Bigger and Better Aligned */}
-        <div className="flex-grow flex items-center justify-center relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-12 w-full max-w-3xl mx-auto items-center justify-items-center">
-            <iconify-icon icon="logos:meta-icon" width="64"></iconify-icon>
-            <iconify-icon icon="logos:google-icon" width="48"></iconify-icon>
-            <iconify-icon icon="logos:tiktok-icon" width="48"></iconify-icon>
-            <iconify-icon icon="fa-brands:snapchat-ghost" width="52" style={{ color: 'white' }}></iconify-icon>
-            <iconify-icon icon="logos:pinterest" width="48"></iconify-icon>
-            <iconify-icon icon="logos:linkedin-icon" width="48"></iconify-icon>
-            <iconify-icon icon="logos:twitter" width="48"></iconify-icon>
-            <iconify-icon icon="logos:microsoft-icon" width="48"></iconify-icon>
-          </div>
+        {/* Background Gradient Effect */}
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-brand-purple/20 blur-[100px] rounded-full -mr-20 -mt-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-60"></div>
+
+        <div className="relative z-10 flex flex-col h-full">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h3 className="text-2xl font-semibold tracking-tight text-white">AI Content Hub</h3>
+                    <p className="text-gray-400 mt-2 text-base">Generate high-converting ad creatives with 6 powerful AI tools.</p>
+                </div>
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-purple bg-brand-purple/10 px-3 py-1.5 rounded-full w-fit h-fit border border-brand-purple/20">
+                    <iconify-icon icon="solar:stars-minimalistic-bold" width="14"></iconify-icon>
+                    <span>Gen AI</span>
+                </div>
+            </div>
+
+            {/* 6 AI Tools Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 flex-grow">
+                {[
+                    { icon: "solar:magic-stick-3-bold-duotone", label: "Magic Edit", desc: "Modify assets", color: "text-blue-400", bg: "bg-blue-500/20" },
+                    { icon: "solar:text-square-bold-duotone", label: "Ad Copy", desc: "Generate text", color: "text-purple-400", bg: "bg-purple-500/20" },
+                    { icon: "solar:gallery-wide-bold-duotone", label: "Text to Image", desc: "Create visuals", color: "text-pink-400", bg: "bg-pink-500/20" },
+                    { icon: "solar:videocamera-record-bold-duotone", label: "Video Gen", desc: "Motion ads", color: "text-orange-400", bg: "bg-orange-500/20" },
+                    { icon: "solar:layers-minimalistic-bold-duotone", label: "Product BG", desc: "Smart studio", color: "text-green-400", bg: "bg-green-500/20" },
+                    { icon: "solar:microphone-3-bold-duotone", label: "Voiceover", desc: "AI narration", color: "text-cyan-400", bg: "bg-cyan-500/20" }
+                ].map((tool, index) => (
+                    <div key={index} className="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 rounded-2xl p-4 flex flex-col justify-center gap-3 transition-all duration-300 group/tool cursor-default">
+                        <div className={`w-10 h-10 rounded-full ${tool.bg} ${tool.color} flex items-center justify-center group-hover/tool:scale-110 transition-transform`}>
+                            <iconify-icon icon={tool.icon} width="24"></iconify-icon>
+                        </div>
+                        <div>
+                            <div className="font-semibold text-white text-sm">{tool.label}</div>
+                            <div className="text-xs text-gray-500 mt-0.5">{tool.desc}</div>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
-        
-        <p className="text-sm text-gray-400 font-medium mt-8 relative z-10 text-center md:text-left">Rockyt is an official partner of all these platforms</p>
       </div>
 
       {/* Card 3: Improve Tracking */}
@@ -78,9 +99,9 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
         </div>
       </div>
 
-      {/* New Card: Creative Insights (Redesigned Visuals) */}
-      <div className="col-span-1 md:col-span-12 bg-brand-yellow rounded-[32px] p-8 md:p-12 bento-card flex flex-col md:flex-row gap-12 relative overflow-hidden text-brand-black items-center">
-        <div className="w-full md:w-1/3 flex flex-col gap-4 relative z-10">
+      {/* New Card: Creative Insights (Redesigned Compact Dashboard) */}
+      <div className="col-span-1 md:col-span-12 bg-brand-yellow rounded-[32px] p-8 md:p-12 bento-card flex flex-col lg:flex-row gap-8 relative overflow-hidden text-brand-black items-center min-h-[480px]">
+        <div className="w-full lg:w-1/3 flex flex-col gap-4 relative z-10 shrink-0">
            <h3 className="text-3xl md:text-4xl font-bold tracking-tight">Explore creative insights</h3>
            <p className="text-lg font-medium opacity-80">Unlock the power of your ad data with real-time visual analytics.</p>
            <button 
@@ -94,82 +115,228 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
            </button>
         </div>
         
-        {/* Dashboard UI Container - Cleaned Up */}
-        <div className="w-full md:w-2/3 bg-white rounded-3xl p-6 shadow-2xl flex flex-col gap-6 rotate-1 hover:rotate-0 transition-transform duration-500">
-          
-          {/* Top Bar: Thumbs & Controls */}
-          <div className="flex justify-between items-center">
-            <div className="flex items-center gap-[-8px]">
-               {[1,2,3].map((i) => (
-                 <div key={i} className={`w-12 h-12 rounded-full border-2 border-white relative shadow-md -ml-3 first:ml-0 overflow-hidden`}>
-                    <img src={`https://randomuser.me/api/portraits/men/${i*20}.jpg`} className="w-full h-full object-cover" alt="User" />
-                 </div>
-               ))}
-               <div className="w-12 h-12 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center -ml-3 text-xs font-bold text-gray-500 shadow-md">+5</div>
-            </div>
-            <div className="flex gap-2">
-                 <div className="p-2 bg-gray-50 rounded-lg text-gray-400"><iconify-icon icon="solar:calendar-linear" width="20"></iconify-icon></div>
-                 <div className="p-2 bg-gray-50 rounded-lg text-gray-400"><iconify-icon icon="solar:settings-linear" width="20"></iconify-icon></div>
-            </div>
-          </div>
-
-          {/* Chart Section - Simplified & Cleaner */}
-          <div className="flex flex-col gap-4">
-             <div className="flex items-end justify-between">
-                <div>
-                   <div className="text-sm text-gray-400 font-medium">Total Spend</div>
-                   <div className="text-3xl font-bold text-gray-900">$42,593.00</div>
-                </div>
-                <div className="flex items-center gap-1 text-green-500 text-sm font-bold bg-green-50 px-2 py-1 rounded-md">
-                   <iconify-icon icon="solar:trending-up-bold"></iconify-icon> +12.5%
-                </div>
-             </div>
+        {/* Compact Dashboard UI Container */}
+        <div className="w-full lg:w-2/3 bg-[#EBF1F5] p-3 rounded-[20px] shadow-2xl flex flex-col gap-3 rotate-1 hover:rotate-0 transition-transform duration-500 font-sans text-slate-800 border-[3px] border-white">
              
-             <div className="relative h-40 w-full">
-                {/* Simplified Chart */}
-                <svg className="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 50">
-                    <defs>
-                        <linearGradient id="gradientPurple" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.2" />
-                            <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M0 50 L10 40 L25 45 L40 30 L60 35 L80 15 L100 20 V 50 H 0 Z" fill="url(#gradientPurple)" />
-                    <path d="M0 50 L10 40 L25 45 L40 30 L60 35 L80 15 L100 20" fill="none" stroke="#8B5CF6" strokeWidth="3" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-                </svg>
-             </div>
-          </div>
+             <div className="flex flex-col xl:flex-row gap-3">
+                {/* Left Column - Metrics */}
+                <div className="flex-grow flex flex-col gap-3 w-full">
+                  {/* Cards Grid */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    
+                    {/* Recommendations */}
+                    <div className="col-span-2 bg-[#051C74] rounded-xl p-3 text-white relative overflow-hidden flex flex-col justify-between min-h-[90px] shadow-sm group">
+                       <div className="absolute right-0 top-0 w-32 h-32 bg-blue-500/50 rounded-full blur-[40px] translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+                       <div className="relative z-10">
+                          <div className="text-[10px] opacity-70 mb-0.5">Results</div>
+                          <div className="font-semibold text-sm leading-tight">Recommendations</div>
+                          <div className="text-yellow-300 text-[10px] mt-0.5">✦✦</div>
+                       </div>
+                       <div className="relative z-10 mt-auto">
+                          <div className="text-[8px] cursor-pointer bg-white/10 backdrop-blur-md px-2 py-1 rounded-md border border-white/20 hover:bg-white/20 transition-colors w-fit">
+                            Tap to generate
+                          </div>
+                       </div>
+                    </div>
 
-          {/* List Section - Cleaner */}
-          <div className="space-y-3">
-             <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-xl">
-                <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
-                    <iconify-icon icon="solar:gallery-bold" width="20"></iconify-icon>
-                </div>
-                <div className="flex-grow">
-                    <div className="text-sm font-bold text-gray-900">Summer Campaign_V2</div>
-                    <div className="text-xs text-gray-500">Facebook • Image</div>
-                </div>
-                <div className="text-right">
-                    <div className="text-sm font-bold text-gray-900">2.4%</div>
-                    <div className="text-xs text-gray-500">CTR</div>
-                </div>
-             </div>
-             <div className="flex items-center gap-4 p-3 bg-white border border-gray-100 rounded-xl">
-                <div className="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600">
-                    <iconify-icon icon="solar:videocamera-bold" width="20"></iconify-icon>
-                </div>
-                <div className="flex-grow">
-                    <div className="text-sm font-bold text-gray-900">Product Demo Reel</div>
-                    <div className="text-xs text-gray-500">TikTok • Video</div>
-                </div>
-                <div className="text-right">
-                    <div className="text-sm font-bold text-gray-900">3.1%</div>
-                    <div className="text-xs text-gray-500">CTR</div>
-                </div>
-             </div>
-          </div>
+                    {/* Spend */}
+                    <div className="col-span-1 bg-white rounded-xl p-2.5 flex flex-col justify-between shadow-sm min-h-[90px]">
+                       <div className="flex justify-between items-start">
+                          <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                            <iconify-icon icon="solar:wallet-bold" width="12"></iconify-icon>
+                          </div>
+                       </div>
+                       <div>
+                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">Spend</div>
+                          <div className="flex items-end justify-between gap-1 flex-wrap">
+                             <div className="text-xs font-bold">$6,160.81</div>
+                             <div className="text-[7px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded">+0%</div>
+                          </div>
+                       </div>
+                    </div>
 
+                    {/* Clicks */}
+                    <div className="col-span-1 bg-white rounded-xl p-2.5 flex flex-col justify-between shadow-sm min-h-[90px]">
+                       <div className="flex justify-between items-start">
+                          <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                            <iconify-icon icon="solar:cursor-bold" width="12"></iconify-icon>
+                          </div>
+                       </div>
+                       <div>
+                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">Clicks</div>
+                          <div className="flex items-end justify-between gap-1 flex-wrap">
+                             <div className="text-xs font-bold">9,118</div>
+                             <div className="text-[7px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded">+0%</div>
+                          </div>
+                       </div>
+                    </div>
+
+                    {/* Leads */}
+                    <div className="col-span-2 bg-[#022c22] rounded-xl p-3 text-white relative overflow-hidden flex flex-col justify-between min-h-[90px] shadow-sm">
+                       <div className="absolute inset-0 bg-gradient-to-br from-green-900 to-black opacity-50"></div>
+                       <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-green-500/20 to-transparent"></div>
+                       <div className="relative z-10">
+                          <div className="font-semibold text-sm">Leads</div>
+                          <iconify-icon icon="solar:chart-2-bold" width="12" className="opacity-50 mt-0.5"></iconify-icon>
+                       </div>
+                       <div className="relative z-10 flex items-end justify-between mt-auto">
+                          <div>
+                             <div className="text-lg font-bold">1,573</div>
+                             <div className="text-[7px] font-bold bg-green-500 text-white px-1 py-0.5 rounded w-fit mt-0.5">+0%</div>
+                          </div>
+                          <div className="text-[7px] bg-white text-black px-2 py-1 rounded font-bold flex items-center gap-1 cursor-pointer hover:bg-gray-100">
+                            Download <iconify-icon icon="solar:download-linear"></iconify-icon>
+                          </div>
+                       </div>
+                    </div>
+
+                    {/* Cpc */}
+                    <div className="col-span-1 bg-white rounded-xl p-2.5 flex flex-col justify-between shadow-sm min-h-[90px]">
+                       <div className="flex justify-between items-start">
+                          <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                            <iconify-icon icon="solar:dollar-minimalistic-bold" width="12"></iconify-icon>
+                          </div>
+                       </div>
+                       <div>
+                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">Cpc</div>
+                          <div className="flex items-end justify-between gap-1">
+                             <div className="text-xs font-bold">$0.68</div>
+                             <div className="flex flex-col items-end">
+                                <div className="text-[6px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded mb-0.5">-62%</div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+
+                    {/* Ctr */}
+                    <div className="col-span-1 bg-white rounded-xl p-2.5 flex flex-col justify-between shadow-sm min-h-[90px]">
+                       <div className="flex justify-between items-start">
+                          <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                            <iconify-icon icon="solar:cursor-bold" width="12"></iconify-icon>
+                          </div>
+                       </div>
+                       <div>
+                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">Ctr</div>
+                          <div className="flex items-end justify-between gap-1">
+                             <div className="text-xs font-bold">3.50%</div>
+                             <div className="flex flex-col items-end">
+                                <div className="text-[6px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded mb-0.5">100%</div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+
+                    {/* Reach */}
+                    <div className="col-span-1 bg-white rounded-xl p-2.5 flex flex-col justify-between shadow-sm min-h-[90px]">
+                       <div className="flex justify-between items-start">
+                          <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                            <iconify-icon icon="solar:users-group-rounded-bold" width="12"></iconify-icon>
+                          </div>
+                       </div>
+                       <div>
+                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">Reach</div>
+                          <div className="flex items-end justify-between gap-1 flex-wrap">
+                             <div className="text-xs font-bold">84k</div>
+                             <div className="text-[7px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded">+0%</div>
+                          </div>
+                       </div>
+                    </div>
+
+                    {/* Cost Per Lead */}
+                    <div className="col-span-1 bg-white rounded-xl p-2.5 flex flex-col justify-between shadow-sm min-h-[90px]">
+                       <div className="flex justify-between items-start">
+                          <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                            <iconify-icon icon="solar:dollar-minimalistic-bold" width="12"></iconify-icon>
+                          </div>
+                       </div>
+                       <div>
+                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">CPL</div>
+                          <div className="flex items-end justify-between gap-1 flex-wrap">
+                             <div className="text-xs font-bold">$3.26</div>
+                             <div className="text-[7px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded">+0%</div>
+                          </div>
+                       </div>
+                    </div>
+
+                  </div>
+
+                  {/* Filter Bar */}
+                  <div className="bg-white rounded-lg p-1.5 flex flex-wrap gap-2 justify-between items-center shadow-sm">
+                     <button className="flex items-center gap-1.5 px-2 py-1 bg-gray-100 rounded text-[9px] font-bold text-gray-600">
+                        Spend <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon>
+                     </button>
+                     <div className="flex bg-gray-100 rounded-md p-0.5">
+                         <button className="px-2 py-0.5 text-[8px] font-bold text-gray-500">Day</button>
+                         <button className="px-2 py-0.5 text-[8px] font-bold bg-blue-500 text-white rounded shadow-sm">Week</button>
+                         <button className="px-2 py-0.5 text-[8px] font-bold text-gray-500">Month</button>
+                     </div>
+                  </div>
+                </div>
+
+                {/* Right Column - Status */}
+                <div className="w-full xl:w-48 flex-shrink-0 flex flex-col gap-2">
+                   
+                   {/* Campaign Status */}
+                   <div className="bg-white rounded-xl p-3 shadow-sm flex-grow">
+                      <div className="flex items-center justify-between mb-3">
+                         <h3 className="font-bold text-[10px]">Status</h3>
+                         <div className="w-6 h-3.5 bg-gray-200 rounded-full relative cursor-pointer">
+                            <div className="w-2.5 h-2.5 bg-white rounded-full absolute top-0.5 left-0.5 shadow-sm"></div>
+                         </div>
+                      </div>
+                      
+                      <div className="relative pl-2.5 border-l border-gray-100 space-y-3">
+                         {/* Activity Item 1 */}
+                         <div className="relative">
+                            <div className="absolute -left-[14px] top-0 w-2 h-2 rounded-full border border-gray-300 bg-white"></div>
+                            <div>
+                                <div className="text-[9px] font-bold text-gray-800">Updated campaign</div>
+                                <div className="text-[7px] text-gray-400 leading-tight">Name updated.</div>
+                            </div>
+                         </div>
+                         {/* Activity Item 2 */}
+                         <div className="relative">
+                            <div className="absolute -left-[14px] top-0 w-2 h-2 rounded-full border border-gray-300 bg-white"></div>
+                            <div>
+                                <div className="text-[9px] font-bold text-gray-800">Updated creative</div>
+                                <div className="text-[7px] text-gray-400 leading-tight">Creative updated.</div>
+                            </div>
+                         </div>
+                         {/* Activity Item 3 */}
+                         <div className="relative">
+                            <div className="absolute -left-[14px] top-0 w-2 h-2 rounded-full border border-gray-300 bg-white"></div>
+                            <div>
+                                <div className="text-[9px] font-bold text-gray-800">Status Updated</div>
+                                <div className="text-[7px] text-gray-400 leading-tight">Paused.</div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+
+                   {/* Actual Results vs Forecasted */}
+                   <div className="bg-[#bbf7d0] rounded-xl p-3 text-[#064e3b] shadow-sm">
+                       <div className="flex justify-between items-center mb-2">
+                          <div className="text-[8px] font-bold flex items-center gap-1">
+                            Actual vs Forecasted
+                          </div>
+                          <iconify-icon icon="solar:square-top-down-linear" width="10"></iconify-icon>
+                       </div>
+                       
+                       <div className="bg-green-500 text-white rounded-lg p-2 flex items-center gap-2 shadow-sm mb-2">
+                           <div className="w-5 h-5 rounded-full bg-green-700 flex items-center justify-center text-white">
+                              <iconify-icon icon="solar:dollar-minimalistic-bold" width="10"></iconify-icon>
+                            </div>
+                           <div className="font-bold text-[10px]">Savings $720</div>
+                       </div>
+                       
+                       <div className="space-y-1">
+                           <div className="bg-white/80 rounded p-1 text-[7px] flex justify-between items-center shadow-sm">
+                               <span className="font-medium">Spend $301 (+0.6%)</span>
+                           </div>
+                       </div>
+                   </div>
+                </div>
+             </div>
         </div>
       </div>
 
@@ -191,19 +358,68 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
         </div>
       </div>
 
-      {/* Card 7: Integrations */}
-      <div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 shadow-none rounded-[32px] p-8 bento-card flex flex-col justify-between min-h-[400px] relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-2/3 bg-white/5 rounded-b-[40px] flex items-center justify-center p-8">
-          <img 
-            src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/69779936418f66d10a0258d1_d5228af4201f48b9df2a1b9173b96184_Integrations%20icons.svg" 
-            className="w-full h-auto" 
-            alt="Integrations" 
-          />
+      {/* Card 7: AI Budget Optimization (Replacing Integrations) */}
+      <div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 shadow-none rounded-[32px] p-8 bento-card flex flex-col justify-between min-h-[400px] relative overflow-hidden group">
+        
+        {/* Visual Header */}
+        <div className="absolute top-0 left-0 w-full h-[55%] bg-gradient-to-b from-[#1D2E5C] to-transparent rounded-b-[40px] flex flex-col items-center justify-center p-6 border-b border-white/5">
+            
+            {/* Floating Elements for Visualization */}
+            <div className="w-full space-y-3 relative z-10">
+                {/* Row 1: Scaling Up */}
+                <div className="flex items-center gap-3 p-2 bg-brand-black/40 backdrop-blur-md rounded-xl border border-white/10 shadow-lg translate-y-2 transition-transform duration-700 group-hover:-translate-y-1">
+                    <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center text-green-400">
+                        <iconify-icon icon="solar:graph-new-up-bold" width="20"></iconify-icon>
+                    </div>
+                    <div className="flex-1">
+                        <div className="flex justify-between text-[10px] text-gray-400 font-medium mb-1">
+                            <span>Winner Ad Set</span>
+                            <span className="text-green-400">Scaling</span>
+                        </div>
+                        <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                            <div className="h-full bg-green-400 w-3/4"></div>
+                        </div>
+                    </div>
+                    <div className="text-xs font-bold text-white">+$500</div>
+                </div>
+
+                {/* Row 2: Scaling Down */}
+                <div className="flex items-center gap-3 p-2 bg-brand-black/40 backdrop-blur-md rounded-xl border border-white/10 shadow-lg translate-y-2 transition-transform duration-700 group-hover:translate-y-1 delay-100">
+                    <div className="w-8 h-8 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400">
+                        <iconify-icon icon="solar:graph-new-down-bold" width="20"></iconify-icon>
+                    </div>
+                    <div className="flex-1">
+                        <div className="flex justify-between text-[10px] text-gray-400 font-medium mb-1">
+                            <span>Loser Ad Set</span>
+                            <span className="text-red-400">Paused</span>
+                        </div>
+                        <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                            <div className="h-full bg-red-500 w-1/4 opacity-50"></div>
+                        </div>
+                    </div>
+                    <div className="text-xs font-bold text-gray-500">$0</div>
+                </div>
+
+                {/* Central Intelligence Badge */}
+                <div className="absolute -top-4 right-0 bg-brand-blue text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-xl flex items-center gap-1 border border-brand-blue/50">
+                    <iconify-icon icon="solar:cpu-bolt-bold" width="12"></iconify-icon>
+                    AI Active
+                </div>
+            </div>
+            
+            {/* Grid Background Effect */}
+            <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'linear-gradient(#4450F2 1px, transparent 1px), linear-gradient(90deg, #4450F2 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
         </div>
+
         <div className="mt-auto relative z-10 flex flex-col gap-4">
-          <h3 className="text-2xl font-semibold tracking-tight text-white">Integrations</h3>
-          <a href="#" className="inline-flex w-fit items-center justify-center px-6 py-3 bg-brand-yellow text-brand-black rounded-full text-sm font-semibold hover:bg-[#fcd34d] transition-colors btn-hover-skew">
-            <span>Learn more</span>
+          <div>
+              <h3 className="text-2xl font-semibold tracking-tight text-white mb-2">AI Budget Optimization</h3>
+              <p className="text-gray-400 text-sm mt-2 leading-relaxed">
+                Real-time allocations prevent wasted spend and scale your best ads profitably.
+              </p>
+          </div>
+          <a href="#" className="inline-flex w-fit items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-semibold transition-colors btn-hover-skew border border-white/10">
+            <span>See how it works</span>
           </a>
         </div>
       </div>
