@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { RockytLogo } from './Logo';
 import '../types';
 
 interface BookDemoModalProps {
@@ -43,8 +44,8 @@ const BookDemoModal: React.FC<BookDemoModalProps> = ({ isOpen, onClose }) => {
         {/* Left Side: Journey & Transformation */}
         <div className="w-full md:w-1/2 p-8 md:p-12 bg-gradient-to-br from-[#1A1A1A] to-black border-b md:border-b-0 md:border-r border-white/10 overflow-y-auto">
           <div className="flex items-center gap-3 mb-8">
-             <div className="w-10 h-10 bg-brand-yellow rounded-xl flex items-center justify-center text-brand-black">
-                <iconify-icon icon="solar:rocket-bold-duotone" width="24"></iconify-icon>
+             <div className="w-10 h-10 flex items-center justify-center">
+                <RockytLogo className="w-full h-full" />
              </div>
              <h2 className="text-2xl font-bold text-white">Scale with Rockyt</h2>
           </div>

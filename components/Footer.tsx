@@ -1,4 +1,5 @@
 import React from 'react';
+import { RockytLogo } from './Logo';
 import '../types';
 
 const Footer: React.FC = () => {
@@ -9,8 +10,8 @@ const Footer: React.FC = () => {
           <div className="col-span-2 md:col-span-4">
             {/* Logo placeholder */}
             <div className="flex items-center gap-2 mb-6">
-                <div className="w-8 h-8 rounded-full bg-brand-yellow flex items-center justify-center text-brand-black">
-                    <iconify-icon icon="solar:rocket-bold-duotone" width="20"></iconify-icon>
+                <div className="w-8 h-8 flex items-center justify-center">
+                    <RockytLogo className="w-full h-full" />
                 </div>
                 <span className="text-xl font-bold">Rockyt</span>
             </div>

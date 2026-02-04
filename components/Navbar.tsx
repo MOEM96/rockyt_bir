@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { RockytLogo } from './Logo';
 import '../types';
 
 interface NavbarProps {
@@ -35,8 +36,8 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate }) => {
           {/* Logo - Ensure z-index is higher than mobile menu */}
           <a href="#" onClick={(e) => { e.preventDefault(); handleMobileNavigate('home'); }} className="h-8 text-white flex items-center gap-2 group relative z-50">
             {/* Rocket Icon for Rockyt */}
-            <div className="w-8 h-8 relative flex items-center justify-center text-brand-yellow">
-               <iconify-icon icon="solar:rocket-bold-duotone" width="32"></iconify-icon>
+            <div className="w-8 h-8 relative flex items-center justify-center">
+               <RockytLogo className="w-full h-full" />
             </div>
             {/* Text Logo */}
             <span className="text-2xl font-bold tracking-tight text-white hidden md:block">Rockyt</span>
