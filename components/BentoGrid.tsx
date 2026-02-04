@@ -9,6 +9,110 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-min relative z-20">
       
+      {/* NEW CARD: Transformation / Comparison */}
+      <div className="col-span-1 md:col-span-12 bg-brand-black border border-white/10 rounded-[32px] overflow-hidden flex flex-col md:flex-row shadow-2xl">
+         
+         {/* Left Side: Without Rockyt (Pain) */}
+         <div className="w-full md:w-5/12 p-8 md:p-10 border-b md:border-b-0 md:border-r border-white/10 relative bg-[#0f0f0f]">
+            <div className="flex items-center gap-3 mb-6 opacity-60">
+                <div className="w-2 h-2 rounded-full bg-red-500"></div>
+                <h3 className="text-xl font-bold text-gray-300">Without Rockyt</h3>
+            </div>
+            
+            <div className="space-y-8 relative z-10">
+                {/* Pain Point 1 */}
+                <div className="flex gap-4 group opacity-50 hover:opacity-100 transition-opacity">
+                    <div className="mt-1">
+                        <iconify-icon icon="solar:gallery-remove-bold" width="20" class="text-gray-500"></iconify-icon>
+                    </div>
+                    <div>
+                        <div className="font-semibold text-gray-300 text-sm">Creative Fatigue</div>
+                        <div className="text-xs text-gray-500 mt-0.5">Slow production, low variety.</div>
+                    </div>
+                </div>
+                {/* Pain Point 2 */}
+                <div className="flex gap-4 group opacity-50 hover:opacity-100 transition-opacity">
+                    <div className="mt-1">
+                        <iconify-icon icon="solar:chart-square-bold" width="20" class="text-gray-500"></iconify-icon>
+                    </div>
+                    <div>
+                        <div className="font-semibold text-gray-300 text-sm">Delayed Decisions</div>
+                        <div className="text-xs text-gray-500 mt-0.5">Tracking lags by 24-48hrs.</div>
+                    </div>
+                </div>
+                {/* Pain Point 3 */}
+                <div className="flex gap-4 group opacity-50 hover:opacity-100 transition-opacity">
+                    <div className="mt-1">
+                        <iconify-icon icon="solar:wallet-money-bold" width="20" class="text-gray-500"></iconify-icon>
+                    </div>
+                    <div>
+                        <div className="font-semibold text-gray-300 text-sm">Wasted Budget</div>
+                        <div className="text-xs text-gray-500 mt-0.5">Bleeding spend on bad ads.</div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Disclaimer */}
+            <div className="mt-10 bg-red-500/10 border border-red-500/20 p-3 rounded-lg flex items-start gap-2.5">
+               <iconify-icon icon="solar:danger-triangle-linear" class="text-red-400 shrink-0 mt-0.5"></iconify-icon>
+               <p className="text-[10px] md:text-xs text-red-200/80 leading-snug">
+                 <span className="font-bold text-red-200">Did you know?</span> On average 30-50% of ad spend is wasted due to inefficient management.
+               </p>
+            </div>
+         </div>
+
+         {/* Right Side: With Rockyt (Gain) */}
+         <div className="w-full md:w-7/12 p-8 md:p-10 relative bg-gradient-to-br from-[#161616] to-[#1A1A1A]">
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-blue/50 to-transparent opacity-50"></div>
+            
+            <div className="flex items-center gap-3 mb-6">
+                <div className="w-2 h-2 rounded-full bg-brand-blue shadow-[0_0_10px_rgba(0,85,255,0.8)] animate-pulse"></div>
+                <h3 className="text-xl font-bold text-white">With Rockyt</h3>
+            </div>
+
+            <div className="grid gap-6">
+                {/* Feature 1 */}
+                <div className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-brand-pink/20 text-brand-pink flex items-center justify-center shrink-0">
+                        <iconify-icon icon="solar:magic-stick-3-bold-duotone" width="24"></iconify-icon>
+                    </div>
+                    <div>
+                        <div className="font-bold text-white text-base">Creative Quality & Velocity</div>
+                        <p className="text-xs text-gray-400 mt-1 leading-relaxed">
+                            Generate and test high-performing creatives at scale to beat fatigue.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Feature 2 */}
+                <div className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-brand-blue/20 text-brand-blue flex items-center justify-center shrink-0">
+                        <iconify-icon icon="solar:graph-new-up-bold-duotone" width="24"></iconify-icon>
+                    </div>
+                    <div>
+                        <div className="font-bold text-white text-base">Real-time Analytics & Tracking</div>
+                        <p className="text-xs text-gray-400 mt-1 leading-relaxed">
+                           See accurate data instantly. No delays, no guessing.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Feature 3 */}
+                <div className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-brand-yellow/20 text-brand-yellow flex items-center justify-center shrink-0">
+                        <iconify-icon icon="solar:shield-check-bold-duotone" width="24"></iconify-icon>
+                    </div>
+                    <div>
+                        <div className="font-bold text-white text-base">AI Budget Protection</div>
+                        <p className="text-xs text-gray-400 mt-1 leading-relaxed">
+                           Auto-pause losing ads and shift budget to winners 24/7.
+                        </p>
+                    </div>
+                </div>
+            </div>
+         </div>
+      </div>
+
       {/* Card 1: Automate your ads */}
       <div className="col-span-1 md:col-span-4 bg-brand-black rounded-[32px] p-8 bento-card flex flex-col h-full min-h-[400px] border border-white/10">
         <h3 className="text-2xl font-semibold tracking-tight mb-6 text-white">Automate your ads</h3>
@@ -340,21 +444,43 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
         </div>
       </div>
 
-      {/* Card 6: Server Side Tracking */}
-      <div className="col-span-1 md:col-span-8 bg-brand-black rounded-[32px] p-8 md:p-12 bento-card flex flex-col md:flex-row justify-between items-start md:items-center text-white relative overflow-hidden group border border-white/10">
-        <div className="relative z-10 max-w-md">
-          <h3 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">Server-side tracking</h3>
-          <p className="text-gray-400 mb-8 text-lg font-light leading-relaxed">Set up server-side tracking to make your ads more cost-effective by 23%</p>
-          <a href="#" className="inline-flex items-center justify-center px-6 py-3 bg-[#8B5CF6] hover:bg-[#7c3aed] text-white rounded-full text-sm font-semibold transition-colors btn-hover-skew">
-            <span>Learn more</span>
-          </a>
+      {/* Card 6: AI budget Protection */}
+      <div className="col-span-1 md:col-span-8 bg-brand-black rounded-[32px] overflow-hidden bento-card flex flex-col md:flex-row border border-white/10 min-h-[400px]">
+        {/* Left Section: Headline + CTA */}
+        <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-between items-start relative z-10 bg-brand-black border-b md:border-b-0 md:border-r border-white/10">
+          <h3 className="text-3xl md:text-4xl font-semibold tracking-tight text-white max-w-sm">AI budget Protection</h3>
+          
+          <div className="mt-8 md:mt-0">
+             <a href="#" className="inline-flex items-center justify-center px-8 py-3 bg-[#8B5CF6] hover:bg-[#7c3aed] text-white rounded-full text-base font-semibold transition-colors btn-hover-skew">
+               <span>Learn more</span>
+             </a>
+          </div>
         </div>
-        <div className="mt-8 md:mt-0 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:translate-x-12 w-full md:w-1/2 h-64 md:h-full opacity-90 transition-opacity group-hover:opacity-100">
-          <img 
-            src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d3ef72d409ad1e61d473f1_hub%20img%20for%20main%20page%20(1).png" 
-            className="w-full h-full object-contain" 
-            alt="Server Side UI" 
-          />
+        
+        {/* Right Section: Video + Description */}
+        <div className="w-full md:w-1/2 flex flex-col bg-brand-black">
+            {/* Video Container - Modified for full view */}
+            <div className="relative w-full flex-grow bg-[#EAEAEA] overflow-hidden group flex items-center justify-center py-4">
+                <video 
+                    id="ai-budget-protection-video"
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    poster="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-poster-00001.jpg"
+                    className="w-full h-full object-contain max-h-[300px] transition-transform duration-700 group-hover:scale-105"
+                >
+                    <source src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-transcode.mp4" type="video/mp4" />
+                    <source src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-transcode.webm" type="video/webm" />
+                </video>
+            </div>
+            
+            {/* Description Text */}
+            <div className="p-8 bg-brand-black border-t border-white/10 mt-auto"> 
+               <p className="text-gray-400 text-lg font-light leading-relaxed">
+                Audit & Monitor your ads 24/7, claim back your budget & make your ads more cost-effective by 60%
+               </p>
+            </div>
         </div>
       </div>
 

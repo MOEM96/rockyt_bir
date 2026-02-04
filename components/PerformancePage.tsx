@@ -86,9 +86,7 @@ const PerformancePage: React.FC<PerformancePageProps> = ({ onBookDemo }) => {
         {/* Sticky Sidebar Navigation */}
         <aside className="hidden lg:block w-64 flex-shrink-0">
           <div className="sticky top-32">
-            <div className="relative mb-8">
-               <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/6920945750dc374e3cc9eaef_e8edec91cca6f4f855402557ee16cca9_Hero%20Features.svg" className="w-full h-auto opacity-80" alt="Features Hero" />
-            </div>
+            {/* Removed the Hero Features image here as requested */}
             <nav className="border-l border-white/10 pl-6 space-y-4">
               {sections.map((section) => (
                 <button
@@ -188,24 +186,7 @@ const PerformancePage: React.FC<PerformancePageProps> = ({ onBookDemo }) => {
               <h2 className="text-3xl font-bold text-white mb-6">Explorer</h2>
               <p className="text-gray-300 text-lg mb-10 max-w-xl">Rockyt technologies will show important creative insights. And you'll always be aware of what's important.</p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-                 <div className="bg-brand-black/50 p-4 rounded-xl border border-white/10 text-center">
-                    <div className="text-brand-yellow font-bold text-lg mb-1">Top Ads</div>
-                    <div className="text-xs text-gray-400">Last Week</div>
-                 </div>
-                 <div className="bg-brand-black/50 p-4 rounded-xl border border-white/10 text-center">
-                    <div className="text-brand-blue font-bold text-lg mb-1">Video Ads</div>
-                    <div className="text-xs text-gray-400">Best Formats</div>
-                 </div>
-                 <div className="bg-brand-black/50 p-4 rounded-xl border border-white/10 text-center">
-                    <div className="text-brand-pink font-bold text-lg mb-1">Fatigue</div>
-                    <div className="text-xs text-gray-400">Replace Needed</div>
-                 </div>
-                 <div className="bg-brand-black/50 p-4 rounded-xl border border-white/10 text-center">
-                    <div className="text-red-500 font-bold text-lg mb-1">Downtrend</div>
-                    <div className="text-xs text-gray-400">Stop Now</div>
-                 </div>
-              </div>
+              {/* Removed the 4 colored boxes here as requested in the screenshot annotation */}
 
               <div className="rounded-xl overflow-hidden border border-white/10 shadow-2xl">
                  <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c711ce104dcbd2b052b37b_explorer.avif" className="w-full h-auto" alt="Explorer UI" />

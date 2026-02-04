@@ -2,61 +2,51 @@ import React from 'react';
 import { RockytLogo } from './Logo';
 import '../types';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate: (page: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
-    <footer className="bg-brand-black text-white py-16 px-6">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-10">
-          <div className="col-span-2 md:col-span-4">
-            {/* Logo placeholder */}
-            <div className="flex items-center gap-2 mb-6">
-                <div className="w-8 h-8 flex items-center justify-center">
-                    <RockytLogo className="w-full h-full" />
-                </div>
-                <span className="text-xl font-bold">Rockyt</span>
+    <footer className="bg-brand-black text-white py-8 border-t border-white/10 mt-auto">
+      <div className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        {/* Logo */}
+        <button 
+          onClick={() => { window.scrollTo(0,0); onNavigate('home'); }} 
+          className="flex items-center gap-2 group hover:opacity-80 transition-opacity"
+        >
+            <div className="w-6 h-6 flex items-center justify-center text-brand-blue group-hover:text-white transition-colors">
+                <RockytLogo className="w-full h-full" />
             </div>
-          </div>
-          
-          <div className="col-span-2 md:col-span-2">
-            <h5 className="text-sm font-semibold text-gray-500 mb-6 text-right md:text-left">Product</h5>
-          </div>
-          <div className="col-span-2 md:col-span-6 flex flex-col md:flex-row gap-8 md:gap-16">
-            <div className="flex flex-col gap-3">
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Features</a>
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Hub</a>
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Ready-made strategies</a>
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Product Roadmap</a>
-            </div>
-            <div className="flex flex-col gap-3">
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Meta ads</a>
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Instagram</a>
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Google Ads</a>
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Snapchat Ads</a>
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Tiktok Ads</a>
-            </div>
-          </div>
+            <span className="text-lg font-bold tracking-tight">Rockyt</span>
+        </button>
 
-          <div className="col-span-2 md:col-span-4"></div>
-          <div className="col-span-2 md:col-span-2">
-            <h5 className="text-sm font-semibold text-gray-500 mb-6 text-right md:text-left">Resources</h5>
-          </div>
-          <div className="col-span-2 md:col-span-6 flex flex-col md:flex-row gap-8 md:gap-16">
-            <div className="flex flex-col gap-3">
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Help</a>
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Case studies</a>
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Blog</a>
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Meta ad costs</a>
-            </div>
-            <div className="flex flex-col gap-3">
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Affiliate program</a>
-              <a href="#" className="text-lg font-medium hover:text-gray-300 transition-colors">Rockyt experts</a>
-            </div>
-          </div>
-        </div>
+        {/* Links */}
+        <nav className="flex items-center gap-8">
+            <button 
+              onClick={() => { window.scrollTo(0,0); onNavigate('performance'); }} 
+              className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+            >
+              Performance
+            </button>
+            <button 
+              onClick={() => { window.scrollTo(0,0); onNavigate('hub'); }} 
+              className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+            >
+              Hub
+            </button>
+            <button 
+              onClick={() => { window.scrollTo(0,0); onNavigate('cases'); }} 
+              className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+            >
+              Cases
+            </button>
+        </nav>
 
-        <div className="mt-20 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-4xl font-bold tracking-tight">Rockyt</div>
-          <div className="text-sm text-gray-500">© Rockyt Inc. All rights reserved</div>
+        {/* Copyright */}
+        <div className="text-xs text-gray-600 font-medium">
+           © Rockyt Inc.
         </div>
       </div>
     </footer>
