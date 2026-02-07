@@ -19,7 +19,7 @@ const App: React.FC = () => {
   const handleBookDemo = () => {};
 
   return (
-    <div className="min-h-screen bg-black flex flex-col">
+    <div className="min-h-screen bg-[#161616] flex flex-col">
       <Navbar onBookDemo={handleBookDemo} onNavigate={handleNavigate} />
       <main className="pt-32 pb-20 px-4 md:px-6 flex-grow">
         {currentPage === 'home' && <HomePage onBookDemo={handleBookDemo} />}

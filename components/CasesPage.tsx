@@ -162,9 +162,7 @@ const CasesPage: React.FC<CasesPageProps> = ({ onBookDemo }) => {
           <div className="flex justify-center mb-8">
              <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/690e0a2584c50c47df407571_Hero%20Cases.svg" alt="Case Studies Hero" className="w-full max-w-[600px] h-auto" />
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
-            Discover how companies <br/> <span className="text-brand-yellow">increase efficiency</span> and <br/> <span className="text-brand-pink">scale their campaigns</span>
-          </h1>
+          
           
           {/* Tabs */}
           <div className="flex flex-wrap justify-center gap-2 mt-8">

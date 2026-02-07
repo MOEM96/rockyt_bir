@@ -444,111 +444,92 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
         </div>
       </div>
 
-      {/* Card 6: AI budget Protection */}
-      <div className="col-span-1 md:col-span-8 bg-brand-black rounded-[32px] overflow-hidden bento-card flex flex-col md:flex-row border border-white/10 min-h-[400px]">
-        {/* Left Section: Headline + CTA */}
-        <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-between items-start relative z-10 bg-brand-black border-b md:border-b-0 md:border-r border-white/10">
-          <h3 className="text-3xl md:text-4xl font-semibold tracking-tight text-white max-w-sm">AI budget Protection</h3>
-          
-          <div className="mt-8 md:mt-0">
-             <a href="#" className="inline-flex items-center justify-center px-8 py-3 bg-[#8B5CF6] hover:bg-[#7c3aed] text-white rounded-full text-base font-semibold transition-colors btn-hover-skew">
-               <span>Learn more</span>
-             </a>
+      {/* Card 6: AI budget Protection - Video Only */}
+<div className="col-span-1 md:col-span-8 bg-brand-black rounded-[32px] overflow-hidden bento-card border border-white/10 min-h-[360px]">
+  <div className="w-full h-full bg-[#050505] relative flex items-center justify-center overflow-hidden group">
+    {/* Background Gradient */}
+    <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a] to-black"></div>
+    
+    <video 
+      id="ai-budget-protection-video"
+      autoPlay 
+      loop 
+      muted 
+      playsInline 
+      poster="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-poster-00001.jpg"
+      className="w-full h-full object-cover relative z-10 transform group-hover:scale-105 transition-transform duration-700"
+    >
+      <source src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-transcode.mp4" type="video/mp4" />
+      <source src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-transcode.webm" type="video/webm" />
+    </video>
+  </div>
+</div>
+
+{/* Card 7: Server Side Tracking */}
+<div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 shadow-none rounded-[32px] p-8 bento-card flex flex-col justify-between min-h-[400px] relative overflow-hidden group">
+  
+  {/* Visual Header */}
+  <div className="absolute top-0 left-0 w-full h-[55%] bg-gradient-to-b from-[#0A4D3C] to-transparent rounded-b-[40px] flex flex-col items-center justify-center p-6 border-b border-white/5">
+      
+      {/* Floating Elements for Visualization */}
+      <div className="w-full space-y-3 relative z-10">
+          {/* Row 1: Browser Tracking - Low Accuracy */}
+          <div className="flex items-center gap-3 p-2 bg-brand-black/40 backdrop-blur-md rounded-xl border border-white/10 shadow-lg translate-y-2 transition-transform duration-700 group-hover:-translate-y-1">
+              <div className="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-400">
+                  <iconify-icon icon="solar:laptop-minimalistic-bold" width="20"></iconify-icon>
+              </div>
+              <div className="flex-1">
+                  <div className="flex justify-between text-[10px] text-gray-400 font-medium mb-1">
+                      <span>Browser Tracking</span>
+                      <span className="text-orange-400">65% Accuracy</span>
+                  </div>
+                  <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                      <div className="h-full bg-orange-400 w-2/3 opacity-60"></div>
+                  </div>
+              </div>
+              <div className="text-xs font-bold text-orange-400">Limited</div>
           </div>
-        </div>
-        
-        {/* Right Section: Video + Description */}
-        <div className="w-full md:w-1/2 flex flex-col bg-brand-black">
-            {/* Video Container - Modified for full view */}
-            <div className="relative w-full flex-grow bg-[#EAEAEA] overflow-hidden group flex items-center justify-center py-4">
-                <video 
-                    id="ai-budget-protection-video"
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline 
-                    poster="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-poster-00001.jpg"
-                    className="w-full h-full object-contain max-h-[300px] transition-transform duration-700 group-hover:scale-105"
-                >
-                    <source src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-transcode.mp4" type="video/mp4" />
-                    <source src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-transcode.webm" type="video/webm" />
-                </video>
-            </div>
-            
-            {/* Description Text */}
-            <div className="p-8 bg-brand-black border-t border-white/10 mt-auto"> 
-               <p className="text-gray-400 text-lg font-light leading-relaxed">
-                Audit & Monitor your ads 24/7, claim back your budget & make your ads more cost-effective by 60%
-               </p>
-            </div>
-        </div>
-      </div>
 
-      {/* Card 7: AI Budget Optimization (Replacing Integrations) */}
-      <div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 shadow-none rounded-[32px] p-8 bento-card flex flex-col justify-between min-h-[400px] relative overflow-hidden group">
-        
-        {/* Visual Header */}
-        <div className="absolute top-0 left-0 w-full h-[55%] bg-gradient-to-b from-[#1D2E5C] to-transparent rounded-b-[40px] flex flex-col items-center justify-center p-6 border-b border-white/5">
-            
-            {/* Floating Elements for Visualization */}
-            <div className="w-full space-y-3 relative z-10">
-                {/* Row 1: Scaling Up */}
-                <div className="flex items-center gap-3 p-2 bg-brand-black/40 backdrop-blur-md rounded-xl border border-white/10 shadow-lg translate-y-2 transition-transform duration-700 group-hover:-translate-y-1">
-                    <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center text-green-400">
-                        <iconify-icon icon="solar:graph-new-up-bold" width="20"></iconify-icon>
-                    </div>
-                    <div className="flex-1">
-                        <div className="flex justify-between text-[10px] text-gray-400 font-medium mb-1">
-                            <span>Winner Ad Set</span>
-                            <span className="text-green-400">Scaling</span>
-                        </div>
-                        <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                            <div className="h-full bg-green-400 w-3/4"></div>
-                        </div>
-                    </div>
-                    <div className="text-xs font-bold text-white">+$500</div>
-                </div>
-
-                {/* Row 2: Scaling Down */}
-                <div className="flex items-center gap-3 p-2 bg-brand-black/40 backdrop-blur-md rounded-xl border border-white/10 shadow-lg translate-y-2 transition-transform duration-700 group-hover:translate-y-1 delay-100">
-                    <div className="w-8 h-8 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400">
-                        <iconify-icon icon="solar:graph-new-down-bold" width="20"></iconify-icon>
-                    </div>
-                    <div className="flex-1">
-                        <div className="flex justify-between text-[10px] text-gray-400 font-medium mb-1">
-                            <span>Loser Ad Set</span>
-                            <span className="text-red-400">Paused</span>
-                        </div>
-                        <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                            <div className="h-full bg-red-500 w-1/4 opacity-50"></div>
-                        </div>
-                    </div>
-                    <div className="text-xs font-bold text-gray-500">$0</div>
-                </div>
-
-                {/* Central Intelligence Badge */}
-                <div className="absolute -top-4 right-0 bg-brand-blue text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-xl flex items-center gap-1 border border-brand-blue/50">
-                    <iconify-icon icon="solar:cpu-bolt-bold" width="12"></iconify-icon>
-                    AI Active
-                </div>
-            </div>
-            
-            {/* Grid Background Effect */}
-            <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'linear-gradient(#4450F2 1px, transparent 1px), linear-gradient(90deg, #4450F2 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-        </div>
-
-        <div className="mt-auto relative z-10 flex flex-col gap-4">
-          <div>
-              <h3 className="text-2xl font-semibold tracking-tight text-white mb-2">AI Budget Optimization</h3>
-              <p className="text-gray-400 text-sm mt-2 leading-relaxed">
-                Real-time allocations prevent wasted spend and scale your best ads profitably.
-              </p>
+          {/* Row 2: Server Side - High Accuracy */}
+          <div className="flex items-center gap-3 p-2 bg-brand-black/40 backdrop-blur-md rounded-xl border border-white/10 shadow-lg translate-y-2 transition-transform duration-700 group-hover:translate-y-1 delay-100">
+              <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center text-green-400">
+                  <iconify-icon icon="solar:server-bold" width="20"></iconify-icon>
+              </div>
+              <div className="flex-1">
+                  <div className="flex justify-between text-[10px] text-gray-400 font-medium mb-1">
+                      <span>Server Side</span>
+                      <span className="text-green-400">98% Accuracy</span>
+                  </div>
+                  <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                      <div className="h-full bg-green-400 w-full"></div>
+                  </div>
+              </div>
+              <div className="text-xs font-bold text-green-400">Precise</div>
           </div>
-          <a href="#" className="inline-flex w-fit items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-semibold transition-colors btn-hover-skew border border-white/10">
-            <span>See how it works</span>
-          </a>
-        </div>
+
+          {/* Central Intelligence Badge */}
+          <div className="absolute -top-4 right-0 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-xl flex items-center gap-1 border border-green-400/50">
+              <iconify-icon icon="solar:shield-check-bold" width="12"></iconify-icon>
+              Privacy Safe
+          </div>
       </div>
+      
+      {/* Grid Background Effect - Changed to green theme */}
+      <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'linear-gradient(#10B981 1px, transparent 1px), linear-gradient(90deg, #10B981 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+  </div>
+
+  <div className="mt-auto relative z-10 flex flex-col gap-4">
+    <div>
+        <h3 className="text-2xl font-semibold tracking-tight text-white mb-2">Server Side Tracking</h3>
+        <p className="text-gray-400 text-sm mt-2 leading-relaxed">
+          Capture 30% more conversions that browser tracking misses. Better data = smarter decisions.
+        </p>
+    </div>
+    <a href="#" className="inline-flex w-fit items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-semibold transition-colors btn-hover-skew border border-white/10">
+      <span>Learn more</span>
+    </a>
+  </div>
+</div>
 
       {/* Case 1: Mobile App */}
       <div className="col-span-1 md:col-span-4 bg-[#8B5CF6] text-white rounded-[32px] p-8 bento-card flex flex-col min-h-[480px] relative overflow-hidden">
