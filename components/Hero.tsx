@@ -13,6 +13,7 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
 
   // Refs for scroll animation
   const desktopContainerRef = useRef<HTMLDivElement>(null);
+  const mobileContainerRef = useRef<HTMLDivElement>(null);
   const lottieRef = useRef<any>(null);
 
   // Mobile scroll tracking
@@ -38,7 +39,6 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
       // Desktop Animation Logic
       if (desktopContainerRef.current && lottieRef.current) {
         const player = lottieRef.current;
-        // Use safe check for getLottie
         const anim = typeof player.getLottie === 'function' ? player.getLottie() : null;
         
         if (anim && anim.totalFrames) {
@@ -59,11 +59,18 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
       }
 
       // Mobile Animation Logic
-      // We use window.scrollY for a more reliable "scroll from top" tracking since Hero is the first component
-      const currentScroll = window.scrollY;
-      const maxScroll = 400; // Complete animation after 400px scroll
-      const progress = Math.min(1, Math.max(0, currentScroll / maxScroll));
-      setMobileProgress(progress);
+      // We use window.scrollY because Hero is at the top.
+      // The mobile container height is set to 250vh.
+      // Sticky content is 100vh.
+      // Sticky duration = 250vh - 100vh = 150vh.
+      // We map progress 0 to 1 over this 150vh distance.
+      const scrollY = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const stickyScrollDistance = viewportHeight * 1.5; // 150vh
+      
+      let p = scrollY / stickyScrollDistance;
+      p = Math.min(1, Math.max(0, p));
+      setMobileProgress(p);
     };
 
     const handleScroll = () => {
@@ -117,21 +124,21 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
   // Start scattered, end aligned (translate 0, rotate 0)
   
   // Word 1: Performance (Top Left scatter)
-  // Ensure it is visible by not moving it too far up/left
+  // Starts rotated -15deg, translated left/up. Converges to 0.
   const w1Style = {
-      transform: `translate(${ -60 * (1 - p) }px, ${ -20 * (1 - p) }px) rotate(${ -15 * (1 - p) }deg)`,
-      opacity: 0.2 + (0.8 * p) // Fade in from 0.2
+      transform: `translate(${ -80 * (1 - p) }px, ${ -40 * (1 - p) }px) rotate(${ -15 * (1 - p) }deg)`,
+      opacity: 0.2 + (0.8 * p)
   };
   
   // Word 2: Marketing (Right scatter)
   const w2Style = {
-      transform: `translate(${ 60 * (1 - p) }px, ${ 10 * (1 - p) }px) rotate(${ 10 * (1 - p) }deg)`,
+      transform: `translate(${ 80 * (1 - p) }px, ${ 10 * (1 - p) }px) rotate(${ 10 * (1 - p) }deg)`,
       opacity: 0.2 + (0.8 * p)
   };
   
   // Word 3: Automated (Bottom scatter)
   const w3Style = {
-      transform: `translate(${ -10 * (1 - p) }px, ${ 40 * (1 - p) }px) rotate(${ -5 * (1 - p) }deg)`,
+      transform: `translate(${ -10 * (1 - p) }px, ${ 60 * (1 - p) }px) rotate(${ -5 * (1 - p) }deg)`,
       opacity: 0.2 + (0.8 * p)
   };
 
@@ -139,15 +146,20 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
     <div className="w-full relative -mt-20 md:-mt-24 mb-0">
       
       {/* Mobile View with Scroll Animation */}
-      {/* Increased height to 150vh to give room for scroll */}
-      <div className="md:hidden relative h-[150vh] z-30 pointer-events-none">
+      {/* 
+          Container is 250vh tall. 
+          The sticky child is 100vh.
+          This leaves 150vh of "sticky scroll" space.
+          The user MUST scroll through this 150vh to proceed.
+          Our animation is synced to this 150vh.
+      */}
+      <div ref={mobileContainerRef} className="md:hidden relative h-[250vh] z-30 pointer-events-none">
             <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center px-4 overflow-hidden bg-[#161616] pointer-events-auto">
                 
                 {/* Gamified Headline */}
-                {/* Added pt-20 to push it down from under navbar visually */}
-                <div className="flex flex-col items-center gap-4 mb-8 pt-20">
+                <div className="flex flex-col items-center gap-4 mb-8 pt-20 transition-all duration-300 ease-out">
                     
-                    {/* Word 1: Performance - Explicitly included */}
+                    {/* Word 1: Performance */}
                     <div style={w1Style} className="bg-brand-blue border-[3px] border-white text-white px-6 py-2 rounded-2xl shadow-[4px_4px_0px_rgba(255,255,255,0.2)] text-2xl font-black uppercase tracking-tighter transition-transform will-change-transform z-10 relative">
                         Performance
                     </div>
