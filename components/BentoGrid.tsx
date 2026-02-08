@@ -113,9 +113,9 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
          </div>
       </div>
 
-      {/* Card 1: Automate your ads */}
+      {/* Card 1: Stop Wasting Ad Spend */}
       <div className="col-span-1 md:col-span-4 bg-brand-black rounded-[32px] p-8 bento-card flex flex-col h-full min-h-[400px] border border-white/10">
-        <h3 className="text-2xl font-semibold tracking-tight mb-6 text-white">Automate your ads</h3>
+        <h3 className="text-2xl font-semibold tracking-tight mb-6 text-white">Stop Wasting Ad Spend</h3>
         <div className="flex-grow relative overflow-hidden rounded-xl">
           <img 
             src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d559fa30d0a90dc94c0402_1b63513b0449f57c179fd17eaa96aca8_ad%20automation.png" 
@@ -125,7 +125,7 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
         </div>
       </div>
 
-      {/* Card 2: AI Content Hub */}
+      {/* Card 2: Beat Creative Fatigue */}
       <div className="col-span-1 md:col-span-8 bg-brand-black rounded-[32px] p-8 md:p-10 bento-card flex flex-col min-h-[400px] border border-white/10 relative overflow-hidden group">
         
         {/* Background Gradient Effect */}
@@ -134,8 +134,8 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
         <div className="relative z-10 flex flex-col h-full">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                 <div>
-                    <h3 className="text-2xl font-semibold tracking-tight text-white">AI Content Hub</h3>
-                    <p className="text-gray-400 mt-2 text-base">Generate high-converting ad creatives with 6 powerful AI tools.</p>
+                    <h3 className="text-2xl font-semibold tracking-tight text-white">Beat Creative Fatigue</h3>
+                    <p className="text-gray-400 mt-2 text-base">Generate high-converting ad creatives instantly with 6 powerful AI tools.</p>
                 </div>
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-purple bg-brand-purple/10 px-3 py-1.5 rounded-full w-fit h-fit border border-brand-purple/20">
                     <iconify-icon icon="solar:stars-minimalistic-bold" width="14"></iconify-icon>
@@ -167,9 +167,9 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
         </div>
       </div>
 
-      {/* Card 3: Improve Tracking */}
+      {/* Card 3: Crystal Clear Analytics */}
       <div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 shadow-none rounded-[32px] p-8 bento-card overflow-hidden min-h-[360px]">
-        <h3 className="text-xl font-semibold tracking-tight mb-4 text-white">Improve tracking</h3>
+        <h3 className="text-xl font-semibold tracking-tight mb-4 text-white">Crystal Clear Analytics</h3>
         <div className="relative w-full aspect-square mt-4">
           <img 
             src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e516be839e96e52b8d2ad3_9c67ae54e8bf279af1990bcb8b8bffa9_Improve%20tracking.jpg" 
@@ -179,9 +179,9 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
         </div>
       </div>
 
-      {/* Card 4: Launch ads */}
+      {/* Card 4: Test Creatives 10x Faster */}
       <div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 shadow-none rounded-[32px] p-8 bento-card overflow-hidden min-h-[360px]">
-        <h3 className="text-xl font-semibold tracking-tight mb-4 text-white">Launch ads at scale</h3>
+        <h3 className="text-xl font-semibold tracking-tight mb-4 text-white">Test Creatives 10x Faster</h3>
         <div className="relative w-full aspect-square mt-4">
           <img 
             src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e516be84404dd9bc162f36_99b94e73076813fb7bc47d59d400bc0d_Launch%20ads%20at%20scale.jpg" 
@@ -191,9 +191,9 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
         </div>
       </div>
 
-      {/* Card 5: Automate Performance */}
+      {/* Card 5: AI Budget Optimization */}
       <div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 shadow-none rounded-[32px] p-8 bento-card overflow-hidden min-h-[360px]">
-        <h3 className="text-xl font-semibold tracking-tight mb-4 text-white">Automate performance</h3>
+        <h3 className="text-xl font-semibold tracking-tight mb-4 text-white">AI Budget Optimization</h3>
         <div className="relative w-full aspect-square mt-4">
           <img 
             src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e516bef9dafa2f3c7cb5ff_714bd2a4d60bbd2c61b2f6b53da5087e_Automate%20performance.jpg" 
@@ -203,11 +203,11 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
         </div>
       </div>
 
-      {/* New Card: Creative Insights (Redesigned Compact Dashboard) */}
+      {/* New Card: Uncover Winning Patterns (Redesigned Compact Dashboard) */}
       <div className="col-span-1 md:col-span-12 bg-brand-yellow rounded-[32px] p-8 md:p-12 bento-card flex flex-col lg:flex-row gap-8 relative overflow-hidden text-brand-black items-center min-h-[480px]">
         <div className="w-full lg:w-1/3 flex flex-col gap-4 relative z-10 shrink-0">
-           <h3 className="text-3xl md:text-4xl font-bold tracking-tight">Explore creative insights</h3>
-           <p className="text-lg font-medium opacity-80">Unlock the power of your ad data with real-time visual analytics.</p>
+           <h3 className="text-3xl md:text-4xl font-bold tracking-tight">Uncover Winning Patterns</h3>
+           <p className="text-lg font-medium opacity-80">Unlock the power of your ad data with real-time visual analytics to find what actually works.</p>
            <button 
              onClick={onBookDemo} 
              data-cal-link="rock-yt-admanager/15min"
@@ -520,7 +520,7 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
 
   <div className="mt-auto relative z-10 flex flex-col gap-4">
     <div>
-        <h3 className="text-2xl font-semibold tracking-tight text-white mb-2">Server Side Tracking</h3>
+        <h3 className="text-2xl font-semibold tracking-tight text-white mb-2">Recover Lost Conversions</h3>
         <p className="text-gray-400 text-sm mt-2 leading-relaxed">
           Capture 30% more conversions that browser tracking misses. Better data = smarter decisions.
         </p>

@@ -15,6 +15,9 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
   const desktopContainerRef = useRef<HTMLDivElement>(null);
   const lottieRef = useRef<any>(null);
 
+  // Mobile scroll tracking
+  const [mobileProgress, setMobileProgress] = useState(0);
+
   // Modal body scroll lock
   useEffect(() => {
     if (showCalculatorModal) {
@@ -32,45 +35,38 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
     let animationFrameId: number;
 
     const updateAnimation = () => {
-      if (!desktopContainerRef.current || !lottieRef.current) return;
+      // Desktop Animation Logic
+      if (desktopContainerRef.current && lottieRef.current) {
+        const player = lottieRef.current;
+        // Use safe check for getLottie
+        const anim = typeof player.getLottie === 'function' ? player.getLottie() : null;
+        
+        if (anim && anim.totalFrames) {
+            const container = desktopContainerRef.current;
+            const rect = container.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            
+            // Calculate progress based on container position
+            const scrollableDistance = container.offsetHeight - viewportHeight;
+            const scrolled = -rect.top; 
+            
+            let progress = scrolled / scrollableDistance;
+            progress = Math.max(0, Math.min(1, progress));
+            
+            const targetFrame = progress * (anim.totalFrames - 0.01);
+            anim.goToAndStop(targetFrame, true);
+        }
+      }
 
-      const player = lottieRef.current;
-      // Access the Lottie instance directly via getLottie() method exposed by lottie-player web component
-      // This allows for more robust frame-by-frame control compared to seek()
-      const anim = typeof player.getLottie === 'function' ? player.getLottie() : null;
-      
-      // If animation instance isn't ready or loaded, we can't scrub yet
-      if (!anim || !anim.totalFrames) return;
-
-      const container = desktopContainerRef.current;
-      const rect = container.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      
-      // Calculate scroll progress relative to the container
-      // The container is 250vh tall. The sticky content is 100vh.
-      // So we have (250vh - 100vh) = 150vh of scrollable track.
-      const scrollableDistance = container.offsetHeight - viewportHeight;
-      
-      // scrolled distance: 
-      // rect.top starts at >0 (when container enters view)
-      // becomes 0 (when container hits top of viewport) -> start animation
-      // becomes negative (as we scroll down) -> advance animation
-      // We start scrubbing when the container hits the top of the viewport.
-      const scrolled = -rect.top; 
-      
-      let progress = scrolled / scrollableDistance;
-      
-      // Clamp progress between 0 and 1
-      progress = Math.max(0, Math.min(1, progress));
-      
-      // Map progress to total frames
-      // Use goToAndStop(frame, isFrame=true) for smooth scrubbing
-      const targetFrame = progress * (anim.totalFrames - 0.01); // subtract tiny bit to prevent overflow loop
-      anim.goToAndStop(targetFrame, true);
+      // Mobile Animation Logic
+      // We use window.scrollY for a more reliable "scroll from top" tracking since Hero is the first component
+      const currentScroll = window.scrollY;
+      const maxScroll = 400; // Complete animation after 400px scroll
+      const progress = Math.min(1, Math.max(0, currentScroll / maxScroll));
+      setMobileProgress(progress);
     };
 
     const handleScroll = () => {
-        // Use requestAnimationFrame for performance
         cancelAnimationFrame(animationFrameId);
         animationFrameId = requestAnimationFrame(updateAnimation);
     };
@@ -78,9 +74,8 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleScroll);
     
+    // Lottie listener
     const player = lottieRef.current;
-    
-    // Handler to start animation loop once loaded (to get totalFrames)
     const onPlayerLoad = () => {
         updateAnimation();
     };
@@ -90,7 +85,7 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
         player.addEventListener('ready', onPlayerLoad);
     }
     
-    // Initial update attempt
+    // Initial call
     updateAnimation();
     
     return () => {
@@ -115,21 +110,65 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
     }
   };
 
+  // Linear progression for scroll-tied animation
+  const p = mobileProgress;
+  
+  // Custom transforms for the "gamified" scattered look
+  // Start scattered, end aligned (translate 0, rotate 0)
+  
+  // Word 1: Performance (Top Left scatter)
+  // Ensure it is visible by not moving it too far up/left
+  const w1Style = {
+      transform: `translate(${ -60 * (1 - p) }px, ${ -20 * (1 - p) }px) rotate(${ -15 * (1 - p) }deg)`,
+      opacity: 0.2 + (0.8 * p) // Fade in from 0.2
+  };
+  
+  // Word 2: Marketing (Right scatter)
+  const w2Style = {
+      transform: `translate(${ 60 * (1 - p) }px, ${ 10 * (1 - p) }px) rotate(${ 10 * (1 - p) }deg)`,
+      opacity: 0.2 + (0.8 * p)
+  };
+  
+  // Word 3: Automated (Bottom scatter)
+  const w3Style = {
+      transform: `translate(${ -10 * (1 - p) }px, ${ 40 * (1 - p) }px) rotate(${ -5 * (1 - p) }deg)`,
+      opacity: 0.2 + (0.8 * p)
+  };
+
   return (
     <div className="w-full relative -mt-20 md:-mt-24 mb-0">
       
-      {/* Mobile View */}
-      <div className="md:hidden min-h-[90vh] flex flex-col items-center justify-center px-6 text-center z-30 pt-24 pb-12 w-full relative overflow-hidden bg-[#161616]">
-            <div className="relative z-10 w-full max-w-md flex flex-col items-center">
-                <h1 className="text-5xl font-bold tracking-tighter text-white leading-[1.1] mb-6">
-                  Where <span className="text-brand-yellow">creativity</span> <br/> meets <span className="text-brand-pink">performance</span>
-                </h1>
-                <p className="text-gray-400 text-lg max-w-[300px] mx-auto leading-relaxed mb-8">
-                  Automate your advertising strategy and scale faster.
+      {/* Mobile View with Scroll Animation */}
+      {/* Increased height to 150vh to give room for scroll */}
+      <div className="md:hidden relative h-[150vh] z-30 pointer-events-none">
+            <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center px-4 overflow-hidden bg-[#161616] pointer-events-auto">
+                
+                {/* Gamified Headline */}
+                {/* Added pt-20 to push it down from under navbar visually */}
+                <div className="flex flex-col items-center gap-4 mb-8 pt-20">
+                    
+                    {/* Word 1: Performance - Explicitly included */}
+                    <div style={w1Style} className="bg-brand-blue border-[3px] border-white text-white px-6 py-2 rounded-2xl shadow-[4px_4px_0px_rgba(255,255,255,0.2)] text-2xl font-black uppercase tracking-tighter transition-transform will-change-transform z-10 relative">
+                        Performance
+                    </div>
+                    
+                    {/* Word 2: Marketing */}
+                    <div style={w2Style} className="bg-brand-pink border-[3px] border-white text-white px-8 py-2 rounded-2xl shadow-[-4px_4px_0px_rgba(255,255,255,0.2)] text-2xl font-black uppercase tracking-tighter transition-transform will-change-transform z-20 relative">
+                        Marketing
+                    </div>
+
+                    {/* Word 3: Automated */}
+                    <div style={w3Style} className="bg-brand-yellow border-[3px] border-white text-brand-black px-6 py-2 rounded-2xl shadow-[0px_6px_0px_rgba(255,255,255,0.3)] text-2xl font-black uppercase tracking-tighter transition-transform will-change-transform z-30 relative">
+                        Automated
+                    </div>
+                </div>
+
+                <p className="text-gray-400 text-base max-w-[300px] mx-auto leading-relaxed mb-8 text-center transition-all duration-500" style={{ opacity: p, transform: `translateY(${20 * (1-p)}px)` }}>
+                  Scale faster with less manual work.
                 </p>
 
                 {/* Mobile Calculator Input */}
-                <div className="w-full mb-8 space-y-3">
+                <div className="w-full mb-6 space-y-3 transition-all duration-500 delay-75" style={{ opacity: p, transform: `translateY(${30 * (1-p)}px)` }}>
                     <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
                             <span className="text-gray-400 font-semibold text-lg">$</span>
@@ -151,19 +190,18 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
                 </div>
 
                 {/* Carousel (Mobile) */}
-                <div className="w-full mt-4">
-                    <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-4">Trusted by market leaders</p>
+                <div className="w-full mt-auto mb-20 transition-opacity duration-500 delay-150" style={{ opacity: p }}>
+                    <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-4 text-center">Trusted by market leaders</p>
                     <PartnersCarousel />
                 </div>
             </div>
       </div>
 
-      {/* Desktop Scroll Container - 250vh height to create scroll track */}
+      {/* Desktop Scroll Container (Unchanged) */}
       <div ref={desktopContainerRef} className="hidden md:block w-full h-[250vh] relative">
          <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
             
             {/* Lottie Animation */}
-            {/* Changed aspect ratio to 'meet' (contain) for full visibility, background to #161616 */}
             <div className="w-full h-full absolute inset-0 bg-[#161616]">
                 <lottie-player
                   ref={lottieRef}
@@ -177,7 +215,7 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
             {/* Desktop Overlay: Calculator and Social Proof */}
             <div className="absolute inset-0 flex flex-col justify-end items-center pb-10 z-20 pointer-events-none">
                 
-                {/* Desktop Calculator Input - Compact & Minimal */}
+                {/* Desktop Calculator Input */}
                 <div className="pointer-events-auto bg-[#0a0a0a]/90 backdrop-blur-2xl p-1.5 pr-2 rounded-full border border-white/10 hover:border-white/20 transition-all flex items-center gap-2 shadow-2xl shadow-black/80 transform translate-y-4">
                     <div className="relative w-56 h-full flex items-center">
                         <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
@@ -209,7 +247,7 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
          </div>
       </div>
 
-      {/* Calculator Result Modal - Minimalist Redesign */}
+      {/* Calculator Result Modal - Minimalist Redesign (Unchanged) */}
       {showCalculatorModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div 
