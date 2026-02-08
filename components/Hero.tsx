@@ -153,59 +153,67 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
           The user MUST scroll through this 150vh to proceed.
           Our animation is synced to this 150vh.
       */}
-      <div ref={mobileContainerRef} className="md:hidden relative h-[250vh] z-30 pointer-events-none">
-            {/* Added pt-44 and justify-start to push content below navbar */}
-            <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-start px-4 overflow-hidden bg-[#161616] pointer-events-auto pt-44">
+      <div ref={mobileContainerRef} className="md:hidden relative h-[250vh] z-40 pointer-events-none">
+            {/* 
+                Updated: 
+                - z-40 to stay above BentoGrid (z-10)
+                - pt-32 (128px) instead of pt-44 to ensure content fits on smaller screens
+                - h-[100dvh] to handle mobile viewport properly
+                - justify-between to space out content evenly
+            */}
+            <div className="sticky top-0 h-[100dvh] w-full flex flex-col items-center justify-start px-4 overflow-hidden bg-[#161616] pointer-events-auto pt-32 pb-8">
                 
                 {/* Gamified Headline */}
-                <div className="flex flex-col items-center gap-4 mb-8 transition-all duration-300 ease-out">
+                <div className="flex flex-col items-center gap-3 mb-6 transition-all duration-300 ease-out flex-shrink-0">
                     
                     {/* Word 1: Performance */}
-                    <div style={w1Style} className="bg-brand-blue border-[3px] border-white text-white px-6 py-2 rounded-2xl shadow-[4px_4px_0px_rgba(255,255,255,0.2)] text-2xl font-black uppercase tracking-tighter transition-transform will-change-transform z-10 relative">
+                    <div style={w1Style} className="bg-brand-blue border-[3px] border-white text-white px-5 py-1.5 rounded-2xl shadow-[4px_4px_0px_rgba(255,255,255,0.2)] text-xl font-black uppercase tracking-tighter transition-transform will-change-transform z-10 relative">
                         Performance
                     </div>
                     
                     {/* Word 2: Marketing */}
-                    <div style={w2Style} className="bg-brand-pink border-[3px] border-white text-white px-8 py-2 rounded-2xl shadow-[-4px_4px_0px_rgba(255,255,255,0.2)] text-2xl font-black uppercase tracking-tighter transition-transform will-change-transform z-20 relative">
+                    <div style={w2Style} className="bg-brand-pink border-[3px] border-white text-white px-7 py-1.5 rounded-2xl shadow-[-4px_4px_0px_rgba(255,255,255,0.2)] text-xl font-black uppercase tracking-tighter transition-transform will-change-transform z-20 relative">
                         Marketing
                     </div>
 
                     {/* Word 3: Automated */}
-                    <div style={w3Style} className="bg-brand-yellow border-[3px] border-white text-brand-black px-6 py-2 rounded-2xl shadow-[0px_6px_0px_rgba(255,255,255,0.3)] text-2xl font-black uppercase tracking-tighter transition-transform will-change-transform z-30 relative">
+                    <div style={w3Style} className="bg-brand-yellow border-[3px] border-white text-brand-black px-5 py-1.5 rounded-2xl shadow-[0px_6px_0px_rgba(255,255,255,0.3)] text-xl font-black uppercase tracking-tighter transition-transform will-change-transform z-30 relative">
                         Automated
                     </div>
                 </div>
 
-                <p className="text-gray-400 text-base max-w-[300px] mx-auto leading-relaxed mb-8 text-center transition-all duration-500" style={{ opacity: p, transform: `translateY(${20 * (1-p)}px)` }}>
+                <p className="text-gray-400 text-sm max-w-[280px] mx-auto leading-relaxed mb-6 text-center transition-all duration-500 flex-shrink-0" style={{ opacity: p, transform: `translateY(${20 * (1-p)}px)` }}>
                   Scale faster with less manual work.
                 </p>
 
                 {/* Mobile Calculator Input */}
-                <div className="w-full mb-6 space-y-3 transition-all duration-500 delay-75" style={{ opacity: p, transform: `translateY(${30 * (1-p)}px)` }}>
+                <div className="w-full mb-6 space-y-3 transition-all duration-500 delay-75 flex-shrink-0" style={{ opacity: p, transform: `translateY(${30 * (1-p)}px)` }}>
                     <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                            <span className="text-gray-400 font-semibold text-lg">$</span>
+                            <span className="text-gray-400 font-semibold text-base">$</span>
                         </div>
                         <input 
                             type="number" 
                             placeholder="Monthly ad spend" 
                             value={adSpend}
                             onChange={(e) => setAdSpend(e.target.value)}
-                            className="w-full bg-white/10 border border-white/20 text-white rounded-full py-4 pl-10 pr-4 focus:outline-none focus:border-brand-yellow transition-colors placeholder:text-gray-500 text-lg"
+                            className="w-full bg-white/10 border border-white/20 text-white rounded-full py-3.5 pl-10 pr-4 focus:outline-none focus:border-brand-yellow transition-colors placeholder:text-gray-500 text-base"
                         />
                     </div>
                     <button 
                         onClick={handleCalculate}
-                        className="w-full bg-brand-yellow text-brand-black font-bold py-4 rounded-full text-lg hover:bg-[#fcd34d] transition-colors shadow-lg shadow-brand-yellow/10"
+                        className="w-full bg-brand-yellow text-brand-black font-bold py-3.5 rounded-full text-base hover:bg-[#fcd34d] transition-colors shadow-lg shadow-brand-yellow/10"
                     >
                         Calculate wasted ad spend
                     </button>
                 </div>
 
                 {/* Carousel (Mobile) */}
-                <div className="w-full mt-auto mb-20 transition-opacity duration-500 delay-150" style={{ opacity: p }}>
-                    <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-4 text-center">Trusted by market leaders</p>
-                    <PartnersCarousel />
+                <div className="w-full mt-auto mb-4 transition-opacity duration-500 delay-150 flex-shrink-0" style={{ opacity: p }}>
+                    <p className="text-[10px] font-bold text-gray-600 uppercase tracking-widest mb-3 text-center">Trusted by market leaders</p>
+                    <div className="scale-90 origin-bottom">
+                         <PartnersCarousel />
+                    </div>
                 </div>
             </div>
       </div>

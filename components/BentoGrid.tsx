@@ -7,105 +7,94 @@ interface BentoGridProps {
 
 const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-min relative z-20">
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-min relative z-10">
       
-      {/* NEW CARD: Transformation / Comparison */}
+      {/* 1. PROFITABLE TESTING: Transformation / Comparison Card */}
       <div className="col-span-1 md:col-span-12 bg-brand-black border border-white/10 rounded-[32px] overflow-hidden flex flex-col md:flex-row shadow-2xl">
          
-         {/* Left Side: Without Rockyt (Pain) */}
+         {/* Left Side: Traditional Testing (Pain) */}
          <div className="w-full md:w-5/12 p-8 md:p-10 border-b md:border-b-0 md:border-r border-white/10 relative bg-[#0f0f0f]">
             <div className="flex items-center gap-3 mb-6 opacity-60">
                 <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                <h3 className="text-xl font-bold text-gray-300">Without Rockyt</h3>
+                <h3 className="text-xl font-bold text-gray-300">The "Old Way" of Testing</h3>
             </div>
             
             <div className="space-y-8 relative z-10">
-                {/* Pain Point 1 */}
                 <div className="flex gap-4 group opacity-50 hover:opacity-100 transition-opacity">
                     <div className="mt-1">
-                        <iconify-icon icon="solar:gallery-remove-bold" width="20" class="text-gray-500"></iconify-icon>
+                        <iconify-icon icon="solar:flame-bold" width="20" class="text-gray-500"></iconify-icon>
                     </div>
                     <div>
-                        <div className="font-semibold text-gray-300 text-sm">Creative Fatigue</div>
-                        <div className="text-xs text-gray-500 mt-0.5">Slow production, low variety.</div>
+                        <div className="font-semibold text-gray-300 text-sm">Budget Bleed</div>
+                        <div className="text-xs text-gray-500 mt-0.5">Wasting 30-50% of spend on losing ads before pausing.</div>
                     </div>
                 </div>
-                {/* Pain Point 2 */}
                 <div className="flex gap-4 group opacity-50 hover:opacity-100 transition-opacity">
                     <div className="mt-1">
-                        <iconify-icon icon="solar:chart-square-bold" width="20" class="text-gray-500"></iconify-icon>
+                        <iconify-icon icon="solar:hourglass-bold" width="20" class="text-gray-500"></iconify-icon>
                     </div>
                     <div>
-                        <div className="font-semibold text-gray-300 text-sm">Delayed Decisions</div>
-                        <div className="text-xs text-gray-500 mt-0.5">Tracking lags by 24-48hrs.</div>
+                        <div className="font-semibold text-gray-300 text-sm">Slow Velocity</div>
+                        <div className="text-xs text-gray-500 mt-0.5">Testing 1-2 creatives a week. Scale is impossible.</div>
                     </div>
                 </div>
-                {/* Pain Point 3 */}
                 <div className="flex gap-4 group opacity-50 hover:opacity-100 transition-opacity">
                     <div className="mt-1">
-                        <iconify-icon icon="solar:wallet-money-bold" width="20" class="text-gray-500"></iconify-icon>
+                        <iconify-icon icon="solar:blindframe-bold" width="20" class="text-gray-500"></iconify-icon>
                     </div>
                     <div>
-                        <div className="font-semibold text-gray-300 text-sm">Wasted Budget</div>
-                        <div className="text-xs text-gray-500 mt-0.5">Bleeding spend on bad ads.</div>
+                        <div className="font-semibold text-gray-300 text-sm">Guesswork</div>
+                        <div className="text-xs text-gray-500 mt-0.5">Relying on "gut feeling" instead of data signals.</div>
                     </div>
                 </div>
-            </div>
-
-            {/* Disclaimer */}
-            <div className="mt-10 bg-red-500/10 border border-red-500/20 p-3 rounded-lg flex items-start gap-2.5">
-               <iconify-icon icon="solar:danger-triangle-linear" class="text-red-400 shrink-0 mt-0.5"></iconify-icon>
-               <p className="text-[10px] md:text-xs text-red-200/80 leading-snug">
-                 <span className="font-bold text-red-200">Did you know?</span> On average 30-50% of ad spend is wasted due to inefficient management.
-               </p>
             </div>
          </div>
 
-         {/* Right Side: With Rockyt (Gain) */}
+         {/* Right Side: Profitable Testing (Gain) */}
          <div className="w-full md:w-7/12 p-8 md:p-10 relative bg-gradient-to-br from-[#161616] to-[#1A1A1A]">
-            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-blue/50 to-transparent opacity-50"></div>
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-yellow/50 to-transparent opacity-50"></div>
             
             <div className="flex items-center gap-3 mb-6">
-                <div className="w-2 h-2 rounded-full bg-brand-blue shadow-[0_0_10px_rgba(0,85,255,0.8)] animate-pulse"></div>
-                <h3 className="text-xl font-bold text-white">With Rockyt</h3>
+                <div className="w-2 h-2 rounded-full bg-brand-yellow shadow-[0_0_10px_rgba(255,226,65,0.8)] animate-pulse"></div>
+                <h3 className="text-xl font-bold text-white">Profitable Testing Protocol</h3>
             </div>
 
             <div className="grid gap-6">
                 {/* Feature 1 */}
-                <div className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-brand-pink/20 text-brand-pink flex items-center justify-center shrink-0">
-                        <iconify-icon icon="solar:magic-stick-3-bold-duotone" width="24"></iconify-icon>
+                <div className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-brand-yellow/20 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-brand-yellow/20 text-brand-yellow flex items-center justify-center shrink-0">
+                        <iconify-icon icon="solar:rocket-2-bold-duotone" width="24"></iconify-icon>
                     </div>
                     <div>
-                        <div className="font-bold text-white text-base">Creative Quality & Velocity</div>
+                        <div className="font-bold text-white text-base">Test 10x Faster</div>
                         <p className="text-xs text-gray-400 mt-1 leading-relaxed">
-                            Generate and test high-performing creatives at scale to beat fatigue.
+                            Launch dozens of creatives, messages, and audiences simultaneously.
                         </p>
                     </div>
                 </div>
 
                 {/* Feature 2 */}
-                <div className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-brand-blue/20 text-brand-blue flex items-center justify-center shrink-0">
-                        <iconify-icon icon="solar:graph-new-up-bold-duotone" width="24"></iconify-icon>
+                <div className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-brand-yellow/20 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-green-500/20 text-green-500 flex items-center justify-center shrink-0">
+                        <iconify-icon icon="solar:shield-check-bold-duotone" width="24"></iconify-icon>
                     </div>
                     <div>
-                        <div className="font-bold text-white text-base">Real-time Analytics & Tracking</div>
+                        <div className="font-bold text-white text-base">Zero-Waste Budget Protection</div>
                         <p className="text-xs text-gray-400 mt-1 leading-relaxed">
-                           See accurate data instantly. No delays, no guessing.
+                            AI detects low performers instantly and cuts their budget before they burn cash.
                         </p>
                     </div>
                 </div>
 
                 {/* Feature 3 */}
-                <div className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-brand-yellow/20 text-brand-yellow flex items-center justify-center shrink-0">
-                        <iconify-icon icon="solar:shield-check-bold-duotone" width="24"></iconify-icon>
+                <div className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-brand-yellow/20 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-500 flex items-center justify-center shrink-0">
+                        <iconify-icon icon="solar:graph-up-bold-duotone" width="24"></iconify-icon>
                     </div>
                     <div>
-                        <div className="font-bold text-white text-base">AI Budget Protection</div>
+                        <div className="font-bold text-white text-base">Auto-Scale Winners</div>
                         <p className="text-xs text-gray-400 mt-1 leading-relaxed">
-                           Auto-pause losing ads and shift budget to winners 24/7.
+                           Automatically shift budget to the top 5% of ads driving the highest ROAS.
                         </p>
                     </div>
                 </div>
@@ -113,114 +102,108 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
          </div>
       </div>
 
-      {/* Card 1: Stop Wasting Ad Spend */}
-      <div className="col-span-1 md:col-span-4 bg-brand-black rounded-[32px] p-8 bento-card flex flex-col h-full min-h-[400px] border border-white/10">
-        <h3 className="text-2xl font-semibold tracking-tight mb-6 text-white">Stop Wasting Ad Spend</h3>
-        <div className="flex-grow relative overflow-hidden rounded-xl">
-          <img 
-            src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d559fa30d0a90dc94c0402_1b63513b0449f57c179fd17eaa96aca8_ad%20automation.png" 
-            className="absolute inset-0 w-full h-full object-cover object-left-top opacity-90" 
-            alt="Automation UI" 
-          />
+      {/* 2. MULTI-LAYER BUDGET OPTIMIZATION (Video Card) */}
+      <div className="col-span-1 md:col-span-8 bg-brand-black rounded-[32px] overflow-hidden bento-card border border-white/10 min-h-[400px] relative group">
+        <div className="absolute top-0 left-0 w-full z-20 p-8 md:p-10 bg-gradient-to-b from-black/90 to-transparent pointer-events-none">
+            <div className="flex items-center gap-2 mb-2">
+                 <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500 text-white uppercase tracking-wider">Live</span>
+                 <span className="text-xs font-bold text-green-400 uppercase tracking-widest">24/7 AI Pilot</span>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Multi-Layer Budget Optimization</h3>
+            <p className="text-gray-300 text-sm md:text-base max-w-lg leading-relaxed">
+                Rockyt monitors your ads every second of the day. It optimizes bids across <strong>Platform, Campaign, Ad-Set, and Ad levels</strong> in real-time.
+                <br/><span className="text-brand-yellow font-bold mt-2 block">Result: Lower CPC, Lower CPL, and Maximized ROAS.</span>
+            </p>
+        </div>
+
+        <div className="w-full h-full bg-[#050505] relative flex items-center justify-center overflow-hidden">
+            {/* Background Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a] to-black opacity-60 z-10"></div>
+            
+            <video 
+            id="ai-budget-protection-video"
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            poster="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-poster-00001.jpg"
+            className="w-full h-full object-cover relative z-0 transform group-hover:scale-105 transition-transform duration-700"
+            >
+            <source src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-transcode.mp4" type="video/mp4" />
+            <source src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-transcode.webm" type="video/webm" />
+            </video>
         </div>
       </div>
 
-      {/* Card 2: Beat Creative Fatigue */}
-      <div className="col-span-1 md:col-span-8 bg-brand-black rounded-[32px] p-8 md:p-10 bento-card flex flex-col min-h-[400px] border border-white/10 relative overflow-hidden group">
-        
-        {/* Background Gradient Effect */}
-        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-brand-purple/20 blur-[100px] rounded-full -mr-20 -mt-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-60"></div>
+      {/* 4. COMPACT AI TOOLS CARD (Small Card) */}
+      <div className="col-span-1 md:col-span-4 bg-gradient-to-b from-[#1E1E1E] to-[#161616] rounded-[32px] p-8 bento-card flex flex-col min-h-[400px] border border-white/10 relative overflow-hidden group">
+         <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-brand-purple/10 blur-[80px] rounded-full -mr-10 -mt-10 pointer-events-none"></div>
 
-        <div className="relative z-10 flex flex-col h-full">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-                <div>
-                    <h3 className="text-2xl font-semibold tracking-tight text-white">Beat Creative Fatigue</h3>
-                    <p className="text-gray-400 mt-2 text-base">Generate high-converting ad creatives instantly with 6 powerful AI tools.</p>
+         <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-4">
+                 <div className="w-8 h-8 rounded-lg bg-brand-purple/20 text-brand-purple flex items-center justify-center">
+                    <iconify-icon icon="solar:stars-minimalistic-bold" width="20"></iconify-icon>
+                 </div>
+                 <h3 className="text-lg font-bold text-white">Creative Studio</h3>
+            </div>
+            <p className="text-sm text-gray-400 mb-6 leading-relaxed">
+                Access 5 enterprise-grade AI tools to generate high-converting assets in seconds, not days.
+            </p>
+
+            <div className="space-y-3">
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
+                    <iconify-icon icon="solar:magic-stick-3-bold-duotone" width="18" class="text-blue-400"></iconify-icon>
+                    <span className="text-sm font-medium text-white">Magic Editor</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-purple bg-brand-purple/10 px-3 py-1.5 rounded-full w-fit h-fit border border-brand-purple/20">
-                    <iconify-icon icon="solar:stars-minimalistic-bold" width="14"></iconify-icon>
-                    <span>Gen AI</span>
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
+                    <iconify-icon icon="solar:text-square-bold-duotone" width="18" class="text-purple-400"></iconify-icon>
+                    <span className="text-sm font-medium text-white">Ad Copy Gen</span>
+                </div>
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
+                    <iconify-icon icon="solar:gallery-wide-bold-duotone" width="18" class="text-pink-400"></iconify-icon>
+                    <span className="text-sm font-medium text-white">Text to Image</span>
+                </div>
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
+                    <iconify-icon icon="solar:videocamera-record-bold-duotone" width="18" class="text-orange-400"></iconify-icon>
+                    <span className="text-sm font-medium text-white">Video Gen</span>
+                </div>
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
+                    <iconify-icon icon="solar:microphone-3-bold-duotone" width="18" class="text-cyan-400"></iconify-icon>
+                    <span className="text-sm font-medium text-white">AI Voiceover</span>
                 </div>
             </div>
-
-            {/* 6 AI Tools Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 flex-grow">
-                {[
-                    { icon: "solar:magic-stick-3-bold-duotone", label: "Magic Edit", desc: "Modify assets", color: "text-blue-400", bg: "bg-blue-500/20" },
-                    { icon: "solar:text-square-bold-duotone", label: "Ad Copy", desc: "Generate text", color: "text-purple-400", bg: "bg-purple-500/20" },
-                    { icon: "solar:gallery-wide-bold-duotone", label: "Text to Image", desc: "Create visuals", color: "text-pink-400", bg: "bg-pink-500/20" },
-                    { icon: "solar:videocamera-record-bold-duotone", label: "Video Gen", desc: "Motion ads", color: "text-orange-400", bg: "bg-orange-500/20" },
-                    { icon: "solar:layers-minimalistic-bold-duotone", label: "Product BG", desc: "Smart studio", color: "text-green-400", bg: "bg-green-500/20" },
-                    { icon: "solar:microphone-3-bold-duotone", label: "Voiceover", desc: "AI narration", color: "text-cyan-400", bg: "bg-cyan-500/20" }
-                ].map((tool, index) => (
-                    <div key={index} className="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 rounded-2xl p-4 flex flex-col justify-center gap-3 transition-all duration-300 group/tool cursor-default">
-                        <div className={`w-10 h-10 rounded-full ${tool.bg} ${tool.color} flex items-center justify-center group-hover/tool:scale-110 transition-transform`}>
-                            <iconify-icon icon={tool.icon} width="24"></iconify-icon>
-                        </div>
-                        <div>
-                            <div className="font-semibold text-white text-sm">{tool.label}</div>
-                            <div className="text-xs text-gray-500 mt-0.5">{tool.desc}</div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
+         </div>
       </div>
 
-      {/* Card 3: Crystal Clear Analytics */}
-      <div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 shadow-none rounded-[32px] p-8 bento-card overflow-hidden min-h-[360px]">
-        <h3 className="text-xl font-semibold tracking-tight mb-4 text-white">Crystal Clear Analytics</h3>
-        <div className="relative w-full aspect-square mt-4">
-          <img 
-            src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e516be839e96e52b8d2ad3_9c67ae54e8bf279af1990bcb8b8bffa9_Improve%20tracking.jpg" 
-            className="w-full h-full object-cover rounded-2xl shadow-lg transform rotate-2 translate-y-4" 
-            alt="Tracking UI" 
-          />
-        </div>
-      </div>
-
-      {/* Card 4: Test Creatives 10x Faster */}
-      <div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 shadow-none rounded-[32px] p-8 bento-card overflow-hidden min-h-[360px]">
-        <h3 className="text-xl font-semibold tracking-tight mb-4 text-white">Test Creatives 10x Faster</h3>
-        <div className="relative w-full aspect-square mt-4">
-          <img 
-            src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e516be84404dd9bc162f36_99b94e73076813fb7bc47d59d400bc0d_Launch%20ads%20at%20scale.jpg" 
-            className="w-full h-full object-cover rounded-2xl shadow-lg transform -rotate-1 translate-y-4" 
-            alt="Scale UI" 
-          />
-        </div>
-      </div>
-
-      {/* Card 5: AI Budget Optimization */}
-      <div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 shadow-none rounded-[32px] p-8 bento-card overflow-hidden min-h-[360px]">
-        <h3 className="text-xl font-semibold tracking-tight mb-4 text-white">AI Budget Optimization</h3>
-        <div className="relative w-full aspect-square mt-4">
-          <img 
-            src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e516bef9dafa2f3c7cb5ff_714bd2a4d60bbd2c61b2f6b53da5087e_Automate%20performance.jpg" 
-            className="w-full h-full object-cover rounded-2xl shadow-lg transform rotate-1 translate-y-4" 
-            alt="Performance UI" 
-          />
-        </div>
-      </div>
-
-      {/* New Card: Uncover Winning Patterns (Redesigned Compact Dashboard) */}
-      <div className="col-span-1 md:col-span-12 bg-brand-yellow rounded-[32px] p-8 md:p-12 bento-card flex flex-col lg:flex-row gap-8 relative overflow-hidden text-brand-black items-center min-h-[480px]">
-        <div className="w-full lg:w-1/3 flex flex-col gap-4 relative z-10 shrink-0">
-           <h3 className="text-3xl md:text-4xl font-bold tracking-tight">Uncover Winning Patterns</h3>
-           <p className="text-lg font-medium opacity-80">Unlock the power of your ad data with real-time visual analytics to find what actually works.</p>
+      {/* 3. REAL-TIME UNIFIED ANALYTICS (Large Dashboard Card) */}
+      <div className="col-span-1 md:col-span-12 bg-brand-yellow rounded-[32px] p-8 md:p-12 bento-card flex flex-col lg:flex-row gap-8 relative overflow-hidden text-brand-black items-center min-h-[500px]">
+        <div className="w-full lg:w-1/3 flex flex-col gap-6 relative z-10 shrink-0">
+           <div>
+               <div className="inline-block px-3 py-1 rounded-full bg-black/10 text-brand-black text-xs font-bold uppercase tracking-wider mb-4 border border-black/5">
+                    One Source of Truth
+               </div>
+               <h3 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight">Real-Time Unified Analytics</h3>
+           </div>
+           
+           <p className="text-lg font-medium opacity-80 leading-relaxed">
+             Stop platform-hopping. Access one advanced dashboard that acts as the single source of truth for all campaigns. 
+             <br/><br/>
+             Powered by <strong>AI Recommendations</strong> that remove the guesswork, helping you understand customer journeys like a top 1% expert.
+           </p>
+           
            <button 
              onClick={onBookDemo} 
              data-cal-link="rock-yt-admanager/15min"
              data-cal-namespace="15min"
              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
-             className="mt-4 bg-brand-black text-white px-6 py-3 rounded-full font-bold w-fit hover:bg-black/80 transition-colors btn-hover-skew"
+             className="bg-brand-black text-white px-8 py-4 rounded-full font-bold w-fit hover:bg-black/80 transition-colors btn-hover-skew shadow-xl"
             >
-             <span>Start Analyzing</span>
+             <span>See Your Data</span>
            </button>
         </div>
         
         {/* Compact Dashboard UI Container */}
-        <div className="w-full lg:w-2/3 bg-[#EBF1F5] p-3 rounded-[20px] shadow-2xl flex flex-col gap-3 rotate-1 hover:rotate-0 transition-transform duration-500 font-sans text-slate-800 border-[3px] border-white">
+        <div className="w-full lg:w-2/3 bg-[#EBF1F5] p-3 rounded-[24px] shadow-2xl flex flex-col gap-3 rotate-1 hover:rotate-0 transition-transform duration-500 font-sans text-slate-800 border-[4px] border-white ring-1 ring-black/5">
              
              <div className="flex flex-col xl:flex-row gap-3">
                 {/* Left Column - Metrics */}
@@ -232,13 +215,13 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
                     <div className="col-span-2 bg-[#051C74] rounded-xl p-3 text-white relative overflow-hidden flex flex-col justify-between min-h-[90px] shadow-sm group">
                        <div className="absolute right-0 top-0 w-32 h-32 bg-blue-500/50 rounded-full blur-[40px] translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
                        <div className="relative z-10">
-                          <div className="text-[10px] opacity-70 mb-0.5">Results</div>
-                          <div className="font-semibold text-sm leading-tight">Recommendations</div>
-                          <div className="text-yellow-300 text-[10px] mt-0.5">✦✦</div>
+                          <div className="text-[10px] opacity-70 mb-0.5">AI Insights</div>
+                          <div className="font-semibold text-sm leading-tight">Scale "Ad_Set_03"</div>
+                          <div className="text-yellow-300 text-[10px] mt-0.5">High Potential ✦</div>
                        </div>
                        <div className="relative z-10 mt-auto">
                           <div className="text-[8px] cursor-pointer bg-white/10 backdrop-blur-md px-2 py-1 rounded-md border border-white/20 hover:bg-white/20 transition-colors w-fit">
-                            Tap to generate
+                            Apply Fix
                           </div>
                        </div>
                     </div>
@@ -253,8 +236,8 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
                        <div>
                           <div className="text-[8px] text-gray-500 font-bold mb-0.5">Spend</div>
                           <div className="flex items-end justify-between gap-1 flex-wrap">
-                             <div className="text-xs font-bold">$6,160.81</div>
-                             <div className="text-[7px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded">+0%</div>
+                             <div className="text-xs font-bold">$12,400</div>
+                             <div className="text-[7px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded">On Track</div>
                           </div>
                        </div>
                     </div>
@@ -267,10 +250,10 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
                           </div>
                        </div>
                        <div>
-                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">Clicks</div>
+                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">ROAS</div>
                           <div className="flex items-end justify-between gap-1 flex-wrap">
-                             <div className="text-xs font-bold">9,118</div>
-                             <div className="text-[7px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded">+0%</div>
+                             <div className="text-xs font-bold">4.2x</div>
+                             <div className="text-[7px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded">↑ 12%</div>
                           </div>
                        </div>
                     </div>
@@ -280,16 +263,16 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
                        <div className="absolute inset-0 bg-gradient-to-br from-green-900 to-black opacity-50"></div>
                        <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-green-500/20 to-transparent"></div>
                        <div className="relative z-10">
-                          <div className="font-semibold text-sm">Leads</div>
+                          <div className="font-semibold text-sm">Active Conversions</div>
                           <iconify-icon icon="solar:chart-2-bold" width="12" className="opacity-50 mt-0.5"></iconify-icon>
                        </div>
                        <div className="relative z-10 flex items-end justify-between mt-auto">
                           <div>
                              <div className="text-lg font-bold">1,573</div>
-                             <div className="text-[7px] font-bold bg-green-500 text-white px-1 py-0.5 rounded w-fit mt-0.5">+0%</div>
+                             <div className="text-[7px] font-bold bg-green-500 text-white px-1 py-0.5 rounded w-fit mt-0.5">+24% WoW</div>
                           </div>
                           <div className="text-[7px] bg-white text-black px-2 py-1 rounded font-bold flex items-center gap-1 cursor-pointer hover:bg-gray-100">
-                            Download <iconify-icon icon="solar:download-linear"></iconify-icon>
+                            Report <iconify-icon icon="solar:download-linear"></iconify-icon>
                           </div>
                        </div>
                     </div>
@@ -302,11 +285,11 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
                           </div>
                        </div>
                        <div>
-                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">Cpc</div>
+                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">CPC</div>
                           <div className="flex items-end justify-between gap-1">
-                             <div className="text-xs font-bold">$0.68</div>
+                             <div className="text-xs font-bold">$0.45</div>
                              <div className="flex flex-col items-end">
-                                <div className="text-[6px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded mb-0.5">-62%</div>
+                                <div className="text-[6px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded mb-0.5">-30%</div>
                              </div>
                           </div>
                        </div>
@@ -320,60 +303,15 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
                           </div>
                        </div>
                        <div>
-                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">Ctr</div>
+                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">CTR</div>
                           <div className="flex items-end justify-between gap-1">
-                             <div className="text-xs font-bold">3.50%</div>
+                             <div className="text-xs font-bold">3.8%</div>
                              <div className="flex flex-col items-end">
-                                <div className="text-[6px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded mb-0.5">100%</div>
+                                <div className="text-[6px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded mb-0.5">High</div>
                              </div>
                           </div>
                        </div>
                     </div>
-
-                    {/* Reach */}
-                    <div className="col-span-1 bg-white rounded-xl p-2.5 flex flex-col justify-between shadow-sm min-h-[90px]">
-                       <div className="flex justify-between items-start">
-                          <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
-                            <iconify-icon icon="solar:users-group-rounded-bold" width="12"></iconify-icon>
-                          </div>
-                       </div>
-                       <div>
-                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">Reach</div>
-                          <div className="flex items-end justify-between gap-1 flex-wrap">
-                             <div className="text-xs font-bold">84k</div>
-                             <div className="text-[7px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded">+0%</div>
-                          </div>
-                       </div>
-                    </div>
-
-                    {/* Cost Per Lead */}
-                    <div className="col-span-1 bg-white rounded-xl p-2.5 flex flex-col justify-between shadow-sm min-h-[90px]">
-                       <div className="flex justify-between items-start">
-                          <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
-                            <iconify-icon icon="solar:dollar-minimalistic-bold" width="12"></iconify-icon>
-                          </div>
-                       </div>
-                       <div>
-                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">CPL</div>
-                          <div className="flex items-end justify-between gap-1 flex-wrap">
-                             <div className="text-xs font-bold">$3.26</div>
-                             <div className="text-[7px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded">+0%</div>
-                          </div>
-                       </div>
-                    </div>
-
-                  </div>
-
-                  {/* Filter Bar */}
-                  <div className="bg-white rounded-lg p-1.5 flex flex-wrap gap-2 justify-between items-center shadow-sm">
-                     <button className="flex items-center gap-1.5 px-2 py-1 bg-gray-100 rounded text-[9px] font-bold text-gray-600">
-                        Spend <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon>
-                     </button>
-                     <div className="flex bg-gray-100 rounded-md p-0.5">
-                         <button className="px-2 py-0.5 text-[8px] font-bold text-gray-500">Day</button>
-                         <button className="px-2 py-0.5 text-[8px] font-bold bg-blue-500 text-white rounded shadow-sm">Week</button>
-                         <button className="px-2 py-0.5 text-[8px] font-bold text-gray-500">Month</button>
-                     </div>
                   </div>
                 </div>
 
@@ -383,35 +321,23 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
                    {/* Campaign Status */}
                    <div className="bg-white rounded-xl p-3 shadow-sm flex-grow">
                       <div className="flex items-center justify-between mb-3">
-                         <h3 className="font-bold text-[10px]">Status</h3>
-                         <div className="w-6 h-3.5 bg-gray-200 rounded-full relative cursor-pointer">
-                            <div className="w-2.5 h-2.5 bg-white rounded-full absolute top-0.5 left-0.5 shadow-sm"></div>
-                         </div>
+                         <h3 className="font-bold text-[10px]">Optimization Log</h3>
+                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                       </div>
                       
                       <div className="relative pl-2.5 border-l border-gray-100 space-y-3">
-                         {/* Activity Item 1 */}
                          <div className="relative">
                             <div className="absolute -left-[14px] top-0 w-2 h-2 rounded-full border border-gray-300 bg-white"></div>
                             <div>
-                                <div className="text-[9px] font-bold text-gray-800">Updated campaign</div>
-                                <div className="text-[7px] text-gray-400 leading-tight">Name updated.</div>
+                                <div className="text-[9px] font-bold text-gray-800">Budget Reallocated</div>
+                                <div className="text-[7px] text-gray-400 leading-tight">Moved $500 to Top Creative.</div>
                             </div>
                          </div>
-                         {/* Activity Item 2 */}
                          <div className="relative">
                             <div className="absolute -left-[14px] top-0 w-2 h-2 rounded-full border border-gray-300 bg-white"></div>
                             <div>
-                                <div className="text-[9px] font-bold text-gray-800">Updated creative</div>
-                                <div className="text-[7px] text-gray-400 leading-tight">Creative updated.</div>
-                            </div>
-                         </div>
-                         {/* Activity Item 3 */}
-                         <div className="relative">
-                            <div className="absolute -left-[14px] top-0 w-2 h-2 rounded-full border border-gray-300 bg-white"></div>
-                            <div>
-                                <div className="text-[9px] font-bold text-gray-800">Status Updated</div>
-                                <div className="text-[7px] text-gray-400 leading-tight">Paused.</div>
+                                <div className="text-[9px] font-bold text-gray-800">Paused Low ROAS</div>
+                                <div className="text-[7px] text-gray-400 leading-tight">AdSet #4 killed.</div>
                             </div>
                          </div>
                       </div>
@@ -421,22 +347,15 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
                    <div className="bg-[#bbf7d0] rounded-xl p-3 text-[#064e3b] shadow-sm">
                        <div className="flex justify-between items-center mb-2">
                           <div className="text-[8px] font-bold flex items-center gap-1">
-                            Actual vs Forecasted
+                            Budget Saved
                           </div>
-                          <iconify-icon icon="solar:square-top-down-linear" width="10"></iconify-icon>
                        </div>
                        
-                       <div className="bg-green-500 text-white rounded-lg p-2 flex items-center gap-2 shadow-sm mb-2">
-                           <div className="w-5 h-5 rounded-full bg-green-700 flex items-center justify-center text-white">
-                              <iconify-icon icon="solar:dollar-minimalistic-bold" width="10"></iconify-icon>
+                       <div className="bg-green-600 text-white rounded-lg p-2 flex items-center gap-2 shadow-sm mb-2">
+                           <div className="w-5 h-5 rounded-full bg-green-800 flex items-center justify-center text-white">
+                              <iconify-icon icon="solar:shield-check-bold" width="10"></iconify-icon>
                             </div>
-                           <div className="font-bold text-[10px]">Savings $720</div>
-                       </div>
-                       
-                       <div className="space-y-1">
-                           <div className="bg-white/80 rounded p-1 text-[7px] flex justify-between items-center shadow-sm">
-                               <span className="font-medium">Spend $301 (+0.6%)</span>
-                           </div>
+                           <div className="font-bold text-[10px]">$2,450 / mo</div>
                        </div>
                    </div>
                 </div>
@@ -444,98 +363,12 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
         </div>
       </div>
 
-      {/* Card 6: AI budget Protection - Video Only */}
-<div className="col-span-1 md:col-span-8 bg-brand-black rounded-[32px] overflow-hidden bento-card border border-white/10 min-h-[360px]">
-  <div className="w-full h-full bg-[#050505] relative flex items-center justify-center overflow-hidden group">
-    {/* Background Gradient */}
-    <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a] to-black"></div>
-    
-    <video 
-      id="ai-budget-protection-video"
-      autoPlay 
-      loop 
-      muted 
-      playsInline 
-      poster="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-poster-00001.jpg"
-      className="w-full h-full object-cover relative z-10 transform group-hover:scale-105 transition-transform duration-700"
-    >
-      <source src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-transcode.mp4" type="video/mp4" />
-      <source src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-transcode.webm" type="video/webm" />
-    </video>
-  </div>
-</div>
-
-{/* Card 7: Server Side Tracking */}
-<div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 shadow-none rounded-[32px] p-8 bento-card flex flex-col justify-between min-h-[400px] relative overflow-hidden group">
-  
-  {/* Visual Header */}
-  <div className="absolute top-0 left-0 w-full h-[55%] bg-gradient-to-b from-[#0A4D3C] to-transparent rounded-b-[40px] flex flex-col items-center justify-center p-6 border-b border-white/5">
-      
-      {/* Floating Elements for Visualization */}
-      <div className="w-full space-y-3 relative z-10">
-          {/* Row 1: Browser Tracking - Low Accuracy */}
-          <div className="flex items-center gap-3 p-2 bg-brand-black/40 backdrop-blur-md rounded-xl border border-white/10 shadow-lg translate-y-2 transition-transform duration-700 group-hover:-translate-y-1">
-              <div className="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-400">
-                  <iconify-icon icon="solar:laptop-minimalistic-bold" width="20"></iconify-icon>
-              </div>
-              <div className="flex-1">
-                  <div className="flex justify-between text-[10px] text-gray-400 font-medium mb-1">
-                      <span>Browser Tracking</span>
-                      <span className="text-orange-400">65% Accuracy</span>
-                  </div>
-                  <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full bg-orange-400 w-2/3 opacity-60"></div>
-                  </div>
-              </div>
-              <div className="text-xs font-bold text-orange-400">Limited</div>
-          </div>
-
-          {/* Row 2: Server Side - High Accuracy */}
-          <div className="flex items-center gap-3 p-2 bg-brand-black/40 backdrop-blur-md rounded-xl border border-white/10 shadow-lg translate-y-2 transition-transform duration-700 group-hover:translate-y-1 delay-100">
-              <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center text-green-400">
-                  <iconify-icon icon="solar:server-bold" width="20"></iconify-icon>
-              </div>
-              <div className="flex-1">
-                  <div className="flex justify-between text-[10px] text-gray-400 font-medium mb-1">
-                      <span>Server Side</span>
-                      <span className="text-green-400">98% Accuracy</span>
-                  </div>
-                  <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full bg-green-400 w-full"></div>
-                  </div>
-              </div>
-              <div className="text-xs font-bold text-green-400">Precise</div>
-          </div>
-
-          {/* Central Intelligence Badge */}
-          <div className="absolute -top-4 right-0 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-xl flex items-center gap-1 border border-green-400/50">
-              <iconify-icon icon="solar:shield-check-bold" width="12"></iconify-icon>
-              Privacy Safe
-          </div>
-      </div>
-      
-      {/* Grid Background Effect - Changed to green theme */}
-      <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'linear-gradient(#10B981 1px, transparent 1px), linear-gradient(90deg, #10B981 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-  </div>
-
-  <div className="mt-auto relative z-10 flex flex-col gap-4">
-    <div>
-        <h3 className="text-2xl font-semibold tracking-tight text-white mb-2">Recover Lost Conversions</h3>
-        <p className="text-gray-400 text-sm mt-2 leading-relaxed">
-          Capture 30% more conversions that browser tracking misses. Better data = smarter decisions.
-        </p>
-    </div>
-    <a href="#" className="inline-flex w-fit items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-semibold transition-colors btn-hover-skew border border-white/10">
-      <span>Learn more</span>
-    </a>
-  </div>
-</div>
-
-      {/* Case 1: Mobile App */}
-      <div className="col-span-1 md:col-span-4 bg-[#8B5CF6] text-white rounded-[32px] p-8 bento-card flex flex-col min-h-[480px] relative overflow-hidden">
+      {/* Case Studies & Stats Section */}
+      {/* Keiki */}
+      <div className="col-span-1 md:col-span-4 bg-[#8B5CF6] text-white rounded-[32px] p-8 bento-card flex flex-col min-h-[300px] relative overflow-hidden">
         <div className="mb-4">
-          <span className="text-xs font-medium tracking-wider uppercase opacity-80">Mobile App</span>
-          <div className="h-8 mt-2">
+          <span className="text-xs font-medium tracking-wider uppercase opacity-80">Success Story</span>
+          <div className="h-6 mt-2">
             <img 
               src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bb67180715f131e3e1e9_keiki_logotype.svg" 
               className="h-full w-auto brightness-0 invert" 
@@ -543,34 +376,17 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
             />
           </div>
         </div>
-        <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-6 bg-black/20">
-          <img 
-            src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e7bb3ffdb200709eba36d0_keiki-cs-main%20(1).jpg" 
-            className="w-full h-full object-cover" 
-            alt="Keiki Case Study" 
-          />
-        </div>
-        <p className="text-lg font-medium leading-tight mb-6">With Rockyt marketing team spend 30% less time managing ads</p>
+        <p className="text-xl font-medium leading-tight mb-6">"Our ad spend increased 2.7x while maintaining profitability."</p>
         <div className="mt-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img 
-              src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67cacf1cb6053e03aa2b6fe8_Daryna%20Bondar.png" 
-              className="w-10 h-10 rounded-full object-cover border-2 border-white/20" 
-              alt="Profile" 
-            />
             <div className="text-xs opacity-90 leading-tight">Daryna Bondar<br/>Head of Growth</div>
-          </div>
-          <a href="#" className="w-10 h-10 rounded-full bg-white text-[#8B5CF6] flex items-center justify-center hover:scale-110 transition-transform">
-            <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon>
-          </a>
         </div>
       </div>
 
       {/* Case 2: E-commerce */}
-      <div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 shadow-none text-white rounded-[32px] p-8 bento-card flex flex-col min-h-[480px] relative overflow-hidden">
+      <div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 shadow-none text-white rounded-[32px] p-8 bento-card flex flex-col min-h-[300px] relative overflow-hidden">
         <div className="mb-4">
           <span className="text-xs font-medium tracking-wider uppercase text-gray-400">E-commerce</span>
-          <div className="h-8 mt-2">
+          <div className="h-6 mt-2">
             <img 
               src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e630347ae261f1cba047d3_loop-earplugs-svg.svg" 
               className="h-full w-auto brightness-0 invert" 
@@ -578,34 +394,17 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
             />
           </div>
         </div>
-        <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-6 bg-gray-100/10">
-          <img 
-            src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e62fa2d63f757594193fb5_loop-cs-main.jpg" 
-            className="w-full h-full object-cover" 
-            alt="Loop Case Study" 
-          />
-        </div>
-        <p className="text-lg font-medium leading-tight mb-6">Loop Earplugs scale 200% faster with Rockyt automation</p>
+        <p className="text-xl font-medium leading-tight mb-6">Loop Earplugs scale 200% faster with Rockyt automation</p>
         <div className="mt-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img 
-              src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e64a3d2406a97d3832da51_alexander-lodeweyckx-cs-main.jpg" 
-              className="w-10 h-10 rounded-full object-cover border border-white/20" 
-              alt="Profile" 
-            />
-            <div className="text-xs text-gray-400 leading-tight">Alexander L.<br/>Head of Perf.</div>
-          </div>
-          <a href="#" className="w-10 h-10 rounded-full bg-white text-brand-black flex items-center justify-center hover:scale-110 transition-transform">
-            <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon>
-          </a>
+            <div className="text-xs opacity-60 leading-tight">Alexander L.<br/>Head of Perf.</div>
         </div>
       </div>
 
       {/* Case 3: Agency */}
-      <div className="col-span-1 md:col-span-4 bg-brand-darkblue text-white rounded-[32px] p-8 bento-card flex flex-col min-h-[480px] relative overflow-hidden">
+      <div className="col-span-1 md:col-span-4 bg-brand-darkblue text-white rounded-[32px] p-8 bento-card flex flex-col min-h-[300px] relative overflow-hidden">
         <div className="mb-4">
           <span className="text-xs font-medium tracking-wider uppercase opacity-60">Agency</span>
-          <div className="h-8 mt-2">
+          <div className="h-6 mt-2">
             <img 
               src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e51ce0ac361e304aab6dd1_adparlor_new_logo_white_text.svg" 
               className="h-full w-auto" 
@@ -613,30 +412,13 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
             />
           </div>
         </div>
-        <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-6 bg-white/10">
-          <img 
-            src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e8d23cb4012069cfbd1764_adparlor-cs-main%20(2).jpg" 
-            className="w-full h-full object-cover" 
-            alt="AdParlor Case Study" 
-          />
-        </div>
-        <p className="text-lg font-medium leading-tight mb-6">Rockyt has made high-volume campaign management seamless</p>
+        <p className="text-xl font-medium leading-tight mb-6">Rockyt has made high-volume campaign management seamless</p>
         <div className="mt-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img 
-              src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e64a3ddfc11dc9bb8510ff_sidharth-sharma-cs-main.jpg" 
-              className="w-10 h-10 rounded-full object-cover border-2 border-white/10" 
-              alt="Profile" 
-            />
             <div className="text-xs opacity-60 leading-tight">Sidharth Sharma<br/>Campaign Mgr</div>
-          </div>
-          <a href="#" className="w-10 h-10 rounded-full bg-brand-blue text-white flex items-center justify-center hover:scale-110 transition-transform">
-            <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon>
-          </a>
         </div>
       </div>
 
-      {/* Stats Row (Fonts Updated) */}
+      {/* Stats Row */}
       <div className="col-span-1 md:col-span-4 bg-brand-black text-white rounded-[32px] p-8 bento-card flex flex-col items-center justify-center text-center aspect-square border border-white/10">
         <div className="text-5xl font-semibold tracking-tighter mb-2 text-brand-yellow">$2B</div>
         <p className="text-lg font-bold text-white font-serif tracking-wide uppercase leading-snug mt-2">Managed<br/>ad spend</p>
@@ -652,7 +434,6 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
 
       {/* Customers Strip - Updated Visual */}
       <div className="col-span-1 md:col-span-12 bg-white rounded-[32px] p-8 md:p-16 border border-white/10 flex flex-col justify-center items-center overflow-hidden">
-        {/* Removed header as per screenshot */}
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-x-24 md:gap-y-16 w-full max-w-6xl">
             {/* Liven */}
             <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848beced_6720e123b0ca4231f3a00bc7_Logo%202%202.png" className="h-8 md:h-10 w-auto object-contain" alt="Liven" />
@@ -660,20 +441,19 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
             {/* Scentbird */}
             <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848bece7_scentbird.png" className="h-6 md:h-8 w-auto object-contain" alt="Scentbird" />
             
-            {/* Loop - from case study, ensure it's visible on white */}
+            {/* Loop */}
             <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e630347ae261f1cba047d3_loop-earplugs-svg.svg" className="h-6 md:h-8 w-auto object-contain" alt="Loop" />
             
-            {/* Keiki - from case study or customer list */}
-            {/* The list had logo.avif, case study had keiki_logotype.svg. The svg is likely better quality. */}
+            {/* Keiki */}
             <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bb67180715f131e3e1e9_keiki_logotype.svg" className="h-8 md:h-12 w-auto object-contain" alt="Keiki" />
             
             {/* Plantin */}
             <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bea94c7fbfef848becd9_plantin.avif" className="h-8 md:h-10 w-auto object-contain" alt="Plantin" />
             
-            {/* AdParlor (Agency) - Make black */}
+            {/* AdParlor */}
             <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e51ce0ac361e304aab6dd1_adparlor_new_logo_white_text.svg" className="h-8 md:h-10 w-auto object-contain brightness-0" alt="AdParlor" />
             
-            {/* The mysterious Design 290x292.png from original customer list */}
+            {/* Partner */}
             <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848becf1_Design%20290x292.png" className="h-8 md:h-10 w-auto object-contain" alt="Partner" />
         </div>
       </div>
