@@ -154,10 +154,11 @@ const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
           Our animation is synced to this 150vh.
       */}
       <div ref={mobileContainerRef} className="md:hidden relative h-[250vh] z-30 pointer-events-none">
-            <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center px-4 overflow-hidden bg-[#161616] pointer-events-auto">
+            {/* Added pt-44 and justify-start to push content below navbar */}
+            <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-start px-4 overflow-hidden bg-[#161616] pointer-events-auto pt-44">
                 
                 {/* Gamified Headline */}
-                <div className="flex flex-col items-center gap-4 mb-8 pt-20 transition-all duration-300 ease-out">
+                <div className="flex flex-col items-center gap-4 mb-8 transition-all duration-300 ease-out">
                     
                     {/* Word 1: Performance */}
                     <div style={w1Style} className="bg-brand-blue border-[3px] border-white text-white px-6 py-2 rounded-2xl shadow-[4px_4px_0px_rgba(255,255,255,0.2)] text-2xl font-black uppercase tracking-tighter transition-transform will-change-transform z-10 relative">
