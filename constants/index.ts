@@ -52,27 +52,19 @@ export const PERFORMANCE_SECTIONS: PerformanceSection[] = [
 export const HUB_FAQ_ITEMS: FAQItem[] = [
   { 
     question: "What is 1st party data and 3rd party data?", 
-    answer: "First-party data is information you gather directly from your audience through channels like your website, app, email subscribers, and CRM. Third-party data, on the other hand, is collected by another entity or business and then shared with you. As browsers continue to prohibit the collection of third-party data, many advertisers are shifting their focus to first-party data." 
+    answer: "First-party data = You collect it directly from your customers. Third-party data = Someone else collected it and sold it to you. Apple killed third-party cookies. Google is next. If you're still relying on third-party data, you're building your business on quicksand. First-party data (collected server-side) is the ONLY future-proof solution." 
   },
   { 
-    question: "Why many marketers are switching to server-side tracking?", 
-    answer: "Professionals noticed decrease in ad performance due to inaccurate or incomplete data they see in their advertising platforms. Since third-party cookies are being constantly restricted, they might as well be gone soon. So everyone will have to switch to server-side tracking eventually." 
+    question: "Why are marketers switching to server-side tracking?", 
+    answer: "Because their ads stopped working after iOS 14.5. When Apple blocked browser tracking, Meta lost 60% visibility into conversions. The algorithm couldn't optimize properly. CPAs went up. ROAS went down. Advertisers panicked. Server-side tracking bypasses these blocks. You get 100% data again. Your ads work again. It's not optional—it's survival." 
   },
   { 
-    question: "What is the difference between Meta Conversions API Gateway and Signals Gateway?", 
-    answer: "Both provide ability to use first-party data. But there 2 main advantages to Signals Gateway. First, it allows you to use any sources and distribute data to any destinations, since it is designed to be independent from Meta. Second, Signals Gateway uses the new pixel, so it shows even better results." 
+    question: "How Signals Gateway helps make advertising more effective?", 
+    answer: "Perfect data → Perfect optimization → Perfect results. Here's the chain reaction: 1. Signal Gateways capture 100% of conversion data. 2. We send it to Meta/Google's algorithms. 3. AI algorithms see complete picture. 4. They optimize for actual conversions (not guesses). 5. They show ads to people who actually buy. 6. Your ROAS goes up, CPA goes down. It's not magic. It's just giving AI the data it needs to work properly." 
   },
-  { 
-    question: "What’s the difference between Meta Pixel and Signals Gateway Pixel?", 
-    answer: "Signals Gateway Pixel collects data from your website and shares it exclusively with your Signals Gateway cloud server, without any use of third-party cookies and is independent from Meta.s servers." 
-  },
-  { 
-    question: "How Signals Gateway helps to make advertising more effective?", 
-    answer: "More data signals transmitted → more accurate attribution → better functioning Meta ad algorithms → ad is shown to more relevant audience → higher conversion." 
-  },
-  { 
-    question: "How do you charge for it?", 
-    answer: "Event-based pricing charges you based on the number of tracked events per gateway. This scalable model helps you keep initial costs low while expanding your data volume as needed. There are no overage fees — if you exceed your plan, you continue paying the same rate per additional event. This ensures a predictable and dependable solution for marketing teams handling variable traffic." 
+  {
+    question: "What results can I expect?",
+    answer: "Average results across all clients: +40% improvement in event tracking, -22% decrease in CPA, +25% increase in ROAS, <24 hour setup time. Your results may vary based on how broken your current tracking is. The worse your tracking now, the bigger the improvement when you fix it. Book a free audit and we'll show you exactly what you're missing."
   },
   { 
     question: "Is it GDPR compliant?", 
@@ -97,8 +89,8 @@ export const HUB_PRICING_TIERS: PricingTier[] = [
 
 export const COMPANY_STATS: CompanyStat[] = [
   { value: "$2B", label: "Managed\nad spend", color: 'yellow' },
-  { value: "240M", label: "Saved Ad Spend\nper year", color: 'pink' },
-  { value: "15K", label: "ad accounts\nconnected", color: 'blue' },
+  { value: "$240M", label: "Saved annually", color: 'pink' },
+  { value: "15,000+", label: "Active accounts", color: 'blue' },
 ];
 
 export const CUSTOMER_LOGOS: CustomerLogo[] = [

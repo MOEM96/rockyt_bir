@@ -13,7 +13,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
          <div className="w-full md:w-5/12 p-8 md:p-10 border-b md:border-b-0 md:border-r border-white/10 relative bg-[#0f0f0f]">
             <div className="flex items-center gap-3 mb-6 opacity-60">
                 <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                <h3 className="text-xl font-bold text-gray-300">The "Old Way" of Testing</h3>
+                <h3 className="text-xl font-bold text-gray-300">❌ The Manual Grind</h3>
             </div>
             
             <div className="space-y-8 relative z-10">
@@ -23,7 +23,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                     </div>
                     <div>
                         <div className="font-semibold text-gray-300 text-sm">Budget Bleed</div>
-                        <div className="text-xs text-gray-500 mt-0.5">Wasting 30-50% of spend on losing ads before pausing.</div>
+                        <div className="text-xs text-gray-500 mt-0.5">Wasting 30-50% on losers before you notice.</div>
                     </div>
                 </div>
                 <div className="flex gap-4 group opacity-50 hover:opacity-100 transition-opacity">
@@ -31,8 +31,8 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                         <iconify-icon icon="solar:hourglass-bold" width="20" class="text-gray-500"></iconify-icon>
                     </div>
                     <div>
-                        <div className="font-semibold text-gray-300 text-sm">Slow Velocity</div>
-                        <div className="text-xs text-gray-500 mt-0.5">Testing 1-2 creatives a week. Scale is impossible.</div>
+                        <div className="font-semibold text-gray-300 text-sm">Snail-Pace Testing</div>
+                        <div className="text-xs text-gray-500 mt-0.5">Testing 1-2 creatives/week. Too slow to scale.</div>
                     </div>
                 </div>
                 <div className="flex gap-4 group opacity-50 hover:opacity-100 transition-opacity">
@@ -40,8 +40,8 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                         <iconify-icon icon="solar:blindframe-bold" width="20" class="text-gray-500"></iconify-icon>
                     </div>
                     <div>
-                        <div className="font-semibold text-gray-300 text-sm">Guesswork</div>
-                        <div className="text-xs text-gray-500 mt-0.5">Relying on "gut feeling" instead of data signals.</div>
+                        <div className="font-semibold text-gray-300 text-sm">Expensive Guesswork</div>
+                        <div className="text-xs text-gray-500 mt-0.5">Hoping your "gut feeling" is right. (It usually isn't)</div>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             
             <div className="flex items-center gap-3 mb-6">
                 <div className="w-2 h-2 rounded-full bg-brand-yellow shadow-[0_0_10px_rgba(255,226,65,0.8)] animate-pulse"></div>
-                <h3 className="text-xl font-bold text-white">Profitable Testing Protocol</h3>
+                <h3 className="text-xl font-bold text-white">✅ The Rockyt Advantage</h3>
             </div>
 
             <div className="grid gap-6">
@@ -65,7 +65,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                     <div>
                         <div className="font-bold text-white text-base">Test 10x Faster</div>
                         <p className="text-xs text-gray-400 mt-1 leading-relaxed">
-                            Launch dozens of creatives, messages, and audiences simultaneously.
+                            Launch 50+ variations instantly. Find winners in days, not months.
                         </p>
                     </div>
                 </div>
@@ -76,9 +76,9 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                         <iconify-icon icon="solar:shield-check-bold-duotone" width="24"></iconify-icon>
                     </div>
                     <div>
-                        <div className="font-bold text-white text-base">Zero-Waste Budget Protection</div>
+                        <div className="font-bold text-white text-base">Zero-Waste AI Protection</div>
                         <p className="text-xs text-gray-400 mt-1 leading-relaxed">
-                            AI detects low performers instantly and cuts their budget before they burn cash.
+                            Losers identified and killed in &lt;60 seconds. Every dollar goes to proven winners.
                         </p>
                     </div>
                 </div>
@@ -89,9 +89,9 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                         <iconify-icon icon="solar:graph-up-bold-duotone" width="24"></iconify-icon>
                     </div>
                     <div>
-                        <div className="font-bold text-white text-base">Auto-Scale Winners</div>
+                        <div className="font-bold text-white text-base">Auto-Scale Champions</div>
                         <p className="text-xs text-gray-400 mt-1 leading-relaxed">
-                           Automatically shift budget to the top 5% of ads driving the highest ROAS.
+                           Top 5% of ads automatically get 80% of budget. Set it once. Scale forever.
                         </p>
                     </div>
                 </div>
@@ -106,10 +106,10 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500 text-white uppercase tracking-wider">Live</span>
                  <span className="text-xs font-bold text-green-400 uppercase tracking-widest">24/7 AI Pilot</span>
             </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Multi-Layer Budget Optimization</h3>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">24/7 AI Pilot That Never Gets Tired</h3>
             <p className="text-gray-300 text-sm md:text-base max-w-lg leading-relaxed">
-                Rockyt monitors your ads every second of the day. It optimizes bids across <strong>Platform, Campaign, Ad-Set, and Ad levels</strong> in real-time.
-                <br/><span className="text-brand-yellow font-bold mt-2 block">Result: Lower CPC, Lower CPL, and Maximized ROAS.</span>
+                While you sleep, Rockyt monitors every campaign, adjusts bids, pauses losers, and scales winners based on 10,000+ data points per minute.
+                <br/><span className="text-brand-yellow font-bold mt-2 block">Result: 98% reduction in CPC, 40% cost savings.</span>
             </p>
         </div>
 
@@ -142,32 +142,24 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                  <div className="w-8 h-8 rounded-lg bg-brand-purple/20 text-brand-purple flex items-center justify-center">
                     <iconify-icon icon="solar:stars-minimalistic-bold" width="20"></iconify-icon>
                  </div>
-                 <h3 className="text-lg font-bold text-white">Creative Studio</h3>
+                 <h3 className="text-lg font-bold text-white">AI Creative Engine</h3>
             </div>
             <p className="text-sm text-gray-400 mb-6 leading-relaxed">
-                Access 5 enterprise-grade AI tools to generate high-converting assets in seconds, not days.
+                Never stare at a blank screen again. Ship winning ads faster than your competitors can say "design brief."
             </p>
 
             <div className="space-y-3">
                 <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
                     <iconify-icon icon="solar:magic-stick-3-bold-duotone" width="18" class="text-blue-400"></iconify-icon>
-                    <span className="text-sm font-medium text-white">Magic Editor</span>
+                    <span className="text-sm font-medium text-white">AI Ad Generator</span>
                 </div>
                 <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
-                    <iconify-icon icon="solar:text-square-bold-duotone" width="18" class="text-purple-400"></iconify-icon>
-                    <span className="text-sm font-medium text-white">Ad Copy Gen</span>
+                    <iconify-icon icon="solar:videocamera-record-bold-duotone" width="18" class="text-pink-400"></iconify-icon>
+                    <span className="text-sm font-medium text-white">UGC Avatar Studio</span>
                 </div>
                 <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
-                    <iconify-icon icon="solar:gallery-wide-bold-duotone" width="18" class="text-pink-400"></iconify-icon>
-                    <span className="text-sm font-medium text-white">Text to Image</span>
-                </div>
-                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
-                    <iconify-icon icon="solar:videocamera-record-bold-duotone" width="18" class="text-orange-400"></iconify-icon>
-                    <span className="text-sm font-medium text-white">Video Gen</span>
-                </div>
-                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
-                    <iconify-icon icon="solar:microphone-3-bold-duotone" width="18" class="text-cyan-400"></iconify-icon>
-                    <span className="text-sm font-medium text-white">AI Voiceover</span>
+                    <iconify-icon icon="solar:copy-bold-duotone" width="18" class="text-purple-400"></iconify-icon>
+                    <span className="text-sm font-medium text-white">Winner Templates</span>
                 </div>
             </div>
          </div>
@@ -178,15 +170,15 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
         <div className="w-full lg:w-1/3 flex flex-col gap-6 relative z-10 shrink-0">
            <div>
                <div className="inline-block px-3 py-1 rounded-full bg-black/10 text-brand-black text-xs font-bold uppercase tracking-wider mb-4 border border-black/5">
-                    One Source of Truth
+                    Crystal-Clear Analytics
                </div>
-               <h3 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight">Real-Time Unified Analytics</h3>
+               <h3 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight">Know Exactly What's Working</h3>
            </div>
            
            <p className="text-lg font-medium opacity-80 leading-relaxed">
-             Stop platform-hopping. Access one advanced dashboard that acts as the single source of truth for all campaigns. 
+             No more guessing. No more spreadsheets. Perfect tracking across every platform.
              <br/><br/>
-             Powered by <strong>AI Recommendations</strong> that remove the guesswork, helping you understand customer journeys like a top 1% expert.
+             Our server-side tracking ensures you see the REAL performance—not the watered-down version Meta wants you to see.
            </p>
            
            <Button 
@@ -194,11 +186,11 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
              asBookingButton
              className="bg-brand-black text-white hover:bg-black/80 w-fit btn-hover-skew shadow-xl border-none"
             >
-             <span>See Your Data</span>
+             <span>See The Dashboard</span>
            </Button>
         </div>
         
-        {/* Compact Dashboard UI Container - keeping HTML structure but ensuring accessibility */}
+        {/* Compact Dashboard UI Container */}
         <div className="w-full lg:w-2/3 bg-[#EBF1F5] p-3 rounded-[24px] shadow-2xl flex flex-col gap-3 rotate-1 hover:rotate-0 transition-transform duration-500 font-sans text-slate-800 border-[4px] border-white ring-1 ring-black/5" aria-hidden="true">
              <div className="flex flex-col xl:flex-row gap-3">
                 {/* Left Column - Metrics */}
@@ -215,7 +207,6 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                           <div className="text-yellow-300 text-[10px] mt-0.5">High Potential ✦</div>
                        </div>
                     </div>
-                    {/* ... (Other metrics kept for visual fidelity) ... */}
                     {/* Spend */}
                     <div className="col-span-1 bg-white rounded-xl p-2.5 flex flex-col justify-between shadow-sm min-h-[90px]">
                        <div className="flex justify-between items-start">
@@ -285,7 +276,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             />
           </div>
         </div>
-        <p className="text-xl font-medium leading-tight mb-6">Loop Earplugs scale 200% faster with Rockyt automation</p>
+        <p className="text-xl font-medium leading-tight mb-6">"Scaled 200% faster with zero extra headcount."</p>
         <div className="mt-auto flex items-center justify-between">
             <div className="text-xs opacity-60 leading-tight">Alexander L.<br/>Head of Perf.</div>
         </div>
@@ -304,7 +295,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             />
           </div>
         </div>
-        <p className="text-xl font-medium leading-tight mb-6">Rockyt has made high-volume campaign management seamless</p>
+        <p className="text-xl font-medium leading-tight mb-6">"We can now handle 3x more clients with the same team size."</p>
         <div className="mt-auto flex items-center justify-between">
             <div className="text-xs opacity-60 leading-tight">Sidharth Sharma<br/>Campaign Mgr</div>
         </div>
@@ -345,7 +336,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
         tabIndex={0}
         onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onBookDemo()}
       >
-        <h3 className="text-2xl font-semibold tracking-tight text-gray-400 group-hover:text-white transition-colors">Book demo</h3>
+        <h3 className="text-2xl font-semibold tracking-tight text-gray-400 group-hover:text-white transition-colors">Book a demo</h3>
       </div>
       
       <div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 text-white rounded-[32px] p-8 flex flex-col items-center justify-center gap-2 min-h-[160px]">
@@ -364,7 +355,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
         tabIndex={0}
         onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onBookDemo()}
       >
-        <h3 className="text-2xl font-semibold tracking-tight"><span>Book demo</span></h3>
+        <h3 className="text-2xl font-semibold tracking-tight"><span>Start Free Trial</span></h3>
       </div>
     </div>
   );

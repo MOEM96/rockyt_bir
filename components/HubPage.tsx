@@ -3,7 +3,7 @@ import Button from './Button';
 import { DemoBookingProps, FAQItem } from '../types/index';
 import { HUB_FAQ_ITEMS, HUB_CAROUSEL_IMAGES, HUB_PRICING_TIERS, EXTERNAL_LINKS } from '../constants/index';
 
-const FAQItemComponent = ({ question, answer }: { question: string, answer: string }) => {
+const FAQItemComponent: React.FC<{ question: string, answer: string }> = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -144,37 +144,21 @@ const HubPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
              <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-pink/20 rounded-full blur-[100px] mix-blend-screen"></div>
           </div>
 
-          {/* Animated Box Headline */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 mb-8 flex-wrap">
-             {/* Box 1: Simple */}
-             <div className="bg-[#E5E5E5] text-black text-4xl md:text-6xl font-bold px-8 py-4 rounded-2xl shadow-[0_4px_0_0_#999] transform transition hover:-translate-y-1 cursor-default relative">
-                  Simple
-             </div>
-
-             {/* Box 2: Friendly */}
-             <div className="bg-[#FF21A6] text-white text-4xl md:text-6xl font-bold px-8 py-4 rounded-2xl shadow-[0_4px_0_0_#B30066] transform transition hover:-translate-y-1 cursor-default relative -rotate-2 hover:rotate-0">
-                  Friendly
-             </div>
-
-             {/* Box 3: Server-side tracking */}
-             <div className="bg-[#FFE241] text-black text-4xl md:text-6xl font-bold px-8 py-4 rounded-2xl shadow-[0_4px_0_0_#C7B000] transform transition hover:-translate-y-1 cursor-default relative rotate-1 hover:rotate-0">
-                  Server-side tracking
-             </div>
-          </div>
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight tracking-tight max-w-4xl">
+              Your Data Is Lying to You.<br/>We'll Make It Tell the Truth.
+          </h1>
           
-          <div className="mb-12 mt-4 flex items-center justify-center gap-3 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-             <p className="text-xl md:text-2xl text-gray-400 font-light tracking-wide flex items-center gap-2">
-               for <span className="text-white font-medium border-b-2 border-brand-yellow/50">all platforms</span>
-             </p>
-          </div>
+          <p className="text-xl md:text-2xl text-gray-400 font-light tracking-wide max-w-2xl mb-12">
+            iOS killed tracking. Meta can't see conversions. Fix it with <span className="text-white font-medium border-b-2 border-brand-yellow/50">Bïrch Signal Gateways</span>—or keep burning money on the wrong ads.
+          </p>
           
           <a
             href={EXTERNAL_LINKS.signupHub}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center justify-center px-10 py-4 bg-transparent border border-white/20 hover:border-white rounded-full text-lg font-bold text-white transition-all hover:scale-105"
+            className="group relative inline-flex items-center justify-center px-10 py-4 bg-brand-yellow text-brand-black rounded-full text-lg font-bold transition-all hover:bg-[#fcd34d] hover:scale-105"
           >
-            <span className="group-hover:skew-x-[-10deg] transition-transform inline-block">Get started with Hub</span>
+            <span className="group-hover:-translate-y-0.5 transition-transform inline-block">Fix Your Tracking - Start Free</span>
           </a>
         </div>
       </section>
@@ -184,9 +168,9 @@ const HubPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
       {/* Setup Slider Section */}
       <section className="py-24 text-center overflow-hidden">
         <div className="container mx-auto px-4 mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">Hassle-free setup</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">From Broken to Bulletproof</h2>
             <p className="text-xl md:text-2xl text-gray-400">
-                with user <span className="text-white font-semibold underline decoration-brand-yellow/50 decoration-2 underline-offset-4">friendly</span> interface
+                Setup in <span className="text-white font-semibold underline decoration-brand-yellow/50 decoration-2 underline-offset-4">24 Hours</span>
             </p>
         </div>
         
@@ -219,9 +203,9 @@ const HubPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                     <div className="w-32 h-32 bg-[#1A1A1A] rounded-[32px] border border-white/10 flex items-center justify-center mb-8 shadow-2xl group-hover:scale-105 transition-transform duration-300 relative z-10 bg-clip-padding">
                         <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d1531ade0e52bef0112fa5_how-it-works-pixel.svg" alt="Pixel" className="w-14 h-14" loading="lazy" />
                     </div>
-                    <h3 className="text-xs text-gray-500 font-bold uppercase tracking-widest mb-3">first-party</h3>
-                    <h3 className="text-4xl font-bold text-white mb-4">pixel</h3>
-                    <p className="text-gray-400 text-lg leading-relaxed max-w-xs mx-auto">Immune to browser restrictions and ad blockers for reliable event tracking</p>
+                    <h3 className="text-xs text-gray-500 font-bold uppercase tracking-widest mb-3">Instant Setup</h3>
+                    <h3 className="text-4xl font-bold text-white mb-4">Plug & Play</h3>
+                    <p className="text-gray-400 text-lg leading-relaxed max-w-xs mx-auto">We handle the technical stuff. No developer needed. No IT tickets.</p>
                 </div>
 
                 {/* Step 2: Hub */}
@@ -230,8 +214,8 @@ const HubPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                         <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue/10 to-brand-pink/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d1531b6093edfd9e779f3f_how-it-works-birch.svg" alt="Birch Hub" className="w-16 h-16 relative z-10" loading="lazy" />
                     </div>
-                    <h3 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-pink mb-4 mt-2">hub</h3>
-                    <p className="text-gray-400 text-lg leading-relaxed max-w-xs mx-auto">Events are collected and processed safely within your own gateway server</p>
+                    <h3 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-pink mb-4 mt-2">Perfect Capture</h3>
+                    <p className="text-gray-400 text-lg leading-relaxed max-w-xs mx-auto">Every click, view, and conversion tracked server-side. No data loss.</p>
                 </div>
 
                 {/* Step 3: Meta */}
@@ -239,8 +223,8 @@ const HubPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                     <div className="w-32 h-32 bg-[#1A1A1A] rounded-[32px] border border-white/10 flex items-center justify-center mb-8 shadow-2xl group-hover:scale-105 transition-transform duration-300 relative z-10">
                         <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d1531b0cd0cabc414d2229_how-it-works-meta.svg" alt="Meta" className="w-14 h-14" loading="lazy" />
                     </div>
-                    <h3 className="text-4xl font-bold text-[#0081FB] mb-4 mt-8">meta</h3>
-                    <p className="text-gray-400 text-lg leading-relaxed max-w-xs mx-auto">Data is sent via CAPI to Meta, improving attribution and ROAS</p>
+                    <h3 className="text-4xl font-bold text-[#0081FB] mb-4 mt-8">Optimization</h3>
+                    <p className="text-gray-400 text-lg leading-relaxed max-w-xs mx-auto">AI algorithms get perfect data. They optimize better. You profit more.</p>
                 </div>
             </div>
         </div>
@@ -252,32 +236,32 @@ const HubPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
       <section className="py-24">
         <div className="container mx-auto px-4 max-w-[1200px]">
             <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 tracking-tight leading-tight">
-            With Bïrch Hub<br/>conversion is higher
+            See Exactly What<br/>You're Missing
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {/* Card 1 */}
                 <div className="bg-[#1A1A1A] rounded-[32px] p-8 relative overflow-hidden h-72 flex flex-col justify-between group border border-white/5 hover:border-white/20 transition-all">
                     <div className="absolute top-0 right-0 w-40 h-40 bg-brand-yellow blur-[80px] rounded-full -mr-10 -mt-10 opacity-30 group-hover:opacity-50 transition-opacity"></div>
-                    <p className="text-2xl font-bold text-white relative z-10 leading-tight">More data <br/>events</p>
+                    <p className="text-2xl font-bold text-white relative z-10 leading-tight">100% Event<br/>Capture</p>
                     <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d26c9017decfc2e8c8350b_hub-card-icons-01.svg" alt="Icon" className="w-14 h-14 relative z-10" loading="lazy" />
                 </div>
                 {/* Card 2 */}
                 <div className="bg-[#1A1A1A] rounded-[32px] p-8 relative overflow-hidden h-72 flex flex-col justify-between group border border-white/5 hover:border-white/20 transition-all">
                     <div className="absolute top-0 right-0 w-40 h-40 bg-orange-500 blur-[80px] rounded-full -mr-10 -mt-10 opacity-30 group-hover:opacity-50 transition-opacity"></div>
-                    <p className="text-2xl font-bold text-white relative z-10 leading-tight">More accurate <br/>attribution</p>
+                    <p className="text-2xl font-bold text-white relative z-10 leading-tight">Real-Time<br/>Attribution</p>
                     <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d26c909a5f8aebfdb9b0ee_hub-card-icons-02.svg" alt="Icon" className="w-14 h-14 relative z-10" loading="lazy" />
                 </div>
                 {/* Card 3 */}
                 <div className="bg-[#1A1A1A] rounded-[32px] p-8 relative overflow-hidden h-72 flex flex-col justify-between group border border-white/5 hover:border-white/20 transition-all">
                     <div className="absolute top-0 right-0 w-40 h-40 bg-brand-pink blur-[80px] rounded-full -mr-10 -mt-10 opacity-30 group-hover:opacity-50 transition-opacity"></div>
-                    <p className="text-2xl font-bold text-white relative z-10 leading-tight">Better functioning <br/>ad algorithms</p>
+                    <p className="text-2xl font-bold text-white relative z-10 leading-tight">Perfect AI<br/>Optimization</p>
                     <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d26c902a58ffcf4a388486_hub-card-icons-04.svg" alt="Icon" className="w-14 h-14 relative z-10" loading="lazy" />
                 </div>
                 {/* Card 4 */}
                 <div className="bg-[#1A1A1A] rounded-[32px] p-8 relative overflow-hidden h-72 flex flex-col justify-between group border border-white/5 hover:border-white/20 transition-all">
                     <div className="absolute top-0 right-0 w-40 h-40 bg-brand-purple blur-[80px] rounded-full -mr-10 -mt-10 opacity-30 group-hover:opacity-50 transition-opacity"></div>
-                    <p className="text-2xl font-bold text-white relative z-10 leading-tight">More relevant <br/>audience</p>
+                    <p className="text-2xl font-bold text-white relative z-10 leading-tight">Maximum<br/>ROI</p>
                     <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d26c90cfdc1e723c61f230_hub-card-icons-03.svg" alt="Icon" className="w-14 h-14 relative z-10" loading="lazy" />
                 </div>
             </div>
@@ -291,19 +275,15 @@ const HubPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
         <div className="bg-brand-yellow rounded-[32px] p-8 md:p-12 lg:p-16 text-brand-black flex flex-col md:flex-row items-center gap-12 relative overflow-hidden">
           <div className="w-full md:w-1/2 z-10">
             <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d279d4f15478b10ec73872_hub-logo-cs-1.png" alt="Cricksy Dog" className="h-12 w-auto mb-8" loading="lazy" />
-            <h3 className="text-3xl md:text-4xl font-bold mb-10 leading-tight">Cricksy Dog after Switching to Bïrch Hub</h3>
+            <h3 className="text-3xl md:text-4xl font-bold mb-10 leading-tight">"CPA dropped 30% in the first month."</h3>
             <div className="flex flex-wrap gap-x-12 gap-y-8 mb-10">
               <div>
                 <div className="text-4xl md:text-5xl font-black mb-2 tracking-tighter">30%</div>
-                <div className="text-xs font-bold uppercase leading-tight opacity-70">decreased<br/>in CPA</div>
-              </div>
-              <div>
-                <div className="text-4xl md:text-5xl font-black mb-2 tracking-tighter">35%</div>
-                <div className="text-xs font-bold uppercase leading-tight opacity-70">increased in<br/>conversions</div>
+                <div className="text-xs font-bold uppercase leading-tight opacity-70">Lower<br/>CPA</div>
               </div>
               <div>
                 <div className="text-4xl md:text-5xl font-black mb-2 tracking-tighter">40%</div>
-                <div className="text-xs font-bold uppercase leading-tight opacity-70">increased in total<br/>events tracked</div>
+                <div className="text-xs font-bold uppercase leading-tight opacity-70">More Events<br/>Tracked</div>
               </div>
             </div>
             <a 
@@ -326,7 +306,7 @@ const HubPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
           
           <div className="w-full md:w-1/2 z-10">
             <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d279d568e44944bac7d230_hub-logo-cs-2.png" alt="Pawz" className="h-10 w-auto mb-8 brightness-0 invert" loading="lazy" />
-            <h3 className="text-3xl md:text-4xl font-bold mb-10 leading-tight">Accurate Tracking Helped Pawz.rs Scale Campaigns Profitably</h3>
+            <h3 className="text-3xl md:text-4xl font-bold mb-10 leading-tight">"9+ ROAS on Cold Traffic (Yes, Really)"</h3>
             <div className="flex flex-wrap gap-x-12 gap-y-8 mb-10">
               <div>
                 <div className="text-4xl md:text-5xl font-black mb-2 tracking-tighter">9+</div>
@@ -334,11 +314,7 @@ const HubPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
               </div>
               <div>
                 <div className="text-4xl md:text-5xl font-black mb-2 tracking-tighter">22%</div>
-                <div className="text-xs font-bold uppercase leading-tight opacity-70">decrease<br/>in CPA</div>
-              </div>
-              <div>
-                <div className="text-4xl md:text-5xl font-black mb-2 tracking-tighter">25%</div>
-                <div className="text-xs font-bold uppercase leading-tight opacity-70">increase in total<br/>tracked events</div>
+                <div className="text-xs font-bold uppercase leading-tight opacity-70">Lower<br/>CPA</div>
               </div>
             </div>
             <a 
@@ -358,8 +334,8 @@ const HubPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
 
       {/* Pricing Section */}
       <section className="text-center mb-24 max-w-[1200px] mx-auto px-4">
-        <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-pink text-4xl md:text-5xl font-bold mb-2 tracking-tight">Pricing</h2>
-        <p className="text-gray-400 mb-12 text-lg">per gateway</p>
+        <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-pink text-4xl md:text-5xl font-bold mb-2 tracking-tight">Pay-Per-Event Pricing</h2>
+        <p className="text-gray-400 mb-12 text-lg">Only pay for what you track. Scale infinitely.</p>
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {HUB_PRICING_TIERS.map((tier, index) => (
@@ -385,7 +361,7 @@ const HubPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             href={EXTERNAL_LINKS.signupHub}
             className="group inline-flex items-center justify-center px-10 py-5 bg-transparent border border-white/20 hover:border-white rounded-full text-xl font-bold text-white transition-all hover:scale-105"
           >
-            <span className="group-hover:skew-x-[-10deg] transition-transform inline-block">Create your Bïrch hub</span>
+            <span className="group-hover:skew-x-[-10deg] transition-transform inline-block">Start Free Trial</span>
           </a>
         </div>
       </section>

@@ -16,90 +16,63 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
   const desktopContainerRef = useRef<HTMLDivElement>(null);
   const mobileContainerRef = useRef<HTMLDivElement>(null);
   const lottieRef = useRef<any>(null);
+  const mobileLottieRef = useRef<any>(null);
 
   // Mobile animation refs (Direct DOM manipulation for performance)
-  const word1Ref = useRef<HTMLDivElement>(null);
-  const word2Ref = useRef<HTMLDivElement>(null);
-  const word3Ref = useRef<HTMLDivElement>(null);
-  const subtextRef = useRef<HTMLParagraphElement>(null);
   const calculatorRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   // Scroll Animation Logic using custom hook
   useScrollAnimation(() => {
-      // Desktop Animation Logic
-      try {
-          if (desktopContainerRef.current && lottieRef.current) {
-            const player = lottieRef.current;
-            const anim = (player && typeof player.getLottie === 'function') ? player.getLottie() : null;
+      const scrubLottie = (container: HTMLElement | null, lottie: any) => {
+        if (!container || !lottie) return 0;
+        try {
+            const anim = (lottie && typeof lottie.getLottie === 'function') ? lottie.getLottie() : null;
+            if (!anim || !anim.totalFrames) return 0;
+
+            const rect = container.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
             
-            if (anim && anim.totalFrames) {
-                const container = desktopContainerRef.current;
-                const rect = container.getBoundingClientRect();
-                const viewportHeight = window.innerHeight;
-                
-                // Calculate progress based on container position
-                const scrollableDistance = container.offsetHeight - viewportHeight;
-                const scrolled = -rect.top; 
-                
-                let progress = 0;
-                if (scrollableDistance > 0) {
-                  progress = scrolled / scrollableDistance;
-                  progress = Math.max(0, Math.min(1, progress));
-                }
-                
-                const targetFrame = progress * (anim.totalFrames - 0.01);
-                // Ensure goToAndStop exists before calling
-                if (typeof anim.goToAndStop === 'function') {
-                    anim.goToAndStop(targetFrame, true);
-                }
+            // Calculate progress based on container position relative to viewport
+            // We want to animate while the container is scrolling through
+            const scrollableDistance = container.offsetHeight - viewportHeight;
+            const scrolled = -rect.top; 
+            
+            let progress = 0;
+            if (scrollableDistance > 0) {
+              progress = scrolled / scrollableDistance;
+              progress = Math.max(0, Math.min(1, progress));
             }
-          }
-      } catch (e) {
-        console.warn('Lottie update error:', e);
-      }
+            
+            const targetFrame = progress * (anim.totalFrames - 0.01);
+            // Ensure goToAndStop exists before calling
+            if (typeof anim.goToAndStop === 'function') {
+                anim.goToAndStop(targetFrame, true);
+            }
+            return progress;
+        } catch (e) {
+            // console.warn('Lottie update error:', e);
+            return 0;
+        }
+      };
 
-      // Mobile Animation Logic
-      const scrollY = window.scrollY;
-      const viewportHeight = window.innerHeight;
+      // Desktop Animation
+      scrubLottie(desktopContainerRef.current, lottieRef.current);
+
+      // Mobile Animation
+      const mobileProgress = scrubLottie(mobileContainerRef.current, mobileLottieRef.current);
       
-      let p = 0;
-      if (viewportHeight > 0) {
-        const stickyScrollDistance = viewportHeight * 1.5; // 150vh
-        p = scrollY / stickyScrollDistance;
-        p = Math.min(1, Math.max(0, p));
-        if (isNaN(p)) p = 0;
-      }
-      
-      const invP = 1 - p; // Inverse progress for scattering effect
-
-      if (word1Ref.current) {
-          word1Ref.current.style.transform = `translate(${ -80 * invP }px, ${ -40 * invP }px) rotate(${ -15 * invP }deg)`;
-          word1Ref.current.style.opacity = `${0.2 + (0.8 * p)}`;
-      }
-
-      if (word2Ref.current) {
-          word2Ref.current.style.transform = `translate(${ 80 * invP }px, ${ 10 * invP }px) rotate(${ 10 * invP }deg)`;
-          word2Ref.current.style.opacity = `${0.2 + (0.8 * p)}`;
-      }
-
-      if (word3Ref.current) {
-          word3Ref.current.style.transform = `translate(${ -10 * invP }px, ${ 60 * invP }px) rotate(${ -5 * invP }deg)`;
-          word3Ref.current.style.opacity = `${0.2 + (0.8 * p)}`;
-      }
-
-      if (subtextRef.current) {
-          subtextRef.current.style.opacity = `${p}`;
-          subtextRef.current.style.transform = `translateY(${20 * invP}px)`;
-      }
+      // Mobile element animations using the same progress
+      const invP = 1 - mobileProgress;
 
       if (calculatorRef.current) {
-          calculatorRef.current.style.opacity = `${p}`;
-          calculatorRef.current.style.transform = `translateY(${30 * invP}px)`;
+          // Subtle fade/move on scroll for calculator
+          calculatorRef.current.style.opacity = `${0.8 + (0.2 * invP)}`; 
+          calculatorRef.current.style.transform = `scale(${0.95 + (0.05 * invP)})`;
       }
 
       if (carouselRef.current) {
-          carouselRef.current.style.opacity = `${p}`;
+          carouselRef.current.style.opacity = `${mobileProgress}`;
       }
   }, []);
 
@@ -126,56 +99,51 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
   return (
     <div className="w-full relative -mt-20 md:-mt-24 mb-0">
       
-      {/* Mobile View with Scroll Animation */}
-      <div ref={mobileContainerRef} className="md:hidden relative h-[250vh] z-40 pointer-events-none mb-20">
-            <div className="sticky top-0 h-[100dvh] w-full flex flex-col items-center justify-start px-4 overflow-hidden bg-[#161616] pointer-events-auto pt-28 pb-4">
+      {/* Mobile View with Scroll Animation - Increased height for scroll track */}
+      <div ref={mobileContainerRef} className="md:hidden relative h-[250vh] z-40 pointer-events-none mb-10">
+            <div className="sticky top-0 h-[100dvh] w-full flex flex-col items-center justify-center px-4 overflow-hidden bg-[#161616] pointer-events-auto">
                 
-                {/* Gamified Headline */}
-                <div className="flex flex-col items-center gap-2 mb-4 flex-shrink-0">
-                    <div ref={word1Ref} className="will-change-[transform,opacity] bg-brand-blue border-[2px] border-white text-white px-4 py-1 rounded-xl shadow-[3px_3px_0px_rgba(255,255,255,0.2)] text-lg font-black uppercase tracking-tighter z-10 relative">
-                        Performance
-                    </div>
-                    <div ref={word2Ref} className="will-change-[transform,opacity] bg-brand-pink border-[2px] border-white text-white px-6 py-1 rounded-xl shadow-[-3px_3px_0px_rgba(255,255,255,0.2)] text-lg font-black uppercase tracking-tighter z-20 relative">
-                        Marketing
-                    </div>
-                    <div ref={word3Ref} className="will-change-[transform,opacity] bg-brand-yellow border-[2px] border-white text-brand-black px-4 py-1 rounded-xl shadow-[0px_4px_0px_rgba(255,255,255,0.3)] text-lg font-black uppercase tracking-tighter z-30 relative">
-                        Automated
-                    </div>
+                {/* Mobile Lottie Background - Scroll Bound */}
+                <div className="absolute inset-0 z-0 opacity-40">
+                    <lottie-player
+                      ref={mobileLottieRef}
+                      src={LOTTIE_URLS.hero}
+                      background="transparent"
+                      speed="1"
+                      className="w-full h-full"
+                      preserveAspectRatio="xMidYMid slice"
+                    ></lottie-player>
                 </div>
 
-                <p ref={subtextRef} className="will-change-[transform,opacity] text-gray-400 text-xs max-w-[260px] mx-auto leading-relaxed mb-6 text-center flex-shrink-0 font-medium">
-                  Scale faster with less manual work.
-                </p>
-
-                {/* Mobile Calculator Input - Compact & Minimal */}
-                <div ref={calculatorRef} className="will-change-[transform,opacity] w-full max-w-[300px] mb-6 flex-shrink-0">
-                    <div className="relative flex items-center bg-[#222] rounded-full border border-white/10 p-1 shadow-lg">
+                {/* Mobile Calculator Input - Compact & Minimal & Centered */}
+                <div ref={calculatorRef} className="will-change-[transform,opacity] w-full max-w-[300px] flex-shrink-0 pointer-events-auto z-30 relative">
+                    <div className="relative flex items-center bg-[#222]/80 backdrop-blur-md rounded-full border border-white/20 p-1 shadow-2xl">
                         <div className="relative flex-grow">
                             <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
                                 <span className="text-gray-400 font-semibold text-sm">$</span>
                             </div>
                             <input 
                                 type="number" 
-                                placeholder="Monthly spend" 
+                                placeholder="Monthly spend (e.g. $50k)" 
                                 value={adSpend}
                                 onChange={(e) => setAdSpend(e.target.value)}
-                                className="w-full bg-transparent border-none text-white rounded-l-full py-2.5 pl-7 pr-2 focus:outline-none focus:ring-0 placeholder:text-gray-600 text-sm font-medium"
+                                className="w-full bg-transparent border-none text-white rounded-l-full py-2.5 pl-7 pr-2 focus:outline-none focus:ring-0 placeholder:text-gray-500 text-xs font-medium"
                                 aria-label="Enter monthly ad spend"
                             />
                         </div>
                         <button 
                             onClick={handleCalculate} 
-                            className="bg-brand-yellow text-brand-black rounded-full py-2 px-4 text-xs font-bold hover:bg-[#fcd34d] transition-colors flex items-center gap-1 shrink-0"
+                            className="bg-brand-yellow text-brand-black hover:bg-[#fcd34d] rounded-full py-2 px-3 text-[10px] font-bold uppercase tracking-wide transition-colors flex items-center gap-1 shrink-0 whitespace-nowrap"
                         >
-                            <span>Calculate</span>
-                            <iconify-icon icon="solar:arrow-right-linear" width="12"></iconify-icon>
+                            <span>Show Waste</span>
+                            <iconify-icon icon="solar:arrow-right-linear" width="10"></iconify-icon>
                         </button>
                     </div>
                 </div>
 
-                {/* Carousel (Mobile) - Compact */}
-                <div ref={carouselRef} className="will-change-opacity w-full mt-auto mb-2 flex-shrink-0 opacity-70">
-                    <div className="scale-75 origin-bottom -mb-2">
+                {/* Carousel (Mobile) - Bottom Anchor */}
+                <div ref={carouselRef} className="will-change-opacity w-full absolute bottom-8 left-0 px-4 flex-shrink-0 opacity-70 z-20">
+                    <div className="scale-75 origin-bottom">
                          <PartnersCarousel />
                     </div>
                 </div>
@@ -186,47 +154,48 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
       <div ref={desktopContainerRef} className="hidden md:block w-full h-[250vh] relative">
          <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
             
-            {/* Lottie Animation */}
-            <div className="w-full h-full absolute inset-0 bg-[#161616]">
+            {/* Lottie Animation - Z-Index 0 (Background) */}
+            <div className="w-full h-full absolute inset-0 bg-[#161616] z-0">
                 <lottie-player
                   ref={lottieRef}
                   src={LOTTIE_URLS.hero}
                   background="transparent"
-                  className="w-full h-full"
+                  className="w-full h-full opacity-60"
                   preserveAspectRatio="xMidYMid meet"
                   aria-label="Animation showing ad performance blowing up"
                 ></lottie-player>
             </div>
 
-            {/* Desktop Overlay: Calculator and Social Proof - Minimal */}
-            <div className="absolute inset-0 flex flex-col justify-end items-center pb-12 z-20 pointer-events-none">
+            {/* Desktop Overlay: Calculator and Social Proof at Bottom - Z-Index 20 (Foreground) */}
+            <div className="absolute inset-0 flex flex-col justify-end items-center pb-24 z-20 pointer-events-none max-w-4xl mx-auto text-center px-6">
                 
-                {/* Desktop Calculator Input - Minimal Glass Pill */}
-                <div className="pointer-events-auto bg-black/40 backdrop-blur-md p-1 pl-1.5 pr-1 rounded-full border border-white/10 hover:border-white/20 hover:bg-black/60 transition-all flex items-center gap-0 shadow-lg hover:shadow-2xl transform translate-y-0 group">
-                    <div className="relative w-40 h-full flex items-center">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <span className="text-gray-500 font-medium text-sm group-hover:text-gray-400 transition-colors">$</span>
+                {/* Calculator Input - New Design */}
+                <div className="pointer-events-auto w-full max-w-[640px] animate-fade-in-up">
+                    <div className="flex items-center gap-2 bg-[#0F0F0F] border border-white/20 p-2 pl-6 rounded-full shadow-2xl w-full transform transition-all hover:scale-[1.01] hover:border-white/30">
+                        <div className="flex-grow flex items-center h-full relative">
+                            <span className="text-gray-400 font-medium text-xl mr-3 relative top-[1px]">$</span>
+                            <input 
+                                type="number" 
+                                placeholder="Enter monthly ad spend" 
+                                value={adSpend}
+                                onChange={(e) => setAdSpend(e.target.value)}
+                                className="w-full bg-transparent border-none text-white focus:outline-none focus:ring-0 placeholder:text-gray-500 text-lg font-medium h-full leading-normal"
+                                aria-label="Enter monthly ad spend"
+                            />
                         </div>
-                        <input 
-                            type="number" 
-                            placeholder="Ad spend..." 
-                            value={adSpend}
-                            onChange={(e) => setAdSpend(e.target.value)}
-                            className="w-full bg-transparent border-none text-white rounded-full py-2 pl-7 pr-2 focus:outline-none focus:ring-0 placeholder:text-gray-600 text-sm font-medium h-full leading-none"
-                            aria-label="Enter monthly ad spend"
-                        />
+                        <button 
+                            onClick={handleCalculate} 
+                            className="bg-[#262626] hover:bg-[#333] text-white text-[11px] font-bold py-4 px-8 rounded-full uppercase tracking-wider transition-all border border-white/5 whitespace-nowrap flex items-center gap-2 hover:brightness-110"
+                        >
+                            Show Me What I'm Wasting <span className="text-sm">→</span>
+                        </button>
                     </div>
-                    <button 
-                        onClick={handleCalculate} 
-                        className="h-8 px-4 rounded-full bg-white/5 hover:bg-brand-yellow hover:text-black text-white text-[11px] font-bold uppercase tracking-wide transition-all border border-white/5 hover:border-brand-yellow flex items-center justify-center whitespace-nowrap backdrop-blur-sm"
-                    >
-                        Calculate
-                    </button>
                 </div>
                 
-                {/* Minimal Carousel */}
-                <div className="mt-6 flex flex-col items-center pointer-events-auto w-full max-w-xl opacity-30 hover:opacity-100 transition-opacity duration-300">
-                     <div className="w-full scale-75 origin-bottom grayscale hover:grayscale-0 transition-all duration-300">
+                {/* Social Proof - Anchored below input */}
+                <div className="mt-12 flex flex-col items-center w-full max-w-xl pointer-events-auto opacity-90">
+                     <p className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-6">Trusted by the brands that dominate their markets</p>
+                     <div className="w-full">
                         <PartnersCarousel />
                      </div>
                 </div>
@@ -234,7 +203,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
          </div>
       </div>
 
-      {/* Calculator Result Modal - Minimalist Redesign */}
+      {/* Calculator Result Modal */}
       <Modal isOpen={showCalculatorModal} onClose={handleModalClose} size="md">
         <div className="p-8 pt-12 flex flex-col items-center text-center">
         
@@ -246,10 +215,11 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             </div>
             {wastedAmount > 0 ? (
                 <>
-                    <div className="text-sm text-gray-400 font-medium uppercase tracking-widest mb-2">Potential Monthly Waste</div>
-                    <div className="text-5xl font-bold text-white tracking-tighter">
+                    <div className="text-sm text-gray-400 font-medium uppercase tracking-widest mb-2">You're Losing Every Month</div>
+                    <div className="text-5xl font-bold text-white tracking-tighter mb-2">
                         <span className="text-red-500">${formatNumber(wastedAmount)}</span>
                     </div>
+                    <div className="text-xs text-gray-500">That's ${formatNumber(wastedAmount * 12)} per year going straight into the trash.</div>
                 </>
             ) : (
                 <h3 className="text-3xl font-bold text-white mb-2">Stop burning budget</h3>
@@ -287,7 +257,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                     </div>
                     <div>
                         <div className="text-[10px] font-bold text-gray-500 uppercase">Day 3</div>
-                        <div className="text-sm text-white font-medium">Kill losing ads automatically</div>
+                        <div className="text-sm text-white font-medium">Auto-Kill Underperformers</div>
                     </div>
                 </div>
 
@@ -298,7 +268,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                     </div>
                     <div>
                         <div className="text-[10px] font-bold text-brand-yellow uppercase">Day 7</div>
-                        <div className="text-sm text-white font-bold">Budget Stabilized & Profitable</div>
+                        <div className="text-sm text-white font-bold">Profitable & Scaling</div>
                     </div>
                 </div>
             </div>
@@ -311,9 +281,13 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             fullWidth
             className="h-14 text-lg btn-hover-skew shadow-[0_0_20px_rgba(255,226,65,0.15)] group"
         >
-            <span>Fix it now</span>
+            <span>Fix This Now - Book Strategy Call</span>
             <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
         </Button>
+        <div className="mt-4 flex items-center gap-2 text-[10px] text-gray-500 font-medium uppercase tracking-wider">
+            <iconify-icon icon="solar:star-bold" class="text-brand-yellow"></iconify-icon>
+            Avg. client saves $127K in first 90 days
+        </div>
         </div>
       </Modal>
     </div>

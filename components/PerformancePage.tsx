@@ -52,6 +52,11 @@ const PerformancePage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
           <div className="transform skew-x-12">Amplify</div>
         </div>
       </div>
+      
+      <div className="text-center max-w-2xl mx-auto mb-16">
+        <h2 className="text-3xl font-bold text-white mb-4">5 Superpowers That Turn Ad Spend Into Profit</h2>
+        <p className="text-gray-400">Every feature designed with one goal: Make you more money than yesterday.</p>
+      </div>
 
       <div className="flex flex-col lg:flex-row gap-12 relative">
         
@@ -85,10 +90,10 @@ const PerformancePage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
               <div className="max-w-3xl">
                 <div className="text-sm font-bold text-brand-blue uppercase tracking-widest mb-2">Chapter 1</div>
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">The Unified Command Centre</h2>
-                <h3 className="text-xl text-gray-400 font-medium mb-6">Centralised Multi-Platform Dashboard</h3>
+                <h3 className="text-xl text-gray-400 font-medium mb-6">Stop Platform Juggling. Start Winning.</h3>
                 
                 <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                  Instead of jumping between tabs for Facebook, Google, TikTok, and LinkedIn, enter a single "Command Centre". All ad platforms are now in one place. It replaces the feeling of "tech-overload" with simplicity, making it easy even for "less techy people" to launch successful campaigns.
+                  Remember when you had 17 browser tabs open, 3 spreadsheets, 2 Slack channels, and still couldn't figure out which campaign was actually making money? The Unified Command Centre brings Meta, Google, TikTok, LinkedIn, Snapchat, and Pinterest into one beautiful dashboard. Launch a campaign across 4 platforms in 4 clicks. See real-time performance at a glance. Make decisions in seconds, not hours.
                 </p>
                 
                 <VideoPlaceholder />
@@ -101,11 +106,11 @@ const PerformancePage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             <div className="bg-[#1A1A1A] border border-white/5 rounded-[32px] p-8 md:p-12 overflow-hidden">
               <div className="max-w-3xl">
                 <div className="text-sm font-bold text-brand-pink uppercase tracking-widest mb-2">Chapter 2</div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">The Creative Genius at Your Fingertips</h2>
-                <h3 className="text-xl text-gray-400 font-medium mb-6">AI Ad Creation and UGC Avatars</h3>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">Your AI Creative Partner</h2>
+                <h3 className="text-xl text-gray-400 font-medium mb-6">Ship Winning Ads 10x Faster</h3>
                 
                 <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                  Stop staring at a blank page. The AI acts as a creative partner, generating AI-powered ad copy, images, and videos. Use AI UGC Avatars to create high-performing video content for reels and landing pages without a camera crew. Turn winning ads into templates to reuse proven strategies instantly without rebuilding from scratch.
+                  Staring at a blank screen? While you're stuck, your competitor just launched 30 variations. Let AI be your creative co-pilot. Describe your product, and AI generates 20+ proven ad variations in 30 seconds. Use our UGC Avatar Studio to create realistic video ads without actors. Found a winner? Turn it into a template and scale it across platforms instantly.
                 </p>
                 
                 <VideoPlaceholder />
@@ -118,11 +123,11 @@ const PerformancePage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             <div className="bg-[#0A0A0A] border border-white/10 rounded-[32px] p-8 md:p-12 overflow-hidden">
               <div className="max-w-3xl">
                 <div className="text-sm font-bold text-brand-yellow uppercase tracking-widest mb-2">Chapter 3</div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">The Untiring Pilot (24/7 Optimization)</h2>
-                <h3 className="text-xl text-gray-400 font-medium mb-6">"Optimize for Me" and Automated Workflows</h3>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">Your 24/7 AI Optimization Machine</h2>
+                <h3 className="text-xl text-gray-400 font-medium mb-6">Never Miss a Winning Moment. Never Waste a Dollar.</h3>
                 
                 <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                  While you sleep, the "AI ad manager" is working 24/7. It identifies underperforming placements and shifts the budget to what is actually driving results. Experience results like a 98% reduction in CPC or a 1500% increase in CTR. The burden of manual manual bidding and targeting is gone, replaced by automated optimization folders.
+                  While you sleep, the Untiring Pilot is working. Every second, it's monitoring every campaign, analyzing performance against your goals, adjusting bids, and shifting budget from losers to winners. It's not just automation; it's AI that learns. The result? Lower CPC, higher CTR, and tripled ROAS—all while you focus on growing your business.
                 </p>
                 
                 <VideoPlaceholder />
@@ -136,10 +141,10 @@ const PerformancePage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
               <div className="max-w-3xl">
                 <div className="text-sm font-bold text-green-400 uppercase tracking-widest mb-2">Chapter 4</div>
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">The Crystal Clear Lens</h2>
-                <h3 className="text-xl text-gray-400 font-medium mb-6">Automated Analytics and Server-Side Tracking</h3>
+                <h3 className="text-xl text-gray-400 font-medium mb-6">Perfect Tracking, Perfect Decisions</h3>
                 
                 <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                  As your business scales, avoid data fragmentation. Don't spend days implementing analytics. Leverage Rockyt's automated infrastructure to ensure tracking is robust and reliable. This "Crystal Clear Lens" allows the AI to work with perfect information, accurately identifying high-quality requests and massive ROI—tracking every conversion without manual labour.
+                  Making decisions with bad data is like driving blindfolded. Rockyt fixes tracking issues (like iOS 14.5 blocks) with server-side tracking that captures every click, view, and purchase with surgical precision. No data loss. No estimation. With perfect data, our AI optimizes for actual profit, not just clicks.
                 </p>
                 
                 <VideoPlaceholder />
@@ -153,10 +158,10 @@ const PerformancePage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
               <div className="max-w-3xl">
                 <div className="text-sm font-bold text-purple-400 uppercase tracking-widest mb-2">Chapter 5</div>
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">The Insight Engine</h2>
-                <h3 className="text-xl text-gray-400 font-medium mb-6">Client-Ready Reporting and Social Scheduling</h3>
+                <h3 className="text-xl text-gray-400 font-medium mb-6">Reports That Actually Matter</h3>
                 
                 <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                  Prove your value. Instead of manual spreadsheets, generate clear, automated reports that show insights across all client campaigns. Expand into a full organic presence with an AI social media scheduler to plan and boost posts across Instagram, Facebook, and LinkedIn.
+                  Forget vanity metrics. We show what matters: Revenue, Profit, CAC, and LTV. Generate beautiful white-labeled reports in 60 seconds to impress clients or prove ROI to stakeholders. Plus, use our predictive analytics to know what will work before you spend a dollar.
                 </p>
                 
                 <VideoPlaceholder />
@@ -166,13 +171,13 @@ const PerformancePage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
 
           {/* CTA */}
           <section className="bg-brand-black border border-dashed border-white/20 rounded-[32px] p-12 text-center hover:border-brand-yellow/50 transition-colors group">
-             <h2 className="text-4xl font-bold text-white mb-6 group-hover:text-brand-yellow transition-colors">Ready to scale?</h2>
+             <h2 className="text-4xl font-bold text-white mb-6 group-hover:text-brand-yellow transition-colors">Let AI Manage Your Campaigns</h2>
              <Button 
                onClick={onBookDemo} 
                asBookingButton
                className="h-14 text-lg btn-hover-skew"
               >
-                <span>Book a demo</span>
+                <span>Book a Demo</span>
              </Button>
           </section>
 

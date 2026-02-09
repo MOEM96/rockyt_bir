@@ -16,10 +16,12 @@ const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
       {/* Hero Section */}
       <section className="pt-20 pb-16 md:pt-32 md:pb-24 flex flex-col items-center text-center relative">
         <div className="relative z-10 w-full max-w-[800px]">
-          <div className="flex justify-center mb-8 relative">
-             <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/690e0a2584c50c47df407571_Hero%20Cases.svg" alt="Case Studies" className="w-full h-auto hidden md:block" />
-             <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/69209457e14b75fc4102cdac_548346ff9a31271f378b4b7c9fb9ab5c_Hero%20Cases.svg" alt="Case Studies" className="w-full h-auto block md:hidden" />
-          </div>
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight tracking-tight">
+              From Struggling to Scaling:<br/>Real Stories. Real Results.
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-400 font-light tracking-wide max-w-2xl mx-auto mb-12">
+            See how brands and agencies are using Rockyt to 10x their results while working half as hard.
+          </p>
           
           {/* Tabs */}
           <div className="flex flex-wrap justify-center gap-2 mt-8" role="tablist" aria-label="Case study categories">
@@ -162,13 +164,13 @@ const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
       {/* CTA Section */}
       <div className="bg-[#161616] text-white py-16 px-4">
         <div className="max-w-[800px] mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">Get started now</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">Stop Reading. Start Winning.</h2>
           <div className="text-xl md:text-2xl text-gray-400 mb-12 font-light">
-            Automate campaign management. Automate growth.
+            Every day you wait is another day your competitors get ahead.
           </div>
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
             <a href={EXTERNAL_LINKS.signup} className="w-full md:w-auto bg-brand-yellow text-brand-black px-10 py-5 rounded-full text-xl font-bold hover:bg-[#fcd34d] transition-all hover:scale-105 active:scale-95 inline-flex justify-center items-center">
-              Try for Free
+              Start Free Trial
             </a>
             <Button 
                 onClick={onBookDemo}
@@ -176,24 +178,26 @@ const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                 variant="outline"
                 className="w-full md:w-auto h-auto py-5 px-8 text-lg border-white/20 hover:border-white/40 hover:bg-white/5 flex items-center justify-center gap-3"
             >
-                <span>Book a Demo</span>
+                <span>Book Strategy Call</span>
                 <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/6716718ea408f53194adfec6_sales.png" alt="" width="24" className="rounded-full" loading="lazy" />
             </Button>
           </div>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-sm text-gray-400 font-medium">
-            <div className="flex items-center gap-2">
-              <span className="text-brand-yellow font-bold">✓</span> 14-day free trial
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-brand-yellow font-bold">✓</span> No credit card required
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-brand-yellow font-bold">✓</span> Cancel anytime
-            </div>
+          <div className="flex flex-wrap justify-center gap-4 text-sm font-medium text-gray-500">
+             <div className="flex items-center gap-2">
+                <iconify-icon icon="solar:check-circle-bold" class="text-brand-yellow"></iconify-icon>
+                <span>14-day free trial</span>
+             </div>
+             <div className="flex items-center gap-2">
+                 <iconify-icon icon="solar:check-circle-bold" class="text-brand-yellow"></iconify-icon>
+                 <span>No credit card required</span>
+             </div>
+             <div className="flex items-center gap-2">
+                 <iconify-icon icon="solar:check-circle-bold" class="text-brand-yellow"></iconify-icon>
+                 <span>Cancel anytime</span>
+             </div>
           </div>
         </div>
       </div>
-
     </div>
   );
 };

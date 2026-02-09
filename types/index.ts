@@ -1,81 +1,67 @@
 import React from 'react';
 
-// Augment the React namespace directly for IntrinsicElements to ensure compatibility with recent React types
-declare module 'react' {
+// Define custom element props interfaces
+export interface IconifyIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+  icon?: string;
+  width?: string | number;
+  height?: string | number;
+  class?: string;
+  className?: string;
+  'aria-label'?: string;
+  'aria-hidden'?: boolean | 'true' | 'false';
+  style?: React.CSSProperties;
+}
+
+export interface LottiePlayerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+  ref?: any;
+  src?: string;
+  background?: string;
+  speed?: string | number;
+  loop?: boolean;
+  autoplay?: boolean;
+  mode?: string;
+  preserveAspectRatio?: string;
+  'aria-label'?: string;
+  class?: string;
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+export interface WistiaPlayerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+  [key: string]: any;
+}
+
+export interface DotLottiePlayerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+  src?: string;
+  background?: string;
+  speed?: string | number;
+  style?: React.CSSProperties;
+  loop?: boolean;
+  autoplay?: boolean;
+  mode?: string;
+  [key: string]: any;
+}
+
+// Augment the global JSX namespace
+declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'iconify-icon': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        icon?: string;
-        width?: string | number;
-        height?: string | number;
-        class?: string;
-        'aria-label'?: string;
-        'aria-hidden'?: boolean | 'true' | 'false';
-      };
-      'lottie-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        ref?: any;
-        src?: string;
-        background?: string;
-        speed?: string | number;
-        loop?: boolean;
-        autoplay?: boolean;
-        preserveAspectRatio?: string;
-        'aria-label'?: string;
-        class?: string;
-      };
-      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        [key: string]: any;
-      };
-      'dotlottie-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        src?: string;
-        background?: string;
-        speed?: string | number;
-        style?: React.CSSProperties;
-        loop?: boolean;
-        autoplay?: boolean;
-        mode?: string;
-        [key: string]: any;
-      };
+      'iconify-icon': IconifyIconProps;
+      'lottie-player': LottiePlayerProps;
+      'wistia-player': WistiaPlayerProps;
+      'dotlottie-player': DotLottiePlayerProps;
     }
   }
 }
 
-// Augment global JSX namespace as a fallback
-declare global {
+// Augment React's JSX namespace for compatibility with newer React type definitions
+declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      'iconify-icon': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        icon?: string;
-        width?: string | number;
-        height?: string | number;
-        class?: string;
-        'aria-label'?: string;
-        'aria-hidden'?: boolean | 'true' | 'false';
-      };
-      'lottie-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        ref?: any;
-        src?: string;
-        background?: string;
-        speed?: string | number;
-        loop?: boolean;
-        autoplay?: boolean;
-        preserveAspectRatio?: string;
-        'aria-label'?: string;
-        class?: string;
-      };
-      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        [key: string]: any;
-      };
-      'dotlottie-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        src?: string;
-        background?: string;
-        speed?: string | number;
-        style?: React.CSSProperties;
-        loop?: boolean;
-        autoplay?: boolean;
-        mode?: string;
-        [key: string]: any;
-      };
+      'iconify-icon': IconifyIconProps;
+      'lottie-player': LottiePlayerProps;
+      'wistia-player': WistiaPlayerProps;
+      'dotlottie-player': DotLottiePlayerProps;
     }
   }
 }
@@ -142,5 +128,3 @@ export interface CustomerLogo {
   src: string;
   alt: string;
 }
-
-export {};
