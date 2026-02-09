@@ -203,75 +203,59 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
          </div>
       </div>
 
-      {/* Calculator Result Modal */}
+      {/* Compact Calculator Result Modal */}
       <Modal isOpen={showCalculatorModal} onClose={handleModalClose} size="md">
-        <div className="p-8 pt-12 flex flex-col items-center text-center">
+        <style>{`
+            wistia-player[media-id='okb9j6qvf5']:not(:defined) { 
+                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/okb9j6qvf5/swatch'); 
+                display: block; 
+                filter: blur(5px); 
+                padding-top:56.25%; 
+            }
+        `}</style>
         
-        {/* Result Header */}
-        <div className="mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 text-[10px] font-bold uppercase tracking-wider mb-4">
-                <iconify-icon icon="solar:danger-triangle-bold"></iconify-icon>
-                Analysis Report
-            </div>
+        <div className="p-6 flex flex-col items-center text-center">
+        
+        {/* Result Header - Minimal */}
+        <div className="mb-6 w-full">
             {wastedAmount > 0 ? (
-                <>
-                    <div className="text-sm text-gray-400 font-medium uppercase tracking-widest mb-2">You're Losing Every Month</div>
-                    <div className="text-5xl font-bold text-white tracking-tighter mb-2">
+                <div className="flex flex-col items-center">
+                    <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-1">Potential Monthly Waste</div>
+                    <div className="text-3xl md:text-4xl font-black text-white tracking-tighter">
                         <span className="text-red-500">${formatNumber(wastedAmount)}</span>
                     </div>
-                    <div className="text-xs text-gray-500">That's ${formatNumber(wastedAmount * 12)} per year going straight into the trash.</div>
-                </>
+                    <div className="text-xs text-gray-600 mt-1 font-medium">Don't let this burn.</div>
+                </div>
             ) : (
-                <h3 className="text-3xl font-bold text-white mb-2">Stop burning budget</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">Stop burning budget</h3>
             )}
         </div>
 
-        {/* 7-Day Transformation Timeline */}
-        <div className="w-full bg-[#0a0a0a] rounded-2xl p-6 border border-white/5 mb-8 text-left relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-blue/5 blur-[40px] rounded-full pointer-events-none"></div>
-            
-            <h4 className="text-sm font-bold text-white mb-6 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
-                Transformation in 7 Days
-            </h4>
-            
-            <div className="relative space-y-6">
-                {/* Vertical Line */}
-                <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-white/10 via-white/20 to-brand-yellow/50"></div>
+        {/* Video Embed - Compact */}
+        <div className="w-full bg-black rounded-xl overflow-hidden shadow-2xl border border-white/10 mb-6 aspect-video relative z-10">
+             <wistia-player media-id="okb9j6qvf5" aspect="1.7777777777777777"></wistia-player>
+        </div>
 
-                {/* Day 1 */}
-                <div className="relative flex items-center gap-4 z-10">
-                    <div className="w-6 h-6 rounded-full bg-[#161616] border border-white/10 flex items-center justify-center text-[10px] font-bold text-gray-500">
-                        01
-                    </div>
-                    <div>
-                        <div className="text-[10px] font-bold text-gray-500 uppercase">Day 1</div>
-                        <div className="text-sm text-white font-medium">AI Audit & Auto-Setup</div>
-                    </div>
+        {/* Headlines & Stats - Replacing Timeline */}
+        <div className="w-full mb-6">
+             <div className="flex items-center justify-center gap-2 mb-4">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <h4 className="text-sm font-bold text-white uppercase tracking-wider">Results in 7 Days</h4>
+             </div>
+             
+             <div className="grid grid-cols-2 gap-3">
+                <div className="bg-[#1A1A1A] rounded-xl p-3 border border-white/5 flex flex-col items-center justify-center">
+                    <div className="text-2xl font-black text-brand-yellow">+40%</div>
+                    <div className="text-[9px] text-gray-500 uppercase font-bold tracking-wider mt-1">ROAS Increase</div>
                 </div>
-
-                {/* Day 3 */}
-                <div className="relative flex items-center gap-4 z-10">
-                    <div className="w-6 h-6 rounded-full bg-[#161616] border border-white/10 flex items-center justify-center text-[10px] font-bold text-gray-500">
-                        03
-                    </div>
-                    <div>
-                        <div className="text-[10px] font-bold text-gray-500 uppercase">Day 3</div>
-                        <div className="text-sm text-white font-medium">Auto-Kill Underperformers</div>
-                    </div>
+                 <div className="bg-[#1A1A1A] rounded-xl p-3 border border-white/5 flex flex-col items-center justify-center">
+                    <div className="text-2xl font-black text-brand-blue">-22%</div>
+                    <div className="text-[9px] text-gray-500 uppercase font-bold tracking-wider mt-1">CPA Decrease</div>
                 </div>
-
-                {/* Day 7 */}
-                <div className="relative flex items-center gap-4 z-10">
-                    <div className="w-6 h-6 rounded-full bg-brand-yellow border border-brand-yellow flex items-center justify-center text-[10px] font-bold text-brand-black shadow-[0_0_10px_rgba(255,226,65,0.4)]">
-                        07
-                    </div>
-                    <div>
-                        <div className="text-[10px] font-bold text-brand-yellow uppercase">Day 7</div>
-                        <div className="text-sm text-white font-bold">Profitable & Scaling</div>
-                    </div>
-                </div>
-            </div>
+             </div>
         </div>
 
         {/* Final CTA */}
@@ -279,15 +263,12 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             onClick={handleFixItNow}
             asBookingButton
             fullWidth
-            className="h-14 text-lg btn-hover-skew shadow-[0_0_20px_rgba(255,226,65,0.15)] group"
+            className="h-12 text-sm font-bold uppercase tracking-wide btn-hover-skew shadow-[0_0_20px_rgba(255,226,65,0.1)] group"
         >
-            <span>Fix This Now - Book Strategy Call</span>
+            <span>Fix My Ad Spend Now</span>
             <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
         </Button>
-        <div className="mt-4 flex items-center gap-2 text-[10px] text-gray-500 font-medium uppercase tracking-wider">
-            <iconify-icon icon="solar:star-bold" class="text-brand-yellow"></iconify-icon>
-            Avg. client saves $127K in first 90 days
-        </div>
+        
         </div>
       </Modal>
     </div>
