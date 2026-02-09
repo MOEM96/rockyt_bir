@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
 import PerformancePage from './components/PerformancePage';
@@ -28,6 +29,7 @@ const App: React.FC = () => {
       </main>
       <Footer onNavigate={handleNavigate} />
       <SpeedInsights />
+      <Analytics />
     </div>
   );
 };
