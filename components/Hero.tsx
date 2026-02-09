@@ -127,50 +127,55 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
     <div className="w-full relative -mt-20 md:-mt-24 mb-0">
       
       {/* Mobile View with Scroll Animation */}
-      <div ref={mobileContainerRef} className="md:hidden relative h-[250vh] z-40 pointer-events-none">
-            <div className="sticky top-0 h-[100dvh] w-full flex flex-col items-center justify-start px-4 overflow-hidden bg-[#161616] pointer-events-auto pt-32 pb-8">
+      <div ref={mobileContainerRef} className="md:hidden relative h-[250vh] z-40 pointer-events-none mb-20">
+            <div className="sticky top-0 h-[100dvh] w-full flex flex-col items-center justify-start px-4 overflow-hidden bg-[#161616] pointer-events-auto pt-28 pb-4">
                 
                 {/* Gamified Headline */}
-                <div className="flex flex-col items-center gap-3 mb-6 flex-shrink-0">
-                    <div ref={word1Ref} className="will-change-[transform,opacity] bg-brand-blue border-[3px] border-white text-white px-5 py-1.5 rounded-2xl shadow-[4px_4px_0px_rgba(255,255,255,0.2)] text-xl font-black uppercase tracking-tighter z-10 relative">
+                <div className="flex flex-col items-center gap-2 mb-4 flex-shrink-0">
+                    <div ref={word1Ref} className="will-change-[transform,opacity] bg-brand-blue border-[2px] border-white text-white px-4 py-1 rounded-xl shadow-[3px_3px_0px_rgba(255,255,255,0.2)] text-lg font-black uppercase tracking-tighter z-10 relative">
                         Performance
                     </div>
-                    <div ref={word2Ref} className="will-change-[transform,opacity] bg-brand-pink border-[3px] border-white text-white px-7 py-1.5 rounded-2xl shadow-[-4px_4px_0px_rgba(255,255,255,0.2)] text-xl font-black uppercase tracking-tighter z-20 relative">
+                    <div ref={word2Ref} className="will-change-[transform,opacity] bg-brand-pink border-[2px] border-white text-white px-6 py-1 rounded-xl shadow-[-3px_3px_0px_rgba(255,255,255,0.2)] text-lg font-black uppercase tracking-tighter z-20 relative">
                         Marketing
                     </div>
-                    <div ref={word3Ref} className="will-change-[transform,opacity] bg-brand-yellow border-[3px] border-white text-brand-black px-5 py-1.5 rounded-2xl shadow-[0px_6px_0px_rgba(255,255,255,0.3)] text-xl font-black uppercase tracking-tighter z-30 relative">
+                    <div ref={word3Ref} className="will-change-[transform,opacity] bg-brand-yellow border-[2px] border-white text-brand-black px-4 py-1 rounded-xl shadow-[0px_4px_0px_rgba(255,255,255,0.3)] text-lg font-black uppercase tracking-tighter z-30 relative">
                         Automated
                     </div>
                 </div>
 
-                <p ref={subtextRef} className="will-change-[transform,opacity] text-gray-400 text-sm max-w-[280px] mx-auto leading-relaxed mb-6 text-center flex-shrink-0">
+                <p ref={subtextRef} className="will-change-[transform,opacity] text-gray-400 text-xs max-w-[260px] mx-auto leading-relaxed mb-6 text-center flex-shrink-0 font-medium">
                   Scale faster with less manual work.
                 </p>
 
-                {/* Mobile Calculator Input */}
-                <div ref={calculatorRef} className="will-change-[transform,opacity] w-full mb-6 space-y-3 flex-shrink-0">
-                    <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                            <span className="text-gray-400 font-semibold text-base">$</span>
+                {/* Mobile Calculator Input - Compact & Minimal */}
+                <div ref={calculatorRef} className="will-change-[transform,opacity] w-full max-w-[300px] mb-6 flex-shrink-0">
+                    <div className="relative flex items-center bg-[#222] rounded-full border border-white/10 p-1 shadow-lg">
+                        <div className="relative flex-grow">
+                            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                <span className="text-gray-400 font-semibold text-sm">$</span>
+                            </div>
+                            <input 
+                                type="number" 
+                                placeholder="Monthly spend" 
+                                value={adSpend}
+                                onChange={(e) => setAdSpend(e.target.value)}
+                                className="w-full bg-transparent border-none text-white rounded-l-full py-2.5 pl-7 pr-2 focus:outline-none focus:ring-0 placeholder:text-gray-600 text-sm font-medium"
+                                aria-label="Enter monthly ad spend"
+                            />
                         </div>
-                        <input 
-                            type="number" 
-                            placeholder="Monthly ad spend" 
-                            value={adSpend}
-                            onChange={(e) => setAdSpend(e.target.value)}
-                            className="w-full bg-white/10 border border-white/20 text-white rounded-full py-3.5 pl-10 pr-4 focus:outline-none focus:border-brand-yellow transition-colors placeholder:text-gray-500 text-base"
-                            aria-label="Enter monthly ad spend"
-                        />
+                        <button 
+                            onClick={handleCalculate} 
+                            className="bg-brand-yellow text-brand-black rounded-full py-2 px-4 text-xs font-bold hover:bg-[#fcd34d] transition-colors flex items-center gap-1 shrink-0"
+                        >
+                            <span>Calculate</span>
+                            <iconify-icon icon="solar:arrow-right-linear" width="12"></iconify-icon>
+                        </button>
                     </div>
-                    <Button onClick={handleCalculate} fullWidth>
-                        Calculate wasted ad spend
-                    </Button>
                 </div>
 
-                {/* Carousel (Mobile) */}
-                <div ref={carouselRef} className="will-change-opacity w-full mt-auto mb-4 flex-shrink-0">
-                    <p className="text-[10px] font-bold text-gray-600 uppercase tracking-widest mb-3 text-center">Trusted by market leaders</p>
-                    <div className="scale-90 origin-bottom">
+                {/* Carousel (Mobile) - Compact */}
+                <div ref={carouselRef} className="will-change-opacity w-full mt-auto mb-2 flex-shrink-0 opacity-70">
+                    <div className="scale-75 origin-bottom -mb-2">
                          <PartnersCarousel />
                     </div>
                 </div>
@@ -193,32 +198,35 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                 ></lottie-player>
             </div>
 
-            {/* Desktop Overlay: Calculator and Social Proof */}
-            <div className="absolute inset-0 flex flex-col justify-end items-center pb-10 z-20 pointer-events-none">
+            {/* Desktop Overlay: Calculator and Social Proof - Minimal */}
+            <div className="absolute inset-0 flex flex-col justify-end items-center pb-12 z-20 pointer-events-none">
                 
-                {/* Desktop Calculator Input */}
-                <div className="pointer-events-auto bg-[#0a0a0a]/90 backdrop-blur-2xl p-1.5 pr-2 rounded-full border border-white/10 hover:border-white/20 transition-all flex items-center gap-2 shadow-2xl shadow-black/80 transform translate-y-4">
-                    <div className="relative w-56 h-full flex items-center">
-                        <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                            <span className="text-gray-500 font-medium text-lg">$</span>
+                {/* Desktop Calculator Input - Minimal Glass Pill */}
+                <div className="pointer-events-auto bg-black/40 backdrop-blur-md p-1 pl-1.5 pr-1 rounded-full border border-white/10 hover:border-white/20 hover:bg-black/60 transition-all flex items-center gap-0 shadow-lg hover:shadow-2xl transform translate-y-0 group">
+                    <div className="relative w-40 h-full flex items-center">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span className="text-gray-500 font-medium text-sm group-hover:text-gray-400 transition-colors">$</span>
                         </div>
                         <input 
                             type="number" 
-                            placeholder="Monthly ad spend" 
+                            placeholder="Ad spend..." 
                             value={adSpend}
                             onChange={(e) => setAdSpend(e.target.value)}
-                            className="w-full bg-transparent border-none text-white rounded-full py-2.5 pl-9 pr-4 focus:outline-none focus:ring-0 placeholder:text-gray-600 text-base font-medium h-full leading-none"
+                            className="w-full bg-transparent border-none text-white rounded-full py-2 pl-7 pr-2 focus:outline-none focus:ring-0 placeholder:text-gray-600 text-sm font-medium h-full leading-none"
                             aria-label="Enter monthly ad spend"
                         />
                     </div>
-                    <Button onClick={handleCalculate} size="sm" className="whitespace-nowrap">
-                        Calculate wasted ad spend
-                    </Button>
+                    <button 
+                        onClick={handleCalculate} 
+                        className="h-8 px-4 rounded-full bg-white/5 hover:bg-brand-yellow hover:text-black text-white text-[11px] font-bold uppercase tracking-wide transition-all border border-white/5 hover:border-brand-yellow flex items-center justify-center whitespace-nowrap backdrop-blur-sm"
+                    >
+                        Calculate
+                    </button>
                 </div>
                 
-                <div className="mt-8 flex flex-col items-center pointer-events-auto w-full max-w-4xl opacity-50 hover:opacity-100 transition-opacity">
-                     <p className="text-[10px] font-bold text-gray-700 uppercase tracking-[0.2em] mb-3">Trusted by market leaders</p>
-                     <div className="w-full max-w-3xl scale-90 origin-bottom">
+                {/* Minimal Carousel */}
+                <div className="mt-6 flex flex-col items-center pointer-events-auto w-full max-w-xl opacity-30 hover:opacity-100 transition-opacity duration-300">
+                     <div className="w-full scale-75 origin-bottom grayscale hover:grayscale-0 transition-all duration-300">
                         <PartnersCarousel />
                      </div>
                 </div>
