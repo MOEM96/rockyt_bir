@@ -14,7 +14,7 @@ const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
     <div className="max-w-[1200px] mx-auto px-4 md:px-6 pb-20">
       
       {/* Hero Section */}
-      <section className="pt-20 pb-16 md:pt-32 md:pb-24 flex flex-col items-center text-center relative">
+      <section className="pt-20 pb-16 md:pt-20 md:pb-24 flex flex-col items-center text-center relative">
         <div className="relative z-10 w-full max-w-[800px]">
           <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight tracking-tight">
               From Struggling to Scaling:<br/>Real Stories. Real Results.

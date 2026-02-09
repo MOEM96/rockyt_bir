@@ -42,7 +42,7 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
       role="dialog"
       aria-modal="true"
     >
@@ -55,7 +55,7 @@ export const Modal: React.FC<ModalProps> = ({
       <div
         ref={modalRef}
         className={cn(
-          'relative bg-[#161616] w-full rounded-[32px] border border-white/10 overflow-hidden shadow-2xl animate-fade-in-up',
+          'relative bg-[#161616] w-full rounded-[32px] border border-white/10 shadow-2xl animate-fade-in-up max-h-[90vh] overflow-y-auto no-scrollbar',
           sizeClasses[size],
           className
         )}

@@ -57,24 +57,24 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                 Scale From $10K to $1M in Ad Spend <span className="text-white font-medium">Faster & Profitable</span>
             </p>
 
-            {/* Input Component */}
-            <div className="w-full max-w-[480px] mb-8 relative group">
+            {/* Input Component - Optimized for Mobile */}
+            <div className="w-full max-w-[340px] md:max-w-[480px] mb-8 relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-white/20 to-white/10 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div className="relative flex items-center bg-[#0a0a0a] border border-white/10 p-1.5 pl-6 rounded-full shadow-2xl transition-transform transform group-hover:scale-[1.01]">
-                     <div className="flex-grow flex items-center h-full relative">
-                        <span className="text-gray-500 font-medium text-lg mr-2">$</span>
+                <div className="relative flex items-center bg-[#0a0a0a] border border-white/10 p-1 pl-4 md:p-1.5 md:pl-6 rounded-full shadow-2xl transition-transform transform group-hover:scale-[1.01]">
+                     <div className="flex-grow flex items-center h-full relative min-w-0">
+                        <span className="text-gray-500 font-medium text-base md:text-lg mr-1 md:mr-2">$</span>
                         <input 
                             type="number" 
                             placeholder="Monthly ad spend" 
                             value={adSpend}
                             onChange={(e) => setAdSpend(e.target.value)}
-                            className="w-full bg-transparent border-none text-white focus:outline-none focus:ring-0 placeholder:text-gray-600 text-base font-medium h-full"
+                            className="w-full bg-transparent border-none text-white focus:outline-none focus:ring-0 placeholder:text-gray-600 text-sm md:text-base font-medium h-full min-w-0"
                             aria-label="Enter monthly ad spend"
                         />
                     </div>
                     <button 
                         onClick={handleCalculate} 
-                        className="bg-white hover:bg-gray-100 text-black text-sm font-bold py-3 px-6 rounded-full uppercase tracking-wider transition-all whitespace-nowrap flex items-center gap-2"
+                        className="flex-shrink-0 bg-white hover:bg-gray-100 text-black text-[10px] md:text-sm font-bold py-2.5 px-4 md:py-3 md:px-6 rounded-full uppercase tracking-wider transition-all whitespace-nowrap flex items-center gap-2"
                     >
                         How it works
                     </button>
@@ -94,8 +94,8 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
 
        </div>
 
-      {/* Compact Calculator Result Modal */}
-      <Modal isOpen={showCalculatorModal} onClose={handleModalClose} size="md">
+      {/* Calculator Result Modal - Larger on Desktop, Compact on Mobile */}
+      <Modal isOpen={showCalculatorModal} onClose={handleModalClose} size="lg">
         <style>{`
             wistia-player[media-id='okb9j6qvf5']:not(:defined) { 
                 background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/okb9j6qvf5/swatch'); 
@@ -105,46 +105,46 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             }
         `}</style>
         
-        <div className="p-6 flex flex-col items-center text-center">
+        <div className="p-4 md:p-8 flex flex-col items-center text-center">
         
         {/* Result Header - Minimal */}
-        <div className="mb-6 w-full">
+        <div className="mb-4 md:mb-6 w-full">
             {wastedAmount > 0 ? (
                 <div className="flex flex-col items-center">
-                    <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-1">Potential Monthly Waste</div>
-                    <div className="text-3xl md:text-4xl font-black text-white tracking-tighter">
+                    <div className="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest mb-1">Potential Monthly Waste</div>
+                    <div className="text-3xl md:text-5xl font-black text-white tracking-tighter">
                         <span className="text-red-500">${formatNumber(wastedAmount)}</span>
                     </div>
-                    <div className="text-xs text-gray-600 mt-1 font-medium">Don't let this burn.</div>
+                    <div className="text-xs md:text-sm text-gray-600 mt-1 font-medium">Don't let this burn.</div>
                 </div>
             ) : (
-                <h3 className="text-2xl font-bold text-white mb-2">Stop burning budget</h3>
+                <h3 className="text-xl md:text-3xl font-bold text-white mb-2">Stop burning budget</h3>
             )}
         </div>
 
         {/* Video Embed - Compact */}
-        <div className="w-full bg-black rounded-xl overflow-hidden shadow-2xl border border-white/10 mb-6 aspect-video relative z-10">
+        <div className="w-full bg-black rounded-xl overflow-hidden shadow-2xl border border-white/10 mb-4 md:mb-8 aspect-video relative z-10">
              <wistia-player media-id="okb9j6qvf5" aspect="1.7777777777777777"></wistia-player>
         </div>
 
         {/* Headlines & Stats - Replacing Timeline */}
-        <div className="w-full mb-6">
-             <div className="flex items-center justify-center gap-2 mb-4">
+        <div className="w-full mb-4 md:mb-8">
+             <div className="flex items-center justify-center gap-2 mb-3 md:mb-4">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
-                <h4 className="text-sm font-bold text-white uppercase tracking-wider">Results in 7 Days</h4>
+                <h4 className="text-xs md:text-sm font-bold text-white uppercase tracking-wider">Results in 7 Days</h4>
              </div>
              
-             <div className="grid grid-cols-2 gap-3">
-                <div className="bg-[#1A1A1A] rounded-xl p-3 border border-white/5 flex flex-col items-center justify-center">
-                    <div className="text-2xl font-black text-brand-yellow">+40%</div>
-                    <div className="text-[9px] text-gray-500 uppercase font-bold tracking-wider mt-1">ROAS Increase</div>
+             <div className="grid grid-cols-2 gap-2 md:gap-4">
+                <div className="bg-[#1A1A1A] rounded-xl p-3 md:p-4 border border-white/5 flex flex-col items-center justify-center">
+                    <div className="text-xl md:text-3xl font-black text-brand-yellow">+40%</div>
+                    <div className="text-[9px] md:text-[10px] text-gray-500 uppercase font-bold tracking-wider mt-1">ROAS Increase</div>
                 </div>
-                 <div className="bg-[#1A1A1A] rounded-xl p-3 border border-white/5 flex flex-col items-center justify-center">
-                    <div className="text-2xl font-black text-brand-blue">-22%</div>
-                    <div className="text-[9px] text-gray-500 uppercase font-bold tracking-wider mt-1">CPA Decrease</div>
+                 <div className="bg-[#1A1A1A] rounded-xl p-3 md:p-4 border border-white/5 flex flex-col items-center justify-center">
+                    <div className="text-xl md:text-3xl font-black text-brand-blue">-22%</div>
+                    <div className="text-[9px] md:text-[10px] text-gray-500 uppercase font-bold tracking-wider mt-1">CPA Decrease</div>
                 </div>
              </div>
         </div>
@@ -154,7 +154,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             onClick={handleFixItNow}
             asBookingButton
             fullWidth
-            className="h-12 text-sm font-bold uppercase tracking-wide btn-hover-skew shadow-[0_0_20px_rgba(255,226,65,0.1)] group"
+            className="h-10 md:h-14 text-xs md:text-base font-bold uppercase tracking-wide btn-hover-skew shadow-[0_0_20px_rgba(255,226,65,0.1)] group"
         >
             <span>Fix My Ad Spend Now</span>
             <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>

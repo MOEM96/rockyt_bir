@@ -1,40 +1,33 @@
 import React from 'react';
 import Button from './Button';
 import { DemoBookingProps } from '../types/index';
-import { VIDEO_URLS, COMPANY_STATS, CUSTOMER_LOGOS } from '../constants/index';
+import { COMPANY_STATS, CUSTOMER_LOGOS, CASE_STUDIES, PLATFORM_ICONS, EXTERNAL_LINKS } from '../constants/index';
 
 const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-min relative z-10">
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-min relative z-10 font-poppins">
       
-      {/* 0. NEW: Customer Reviews Video (Compact & Minimal) */}
-      <div className="col-span-1 md:col-span-12 bg-[#1A1A1A] border border-white/10 rounded-[32px] p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-10 shadow-2xl relative overflow-hidden group">
-         {/* Subtle ambient glow */}
-         <div className="absolute top-1/2 left-0 w-[300px] h-[300px] bg-brand-blue/10 rounded-full blur-[80px] -translate-y-1/2 pointer-events-none"></div>
-
+      {/* 0. NEW: Customer Reviews Video (Top Full Width) */}
+      <div className="col-span-1 md:col-span-12 bg-[#161616] border border-white/10 rounded-[32px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12 shadow-2xl relative overflow-hidden group">
          <div className="w-full md:w-5/12 relative z-10 flex flex-col items-start text-left">
-            <div className="flex items-center gap-2 mb-3">
-                 <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
-                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Unfiltered Feedback</span>
-            </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 leading-tight">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
                 Don't Just Take Our Word For It.
             </h3>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
+            <p className="text-gray-400 text-lg leading-relaxed mb-8">
                 See how top DTC brands and agencies are scaling past $1M/mo with Rockyt's automation.
             </p>
-            <div className="flex items-center gap-3 bg-white/5 pr-4 pl-1 py-1 rounded-full border border-white/5">
+            <div className="flex items-center gap-4 bg-white/5 pr-6 pl-2 py-2 rounded-full border border-white/5 backdrop-blur-sm">
                 <div className="flex -space-x-3">
-                    <img src="https://i.pravatar.cc/100?img=1" alt="" className="w-8 h-8 rounded-full border-2 border-[#1A1A1A]" />
-                    <img src="https://i.pravatar.cc/100?img=5" alt="" className="w-8 h-8 rounded-full border-2 border-[#1A1A1A]" />
-                    <img src="https://i.pravatar.cc/100?img=8" alt="" className="w-8 h-8 rounded-full border-2 border-[#1A1A1A]" />
+                    <img src="https://i.pravatar.cc/100?img=1" alt="" className="w-10 h-10 rounded-full border-2 border-[#161616]" />
+                    <img src="https://i.pravatar.cc/100?img=5" alt="" className="w-10 h-10 rounded-full border-2 border-[#161616]" />
+                    <img src="https://i.pravatar.cc/100?img=8" alt="" className="w-10 h-10 rounded-full border-2 border-[#161616]" />
                 </div>
-                <span className="text-xs font-semibold text-white">Join 15,000+ others</span>
+                <span className="text-sm font-semibold text-white">Join 15,000+ others</span>
             </div>
          </div>
 
          <div className="w-full md:w-7/12 relative z-10">
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/5 w-full bg-black relative">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/5 w-full bg-black relative aspect-video">
                 <style>{`
                     wistia-player[media-id='kwbq8jkoy8']:not(:defined) { 
                         background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/kwbq8jkoy8/swatch'); 
@@ -48,356 +41,217 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
          </div>
       </div>
 
-      {/* 1. PROFITABLE TESTING: Transformation / Comparison Card */}
-      <div className="col-span-1 md:col-span-12 bg-brand-black border border-white/10 rounded-[32px] overflow-hidden flex flex-col md:flex-row shadow-2xl">
-         {/* Left Side: Traditional Testing (Pain) */}
-         <div className="w-full md:w-5/12 p-8 md:p-10 border-b md:border-b-0 md:border-r border-white/10 relative bg-[#0f0f0f]">
-            <div className="flex items-center gap-3 mb-6 opacity-60">
-                <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                <h3 className="text-xl font-bold text-gray-300">❌ The Manual Grind</h3>
-            </div>
-            
-            <div className="space-y-8 relative z-10">
-                <div className="flex gap-4 group opacity-50 hover:opacity-100 transition-opacity">
-                    <div className="mt-1">
-                        <iconify-icon icon="solar:flame-bold" width="20" class="text-gray-500"></iconify-icon>
-                    </div>
-                    <div>
-                        <div className="font-semibold text-gray-300 text-sm">Budget Bleed</div>
-                        <div className="text-xs text-gray-500 mt-0.5">Wasting 30-50% on losers before you notice.</div>
-                    </div>
-                </div>
-                <div className="flex gap-4 group opacity-50 hover:opacity-100 transition-opacity">
-                    <div className="mt-1">
-                        <iconify-icon icon="solar:hourglass-bold" width="20" class="text-gray-500"></iconify-icon>
-                    </div>
-                    <div>
-                        <div className="font-semibold text-gray-300 text-sm">Snail-Pace Testing</div>
-                        <div className="text-xs text-gray-500 mt-0.5">Testing 1-2 creatives/week. Too slow to scale.</div>
-                    </div>
-                </div>
-                <div className="flex gap-4 group opacity-50 hover:opacity-100 transition-opacity">
-                    <div className="mt-1">
-                        <iconify-icon icon="solar:blindframe-bold" width="20" class="text-gray-500"></iconify-icon>
-                    </div>
-                    <div>
-                        <div className="font-semibold text-gray-300 text-sm">Expensive Guesswork</div>
-                        <div className="text-xs text-gray-500 mt-0.5">Hoping your "gut feeling" is right. (It usually isn't)</div>
-                    </div>
-                </div>
-            </div>
-         </div>
-
-         {/* Right Side: Profitable Testing (Gain) */}
-         <div className="w-full md:w-7/12 p-8 md:p-10 relative bg-gradient-to-br from-[#161616] to-[#1A1A1A]">
-            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-yellow/50 to-transparent opacity-50"></div>
-            
-            <div className="flex items-center gap-3 mb-6">
-                <div className="w-2 h-2 rounded-full bg-brand-yellow shadow-[0_0_10px_rgba(255,226,65,0.8)] animate-pulse"></div>
-                <h3 className="text-xl font-bold text-white">✅ The Rockyt Advantage</h3>
-            </div>
-
-            <div className="grid gap-6">
-                {/* Feature 1 */}
-                <div className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-brand-yellow/20 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-brand-yellow/20 text-brand-yellow flex items-center justify-center shrink-0">
-                        <iconify-icon icon="solar:rocket-2-bold-duotone" width="24"></iconify-icon>
-                    </div>
-                    <div>
-                        <div className="font-bold text-white text-base">Test 10x Faster</div>
-                        <p className="text-xs text-gray-400 mt-1 leading-relaxed">
-                            Launch 50+ variations instantly. Find winners in days, not months.
-                        </p>
-                    </div>
-                </div>
-
-                {/* Feature 2 */}
-                <div className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-brand-yellow/20 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-green-500/20 text-green-500 flex items-center justify-center shrink-0">
-                        <iconify-icon icon="solar:shield-check-bold-duotone" width="24"></iconify-icon>
-                    </div>
-                    <div>
-                        <div className="font-bold text-white text-base">Zero-Waste AI Protection</div>
-                        <p className="text-xs text-gray-400 mt-1 leading-relaxed">
-                            Losers identified and killed in &lt;60 seconds. Every dollar goes to proven winners.
-                        </p>
-                    </div>
-                </div>
-
-                {/* Feature 3 */}
-                <div className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-brand-yellow/20 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-500 flex items-center justify-center shrink-0">
-                        <iconify-icon icon="solar:graph-up-bold-duotone" width="24"></iconify-icon>
-                    </div>
-                    <div>
-                        <div className="font-bold text-white text-base">Auto-Scale Champions</div>
-                        <p className="text-xs text-gray-400 mt-1 leading-relaxed">
-                           Top 5% of ads automatically get 80% of budget. Set it once. Scale forever.
-                        </p>
-                    </div>
-                </div>
-            </div>
-         </div>
-      </div>
-
-      {/* 2. MULTI-LAYER BUDGET OPTIMIZATION (Video Card) */}
-      <div className="col-span-1 md:col-span-8 bg-brand-black rounded-[32px] overflow-hidden bento-card border border-white/10 min-h-[400px] relative group">
-        <div className="absolute top-0 left-0 w-full z-20 p-8 md:p-10 bg-gradient-to-b from-black/90 to-transparent pointer-events-none">
-            <div className="flex items-center gap-2 mb-2">
-                 <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500 text-white uppercase tracking-wider">Live</span>
-                 <span className="text-xs font-bold text-green-400 uppercase tracking-widest">24/7 AI Pilot</span>
-            </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">24/7 AI Pilot That Never Gets Tired</h3>
-            <p className="text-gray-300 text-sm md:text-base max-w-lg leading-relaxed">
-                While you sleep, Rockyt monitors every campaign, adjusts bids, pauses losers, and scales winners based on 10,000+ data points per minute.
-                <br/><span className="text-brand-yellow font-bold mt-2 block">Result: 98% reduction in CPC, 40% cost savings.</span>
-            </p>
-        </div>
-
-        <div className="w-full h-full bg-[#050505] relative flex items-center justify-center overflow-hidden">
-            {/* Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a] to-black opacity-60 z-10"></div>
-            
-            <video 
-            id="ai-budget-protection-video"
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            poster={VIDEO_URLS.budgetOptimizationPoster}
-            className="w-full h-full object-cover relative z-0 transform group-hover:scale-105 transition-transform duration-700"
-            aria-label="Video demonstrating budget optimization"
-            >
-            <source src={VIDEO_URLS.budgetOptimization} type="video/mp4" />
-            <source src={VIDEO_URLS.budgetOptimizationWebm} type="video/webm" />
-            </video>
-        </div>
-      </div>
-
-      {/* 4. COMPACT AI TOOLS CARD (Small Card) */}
-      <div className="col-span-1 md:col-span-4 bg-gradient-to-b from-[#1E1E1E] to-[#161616] rounded-[32px] p-8 bento-card flex flex-col min-h-[400px] border border-white/10 relative overflow-hidden group">
-         <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-brand-purple/10 blur-[80px] rounded-full -mr-10 -mt-10 pointer-events-none"></div>
-
+      {/* Row 1 */}
+      {/* Automate Card */}
+      <div className="col-span-1 md:col-span-4 bg-[#FFE241] rounded-[32px] p-8 flex flex-col justify-between min-h-[360px] relative overflow-hidden group">
          <div className="relative z-10">
-            <div className="flex items-center gap-2 mb-4">
-                 <div className="w-8 h-8 rounded-lg bg-brand-purple/20 text-brand-purple flex items-center justify-center">
-                    <iconify-icon icon="solar:stars-minimalistic-bold" width="20"></iconify-icon>
-                 </div>
-                 <h3 className="text-lg font-bold text-white">AI Creative Engine</h3>
-            </div>
-            <p className="text-sm text-gray-400 mb-6 leading-relaxed">
-                Never stare at a blank screen again. Ship winning ads faster than your competitors can say "design brief."
-            </p>
-
-            <div className="space-y-3">
-                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
-                    <iconify-icon icon="solar:magic-stick-3-bold-duotone" width="18" class="text-blue-400"></iconify-icon>
-                    <span className="text-sm font-medium text-white">AI Ad Generator</span>
-                </div>
-                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
-                    <iconify-icon icon="solar:videocamera-record-bold-duotone" width="18" class="text-pink-400"></iconify-icon>
-                    <span className="text-sm font-medium text-white">UGC Avatar Studio</span>
-                </div>
-                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
-                    <iconify-icon icon="solar:copy-bold-duotone" width="18" class="text-purple-400"></iconify-icon>
-                    <span className="text-sm font-medium text-white">Winner Templates</span>
-                </div>
-            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-black leading-tight">Automate<br/>your ads</h3>
+         </div>
+         <div className="mt-8 relative z-0 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-500">
+             <div className="w-48 h-48 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                 <iconify-icon icon="solar:rocket-2-bold-duotone" width="96" class="text-black/80"></iconify-icon>
+             </div>
          </div>
       </div>
 
-      {/* 3. REAL-TIME UNIFIED ANALYTICS (Large Dashboard Card) */}
-      <div className="col-span-1 md:col-span-12 bg-brand-yellow rounded-[32px] p-8 md:p-12 bento-card flex flex-col lg:flex-row gap-8 relative overflow-hidden text-brand-black items-center min-h-[500px]">
-        <div className="w-full lg:w-1/3 flex flex-col gap-6 relative z-10 shrink-0">
-           <div>
-               <div className="inline-block px-3 py-1 rounded-full bg-black/10 text-brand-black text-xs font-bold uppercase tracking-wider mb-4 border border-black/5">
-                    Crystal-Clear Analytics
-               </div>
-               <h3 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight">Know Exactly What's Working</h3>
-           </div>
-           
-           <p className="text-lg font-medium opacity-80 leading-relaxed">
-             No more guessing. No more spreadsheets. Perfect tracking across every platform.
-             <br/><br/>
-             Our server-side tracking ensures you see the REAL performance—not the watered-down version Meta wants you to see.
-           </p>
-           
-           <Button 
-             onClick={onBookDemo} 
-             asBookingButton
-             className="bg-brand-black text-white hover:bg-black/80 w-fit btn-hover-skew shadow-xl border-none"
-            >
-             <span>See The Dashboard</span>
-           </Button>
-        </div>
-        
-        {/* Compact Dashboard UI Container */}
-        <div className="w-full lg:w-2/3 bg-[#EBF1F5] p-3 rounded-[24px] shadow-2xl flex flex-col gap-3 rotate-1 hover:rotate-0 transition-transform duration-500 font-sans text-slate-800 border-[4px] border-white ring-1 ring-black/5" aria-hidden="true">
-             <div className="flex flex-col xl:flex-row gap-3">
-                {/* Left Column - Metrics */}
-                <div className="flex-grow flex flex-col gap-3 w-full">
-                  {/* Cards Grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                    
-                    {/* Recommendations */}
-                    <div className="col-span-2 bg-[#051C74] rounded-xl p-3 text-white relative overflow-hidden flex flex-col justify-between min-h-[90px] shadow-sm group">
-                       <div className="absolute right-0 top-0 w-32 h-32 bg-blue-500/50 rounded-full blur-[40px] translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-                       <div className="relative z-10">
-                          <div className="text-[10px] opacity-70 mb-0.5">AI Insights</div>
-                          <div className="font-semibold text-sm leading-tight">Scale "Ad_Set_03"</div>
-                          <div className="text-yellow-300 text-[10px] mt-0.5">High Potential ✦</div>
-                       </div>
-                    </div>
-                    {/* Spend */}
-                    <div className="col-span-1 bg-white rounded-xl p-2.5 flex flex-col justify-between shadow-sm min-h-[90px]">
-                       <div className="flex justify-between items-start">
-                          <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
-                            <iconify-icon icon="solar:wallet-bold" width="12"></iconify-icon>
-                          </div>
-                       </div>
-                       <div>
-                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">Spend</div>
-                          <div className="flex items-end justify-between gap-1 flex-wrap">
-                             <div className="text-xs font-bold">$12,400</div>
-                             <div className="text-[7px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded">On Track</div>
-                          </div>
-                       </div>
-                    </div>
-                     {/* Clicks */}
-                     <div className="col-span-1 bg-white rounded-xl p-2.5 flex flex-col justify-between shadow-sm min-h-[90px]">
-                       <div className="flex justify-between items-start">
-                          <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
-                            <iconify-icon icon="solar:cursor-bold" width="12"></iconify-icon>
-                          </div>
-                       </div>
-                       <div>
-                          <div className="text-[8px] text-gray-500 font-bold mb-0.5">ROAS</div>
-                          <div className="flex items-end justify-between gap-1 flex-wrap">
-                             <div className="text-xs font-bold">4.2x</div>
-                             <div className="text-[7px] font-bold bg-green-100 text-green-600 px-1 py-0.5 rounded">↑ 12%</div>
-                          </div>
-                       </div>
-                    </div>
-                  </div>
-                </div>
-             </div>
-        </div>
+      {/* Platforms Card */}
+      <div className="col-span-1 md:col-span-8 bg-[#F3F5F7] rounded-[32px] p-8 md:p-12 flex flex-col relative overflow-hidden min-h-[360px]">
+         <div className="relative z-10 mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-black leading-tight">Across every<br/>advertising platform</h3>
+         </div>
+         <div className="mt-auto relative z-10">
+            <div className="flex flex-wrap items-center gap-6 md:gap-10 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+               {/* Replaced complex SVGs with Iconify for cleaner code while maintaining visual parity */}
+               <iconify-icon icon="logos:meta-icon" width="40"></iconify-icon>
+               <iconify-icon icon="logos:google-icon" width="36"></iconify-icon>
+               <iconify-icon icon="logos:tiktok-icon" width="36"></iconify-icon>
+               <iconify-icon icon="logos:snapchat" width="40"></iconify-icon>
+               <iconify-icon icon="logos:linkedin-icon" width="40"></iconify-icon>
+               <iconify-icon icon="logos:pinterest" width="40"></iconify-icon>
+               <iconify-icon icon="logos:twitter" width="36"></iconify-icon>
+               <iconify-icon icon="logos:spotify-icon" width="36"></iconify-icon>
+            </div>
+            <p className="text-sm font-medium text-gray-400 mt-8 hidden md:block">
+               Rockyt is an official partner of all these platforms
+            </p>
+         </div>
       </div>
 
-      {/* Case Studies & Stats Section */}
+      {/* Row 2: Features */}
+      <div className="col-span-1 md:col-span-4 bg-[#FFE241] rounded-[32px] p-8 flex flex-col min-h-[340px] group overflow-hidden relative">
+         <h3 className="text-xl md:text-2xl font-bold text-black mb-4 relative z-10">Improve<br/>tracking</h3>
+         <div className="mt-auto self-center transform group-hover:translate-y-2 transition-transform duration-500">
+             <iconify-icon icon="solar:target-bold-duotone" width="120" class="text-black/10 group-hover:text-black/20 transition-colors"></iconify-icon>
+         </div>
+      </div>
+
+      <div className="col-span-1 md:col-span-4 bg-[#FFE241] rounded-[32px] p-8 flex flex-col min-h-[340px] group overflow-hidden relative">
+         <h3 className="text-xl md:text-2xl font-bold text-black mb-4 relative z-10">Launch ads<br/>at scale</h3>
+         <div className="mt-auto self-center transform group-hover:rotate-12 transition-transform duration-500">
+             <iconify-icon icon="solar:layers-minimalistic-bold-duotone" width="120" class="text-black/10 group-hover:text-black/20 transition-colors"></iconify-icon>
+         </div>
+      </div>
+
+      <div className="col-span-1 md:col-span-4 bg-[#FFE241] rounded-[32px] p-8 flex flex-col min-h-[340px] group overflow-hidden relative">
+         <h3 className="text-xl md:text-2xl font-bold text-black mb-4 relative z-10">Automate<br/>performance</h3>
+         <div className="mt-auto self-center transform group-hover:scale-110 transition-transform duration-500">
+             <iconify-icon icon="solar:graph-new-up-bold-duotone" width="120" class="text-black/10 group-hover:text-black/20 transition-colors"></iconify-icon>
+         </div>
+      </div>
+
+      {/* Row 3: Server Side & Integrations */}
+      <div className="col-span-1 md:col-span-8 bg-[#161616] rounded-[32px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden group min-h-[340px]">
+         <div className="flex-1 relative z-10">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Server-side<br/>tracking</h3>
+            <p className="text-gray-400 mb-8 max-w-sm">Set up server-side tracking to make your ads more cost-effective by 23%</p>
+            <button 
+                onClick={onBookDemo}
+                className="bg-[#8B5CF6] text-white px-8 py-3 rounded-full font-bold hover:bg-[#7c3aed] transition-colors inline-flex items-center gap-2"
+            >
+                Learn more
+            </button>
+         </div>
+         <div className="w-full md:w-1/2 flex items-center justify-center">
+             <div className="w-64 h-48 bg-gradient-to-tr from-[#2a2a2a] to-[#1a1a1a] rounded-xl border border-white/10 flex items-center justify-center shadow-2xl relative">
+                <div className="absolute inset-0 bg-brand-purple/20 blur-[60px] rounded-full"></div>
+                <iconify-icon icon="solar:server-square-bold-duotone" width="96" class="text-white relative z-10"></iconify-icon>
+             </div>
+         </div>
+      </div>
+
+      <div className="col-span-1 md:col-span-4 bg-white rounded-[32px] p-8 flex flex-col min-h-[340px] relative overflow-hidden group">
+         <div className="mb-4">
+             <div className="w-full aspect-[4/3] relative flex items-center justify-center">
+                 <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/69779936418f66d10a0258d1_d5228af4201f48b9df2a1b9173b96184_Integrations%20icons.svg" alt="Integrations" className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500" />
+             </div>
+         </div>
+         <div className="mt-auto">
+             <h3 className="text-2xl font-bold text-black mb-4">Integrations</h3>
+             <button 
+                onClick={onBookDemo}
+                className="bg-[#FFE241] text-black px-8 py-3 rounded-full font-bold hover:bg-[#fcd34d] transition-colors w-full md:w-auto text-center"
+             >
+                Learn more
+             </button>
+         </div>
+      </div>
+
+      {/* Row 4: Case Studies */}
       {/* Keiki */}
-      <div className="col-span-1 md:col-span-4 bg-[#8B5CF6] text-white rounded-[32px] p-8 bento-card flex flex-col min-h-[300px] relative overflow-hidden">
-        <div className="mb-4">
-          <span className="text-xs font-medium tracking-wider uppercase opacity-80">Success Story</span>
-          <div className="h-6 mt-2">
+      <div className="col-span-1 md:col-span-4 bg-[#8B5CF6] text-white rounded-[32px] p-8 flex flex-col min-h-[400px] relative overflow-hidden group">
+        <div className="mb-auto">
+          <h4 className="text-sm font-bold opacity-80 uppercase tracking-wider mb-2">Mobile App</h4>
+          <div className="h-8 mb-6">
             <img 
               src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bb67180715f131e3e1e9_keiki_logotype.svg" 
               className="h-full w-auto brightness-0 invert" 
               alt="Keiki"
-              loading="lazy" 
             />
           </div>
+          <div className="rounded-xl overflow-hidden mb-6 aspect-video">
+             <img src={CASE_STUDIES.find(c => c.id === 'keiki')?.image} alt="" className="w-full h-full object-cover" />
+          </div>
         </div>
-        <p className="text-xl font-medium leading-tight mb-6">"Our ad spend increased 2.7x while maintaining profitability."</p>
-        <div className="mt-auto flex items-center justify-between">
-            <div className="text-xs opacity-90 leading-tight">Daryna Bondar<br/>Head of Growth</div>
+        <div>
+           <p className="text-lg font-medium leading-tight mb-4">With Rockyt marketing team spend 30% less time managing ads</p>
+           <p className="text-sm opacity-80 mb-6">Daryna Bondar, Head of Growth</p>
+           <button onClick={onBookDemo} className="bg-white text-[#8B5CF6] px-6 py-2 rounded-full font-bold text-sm hover:bg-opacity-90 transition-colors">Read</button>
         </div>
       </div>
 
-      {/* Case 2: E-commerce */}
-      <div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 shadow-none text-white rounded-[32px] p-8 bento-card flex flex-col min-h-[300px] relative overflow-hidden">
-        <div className="mb-4">
-          <span className="text-xs font-medium tracking-wider uppercase text-gray-400">E-commerce</span>
-          <div className="h-6 mt-2">
+      {/* Loop */}
+      <div className="col-span-1 md:col-span-4 bg-white text-black rounded-[32px] p-8 flex flex-col min-h-[400px] relative overflow-hidden group">
+        <div className="mb-auto">
+          <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">E-commerce</h4>
+          <div className="h-8 mb-6">
             <img 
               src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e630347ae261f1cba047d3_loop-earplugs-svg.svg" 
-              className="h-full w-auto brightness-0 invert" 
+              className="h-full w-auto" 
               alt="Loop"
-              loading="lazy" 
             />
           </div>
+          <div className="rounded-xl overflow-hidden mb-6 aspect-video bg-gray-100">
+             <img src={CASE_STUDIES.find(c => c.id === 'loop')?.image} alt="" className="w-full h-full object-cover" />
+          </div>
         </div>
-        <p className="text-xl font-medium leading-tight mb-6">"Scaled 200% faster with zero extra headcount."</p>
-        <div className="mt-auto flex items-center justify-between">
-            <div className="text-xs opacity-60 leading-tight">Alexander L.<br/>Head of Perf.</div>
+        <div>
+           <p className="text-lg font-medium leading-tight mb-4">Loop Earplugs scale 200% faster with Rockyt automation</p>
+           <p className="text-sm text-gray-500 mb-6">Alexander L., Global Head of Performance</p>
+           <button onClick={onBookDemo} className="bg-[#161616] text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-opacity-90 transition-colors">Read</button>
         </div>
       </div>
 
-      {/* Case 3: Agency */}
-      <div className="col-span-1 md:col-span-4 bg-brand-darkblue text-white rounded-[32px] p-8 bento-card flex flex-col min-h-[300px] relative overflow-hidden">
-        <div className="mb-4">
-          <span className="text-xs font-medium tracking-wider uppercase opacity-60">Agency</span>
-          <div className="h-6 mt-2">
+      {/* AdParlor */}
+      <div className="col-span-1 md:col-span-4 bg-[#1D2E5C] text-white rounded-[32px] p-8 flex flex-col min-h-[400px] relative overflow-hidden group">
+        <div className="mb-auto">
+          <h4 className="text-sm font-bold opacity-80 uppercase tracking-wider mb-2">Agency</h4>
+          <div className="h-8 mb-6">
             <img 
               src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e51ce0ac361e304aab6dd1_adparlor_new_logo_white_text.svg" 
               className="h-full w-auto" 
               alt="AdParlor"
-              loading="lazy" 
             />
           </div>
+          <div className="rounded-xl overflow-hidden mb-6 aspect-video bg-white/10">
+             <img src={CASE_STUDIES.find(c => c.id === 'adparlor')?.image} alt="" className="w-full h-full object-cover" />
+          </div>
         </div>
-        <p className="text-xl font-medium leading-tight mb-6">"We can now handle 3x more clients with the same team size."</p>
-        <div className="mt-auto flex items-center justify-between">
-            <div className="text-xs opacity-60 leading-tight">Sidharth Sharma<br/>Campaign Mgr</div>
+        <div>
+           <p className="text-lg font-medium leading-tight mb-4">Rockyt has made high-volume campaign management seamless</p>
+           <p className="text-sm opacity-80 mb-6">Sidharth Sharma, Senior Campaign Mgr</p>
+           <button onClick={onBookDemo} className="bg-[#1D2E5C] border border-white text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-white hover:text-[#1D2E5C] transition-colors">Read</button>
         </div>
       </div>
 
-      {/* Stats Row */}
+      {/* Row 5: Stats */}
       {COMPANY_STATS.map((stat, index) => (
-        <div key={index} className="col-span-1 md:col-span-4 bg-brand-black text-white rounded-[32px] p-8 bento-card flex flex-col items-center justify-center text-center aspect-square border border-white/10">
-            <div className={`text-5xl font-semibold tracking-tighter mb-2 text-brand-${stat.color}`}>
+        <div key={index} className="col-span-1 md:col-span-4 bg-[#161616] rounded-[32px] p-8 aspect-square flex flex-col items-center justify-center text-center">
+            <div className={`text-5xl md:text-6xl font-semibold tracking-tighter mb-4 text-brand-${stat.color}`}>
               {stat.value}
             </div>
-            <p className="text-lg font-bold text-white font-serif tracking-wide uppercase leading-snug mt-2 whitespace-pre-line">
-              {stat.label}
-            </p>
+            <div className="text-xl md:text-2xl font-bold text-white leading-tight">
+               {stat.label.split('\n').map((line, i) => (
+                   <React.Fragment key={i}>
+                       {line}<br/>
+                   </React.Fragment>
+               ))}
+            </div>
         </div>
       ))}
 
-      {/* Customers Strip - Updated Visual */}
-      <div className="col-span-1 md:col-span-12 bg-white rounded-[32px] p-8 md:p-16 border border-white/10 flex flex-col justify-center items-center overflow-hidden">
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-x-24 md:gap-y-16 w-full max-w-6xl">
+      {/* Row 6: Customers */}
+      <div className="col-span-1 md:col-span-12 bg-white rounded-[32px] p-12 flex flex-col items-center justify-center">
+         <div className="text-xl font-bold text-black mb-8">Our customers</div>
+         <div className="flex flex-wrap justify-center items-center gap-12 max-w-5xl">
             {CUSTOMER_LOGOS.map((logo, index) => (
               <img 
                 key={index}
                 src={logo.src} 
-                className={`h-8 md:h-10 w-auto object-contain ${logo.name === 'AdParlor' ? 'brightness-0' : ''}`}
+                className={`h-8 md:h-12 w-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300 ${logo.name === 'AdParlor' ? 'brightness-0' : ''}`}
                 alt={logo.alt} 
-                loading="lazy" 
               />
             ))}
-        </div>
+         </div>
       </div>
 
-      {/* Bottom CTA */}
-      <div 
-        onClick={onBookDemo}
-        className="col-span-1 md:col-span-4 border-2 border-dashed border-white/20 rounded-[32px] p-8 flex items-center justify-center hover:border-white/40 transition-colors group cursor-pointer min-h-[160px]"
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onBookDemo()}
-      >
-        <h3 className="text-2xl font-semibold tracking-tight text-gray-400 group-hover:text-white transition-colors">Book a demo</h3>
-      </div>
-      
-      <div className="col-span-1 md:col-span-4 bg-brand-black border border-white/10 text-white rounded-[32px] p-8 flex flex-col items-center justify-center gap-2 min-h-[160px]">
-        <div className="text-4xl font-semibold text-brand-yellow">14</div>
-        <div className="text-sm font-medium">days free trial</div>
-        <div className="flex gap-2 mt-2">
-          <span className="text-xs bg-white/10 px-3 py-1 rounded-full">Cancel anytime</span>
-          <span className="text-xs bg-white/10 px-3 py-1 rounded-full">No credit card</span>
-        </div>
+      {/* Row 7: CTA */}
+      <div className="col-span-1 md:col-span-4 border-2 border-dashed border-white/20 rounded-[32px] p-8 flex items-center justify-center hover:border-white/40 transition-colors cursor-pointer group min-h-[180px]" onClick={onBookDemo}>
+         <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:scale-105 transition-transform">Book demo</h3>
       </div>
 
-      <div 
-        onClick={onBookDemo}
-        className="col-span-1 md:col-span-4 bg-brand-yellow text-brand-black rounded-[32px] p-8 flex items-center justify-center hover:bg-[#fcd34d] transition-colors cursor-pointer min-h-[160px] btn-hover-skew"
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onBookDemo()}
-      >
-        <h3 className="text-2xl font-semibold tracking-tight"><span>Start Free Trial</span></h3>
+      <div className="col-span-1 md:col-span-4 bg-[#161616] rounded-[32px] p-8 flex flex-col items-center justify-center min-h-[180px]">
+          <div className="text-5xl font-bold text-[#FFE241] mb-2">14</div>
+          <div className="text-white font-medium text-lg mb-4">days free trial</div>
+          <div className="flex gap-2">
+             <span className="bg-white/10 px-3 py-1 rounded-full text-xs text-white">Cancel anytime</span>
+             <span className="bg-white/10 px-3 py-1 rounded-full text-xs text-white">No card required</span>
+          </div>
       </div>
+
+      <div className="col-span-1 md:col-span-4 bg-[#FFE241] rounded-[32px] p-8 flex items-center justify-center hover:bg-[#fcd34d] transition-colors cursor-pointer min-h-[180px]" onClick={() => window.location.href = EXTERNAL_LINKS.signup}>
+          <h3 className="text-2xl md:text-3xl font-bold text-black">Try Rockyt</h3>
+      </div>
+
     </div>
   );
 };
