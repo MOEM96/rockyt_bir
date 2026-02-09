@@ -56,16 +56,28 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate }) => {
           {/* Desktop Menu Island */}
           <div className="hidden lg:flex pointer-events-auto">
             <div className="flex items-center p-1.5 gap-1 bg-[#161616]/80 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl">
-              {(['performance', 'hub', 'cases'] as PageType[]).map((item) => (
-                <a 
-                  key={item}
-                  href="#" 
-                  onClick={(e) => handleDesktopNavigate(e, item)}
-                  className="px-6 py-2.5 rounded-full text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300 capitalize"
-                >
-                  {item}
-                </a>
-              ))}
+              <a 
+                href="#" 
+                onClick={(e) => handleDesktopNavigate(e, 'performance')}
+                className="px-6 py-2.5 rounded-full text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300 capitalize"
+              >
+                Performance
+              </a>
+              <a 
+                href="#" 
+                onClick={(e) => handleDesktopNavigate(e, 'cases')}
+                className="px-6 py-2.5 rounded-full text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300 capitalize"
+              >
+                Cases
+              </a>
+              <a 
+                href="https://aiads.tawk.help/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2.5 rounded-full text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300 capitalize"
+              >
+                Help Center
+              </a>
             </div>
           </div>
 
@@ -106,8 +118,16 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate }) => {
       >
            <div className="flex flex-col items-center gap-8 text-2xl font-bold text-white w-full px-6">
               <a href="#" onClick={(e) => { e.preventDefault(); handleMobileNavigate('performance'); }} className="hover:text-brand-yellow transition-colors">Performance</a>
-              <a href="#" onClick={(e) => { e.preventDefault(); handleMobileNavigate('hub'); }} className="hover:text-brand-yellow transition-colors">Hub</a>
               <a href="#" onClick={(e) => { e.preventDefault(); handleMobileNavigate('cases'); }} className="hover:text-brand-yellow transition-colors">Cases</a>
+              <a 
+                href="https://aiads.tawk.help/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                onClick={() => setIsMobileMenuOpen(false)} 
+                className="hover:text-brand-yellow transition-colors"
+              >
+                Help Center
+              </a>
               
               <div className="mt-8">
                   <Button 

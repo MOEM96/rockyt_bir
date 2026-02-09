@@ -7,6 +7,47 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-min relative z-10">
       
+      {/* 0. NEW: Customer Reviews Video (Compact & Minimal) */}
+      <div className="col-span-1 md:col-span-12 bg-[#1A1A1A] border border-white/10 rounded-[32px] p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-10 shadow-2xl relative overflow-hidden group">
+         {/* Subtle ambient glow */}
+         <div className="absolute top-1/2 left-0 w-[300px] h-[300px] bg-brand-blue/10 rounded-full blur-[80px] -translate-y-1/2 pointer-events-none"></div>
+
+         <div className="w-full md:w-5/12 relative z-10 flex flex-col items-start text-left">
+            <div className="flex items-center gap-2 mb-3">
+                 <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Unfiltered Feedback</span>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 leading-tight">
+                Don't Just Take Our Word For It.
+            </h3>
+            <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
+                See how top DTC brands and agencies are scaling past $1M/mo with Rockyt's automation.
+            </p>
+            <div className="flex items-center gap-3 bg-white/5 pr-4 pl-1 py-1 rounded-full border border-white/5">
+                <div className="flex -space-x-3">
+                    <img src="https://i.pravatar.cc/100?img=1" alt="" className="w-8 h-8 rounded-full border-2 border-[#1A1A1A]" />
+                    <img src="https://i.pravatar.cc/100?img=5" alt="" className="w-8 h-8 rounded-full border-2 border-[#1A1A1A]" />
+                    <img src="https://i.pravatar.cc/100?img=8" alt="" className="w-8 h-8 rounded-full border-2 border-[#1A1A1A]" />
+                </div>
+                <span className="text-xs font-semibold text-white">Join 15,000+ others</span>
+            </div>
+         </div>
+
+         <div className="w-full md:w-7/12 relative z-10">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/5 w-full bg-black relative">
+                <style>{`
+                    wistia-player[media-id='kwbq8jkoy8']:not(:defined) { 
+                        background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/kwbq8jkoy8/swatch'); 
+                        display: block; 
+                        filter: blur(5px); 
+                        padding-top:56.25%; 
+                    }
+                `}</style>
+                <wistia-player media-id="kwbq8jkoy8" aspect="1.7777777777777777"></wistia-player>
+            </div>
+         </div>
+      </div>
+
       {/* 1. PROFITABLE TESTING: Transformation / Comparison Card */}
       <div className="col-span-1 md:col-span-12 bg-brand-black border border-white/10 rounded-[32px] overflow-hidden flex flex-col md:flex-row shadow-2xl">
          {/* Left Side: Traditional Testing (Pain) */}

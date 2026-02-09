@@ -34,17 +34,19 @@ const Footer: React.FC<NavigationProps> = ({ onNavigate }) => {
               Performance
             </button>
             <button 
-              onClick={() => handleNavigate('hub')} 
-              className="text-sm font-medium text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white"
-            >
-              Hub
-            </button>
-            <button 
               onClick={() => handleNavigate('cases')} 
               className="text-sm font-medium text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white"
             >
               Cases
             </button>
+            <a 
+              href="https://aiads.tawk.help/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white"
+            >
+              Help Center
+            </a>
         </nav>
 
         {/* Copyright */}

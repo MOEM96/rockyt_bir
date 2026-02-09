@@ -67,7 +67,7 @@ declare module 'react' {
 }
 
 // Page types
-export type PageType = 'home' | 'performance' | 'hub' | 'cases';
+export type PageType = 'home' | 'performance' | 'cases';
 export type CaseCategory = 'all' | 'agency' | 'ecom' | 'app';
 export type Platform = 'meta' | 'tiktok' | 'snapchat';
 
