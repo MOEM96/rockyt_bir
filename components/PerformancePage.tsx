@@ -1,17 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import '../types';
-
-interface PerformancePageProps {
-  onBookDemo: () => void;
-}
-
-const sections = [
-  { id: 'unified-command', label: 'Unified Command Centre' },
-  { id: 'creative-genius', label: 'Creative Genius' },
-  { id: 'untiring-pilot', label: 'Untiring Pilot' },
-  { id: 'crystal-clear', label: 'Crystal Clear Lens' },
-  { id: 'insight-engine', label: 'Insight Engine' },
-];
+import React from 'react';
+import Button from './Button';
+import { DemoBookingProps } from '../types/index';
+import { useActiveSection, useSmoothScroll } from '../hooks/index';
+import { PERFORMANCE_SECTIONS } from '../constants/index';
 
 const VideoPlaceholder = () => (
   <div className="w-full aspect-video bg-[#050505] border border-white/10 rounded-2xl flex items-center justify-center relative overflow-hidden group shadow-2xl">
@@ -31,41 +22,12 @@ const VideoPlaceholder = () => (
   </div>
 );
 
-const PerformancePage: React.FC<PerformancePageProps> = ({ onBookDemo }) => {
-  const [activeSection, setActiveSection] = useState('unified-command');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 150; // Offset for header
-      
-      for (const section of sections) {
-        const element = document.getElementById(section.id);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section.id);
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 100; // Header height approx
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
+const PerformancePage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
+  const activeSection = useActiveSection(
+    PERFORMANCE_SECTIONS.map(s => s.id),
+    150
+  );
+  const scrollTo = useSmoothScroll();
 
   return (
     <div className="max-w-[1200px] mx-auto px-4 md:px-6 pb-20">
@@ -96,11 +58,12 @@ const PerformancePage: React.FC<PerformancePageProps> = ({ onBookDemo }) => {
         {/* Sticky Sidebar Navigation */}
         <aside className="hidden lg:block w-64 flex-shrink-0">
           <div className="sticky top-32">
-            <nav className="border-l border-white/10 pl-6 space-y-4">
-              {sections.map((section) => (
+            <nav className="border-l border-white/10 pl-6 space-y-4" aria-label="Page sections">
+              {PERFORMANCE_SECTIONS.map((section) => (
                 <button
                   key={section.id}
-                  onClick={() => scrollToSection(section.id)}
+                  onClick={() => scrollTo(section.id)}
+                  aria-current={activeSection === section.id}
                   className={`block text-sm font-medium transition-all duration-200 text-left w-full hover:text-brand-yellow flex items-center gap-3 ${
                     activeSection === section.id ? 'text-brand-yellow scale-105 origin-left' : 'text-gray-500'
                   }`}
@@ -204,15 +167,13 @@ const PerformancePage: React.FC<PerformancePageProps> = ({ onBookDemo }) => {
           {/* CTA */}
           <section className="bg-brand-black border border-dashed border-white/20 rounded-[32px] p-12 text-center hover:border-brand-yellow/50 transition-colors group">
              <h2 className="text-4xl font-bold text-white mb-6 group-hover:text-brand-yellow transition-colors">Ready to scale?</h2>
-             <button 
+             <Button 
                onClick={onBookDemo} 
-               data-cal-link="rock-yt-admanager/15min"
-               data-cal-namespace="15min"
-               data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
-               className="bg-brand-yellow text-brand-black px-8 py-4 rounded-full text-lg font-bold hover:bg-[#fcd34d] transition-colors btn-hover-skew"
+               asBookingButton
+               className="h-14 text-lg btn-hover-skew"
               >
                 <span>Book a demo</span>
-             </button>
+             </Button>
           </section>
 
         </div>

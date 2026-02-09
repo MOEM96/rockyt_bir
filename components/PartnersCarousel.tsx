@@ -1,30 +1,22 @@
 import React, { useEffect, useState } from 'react';
-
-const logos = [
-  { name: 'Meta', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg' },
-  { name: 'Bing', src: 'https://upload.wikimedia.org/wikipedia/commons/9/9c/Bing_Fluent_Logo.svg' },
-  { name: 'Google', src: 'https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg' },
-  { name: 'TikTok', src: 'https://upload.wikimedia.org/wikipedia/commons/3/34/Ionicons_logo-tiktok.svg' },
-  { name: 'Snapchat', src: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Snapchat_logo.svg/300px-Snapchat_logo.svg.png' },
-  { name: 'Spotify', src: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg' },
-  { name: 'LinkedIn', src: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png' },
-];
+import { PARTNER_LOGOS } from '../constants/index';
+import { usePrefersReducedMotion } from '../hooks/index';
 
 // Double the items for seamless infinite scroll
-const carouselItems = [...logos, ...logos];
+const carouselItems = [...PARTNER_LOGOS, ...PARTNER_LOGOS];
 
 const PartnersCarousel: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    // Start animation after a short delay to allow layout to settle, 
-    // or when images trigger load (simulated here for simplicity as we use eager loading)
+    // Start animation after a short delay to allow layout to settle
     const timer = setTimeout(() => setIsLoaded(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="partners-carousel w-full" aria-label="Partner logos carousel">
+    <div className="partners-carousel w-full" aria-label="Partner logos carousel" role="region">
        <style>{`
         .partners-carousel {
           width: 100%;
@@ -47,8 +39,22 @@ const PartnersCarousel: React.FC = () => {
 
         .carousel-track.loaded {
           opacity: 1;
-          animation: scroll 30s linear infinite;
+          /* Only animate if user doesn't prefer reduced motion */
+          ${!prefersReducedMotion ? 'animation: scroll 30s linear infinite;' : ''}
         }
+        
+        /* If reduced motion is on, allow horizontal scrolling or wrap */
+        ${prefersReducedMotion ? `
+          .partners-carousel {
+            overflow-x: auto;
+            mask-image: none;
+            -webkit-mask-image: none;
+          }
+          .carousel-track {
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+        ` : ''}
 
         .carousel-track:hover {
           animation-play-state: paused;
@@ -105,16 +111,28 @@ const PartnersCarousel: React.FC = () => {
           100% { transform: translateX(-50%); }
         }
        `}</style>
-       <div className={`carousel-track ${isLoaded ? 'loaded' : ''}`}>
-          {carouselItems.map((item, index) => (
-            <div className="partner-logo" key={index} title={item.name} aria-hidden={index >= logos.length}>
-              <img 
-                src={item.src} 
-                alt={`${item.name} logo`} 
-                loading="eager"
-              />
-            </div>
-          ))}
+       <div className={`carousel-track ${isLoaded ? 'loaded' : ''}`} role="list">
+          {carouselItems.map((item, index) => {
+             // Only expose original items to screen readers to avoid duplication announcements
+             const isOriginal = index < PARTNER_LOGOS.length;
+             return (
+                <div 
+                  className="partner-logo" 
+                  key={`${item.name}-${index}`} 
+                  title={item.name} 
+                  role={isOriginal ? 'listitem' : 'presentation'}
+                  aria-hidden={!isOriginal}
+                >
+                  <img 
+                    src={item.src} 
+                    alt={isOriginal ? `${item.name} logo` : ''} 
+                    loading="eager"
+                    width="120"
+                    height="80"
+                  />
+                </div>
+             );
+          })}
        </div>
     </div>
   );

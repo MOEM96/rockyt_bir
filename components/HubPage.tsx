@@ -1,11 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import '../types';
+import Button from './Button';
+import { DemoBookingProps, FAQItem } from '../types/index';
+import { HUB_FAQ_ITEMS, HUB_CAROUSEL_IMAGES, HUB_PRICING_TIERS, EXTERNAL_LINKS } from '../constants/index';
 
-interface HubPageProps {
-  onBookDemo: () => void;
-}
-
-const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
+const FAQItemComponent = ({ question, answer }: { question: string, answer: string }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -13,6 +11,7 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
       <button 
         onClick={() => setIsOpen(!isOpen)}
         className="w-full py-6 flex items-center justify-between text-left focus:outline-none group"
+        aria-expanded={isOpen}
       >
         <span className="text-lg font-medium text-white group-hover:text-brand-yellow transition-colors pr-8">{question}</span>
         <div className={`transform transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-45' : 'rotate-0'}`}>
@@ -21,6 +20,7 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
       </button>
       <div 
         className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100 mb-6' : 'max-h-0 opacity-0'}`}
+        aria-hidden={!isOpen}
       >
         <p className="text-gray-400 leading-relaxed">{answer}</p>
       </div>
@@ -32,11 +32,7 @@ const Carousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const images = [
-    "https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d147354dd1b9d4d833dc44_2dc4c4ced51c6adaa954a52032b58d06_hub-01.jpg",
-    "https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d147354cb4d49080511413_90fcd60e808c00e064c86c7c5efbc757_02_2.jpg",
-    "https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d147351a3fa852ba291630_a8a36591f13a1d245bd2f7747921fe7f_03_2.jpg"
-  ];
+  const images = HUB_CAROUSEL_IMAGES.map(img => img.src);
 
   const scrollToIndex = (index: number) => {
     if (!scrollRef.current) return;
@@ -80,7 +76,7 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="relative w-full group">
+    <div className="relative w-full group" role="region" aria-label="Image gallery">
         <div 
             ref={scrollRef}
             className="flex gap-4 overflow-x-auto no-scrollbar py-8 px-4 md:px-0" 
@@ -104,13 +100,15 @@ const Carousel = () => {
         <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none px-4 md:px-12 max-w-[1200px] mx-auto">
             <button 
                 onClick={handlePrev}
-                className="pointer-events-auto w-12 h-12 bg-black/50 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all md:flex hidden z-20"
+                className="pointer-events-auto w-12 h-12 bg-black/50 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all md:flex hidden z-20 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+                aria-label="Previous image"
             >
                 <iconify-icon icon="solar:arrow-left-linear" width="24"></iconify-icon>
             </button>
             <button 
                 onClick={handleNext}
-                className="pointer-events-auto w-12 h-12 bg-black/50 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all md:flex hidden z-20"
+                className="pointer-events-auto w-12 h-12 bg-black/50 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all md:flex hidden z-20 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+                aria-label="Next image"
             >
                 <iconify-icon icon="solar:arrow-right-linear" width="24"></iconify-icon>
             </button>
@@ -122,7 +120,9 @@ const Carousel = () => {
                 <button 
                     key={i} 
                     onClick={() => scrollToIndex(i)}
-                    className={`h-2 rounded-full transition-all duration-300 ${currentIndex === i ? 'bg-white w-8' : 'bg-white/20 w-2 hover:bg-white/40'}`}
+                    className={`h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-brand-yellow ${currentIndex === i ? 'bg-white w-8' : 'bg-white/20 w-2 hover:bg-white/40'}`}
+                    aria-label={`Go to slide ${i + 1}`}
+                    aria-current={currentIndex === i}
                 />
             ))}
         </div>
@@ -130,7 +130,7 @@ const Carousel = () => {
   );
 };
 
-const HubPage: React.FC<HubPageProps> = ({ onBookDemo }) => {
+const HubPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
   return (
     <div className="w-full bg-[#161616] text-white overflow-hidden pb-20 font-sans">
       
@@ -138,7 +138,7 @@ const HubPage: React.FC<HubPageProps> = ({ onBookDemo }) => {
       <section className="pt-20 pb-16 md:pt-32 md:pb-24 text-center relative">
         <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
           
-          {/* Background Gradient (Replaces Lottie) */}
+          {/* Background Gradient */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] w-[120%] md:w-[100%] h-[150%] -z-10 pointer-events-none overflow-hidden">
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-blue/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
              <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-pink/20 rounded-full blur-[100px] mix-blend-screen"></div>
@@ -162,32 +162,20 @@ const HubPage: React.FC<HubPageProps> = ({ onBookDemo }) => {
              </div>
           </div>
           
-          <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4 mb-8 mt-2">
-            <span className="text-xl md:text-3xl font-light text-gray-400">for</span>
-            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d1243f2f5c678d4e6bf697_meta%20logo.svg" alt="Meta" className="h-8 md:h-10 w-auto" />
-            <span className="text-xl md:text-3xl font-bold text-white">Meta ads</span>
+          <div className="mb-12 mt-4 flex items-center justify-center gap-3 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+             <p className="text-xl md:text-2xl text-gray-400 font-light tracking-wide flex items-center gap-2">
+               for <span className="text-white font-medium border-b-2 border-brand-yellow/50">all platforms</span>
+             </p>
           </div>
           
-          <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-[0.2em] mb-12">in partnership with Meta</p>
-          
           <a
-            href="https://app.bir.ch/signup?gateway=true" 
+            href={EXTERNAL_LINKS.signupHub}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex items-center justify-center px-10 py-4 bg-transparent border border-white/20 hover:border-white rounded-full text-lg font-bold text-white transition-all hover:scale-105"
           >
             <span className="group-hover:skew-x-[-10deg] transition-transform inline-block">Get started with Hub</span>
           </a>
-
-          <div className="mt-16 flex flex-col items-center gap-6">
-            <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">for other platforms</p>
-            <div className="flex items-center gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-              <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d128e7a32653e14bb9fe1e_platform-icons-snap.svg" alt="Snapchat" className="h-6 md:h-8 w-auto" loading="lazy" />
-              <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d128e725a0a70ca1dada45_platform-icons-tt.svg" alt="TikTok" className="h-6 md:h-8 w-auto" loading="lazy" />
-              <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68d128e75afd588ac47a3430_platform-icons-google.svg" alt="Google" className="h-6 md:h-8 w-auto" loading="lazy" />
-            </div>
-            <p className="text-[10px] text-gray-600 uppercase tracking-widest">coming soon</p>
-          </div>
         </div>
       </section>
 
@@ -374,36 +362,27 @@ const HubPage: React.FC<HubPageProps> = ({ onBookDemo }) => {
         <p className="text-gray-400 mb-12 text-lg">per gateway</p>
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <div className="bg-brand-yellow text-brand-black p-6 rounded-2xl flex flex-col justify-between h-56 border border-transparent shadow-lg transform hover:-translate-y-1 transition-transform">
-             <div className="text-xs font-bold uppercase opacity-80 leading-tight text-left">10,000<br/>events/mo</div>
-             <div className="text-4xl font-bold tracking-tight text-left">Free</div>
-          </div>
-          <div className="bg-[#1A1A1A] text-white p-6 rounded-2xl flex flex-col justify-between h-56 border border-white/10 hover:border-white/30 transition-colors">
-             <div className="text-xs font-bold uppercase text-gray-400 leading-tight text-left">500,000<br/>events/mo</div>
-             <div className="text-4xl font-bold tracking-tight text-left">$10</div>
-          </div>
-          <div className="bg-[#1A1A1A] text-white p-6 rounded-2xl flex flex-col justify-between h-56 border border-white/10 hover:border-white/30 transition-colors">
-             <div className="text-xs font-bold uppercase text-gray-400 leading-tight text-left">5,000,000<br/>events/mo</div>
-             <div className="text-4xl font-bold tracking-tight text-left">$49</div>
-          </div>
-          <div className="bg-[#1A1A1A] text-white p-6 rounded-2xl flex flex-col justify-between h-56 border border-white/10 hover:border-white/30 transition-colors">
-             <div className="text-xs font-bold uppercase text-gray-400 leading-tight text-left">20,000,000<br/>events/mo</div>
-             <div className="text-4xl font-bold tracking-tight text-left">$149</div>
-          </div>
-          <div className="bg-[#1A1A1A] text-white p-6 rounded-2xl flex flex-col justify-between h-56 border border-white/10 hover:border-white/30 transition-colors">
-             <div className="text-xs font-bold uppercase text-gray-400 leading-tight text-left">50,000,000<br/>events/mo</div>
-             <div className="text-4xl font-bold tracking-tight text-left">$249</div>
-          </div>
-          <div className="bg-[#1A1A1A] text-white p-6 rounded-2xl flex flex-col justify-between h-56 border border-white/10 hover:border-white/30 transition-colors">
-             <div className="text-xs font-bold uppercase text-gray-400 leading-tight text-left">150,000,000<br/>events/mo</div>
-             <div className="text-4xl font-bold tracking-tight text-left">$499</div>
-          </div>
+          {HUB_PRICING_TIERS.map((tier, index) => (
+            <div 
+              key={index}
+              className={`p-6 rounded-2xl flex flex-col justify-between h-56 border border-white/10 transition-colors shadow-lg ${
+                tier.highlighted 
+                  ? 'bg-brand-yellow text-brand-black border-transparent transform hover:-translate-y-1' 
+                  : 'bg-[#1A1A1A] text-white hover:border-white/30'
+              }`}
+            >
+               <div className={`text-xs font-bold uppercase leading-tight text-left ${tier.highlighted ? 'opacity-80' : 'text-gray-400'}`}>
+                  {tier.events}<br/>events/mo
+               </div>
+               <div className="text-4xl font-bold tracking-tight text-left">{tier.price}</div>
+            </div>
+          ))}
         </div>
 
         <div className="mt-16">
           <div className="border-t border-white/10 w-full mb-16"></div>
           <a 
-            href="https://app.bir.ch/signup?gateway=true"
+            href={EXTERNAL_LINKS.signupHub}
             className="group inline-flex items-center justify-center px-10 py-5 bg-transparent border border-white/20 hover:border-white rounded-full text-xl font-bold text-white transition-all hover:scale-105"
           >
             <span className="group-hover:skew-x-[-10deg] transition-transform inline-block">Create your Bïrch hub</span>
@@ -418,34 +397,9 @@ const HubPage: React.FC<HubPageProps> = ({ onBookDemo }) => {
         <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-12 tracking-tight">FAQ</h2>
         
         <div className="space-y-2">
-          <FAQItem 
-            question="What is 1st party data and 3rd party data?" 
-            answer="First-party data is information you gather directly from your audience through channels like your website, app, email subscribers, and CRM. Third-party data, on the other hand, is collected by another entity or business and then shared with you. As browsers continue to prohibit the collection of third-party data, many advertisers are shifting their focus to first-party data." 
-          />
-          <FAQItem 
-            question="Why many marketers are switching to server-side tracking?" 
-            answer="Professionals noticed decrease in ad performance due to inaccurate or incomplete data they see in their advertising platforms. Since third-party cookies are being constantly restricted, they might as well be gone soon. So everyone will have to switch to server-side tracking eventually." 
-          />
-          <FAQItem 
-            question="What is the difference between Meta Conversions API Gateway and Signals Gateway?" 
-            answer="Both provide ability to use first-party data. But there 2 main advantages to Signals Gateway. First, it allows you to use any sources and distribute data to any destinations, since it is designed to be independent from Meta. Second, Signals Gateway uses the new pixel, so it shows even better results." 
-          />
-          <FAQItem 
-            question="What’s the difference between Meta Pixel and Signals Gateway Pixel?" 
-            answer="Signals Gateway Pixel collects data from your website and shares it exclusively with your Signals Gateway cloud server, without any use of third-party cookies and is independent from Meta’s servers." 
-          />
-          <FAQItem 
-            question="How Signals Gateway helps to make advertising more effective?" 
-            answer="More data signals transmitted → more accurate attribution → better functioning Meta ad algorithms → ad is shown to more relevant audience → higher conversion." 
-          />
-          <FAQItem 
-            question="How do you charge for it?" 
-            answer="Event-based pricing charges you based on the number of tracked events per gateway. This scalable model helps you keep initial costs low while expanding your data volume as needed. There are no overage fees — if you exceed your plan, you continue paying the same rate per additional event. This ensures a predictable and dependable solution for marketing teams handling variable traffic." 
-          />
-          <FAQItem 
-            question="Is it GDPR compliant?" 
-            answer="Signals Gateway and first-party data help with compliance by reducing reliance on third-party cookies, ensuring user consent, and giving businesses full control over their data." 
-          />
+          {HUB_FAQ_ITEMS.map((faq, index) => (
+            <FAQItemComponent key={index} question={faq.question} answer={faq.answer} />
+          ))}
         </div>
       </section>
 

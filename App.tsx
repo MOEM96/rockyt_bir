@@ -5,12 +5,12 @@ import PerformancePage from './components/PerformancePage';
 import HubPage from './components/HubPage';
 import CasesPage from './components/CasesPage';
 import Footer from './components/Footer';
-import './types';
+import { PageType } from './types/index';
 
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState<PageType>('home');
 
-  const handleNavigate = (page: string) => {
+  const handleNavigate = (page: PageType) => {
     setCurrentPage(page);
     window.scrollTo(0, 0);
   };
