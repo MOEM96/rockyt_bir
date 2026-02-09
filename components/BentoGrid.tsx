@@ -372,7 +372,8 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
             <img 
               src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bb67180715f131e3e1e9_keiki_logotype.svg" 
               className="h-full w-auto brightness-0 invert" 
-              alt="Keiki" 
+              alt="Keiki"
+              loading="lazy" 
             />
           </div>
         </div>
@@ -390,7 +391,8 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
             <img 
               src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e630347ae261f1cba047d3_loop-earplugs-svg.svg" 
               className="h-full w-auto brightness-0 invert" 
-              alt="Loop" 
+              alt="Loop"
+              loading="lazy" 
             />
           </div>
         </div>
@@ -408,7 +410,8 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
             <img 
               src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e51ce0ac361e304aab6dd1_adparlor_new_logo_white_text.svg" 
               className="h-full w-auto" 
-              alt="AdParlor" 
+              alt="AdParlor"
+              loading="lazy" 
             />
           </div>
         </div>
@@ -436,25 +439,25 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onBookDemo }) => {
       <div className="col-span-1 md:col-span-12 bg-white rounded-[32px] p-8 md:p-16 border border-white/10 flex flex-col justify-center items-center overflow-hidden">
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-x-24 md:gap-y-16 w-full max-w-6xl">
             {/* Liven */}
-            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848beced_6720e123b0ca4231f3a00bc7_Logo%202%202.png" className="h-8 md:h-10 w-auto object-contain" alt="Liven" />
+            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848beced_6720e123b0ca4231f3a00bc7_Logo%202%202.png" className="h-8 md:h-10 w-auto object-contain" alt="Liven" loading="lazy" />
             
             {/* Scentbird */}
-            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848bece7_scentbird.png" className="h-6 md:h-8 w-auto object-contain" alt="Scentbird" />
+            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848bece7_scentbird.png" className="h-6 md:h-8 w-auto object-contain" alt="Scentbird" loading="lazy" />
             
             {/* Loop */}
-            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e630347ae261f1cba047d3_loop-earplugs-svg.svg" className="h-6 md:h-8 w-auto object-contain" alt="Loop" />
+            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e630347ae261f1cba047d3_loop-earplugs-svg.svg" className="h-6 md:h-8 w-auto object-contain" alt="Loop" loading="lazy" />
             
             {/* Keiki */}
-            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bb67180715f131e3e1e9_keiki_logotype.svg" className="h-8 md:h-12 w-auto object-contain" alt="Keiki" />
+            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bb67180715f131e3e1e9_keiki_logotype.svg" className="h-8 md:h-12 w-auto object-contain" alt="Keiki" loading="lazy" />
             
             {/* Plantin */}
-            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bea94c7fbfef848becd9_plantin.avif" className="h-8 md:h-10 w-auto object-contain" alt="Plantin" />
+            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bea94c7fbfef848becd9_plantin.avif" className="h-8 md:h-10 w-auto object-contain" alt="Plantin" loading="lazy" />
             
             {/* AdParlor */}
-            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e51ce0ac361e304aab6dd1_adparlor_new_logo_white_text.svg" className="h-8 md:h-10 w-auto object-contain brightness-0" alt="AdParlor" />
+            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e51ce0ac361e304aab6dd1_adparlor_new_logo_white_text.svg" className="h-8 md:h-10 w-auto object-contain brightness-0" alt="AdParlor" loading="lazy" />
             
             {/* Partner */}
-            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848becf1_Design%20290x292.png" className="h-8 md:h-10 w-auto object-contain" alt="Partner" />
+            <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848becf1_Design%20290x292.png" className="h-8 md:h-10 w-auto object-contain" alt="Partner" loading="lazy" />
         </div>
       </div>
 

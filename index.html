@@ -13,17 +13,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS (CDN is fine for simple usage, though installing it via package.json is better for prod) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- External Scripts -->
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <!-- External Scripts - Pinned versions and crossorigin for error visibility -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js" defer crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.2/dist/lottie-player.js" defer crossorigin="anonymous"></script>
     
     <!-- Wistia Player Scripts -->
     <script src="https://fast.wistia.com/player.js" async></script>
-    <script src="https://fast.wistia.com/embed/okb9j6qvf5.js" async type="module"></script>
-    <script src="https://fast.wistia.com/embed/kwbq8jkoy8.js" async type="module"></script>
+    <script src="https://fast.wistia.com/embed/okb9j6qvf5.js" async></script>
+    <script src="https://fast.wistia.com/embed/kwbq8jkoy8.js" async></script>
     <style>
       wistia-player[media-id='okb9j6qvf5']:not(:defined) { 
         background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/okb9j6qvf5/swatch'); 
@@ -43,12 +43,6 @@
     <script type="text/javascript">
       (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
       Cal("init", "15min", {origin:"https://app.cal.com"});
-
-      // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
-      // `data-cal-link="rock-yt-admanager/15min"`
-      // data-cal-namespace="15min"
-      // `data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'`
-
       Cal.ns["15min"]("ui", {"theme":"dark","hideEventTypeDetails":true,"layout":"month_view"});
     </script>
     <!-- Cal element-click embed code ends -->
@@ -111,11 +105,11 @@
 <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "vite": "https://esm.sh/vite@^7.3.1",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.3"
+    "react": "https://esm.sh/react@18.3.1",
+    "react-dom/": "https://esm.sh/react-dom@18.3.1/",
+    "react/": "https://esm.sh/react@18.3.1/",
+    "vite": "https://esm.sh/vite@5.2.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@4.2.1"
   }
 }
 </script>
