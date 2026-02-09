@@ -1,80 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import PartnersCarousel from './PartnersCarousel';
 import Modal from './Modal';
 import Button from './Button';
 import { DemoBookingProps } from '../types/index';
-import { useScrollAnimation } from '../hooks/index';
 import { calculateWastedSpend, parseNumberInput, formatNumber } from '../utils/helpers';
-import { LOTTIE_URLS, CAL_CONFIG } from '../constants/index';
 
 const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
   const [showCalculatorModal, setShowCalculatorModal] = useState(false);
   const [adSpend, setAdSpend] = useState('');
   const [wastedAmount, setWastedAmount] = useState<number>(0);
-
-  // Refs for scroll animation containers
-  const desktopContainerRef = useRef<HTMLDivElement>(null);
-  const mobileContainerRef = useRef<HTMLDivElement>(null);
-  const lottieRef = useRef<any>(null);
-  const mobileLottieRef = useRef<any>(null);
-
-  // Mobile animation refs (Direct DOM manipulation for performance)
-  const calculatorRef = useRef<HTMLDivElement>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  // Scroll Animation Logic using custom hook
-  useScrollAnimation(() => {
-      const scrubLottie = (container: HTMLElement | null, lottie: any) => {
-        if (!container || !lottie) return 0;
-        try {
-            const anim = (lottie && typeof lottie.getLottie === 'function') ? lottie.getLottie() : null;
-            if (!anim || !anim.totalFrames) return 0;
-
-            const rect = container.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-            
-            // Calculate progress based on container position relative to viewport
-            // We want to animate while the container is scrolling through
-            const scrollableDistance = container.offsetHeight - viewportHeight;
-            const scrolled = -rect.top; 
-            
-            let progress = 0;
-            if (scrollableDistance > 0) {
-              progress = scrolled / scrollableDistance;
-              progress = Math.max(0, Math.min(1, progress));
-            }
-            
-            const targetFrame = progress * (anim.totalFrames - 0.01);
-            // Ensure goToAndStop exists before calling
-            if (typeof anim.goToAndStop === 'function') {
-                anim.goToAndStop(targetFrame, true);
-            }
-            return progress;
-        } catch (e) {
-            // console.warn('Lottie update error:', e);
-            return 0;
-        }
-      };
-
-      // Desktop Animation
-      scrubLottie(desktopContainerRef.current, lottieRef.current);
-
-      // Mobile Animation
-      const mobileProgress = scrubLottie(mobileContainerRef.current, mobileLottieRef.current);
-      
-      // Mobile element animations using the same progress
-      const invP = 1 - mobileProgress;
-
-      if (calculatorRef.current) {
-          // Subtle fade/move on scroll for calculator
-          calculatorRef.current.style.opacity = `${0.8 + (0.2 * invP)}`; 
-          calculatorRef.current.style.transform = `scale(${0.95 + (0.05 * invP)})`;
-      }
-
-      if (carouselRef.current) {
-          carouselRef.current.style.opacity = `${mobileProgress}`;
-      }
-  }, []);
 
   const handleCalculate = () => {
     const spend = parseNumberInput(adSpend);
@@ -97,111 +31,68 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
   };
 
   return (
-    <div className="w-full relative -mt-20 md:-mt-24 mb-0">
-      
-      {/* Mobile View with Scroll Animation - Increased height for scroll track */}
-      <div ref={mobileContainerRef} className="md:hidden relative h-[250vh] z-40 pointer-events-none mb-10">
-            <div className="sticky top-0 h-[100dvh] w-full flex flex-col items-center justify-center px-4 overflow-hidden bg-[#161616] pointer-events-auto">
-                
-                {/* Mobile Lottie Background - Scroll Bound */}
-                <div className="absolute inset-0 z-0 opacity-40">
-                    <lottie-player
-                      ref={mobileLottieRef}
-                      src={LOTTIE_URLS.hero}
-                      background="transparent"
-                      speed="1"
-                      className="w-full h-full"
-                      preserveAspectRatio="xMidYMid slice"
-                    ></lottie-player>
-                </div>
+    <div className="w-full relative pt-32 pb-16 md:pt-48 md:pb-24 px-4 overflow-hidden flex flex-col items-center justify-center min-h-[90vh] bg-[#161616]">
+       
+       {/* Ambient Background Glows */}
+       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-brand-blue/10 rounded-full blur-[120px] -z-10 pointer-events-none mix-blend-screen"></div>
+       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-pink/5 rounded-full blur-[100px] -z-10 pointer-events-none mix-blend-screen"></div>
 
-                {/* Mobile Calculator Input - Compact & Minimal & Centered */}
-                <div ref={calculatorRef} className="will-change-[transform,opacity] w-full max-w-[300px] flex-shrink-0 pointer-events-auto z-30 relative">
-                    <div className="relative flex items-center bg-[#222]/80 backdrop-blur-md rounded-full border border-white/20 p-1 shadow-2xl">
-                        <div className="relative flex-grow">
-                            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                <span className="text-gray-400 font-semibold text-sm">$</span>
-                            </div>
-                            <input 
-                                type="number" 
-                                placeholder="Monthly spend (e.g. $50k)" 
-                                value={adSpend}
-                                onChange={(e) => setAdSpend(e.target.value)}
-                                className="w-full bg-transparent border-none text-white rounded-l-full py-2.5 pl-7 pr-2 focus:outline-none focus:ring-0 placeholder:text-gray-500 text-xs font-medium"
-                                aria-label="Enter monthly ad spend"
-                            />
-                        </div>
-                        <button 
-                            onClick={handleCalculate} 
-                            className="bg-brand-yellow text-brand-black hover:bg-[#fcd34d] rounded-full py-2 px-3 text-[10px] font-bold uppercase tracking-wide transition-colors flex items-center gap-1 shrink-0 whitespace-nowrap"
-                        >
-                            <span>Show Waste</span>
-                            <iconify-icon icon="solar:arrow-right-linear" width="10"></iconify-icon>
-                        </button>
-                    </div>
-                </div>
-
-                {/* Carousel (Mobile) - Bottom Anchor */}
-                <div ref={carouselRef} className="will-change-opacity w-full absolute bottom-8 left-0 px-4 flex-shrink-0 opacity-70 z-20">
-                    <div className="scale-75 origin-bottom">
-                         <PartnersCarousel />
-                    </div>
-                </div>
-            </div>
-      </div>
-
-      {/* Desktop Scroll Container */}
-      <div ref={desktopContainerRef} className="hidden md:block w-full h-[250vh] relative">
-         <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
+       <div className="max-w-6xl w-full mx-auto text-center z-10 flex flex-col items-center">
             
-            {/* Lottie Animation - Z-Index 0 (Background) */}
-            <div className="w-full h-full absolute inset-0 bg-[#161616] z-0">
-                <lottie-player
-                  ref={lottieRef}
-                  src={LOTTIE_URLS.hero}
-                  background="transparent"
-                  className="w-full h-full opacity-60"
-                  preserveAspectRatio="xMidYMid meet"
-                  aria-label="Animation showing ad performance blowing up"
-                ></lottie-player>
+            {/* Headline */}
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.95] md:leading-[0.9]">
+                Scale Your Campaigns<br className="hidden md:block" />
+                <span className="mx-2 md:mx-4 inline-block relative group">
+                    <span className="relative z-10 animate-gradient-text bg-gradient-to-r from-white via-brand-yellow to-white bg-[length:200%_auto] bg-clip-text text-transparent pb-1">Without</span>
+                    {/* Subtle underline decoration */}
+                    <svg className="absolute w-full h-3 -bottom-1 left-0 text-brand-yellow opacity-0 group-hover:opacity-100 transition-opacity duration-500" viewBox="0 0 100 10" preserveAspectRatio="none">
+                        <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
+                    </svg>
+                </span>
+                Wasting Budget
+            </h1>
+
+            {/* Subheadline */}
+            <p className="text-lg md:text-2xl text-gray-400 font-light max-w-3xl mx-auto mb-12 leading-relaxed">
+                Scale From $10K to $1M in Ad Spend <span className="text-white font-medium">Faster & Profitable</span>
+            </p>
+
+            {/* Input Component */}
+            <div className="w-full max-w-[480px] mb-8 relative group">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-white/20 to-white/10 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                <div className="relative flex items-center bg-[#0a0a0a] border border-white/10 p-1.5 pl-6 rounded-full shadow-2xl transition-transform transform group-hover:scale-[1.01]">
+                     <div className="flex-grow flex items-center h-full relative">
+                        <span className="text-gray-500 font-medium text-lg mr-2">$</span>
+                        <input 
+                            type="number" 
+                            placeholder="Monthly ad spend" 
+                            value={adSpend}
+                            onChange={(e) => setAdSpend(e.target.value)}
+                            className="w-full bg-transparent border-none text-white focus:outline-none focus:ring-0 placeholder:text-gray-600 text-base font-medium h-full"
+                            aria-label="Enter monthly ad spend"
+                        />
+                    </div>
+                    <button 
+                        onClick={handleCalculate} 
+                        className="bg-white hover:bg-gray-100 text-black text-sm font-bold py-3 px-6 rounded-full uppercase tracking-wider transition-all whitespace-nowrap flex items-center gap-2"
+                    >
+                        How it works
+                    </button>
+                </div>
             </div>
 
-            {/* Desktop Overlay: Calculator and Social Proof at Bottom - Z-Index 20 (Foreground) */}
-            <div className="absolute inset-0 flex flex-col justify-end items-center pb-24 z-20 pointer-events-none max-w-4xl mx-auto text-center px-6">
-                
-                {/* Calculator Input - New Design */}
-                <div className="pointer-events-auto w-full max-w-[640px] animate-fade-in-up">
-                    <div className="flex items-center gap-2 bg-[#0F0F0F] border border-white/20 p-2 pl-6 rounded-full shadow-2xl w-full transform transition-all hover:scale-[1.01] hover:border-white/30">
-                        <div className="flex-grow flex items-center h-full relative">
-                            <span className="text-gray-400 font-medium text-xl mr-3 relative top-[1px]">$</span>
-                            <input 
-                                type="number" 
-                                placeholder="Enter monthly ad spend" 
-                                value={adSpend}
-                                onChange={(e) => setAdSpend(e.target.value)}
-                                className="w-full bg-transparent border-none text-white focus:outline-none focus:ring-0 placeholder:text-gray-500 text-lg font-medium h-full leading-normal"
-                                aria-label="Enter monthly ad spend"
-                            />
-                        </div>
-                        <button 
-                            onClick={handleCalculate} 
-                            className="bg-[#262626] hover:bg-[#333] text-white text-[11px] font-bold py-4 px-8 rounded-full uppercase tracking-wider transition-all border border-white/5 whitespace-nowrap flex items-center gap-2 hover:brightness-110"
-                        >
-                            Show Me What I'm Wasting <span className="text-sm">→</span>
-                        </button>
-                    </div>
-                </div>
-                
-                {/* Social Proof - Anchored below input */}
-                <div className="mt-12 flex flex-col items-center w-full max-w-xl pointer-events-auto opacity-90">
-                     <p className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-6">Trusted by the brands that dominate their markets</p>
-                     <div className="w-full">
-                        <PartnersCarousel />
-                     </div>
-                </div>
+            {/* Social Proof */}
+            <div className="flex flex-wrap justify-center items-center gap-2 text-xs md:text-sm text-gray-500 font-medium mb-20 bg-white/5 px-6 py-2 rounded-full border border-white/5 backdrop-blur-sm">
+                <iconify-icon icon="solar:shield-check-bold" class="text-brand-yellow text-lg"></iconify-icon>
+                <span>Trusted by <span className="text-white">15,000+ advertisers</span> managing <span className="text-white">$2B</span> in ad spend</span>
             </div>
-         </div>
-      </div>
+
+            {/* Carousel */}
+            <div className="w-full max-w-5xl opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                <PartnersCarousel />
+            </div>
+
+       </div>
 
       {/* Compact Calculator Result Modal */}
       <Modal isOpen={showCalculatorModal} onClose={handleModalClose} size="md">
@@ -271,6 +162,17 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
         
         </div>
       </Modal>
+
+      {/* Styles for Hero Animation */}
+      <style>{`
+          @keyframes gradient-text {
+              0% { background-position: 0% 50%; }
+              100% { background-position: 200% 50%; }
+          }
+          .animate-gradient-text {
+              animation: gradient-text 3s linear infinite;
+          }
+      `}</style>
     </div>
   );
 };
