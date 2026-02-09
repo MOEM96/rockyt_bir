@@ -31,7 +31,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
   };
 
   return (
-    <div className="w-full relative pt-32 pb-16 md:pt-48 md:pb-24 px-4 overflow-hidden flex flex-col items-center justify-center min-h-[90vh] bg-[#161616]">
+    <div className="w-full relative pt-10 pb-12 md:pt-20 md:pb-20 px-4 overflow-hidden flex flex-col items-center justify-center min-h-[80vh] bg-[#161616]">
        
        {/* Ambient Background Glows */}
        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-brand-blue/10 rounded-full blur-[120px] -z-10 pointer-events-none mix-blend-screen"></div>
@@ -43,9 +43,9 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             <h1 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.95] md:leading-[0.9]">
                 Scale Your Campaigns<br className="hidden md:block" />
                 <span className="mx-2 md:mx-4 inline-block relative group">
-                    <span className="relative z-10 animate-gradient-text bg-gradient-to-r from-white via-brand-yellow to-white bg-[length:200%_auto] bg-clip-text text-transparent pb-1">Without</span>
+                    <span className="relative z-10 animate-gradient-text bg-gradient-to-r from-white via-red-500 to-white bg-[length:200%_auto] bg-clip-text text-transparent pb-1">Without</span>
                     {/* Subtle underline decoration */}
-                    <svg className="absolute w-full h-3 -bottom-1 left-0 text-brand-yellow opacity-0 group-hover:opacity-100 transition-opacity duration-500" viewBox="0 0 100 10" preserveAspectRatio="none">
+                    <svg className="absolute w-full h-3 -bottom-1 left-0 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" viewBox="0 0 100 10" preserveAspectRatio="none">
                         <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
                     </svg>
                 </span>
