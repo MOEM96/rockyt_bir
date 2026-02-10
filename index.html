@@ -8,13 +8,16 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230055FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z'/%3E%3Cpath d='M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z'/%3E%3Cpath d='M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0'/%3E%3Cpath d='M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5'/%3E%3C/svg%3E" />
     
-    <!-- Fonts - Preconnect for faster loading -->
+    <!-- Fonts - Optimized loading (non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    </noscript>
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS - Deferred to unblock render -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
     
     <!-- External Scripts - Defer non-critical -->
     <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js" defer crossorigin="anonymous"></script>
@@ -57,7 +60,9 @@
         }
     </style>
     <script>
-        tailwind.config = {
+        // Tailwind config defined before the deferred script runs
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
             theme: {
                 extend: {
                     colors: {
@@ -112,9 +117,33 @@
           Cal.ns["15min"]("on", {
             action: "bookingSuccessful",
             callback: (e) => {
+              // Extract unique booking ID from Cal.com event data
+              // We use this as the eventID for both Pixel and CAPI to ensure deduplication
+              const bookingData = e.detail?.data || {};
+              const bookingUid = bookingData.uid || 'booking_' + Date.now();
+              const bookingEmail = bookingData.email || '';
+              
               if (typeof fbq === 'function') {
-                fbq('track', 'Schedule');
+                // Client-side Pixel Tracking
+                // We pass the eventID so Facebook can match this with the server-side event
+                fbq('track', 'Schedule', { 
+                  value: 0.00, 
+                  currency: 'USD' 
+                }, { 
+                  eventID: bookingUid 
+                });
+                
+                console.log('FB Pixel Schedule event fired with ID:', bookingUid);
               }
+
+              // NOTE FOR CAPI INTEGRATION:
+              // Send 'bookingUid' and 'bookingEmail' to your backend here.
+              // Your backend should then call the Facebook CAPI with the same 'eventID' (bookingUid).
+              // Example:
+              // fetch('https://your-backend.com/api/track-conversion', {
+              //   method: 'POST',
+              //   body: JSON.stringify({ eventId: bookingUid, email: bookingEmail })
+              // });
             }
           });
 
