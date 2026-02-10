@@ -86,10 +86,10 @@ const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                 <div className="w-full md:w-7/12 p-8 md:p-10 flex flex-col justify-between relative">
                     {/* Top: Logo & Platform Icons */}
                     <div className="flex justify-between items-start mb-6">
-                        <img src={cs.logo} alt="Client Logo" className="h-8 md:h-10 w-auto object-contain object-left" style={cs.logoInvert ? { filter: 'brightness(0) invert(1)' } : {}} loading="lazy" />
+                        <img src={cs.logo} alt="Client Logo" className="h-8 md:h-10 w-auto object-contain object-left" style={cs.logoInvert ? { filter: 'brightness(0) invert(1)' } : {}} loading="lazy" decoding="async" />
                         <div className="flex gap-2">
                             {cs.platforms.map(p => (
-                                <img key={p} src={PLATFORM_ICONS[p]} alt={p} className="w-6 h-6 md:w-8 md:h-8 opacity-70" loading="lazy" />
+                                <img key={p} src={PLATFORM_ICONS[p]} alt={p} className="w-6 h-6 md:w-8 md:h-8 opacity-70" loading="lazy" decoding="async" />
                             ))}
                         </div>
                     </div>
@@ -132,7 +132,7 @@ const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                      <div className="absolute top-4 right-4 z-20 flex gap-1.5">
                         {cs.platforms.map(p => (
                             <div key={p} className="bg-black/40 backdrop-blur-md rounded-full w-8 h-8 flex items-center justify-center border border-white/10">
-                                <img src={PLATFORM_ICONS[p]} alt={p} className="w-4 h-4 opacity-100" loading="lazy" />
+                                <img src={PLATFORM_ICONS[p]} alt={p} className="w-4 h-4 opacity-100" loading="lazy" decoding="async" />
                             </div>
                         ))}
                      </div>
@@ -143,7 +143,7 @@ const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                      {/* Logo */}
                      <div className="mb-4">
                          <div className="h-12 w-fit p-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl flex items-center justify-center">
-                            <img src={cs.logo} alt="Client Logo" className="h-full w-auto object-contain max-w-[100px]" style={cs.logoInvert ? { filter: 'brightness(0) invert(1)' } : {}} loading="lazy" />
+                            <img src={cs.logo} alt="Client Logo" className="h-full w-auto object-contain max-w-[100px]" style={cs.logoInvert ? { filter: 'brightness(0) invert(1)' } : {}} loading="lazy" decoding="async" />
                          </div>
                      </div>
 
@@ -179,7 +179,7 @@ const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                 className="w-full md:w-auto h-auto py-5 px-8 text-lg border-white/20 hover:border-white/40 hover:bg-white/5 flex items-center justify-center gap-3"
             >
                 <span>Book Strategy Call</span>
-                <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/6716718ea408f53194adfec6_sales.png" alt="" width="24" className="rounded-full" loading="lazy" />
+                <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/6716718ea408f53194adfec6_sales.png" alt="" width="24" className="rounded-full" loading="lazy" decoding="async" />
             </Button>
           </div>
           <div className="flex flex-wrap justify-center gap-4 text-sm font-medium text-gray-500">

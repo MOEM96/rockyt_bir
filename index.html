@@ -8,7 +8,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230055FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z'/%3E%3Cpath d='M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z'/%3E%3Cpath d='M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0'/%3E%3Cpath d='M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5'/%3E%3C/svg%3E" />
     
-    <!-- Fonts -->
+    <!-- Fonts - Preconnect for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -16,31 +16,12 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- External Scripts - Pinned versions and crossorigin for error visibility -->
+    <!-- External Scripts - Defer non-critical -->
     <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js" defer crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.2/dist/lottie-player.js" defer crossorigin="anonymous"></script>
-    <script src="https://fast.wistia.com/player.js" async></script>
-    <script src="https://fast.wistia.com/embed/okb9j6qvf5.js" async type="module"></script>
-    <script src="https://fast.wistia.com/embed/kwbq8jkoy8.js" async type="module"></script>
     
-    <!-- Cal element-click embed code begins -->
-    <script type="text/javascript">
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", "15min", {origin:"https://app.cal.com"});
-      Cal.ns["15min"]("ui", {"theme":"dark","hideEventTypeDetails":true,"layout":"month_view"});
-
-      
-      // Track successful bookings with Meta Pixel
-      Cal.ns["15min"]("on", {
-        action: "bookingSuccessful",
-        callback: (e) => {
-          if (typeof fbq === 'function') {
-            fbq('track', 'Schedule');
-          }
-        }
-      });
-    </script>
-    <!-- Cal element-click embed code ends -->
+    <!-- Wistia Core Player - Async/Defer -->
+    <script src="https://fast.wistia.com/player.js" defer async></script>
 
     <style>
         body {
@@ -109,27 +90,61 @@
 }
 </script>
 
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '708443675559567');
-fbq('track', 'PageView');
-</script>
-<!-- End Meta Pixel Code -->
-
 </head>
   <body class="selection:bg-brand-yellow selection:text-brand-black">
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=708443675559567&ev=PageView&noscript=1"
     /></noscript>
+    
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
+
+    <!-- Delayed Third-Party Scripts -->
+    <script>
+      // Load heavy third-party scripts after main content has loaded
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          // 1. Initialize Cal.com
+          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+          Cal("init", "15min", {origin:"https://app.cal.com"});
+          Cal.ns["15min"]("ui", {"theme":"dark","hideEventTypeDetails":true,"layout":"month_view"});
+          
+          Cal.ns["15min"]("on", {
+            action: "bookingSuccessful",
+            callback: (e) => {
+              if (typeof fbq === 'function') {
+                fbq('track', 'Schedule');
+              }
+            }
+          });
+
+          // 2. Initialize Facebook Pixel
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '708443675559567');
+          fbq('track', 'PageView');
+
+          // 3. Load Wistia Video Data Scripts (Modules)
+          const w1 = document.createElement('script'); 
+          w1.src = "https://fast.wistia.com/embed/okb9j6qvf5.js"; 
+          w1.async = true; 
+          w1.type = "module";
+          document.body.appendChild(w1);
+
+          const w2 = document.createElement('script'); 
+          w2.src = "https://fast.wistia.com/embed/kwbq8jkoy8.js"; 
+          w2.async = true; 
+          w2.type = "module";
+          document.body.appendChild(w2);
+
+        }, 3500); // Delay execution by 3.5s to prioritize LCP and TTI
+      });
+    </script>
   </body>
 </html>

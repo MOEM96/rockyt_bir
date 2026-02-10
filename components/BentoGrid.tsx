@@ -18,9 +18,9 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             </p>
             <div className="flex items-center gap-4 bg-white/5 pr-6 pl-2 py-2 rounded-full border border-white/5 backdrop-blur-sm">
                 <div className="flex -space-x-3">
-                    <img src="https://i.pravatar.cc/100?img=1" alt="" className="w-10 h-10 rounded-full border-2 border-[#161616]" />
-                    <img src="https://i.pravatar.cc/100?img=5" alt="" className="w-10 h-10 rounded-full border-2 border-[#161616]" />
-                    <img src="https://i.pravatar.cc/100?img=8" alt="" className="w-10 h-10 rounded-full border-2 border-[#161616]" />
+                    <img src="https://i.pravatar.cc/100?img=1" alt="" className="w-10 h-10 rounded-full border-2 border-[#161616]" loading="lazy" decoding="async" width="40" height="40" />
+                    <img src="https://i.pravatar.cc/100?img=5" alt="" className="w-10 h-10 rounded-full border-2 border-[#161616]" loading="lazy" decoding="async" width="40" height="40" />
+                    <img src="https://i.pravatar.cc/100?img=8" alt="" className="w-10 h-10 rounded-full border-2 border-[#161616]" loading="lazy" decoding="async" width="40" height="40" />
                 </div>
                 <span className="text-sm font-semibold text-white">Join 15,000+ others</span>
             </div>
@@ -122,7 +122,13 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
       <div className="col-span-1 md:col-span-4 bg-white rounded-[32px] p-8 flex flex-col min-h-[340px] relative overflow-hidden group">
          <div className="mb-4">
              <div className="w-full aspect-[4/3] relative flex items-center justify-center">
-                 <img src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/69779936418f66d10a0258d1_d5228af4201f48b9df2a1b9173b96184_Integrations%20icons.svg" alt="Integrations" className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500" />
+                 <img 
+                    src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/69779936418f66d10a0258d1_d5228af4201f48b9df2a1b9173b96184_Integrations%20icons.svg" 
+                    alt="Integrations" 
+                    className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500" 
+                    loading="lazy"
+                    decoding="async"
+                 />
              </div>
          </div>
          <div className="mt-auto">
@@ -146,10 +152,18 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
               src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bb67180715f131e3e1e9_keiki_logotype.svg" 
               className="h-full w-auto brightness-0 invert" 
               alt="Keiki"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="rounded-xl overflow-hidden mb-6 aspect-video">
-             <img src={CASE_STUDIES.find(c => c.id === 'keiki')?.image} alt="" className="w-full h-full object-cover" />
+             <img 
+                src={CASE_STUDIES.find(c => c.id === 'keiki')?.image} 
+                alt="" 
+                className="w-full h-full object-cover" 
+                loading="lazy"
+                decoding="async"
+             />
           </div>
         </div>
         <div>
@@ -168,10 +182,18 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
               src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e630347ae261f1cba047d3_loop-earplugs-svg.svg" 
               className="h-full w-auto" 
               alt="Loop"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="rounded-xl overflow-hidden mb-6 aspect-video bg-gray-100">
-             <img src={CASE_STUDIES.find(c => c.id === 'loop')?.image} alt="" className="w-full h-full object-cover" />
+             <img 
+                src={CASE_STUDIES.find(c => c.id === 'loop')?.image} 
+                alt="" 
+                className="w-full h-full object-cover" 
+                loading="lazy"
+                decoding="async"
+             />
           </div>
         </div>
         <div>
@@ -190,10 +212,18 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
               src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e51ce0ac361e304aab6dd1_adparlor_new_logo_white_text.svg" 
               className="h-full w-auto" 
               alt="AdParlor"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="rounded-xl overflow-hidden mb-6 aspect-video bg-white/10">
-             <img src={CASE_STUDIES.find(c => c.id === 'adparlor')?.image} alt="" className="w-full h-full object-cover" />
+             <img 
+                src={CASE_STUDIES.find(c => c.id === 'adparlor')?.image} 
+                alt="" 
+                className="w-full h-full object-cover" 
+                loading="lazy"
+                decoding="async"
+             />
           </div>
         </div>
         <div>
@@ -228,7 +258,9 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                 key={index}
                 src={logo.src} 
                 className={`h-8 md:h-12 w-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300 ${logo.name === 'AdParlor' ? 'brightness-0' : ''}`}
-                alt={logo.alt} 
+                alt={logo.alt}
+                loading="lazy"
+                decoding="async" 
               />
             ))}
          </div>

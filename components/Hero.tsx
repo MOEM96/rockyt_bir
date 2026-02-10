@@ -33,9 +33,10 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
   return (
     <div className="w-full relative pt-10 pb-12 md:pt-20 md:pb-20 px-4 overflow-hidden flex flex-col items-center justify-center min-h-[80vh] bg-[#161616]">
        
-       {/* Ambient Background Glows */}
-       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-brand-blue/10 rounded-full blur-[120px] -z-10 pointer-events-none mix-blend-screen"></div>
-       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-pink/5 rounded-full blur-[100px] -z-10 pointer-events-none mix-blend-screen"></div>
+       {/* Ambient Background Glows - Optimized for Mobile Performance */}
+       {/* Reduced blur on mobile, added transform-gpu for hardware acceleration */}
+       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-brand-blue/10 rounded-full blur-[60px] md:blur-[120px] -z-10 pointer-events-none mix-blend-screen transform-gpu will-change-transform translate-z-0"></div>
+       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-pink/5 rounded-full blur-[50px] md:blur-[100px] -z-10 pointer-events-none mix-blend-screen transform-gpu will-change-transform translate-z-0"></div>
 
        <div className="max-w-6xl w-full mx-auto text-center z-10 flex flex-col items-center">
             
@@ -59,8 +60,8 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
 
             {/* Input Component - Optimized for Mobile */}
             <div className="w-full max-w-[340px] md:max-w-[480px] mb-8 relative group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-white/20 to-white/10 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div className="relative flex items-center bg-[#0a0a0a] border border-white/10 p-1 pl-4 md:p-1.5 md:pl-6 rounded-full shadow-2xl transition-transform transform group-hover:scale-[1.01]">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-white/20 to-white/10 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-500 will-change-transform"></div>
+                <div className="relative flex items-center bg-[#0a0a0a] border border-white/10 p-1 pl-4 md:p-1.5 md:pl-6 rounded-full shadow-2xl transition-transform transform group-hover:scale-[1.01] will-change-transform">
                      <div className="flex-grow flex items-center h-full relative min-w-0">
                         <span className="text-gray-500 font-medium text-base md:text-lg mr-1 md:mr-2">$</span>
                         <input 

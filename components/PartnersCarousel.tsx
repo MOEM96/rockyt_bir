@@ -35,6 +35,9 @@ const PartnersCarousel: React.FC = () => {
           width: fit-content;
           opacity: 0;
           transition: opacity 0.5s ease;
+          /* Force GPU acceleration to prevent layout trashing during scroll */
+          will-change: transform;
+          transform: translate3d(0, 0, 0);
         }
 
         .carousel-track.loaded {
@@ -107,8 +110,8 @@ const PartnersCarousel: React.FC = () => {
         }
 
         @keyframes scroll {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0%   { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
         }
        `}</style>
        <div className={`carousel-track ${isLoaded ? 'loaded' : ''}`} role="list">
