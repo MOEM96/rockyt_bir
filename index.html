@@ -117,33 +117,9 @@
           Cal.ns["15min"]("on", {
             action: "bookingSuccessful",
             callback: (e) => {
-              // Extract unique booking ID from Cal.com event data
-              // We use this as the eventID for both Pixel and CAPI to ensure deduplication
-              const bookingData = e.detail?.data || {};
-              const bookingUid = bookingData.uid || 'booking_' + Date.now();
-              const bookingEmail = bookingData.email || '';
-              
               if (typeof fbq === 'function') {
-                // Client-side Pixel Tracking
-                // We pass the eventID so Facebook can match this with the server-side event
-                fbq('track', 'Schedule', { 
-                  value: 0.00, 
-                  currency: 'USD' 
-                }, { 
-                  eventID: bookingUid 
-                });
-                
-                console.log('FB Pixel Schedule event fired with ID:', bookingUid);
+                fbq('track', 'Schedule');
               }
-
-              // NOTE FOR CAPI INTEGRATION:
-              // Send 'bookingUid' and 'bookingEmail' to your backend here.
-              // Your backend should then call the Facebook CAPI with the same 'eventID' (bookingUid).
-              // Example:
-              // fetch('https://your-backend.com/api/track-conversion', {
-              //   method: 'POST',
-              //   body: JSON.stringify({ eventId: bookingUid, email: bookingEmail })
-              // });
             }
           });
 
