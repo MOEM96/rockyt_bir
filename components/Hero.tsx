@@ -40,6 +40,16 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
 
        <div className="max-w-6xl w-full mx-auto text-center z-10 flex flex-col items-center">
             
+            {/* Tech Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 hover:bg-white/10 transition-all duration-300 group shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+                <span className="text-gray-400 text-[10px] md:text-xs font-medium tracking-wider uppercase">Powered by</span>
+                <div className="w-px h-3 bg-white/10"></div>
+                <div className="flex items-center gap-2">
+                    <iconify-icon icon="simple-icons:openai" width="14" class="text-white group-hover:text-brand-blue transition-colors duration-300"></iconify-icon>
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70 font-bold text-xs md:text-sm tracking-wide">GPT-5.2</span>
+                </div>
+            </div>
+
             {/* Headline */}
             <h1 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.95] md:leading-[0.9]">
                 Scale Your Campaigns<br className="hidden md:block" />

@@ -16,7 +16,26 @@
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     </noscript>
     
-    <!-- Tailwind CSS - Deferred to unblock render -->
+    <!-- Tailwind CSS - Warning Suppression & CDN -->
+    <script>
+      // Suppress the "cdn.tailwindcss.com should not be used in production" warning
+      // This allows us to use the CDN without console noise while maintaining a zero-dependency setup
+      const originalWarn = console.warn;
+      console.warn = (...args) => {
+        if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com should not be used in production')) {
+          return;
+        }
+        originalWarn.apply(console, args);
+      };
+
+      // Suppress "ResizeObserver loop completed with undelivered notifications" error
+      // This is often caused by third-party libraries (like Wistia/Lottie) and is generally benign
+      window.addEventListener('error', (e) => {
+        if (e.message === 'ResizeObserver loop completed with undelivered notifications.') {
+          e.stopImmediatePropagation();
+        }
+      });
+    </script>
     <script src="https://cdn.tailwindcss.com" defer></script>
     
     <!-- External Scripts - Defer non-critical -->
