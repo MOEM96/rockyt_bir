@@ -4,6 +4,7 @@ import HomePage from './components/HomePage';
 import PerformancePage from './components/PerformancePage';
 import CasesPage from './components/CasesPage';
 import Footer from './components/Footer';
+import LimitedOfferNotification from './components/LimitedOfferNotification';
 import { PageType } from './types/index';
 
 const App: React.FC = () => {
@@ -20,6 +21,10 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#161616] flex flex-col">
       <Navbar onBookDemo={handleBookDemo} onNavigate={handleNavigate} />
+      
+      {/* Global Notification Bar - Resets on page change */}
+      <LimitedOfferNotification currentPage={currentPage} />
+      
       <main className="pt-32 pb-20 px-4 md:px-6 flex-grow">
         {currentPage === 'home' && <HomePage onBookDemo={handleBookDemo} />}
         {currentPage === 'performance' && <PerformancePage onBookDemo={handleBookDemo} />}

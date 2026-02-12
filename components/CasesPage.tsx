@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from './Button';
 import { DemoBookingProps, CaseCategory } from '../types/index';
-import { CASE_STUDIES, PLATFORM_ICONS, EXTERNAL_LINKS } from '../constants/index';
+import { CASE_STUDIES, PLATFORM_ICONS, EXTERNAL_LINKS, CAL_CONFIG } from '../constants/index';
 
 const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
   const [filter, setFilter] = useState<CaseCategory>('all');
@@ -99,7 +99,12 @@ const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
 
                     {/* Bottom: CTA */}
                     <div>
-                         <button className="bg-black text-white px-8 py-4 rounded-full font-bold hover:bg-black/80 transition-transform hover:-translate-y-1 inline-flex items-center gap-2 text-sm md:text-base">
+                         <button 
+                            data-cal-link={CAL_CONFIG.link}
+                            data-cal-namespace={CAL_CONFIG.namespace}
+                            data-cal-config={JSON.stringify(CAL_CONFIG.config)}
+                            className="bg-black text-white px-8 py-4 rounded-full font-bold hover:bg-black/80 transition-transform hover:-translate-y-1 inline-flex items-center gap-2 text-sm md:text-base"
+                         >
                             Read case study <span className="text-xl">→</span>
                          </button>
                     </div>
@@ -108,7 +113,15 @@ const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             );
           } else {
             return (
-              <a href="#" onClick={e => e.preventDefault()} key={cs.id} className="col-span-1 bg-[#1A1A1A] rounded-[32px] overflow-hidden flex flex-col group border border-white/5 hover:border-white/20 transition-all h-full relative focus:outline-none focus:ring-2 focus:ring-brand-yellow">
+              <a 
+                href="#" 
+                onClick={e => e.preventDefault()} 
+                key={cs.id} 
+                className="col-span-1 bg-[#1A1A1A] rounded-[32px] overflow-hidden flex flex-col group border border-white/5 hover:border-white/20 transition-all h-full relative focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+                data-cal-link={CAL_CONFIG.link}
+                data-cal-namespace={CAL_CONFIG.namespace}
+                data-cal-config={JSON.stringify(CAL_CONFIG.config)}
+              >
                 
                 {/* Full Header Image - Widescreen aspect ratio for better 2-col layout */}
                 <div className="w-full aspect-[16/9] relative overflow-hidden">

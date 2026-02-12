@@ -42,18 +42,6 @@ export interface DotLottiePlayerProps extends React.DetailedHTMLProps<React.HTML
   [key: string]: any;
 }
 
-// Augment the global JSX namespace to add custom elements
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'iconify-icon': IconifyIconProps;
-      'lottie-player': LottiePlayerProps;
-      'wistia-player': WistiaPlayerProps;
-      'dotlottie-player': DotLottiePlayerProps;
-    }
-  }
-}
-
 // Page types
 export type PageType = 'home' | 'performance' | 'cases';
 export type CaseCategory = 'all' | 'agency' | 'ecom' | 'app';
@@ -115,4 +103,28 @@ export interface CustomerLogo {
   name: string;
   src: string;
   alt: string;
+}
+
+// Augment the global JSX namespace to add custom elements
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'iconify-icon': IconifyIconProps;
+      'lottie-player': LottiePlayerProps;
+      'wistia-player': WistiaPlayerProps;
+      'dotlottie-player': DotLottiePlayerProps;
+    }
+  }
+}
+
+// Augment React namespace for newer TypeScript/React versions
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'iconify-icon': IconifyIconProps;
+      'lottie-player': LottiePlayerProps;
+      'wistia-player': WistiaPlayerProps;
+      'dotlottie-player': DotLottiePlayerProps;
+    }
+  }
 }

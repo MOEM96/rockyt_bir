@@ -31,7 +31,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
   };
 
   return (
-    <div className="w-full relative pt-10 pb-12 md:pt-20 md:pb-20 px-4 overflow-hidden flex flex-col items-center justify-center min-h-[80vh] bg-[#161616]">
+    <div className="w-full relative pt-10 pb-12 md:pt-10 md:pb-20 px-4 overflow-hidden flex flex-col items-center justify-center min-h-[80vh] bg-[#161616]">
        
        {/* Ambient Background Glows - Optimized for Mobile Performance */}
        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-brand-blue/10 rounded-full blur-[60px] md:blur-[120px] -z-10 pointer-events-none mix-blend-screen transform-gpu will-change-transform translate-z-0"></div>
@@ -64,11 +64,11 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
 
             {/* Subheadline */}
             <p className="text-lg md:text-2xl text-gray-400 font-light max-w-3xl mx-auto mb-12 leading-relaxed">
-                Scale From $10K to $1M in Ad Spend <span className="text-white font-medium">Faster & Profitable</span>
+                Scale From $1K to $1M in Ad Spend <span className="text-white font-medium">Faster & Profitable</span>
             </p>
 
             {/* NEW SWITCH-STYLE INPUT DESIGN */}
-            <div className="w-full max-w-[540px] mb-16 relative group/container">
+            <div className="w-full max-w-[540px] mb-8 relative group/container">
                  {/* Container Glow on Hover */}
                  <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-transparent rounded-full blur opacity-0 group-hover/container:opacity-100 transition-opacity duration-500"></div>
                  
@@ -103,10 +103,43 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                  </div>
             </div>
 
-            {/* Social Proof */}
-            <div className="flex flex-wrap justify-center items-center gap-2 text-xs md:text-sm text-gray-500 font-medium mb-20 bg-white/5 px-6 py-2 rounded-full border border-white/5 backdrop-blur-sm">
-                <iconify-icon icon="solar:shield-check-bold" class="text-brand-yellow text-lg"></iconify-icon>
-                <span>Trusted by <span className="text-white">15,000+ advertisers</span> managing <span className="text-white">$2B</span> in ad spend</span>
+            {/* Redesigned Compact Social Proof */}
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-16 animate-fade-in opacity-90">
+                {/* Trust Badge */}
+                <div className="flex items-center gap-3">
+                     <div className="flex -space-x-2">
+                        {[12, 25, 43].map((i) => (
+                            <img key={i} src={`https://i.pravatar.cc/64?img=${i}`} alt="Customer" className="w-7 h-7 rounded-full border border-[#161616]" loading="lazy" />
+                        ))}
+                     </div>
+                     <div className="text-left">
+                        <div className="flex items-center gap-0.5 text-[#FFE241] text-[10px] mb-0.5">
+                            <iconify-icon icon="solar:star-bold"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold"></iconify-icon>
+                            <span className="text-gray-400 font-bold ml-1.5 text-xs">5.0</span>
+                        </div>
+                        <div className="text-xs text-gray-400 font-medium">
+                            <span className="text-white font-bold">15,000+</span> advertisers
+                        </div>
+                     </div>
+                </div>
+
+                {/* Divider (Hidden on mobile) */}
+                <div className="hidden md:block w-px h-6 bg-white/10"></div>
+
+                {/* Managed Spend */}
+                <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue border border-brand-blue/20">
+                         <iconify-icon icon="solar:chart-2-bold" class="text-sm"></iconify-icon>
+                    </div>
+                    <div className="text-left">
+                        <div className="text-xs text-white font-bold">$2B+ Ad Spend</div>
+                        <div className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Managed Annually</div>
+                    </div>
+                </div>
             </div>
 
             {/* Carousel */}

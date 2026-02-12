@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Button';
 import { DemoBookingProps } from '../types/index';
-import { COMPANY_STATS, CUSTOMER_LOGOS, CASE_STUDIES, EXTERNAL_LINKS } from '../constants/index';
+import { COMPANY_STATS, CUSTOMER_LOGOS, CASE_STUDIES, EXTERNAL_LINKS, CAL_CONFIG } from '../constants/index';
 
 const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
   return (
@@ -199,7 +199,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
       {/* Budget Allocation */}
       <div className="col-span-1 md:col-span-4 bg-[#F3F5F7] rounded-[32px] p-8 flex flex-col min-h-[380px] group overflow-hidden relative hover:-translate-y-2 transition-transform duration-500 shadow-lg">
          <h3 className="text-2xl md:text-3xl font-bold text-black mb-4 relative z-10 leading-tight">
-            Ruthless Budget Allocation
+            Fast, Profitable Scaling
          </h3>
          <p className="text-gray-500 font-medium mb-6 relative z-10">
             Our AI kills losing ads and scales winners instantly. No emotion, just math.
@@ -337,7 +337,14 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
         <div className="relative z-10">
            <p className="text-lg font-medium leading-tight mb-4">"We spend 30% less time managing ads and scaled 2.7x faster."</p>
            <p className="text-sm opacity-80 mb-6">Daryna Bondar, Head of Growth</p>
-           <button onClick={onBookDemo} className="bg-white text-[#8B5CF6] px-6 py-2 rounded-full font-bold text-sm hover:bg-opacity-90 transition-colors">Read Case Study</button>
+           <button 
+             data-cal-link={CAL_CONFIG.link}
+             data-cal-namespace={CAL_CONFIG.namespace}
+             data-cal-config={JSON.stringify(CAL_CONFIG.config)}
+             className="bg-white text-[#8B5CF6] px-6 py-2 rounded-full font-bold text-sm hover:bg-opacity-90 transition-colors"
+           >
+             Read Case Study
+           </button>
         </div>
         <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-colors"></div>
       </div>
@@ -368,7 +375,14 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
         <div>
            <p className="text-lg font-medium leading-tight mb-4">"Rockyt helped us scale 200% faster with complete automation."</p>
            <p className="text-sm text-gray-500 mb-6">Alexander L., Global Head of Performance</p>
-           <button onClick={onBookDemo} className="bg-[#161616] text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-opacity-90 transition-colors">Read Case Study</button>
+           <button 
+             data-cal-link={CAL_CONFIG.link}
+             data-cal-namespace={CAL_CONFIG.namespace}
+             data-cal-config={JSON.stringify(CAL_CONFIG.config)}
+             className="bg-[#161616] text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-opacity-90 transition-colors"
+           >
+             Read Case Study
+           </button>
         </div>
       </div>
 
@@ -398,7 +412,14 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
         <div className="relative z-10">
            <p className="text-lg font-medium leading-tight mb-4">"High-volume campaign management is finally seamless."</p>
            <p className="text-sm opacity-80 mb-6">Sidharth Sharma, Senior Campaign Mgr</p>
-           <button onClick={onBookDemo} className="bg-[#1D2E5C] border border-white text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-white hover:text-[#1D2E5C] transition-colors">Read Case Study</button>
+           <button 
+             data-cal-link={CAL_CONFIG.link}
+             data-cal-namespace={CAL_CONFIG.namespace}
+             data-cal-config={JSON.stringify(CAL_CONFIG.config)}
+             className="bg-[#1D2E5C] border border-white text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-white hover:text-[#1D2E5C] transition-colors"
+           >
+             Read Case Study
+           </button>
         </div>
         <div className="absolute -top-20 -left-20 w-64 h-64 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-colors"></div>
       </div>
@@ -437,7 +458,12 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
       </div>
 
       {/* 8. Bottom CTA */}
-      <div className="col-span-1 md:col-span-4 border-2 border-dashed border-white/20 rounded-[32px] p-8 flex items-center justify-center hover:border-white/50 hover:bg-white/5 transition-all duration-300 cursor-pointer group min-h-[180px]" onClick={onBookDemo}>
+      <div 
+        className="col-span-1 md:col-span-4 border-2 border-dashed border-white/20 rounded-[32px] p-8 flex items-center justify-center hover:border-white/50 hover:bg-white/5 transition-all duration-300 cursor-pointer group min-h-[180px]" 
+        data-cal-link={CAL_CONFIG.link}
+        data-cal-namespace={CAL_CONFIG.namespace}
+        data-cal-config={JSON.stringify(CAL_CONFIG.config)}
+      >
          <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:scale-105 transition-transform text-center">
             Stop Burning Money.<br/>Book a Demo.
          </h3>

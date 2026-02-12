@@ -2,16 +2,21 @@ import React from 'react';
 import Button from './Button';
 import { DemoBookingProps } from '../types/index';
 import { useActiveSection, useSmoothScroll } from '../hooks/index';
-import { PERFORMANCE_SECTIONS } from '../constants/index';
+import { PERFORMANCE_SECTIONS, CAL_CONFIG } from '../constants/index';
 
 const VideoPlaceholder = () => (
-  <div className="w-full aspect-video bg-[#050505] border border-white/10 rounded-2xl flex items-center justify-center relative overflow-hidden group shadow-2xl">
+  <div 
+    className="w-full aspect-video bg-[#050505] border border-white/10 rounded-2xl flex items-center justify-center relative overflow-hidden group shadow-2xl cursor-pointer"
+    data-cal-link={CAL_CONFIG.link}
+    data-cal-namespace={CAL_CONFIG.namespace}
+    data-cal-config={JSON.stringify(CAL_CONFIG.config)}
+  >
     {/* Grid Background */}
     <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
     
     {/* Play Button */}
-    <div className="relative z-10 w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform cursor-pointer">
+    <div className="relative z-10 w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform">
       <iconify-icon icon="solar:play-circle-bold" width="48" class="text-white"></iconify-icon>
     </div>
     
