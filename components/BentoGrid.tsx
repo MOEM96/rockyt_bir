@@ -210,7 +210,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                            <iconify-icon icon="solar:close-circle-bold" class="text-red-500 text-lg"></iconify-icon>
                            <div className="text-xs text-white leading-relaxed">
                                <span className="text-red-400 font-bold">PAUSED:</span> Ad Set "Broad_v2"<br/>
-                               <span className="opacity-60">Reason: CPA $45 > Target $30</span>
+                               <span className="opacity-60">Reason: CPA $45 &gt; Target $30</span>
                            </div>
                        </div>
                        <div className="flex items-center gap-3 p-4 bg-green-500/10 border border-green-500/20 rounded-lg backdrop-blur-md">
