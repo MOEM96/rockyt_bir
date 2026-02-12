@@ -73,10 +73,10 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                  <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-transparent rounded-full blur opacity-0 group-hover/container:opacity-100 transition-opacity duration-500"></div>
                  
                  {/* Main Switch Container - Dark Track */}
-                 <div className="relative flex items-center bg-[#080808] border border-white/10 p-2 rounded-full shadow-2xl transition-all duration-300 hover:border-white/20">
+                 <div className="relative flex flex-col md:flex-row items-stretch md:items-center bg-[#080808] border border-white/10 p-2 rounded-[2rem] md:rounded-full shadow-2xl transition-all duration-300 hover:border-white/20 gap-2 md:gap-0">
                     
                     {/* Input Side (Left) - The Label */}
-                    <div className="flex-grow flex items-center pl-6 pr-4 h-14 relative z-10">
+                    <div className="w-full md:w-auto flex-grow flex items-center pl-6 pr-4 h-14 relative z-10">
                          <span className="text-gray-600 font-medium text-lg md:text-xl mr-2 select-none">$</span>
                          <input 
                              type="number" 
@@ -91,7 +91,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                     {/* Button Side (Right) - The Knob */}
                     <button 
                         onClick={handleCalculate} 
-                        className="relative h-14 px-8 bg-white text-black rounded-full flex items-center justify-center gap-3 font-bold text-xs md:text-sm tracking-widest uppercase transition-all duration-300 overflow-hidden group/btn hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] shrink-0"
+                        className="w-full md:w-auto relative h-14 px-8 bg-white text-black rounded-full flex items-center justify-center gap-3 font-bold text-xs md:text-sm tracking-widest uppercase transition-all duration-300 overflow-hidden group/btn hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] shrink-0"
                     >
                          {/* Text and Icon */}
                          <span className="relative z-10 transition-colors duration-300">How it works</span>

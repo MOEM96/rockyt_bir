@@ -42,8 +42,8 @@ export interface DotLottiePlayerProps extends React.DetailedHTMLProps<React.HTML
   [key: string]: any;
 }
 
-// Augment the React module to add custom elements to JSX.IntrinsicElements
-declare module 'react' {
+// Augment the global JSX namespace to add custom elements
+declare global {
   namespace JSX {
     interface IntrinsicElements {
       'iconify-icon': IconifyIconProps;
