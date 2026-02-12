@@ -1,3 +1,4 @@
+
 import { PartnerLogo, Platform, CaseStudy, PerformanceSection, FAQItem, PricingTier, CompanyStat, CustomerLogo } from '../types/index';
 
 export const CAL_CONFIG = {
@@ -41,12 +42,12 @@ export const LOTTIE_URLS = {
   hero: "https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68ece6c98328b7f07810b227_Blow%20up%20Desktop.json"
 };
 
+// Updated 4 Stages for the Learning Journey
 export const PERFORMANCE_SECTIONS: PerformanceSection[] = [
-  { id: 'unified-command', label: 'Unified Command Centre' },
-  { id: 'creative-genius', label: 'Creative Genius' },
-  { id: 'untiring-pilot', label: 'Untiring Pilot' },
-  { id: 'crystal-clear', label: 'Crystal Clear Lens' },
-  { id: 'insight-engine', label: 'Insight Engine' },
+  { id: 'centralize', label: 'Centralize' },
+  { id: 'create', label: 'Create' },
+  { id: 'optimize', label: 'Optimize' },
+  { id: 'verify', label: 'Verify' },
 ];
 
 export const HUB_FAQ_ITEMS: FAQItem[] = [
