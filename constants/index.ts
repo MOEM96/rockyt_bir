@@ -14,6 +14,8 @@ export const CAL_CONFIG = {
 export const EXTERNAL_LINKS = {
   signup: 'https://app.bir.ch/signup',
   signupHub: 'https://app.bir.ch/signup?gateway=true',
+  getStarted: 'https://launch.rockyt.io/?ref_id=5DJF2eTqFTSvMFdA5edh3Gti1s82',
+  login: 'https://launch.rockyt.io',
 };
 
 export const PARTNER_LOGOS: PartnerLogo[] = [
