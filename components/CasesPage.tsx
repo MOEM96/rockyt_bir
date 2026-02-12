@@ -66,7 +66,7 @@ const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
       </section>
 
       {/* Case Studies Grid - Fixed to 2 cols for better alignment matching source */}
-      <div id="case-studies-grid" className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-fr mb-24">
+      <div id="case-studies-grid" className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
         {filteredCases.map((cs) => {
           if (cs.size === 'big') {
             return (
@@ -139,7 +139,7 @@ const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                 </div>
 
                 {/* Content Body */}
-                <div className="p-8 flex flex-col flex-grow relative z-20 -mt-16">
+                <div className="p-6 md:p-8 flex flex-col flex-grow relative z-20 -mt-16">
                      {/* Logo */}
                      <div className="mb-4">
                          <div className="h-12 w-fit p-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl flex items-center justify-center">
@@ -147,7 +147,7 @@ const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                          </div>
                      </div>
 
-                     <h3 className="text-xl font-bold text-white mb-6 leading-tight line-clamp-3">{cs.title}</h3>
+                     <h3 className="text-xl font-bold text-white mb-6 leading-tight">{cs.title}</h3>
 
                      <div className="mt-auto">
                         <div className="text-brand-yellow font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">

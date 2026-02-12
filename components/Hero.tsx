@@ -34,7 +34,6 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
     <div className="w-full relative pt-10 pb-12 md:pt-20 md:pb-20 px-4 overflow-hidden flex flex-col items-center justify-center min-h-[80vh] bg-[#161616]">
        
        {/* Ambient Background Glows - Optimized for Mobile Performance */}
-       {/* Reduced blur on mobile, added transform-gpu for hardware acceleration */}
        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-brand-blue/10 rounded-full blur-[60px] md:blur-[120px] -z-10 pointer-events-none mix-blend-screen transform-gpu will-change-transform translate-z-0"></div>
        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-pink/5 rounded-full blur-[50px] md:blur-[100px] -z-10 pointer-events-none mix-blend-screen transform-gpu will-change-transform translate-z-0"></div>
 
@@ -68,28 +67,40 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                 Scale From $10K to $1M in Ad Spend <span className="text-white font-medium">Faster & Profitable</span>
             </p>
 
-            {/* Input Component - Optimized for Mobile */}
-            <div className="w-full max-w-[340px] md:max-w-[480px] mb-8 relative group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-white/20 to-white/10 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-500 will-change-transform"></div>
-                <div className="relative flex items-center bg-[#0a0a0a] border border-white/10 p-1 pl-4 md:p-1.5 md:pl-6 rounded-full shadow-2xl transition-transform transform group-hover:scale-[1.01] will-change-transform">
-                     <div className="flex-grow flex items-center h-full relative min-w-0">
-                        <span className="text-gray-500 font-medium text-base md:text-lg mr-1 md:mr-2">$</span>
-                        <input 
-                            type="number" 
-                            placeholder="Monthly ad spend" 
-                            value={adSpend}
-                            onChange={(e) => setAdSpend(e.target.value)}
-                            className="w-full bg-transparent border-none text-white focus:outline-none focus:ring-0 placeholder:text-gray-600 text-sm md:text-base font-medium h-full min-w-0"
-                            aria-label="Enter monthly ad spend"
-                        />
+            {/* NEW SWITCH-STYLE INPUT DESIGN */}
+            <div className="w-full max-w-[540px] mb-16 relative group/container">
+                 {/* Container Glow on Hover */}
+                 <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-transparent rounded-full blur opacity-0 group-hover/container:opacity-100 transition-opacity duration-500"></div>
+                 
+                 {/* Main Switch Container - Dark Track */}
+                 <div className="relative flex items-center bg-[#080808] border border-white/10 p-2 rounded-full shadow-2xl transition-all duration-300 hover:border-white/20">
+                    
+                    {/* Input Side (Left) - The Label */}
+                    <div className="flex-grow flex items-center pl-6 pr-4 h-14 relative z-10">
+                         <span className="text-gray-600 font-medium text-lg md:text-xl mr-2 select-none">$</span>
+                         <input 
+                             type="number" 
+                             placeholder="Monthly ad spend" 
+                             value={adSpend}
+                             onChange={(e) => setAdSpend(e.target.value)}
+                             className="w-full bg-transparent border-none text-white text-lg md:text-xl font-medium placeholder:text-gray-700 focus:outline-none focus:ring-0 p-0 h-full"
+                             aria-label="Enter monthly ad spend"
+                         />
                     </div>
+
+                    {/* Button Side (Right) - The Knob */}
                     <button 
                         onClick={handleCalculate} 
-                        className="flex-shrink-0 bg-white hover:bg-gray-100 text-black text-[10px] md:text-sm font-bold py-2.5 px-4 md:py-3 md:px-6 rounded-full uppercase tracking-wider transition-all whitespace-nowrap flex items-center gap-2"
+                        className="relative h-14 px-8 bg-white text-black rounded-full flex items-center justify-center gap-3 font-bold text-xs md:text-sm tracking-widest uppercase transition-all duration-300 overflow-hidden group/btn hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] shrink-0"
                     >
-                        How it works
+                         {/* Text and Icon */}
+                         <span className="relative z-10 transition-colors duration-300">How it works</span>
+                         <iconify-icon icon="solar:arrow-right-linear" class="relative z-10 text-lg transition-transform duration-300 group-hover/btn:translate-x-1"></iconify-icon>
+                         
+                         {/* Left-to-Right Fill Animation */}
+                         <div className="absolute inset-0 bg-[#FFE241] transform -translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300 ease-out z-0"></div>
                     </button>
-                </div>
+                 </div>
             </div>
 
             {/* Social Proof */}
@@ -105,7 +116,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
 
        </div>
 
-      {/* Calculator Result Modal - Larger on Desktop, Compact on Mobile */}
+      {/* Calculator Result Modal */}
       <Modal isOpen={showCalculatorModal} onClose={handleModalClose} size="lg">
         <style>{`
             wistia-player[media-id='okb9j6qvf5']:not(:defined) { 
@@ -118,7 +129,6 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
         
         <div className="p-4 md:p-8 flex flex-col items-center text-center">
         
-        {/* Result Header - Minimal */}
         <div className="mb-4 md:mb-6 w-full">
             {wastedAmount > 0 ? (
                 <div className="flex flex-col items-center">
@@ -133,12 +143,10 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             )}
         </div>
 
-        {/* Video Embed - Compact */}
         <div className="w-full bg-black rounded-xl overflow-hidden shadow-2xl border border-white/10 mb-4 md:mb-8 aspect-video relative z-10">
              <wistia-player media-id="okb9j6qvf5" aspect="1.7777777777777777"></wistia-player>
         </div>
 
-        {/* Headlines & Stats - Replacing Timeline */}
         <div className="w-full mb-4 md:mb-8">
              <div className="flex items-center justify-center gap-2 mb-3 md:mb-4">
                 <span className="relative flex h-2 w-2">
@@ -160,7 +168,6 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
              </div>
         </div>
 
-        {/* Final CTA */}
         <Button 
             onClick={handleFixItNow}
             asBookingButton
@@ -174,7 +181,6 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
         </div>
       </Modal>
 
-      {/* Styles for Hero Animation */}
       <style>{`
           @keyframes gradient-text {
               0% { background-position: 0% 50%; }
