@@ -211,8 +211,11 @@ const PerformancePage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                             
                             {/* Mobile Visual (Visible only on small screens) */}
                             <div className="lg:hidden w-full mt-8">
-                                <div className={`w-full bg-black rounded-2xl border border-white/10 relative overflow-hidden aspect-[${stage.aspectRatio}]`}>
-                                     <wistia-player media-id={stage.videoId} aspect={stage.aspectRatio}></wistia-player>
+                                <div 
+                                    className="w-full bg-black rounded-2xl border border-white/10 relative overflow-hidden"
+                                    style={{ aspectRatio: stage.aspectRatio }}
+                                >
+                                     <wistia-player media-id={stage.videoId} aspect={stage.aspectRatio.toString()}></wistia-player>
                                 </div>
                             </div>
                         </div>
@@ -258,7 +261,7 @@ const PerformancePage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                                                 padding-top: ${100 / stage.aspectRatio}%; 
                                             }
                                         `}</style>
-                                        <wistia-player media-id={stage.videoId} aspect={stage.aspectRatio}></wistia-player>
+                                        <wistia-player media-id={stage.videoId} aspect={stage.aspectRatio.toString()}></wistia-player>
                                     </div>
                                 </div>
                             );
