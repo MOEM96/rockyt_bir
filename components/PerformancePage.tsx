@@ -73,7 +73,7 @@ const STAGES = [
   }
 ];
 
-const PerformancePage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
+const PerformancePage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => {
   const [activeSection, setActiveSection] = useState<string>(STAGES[0].id);
   const [progressHeight, setProgressHeight] = useState(0);
 

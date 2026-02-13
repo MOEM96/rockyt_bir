@@ -54,6 +54,7 @@ export interface NavigationProps {
 
 export interface DemoBookingProps {
   onBookDemo: () => void;
+  onGetStarted: () => void;
 }
 
 export interface BasePageProps extends DemoBookingProps {}

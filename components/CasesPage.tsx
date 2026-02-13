@@ -3,7 +3,7 @@ import Button from './Button';
 import { DemoBookingProps, CaseCategory } from '../types/index';
 import { CASE_STUDIES, PLATFORM_ICONS, EXTERNAL_LINKS, CAL_CONFIG } from '../constants/index';
 
-const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
+const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => {
   const [filter, setFilter] = useState<CaseCategory>('all');
 
   const filteredCases = CASE_STUDIES.filter(
@@ -182,9 +182,9 @@ const CasesPage: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
             Every day you wait is another day your competitors get ahead.
           </div>
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
-            <a href={EXTERNAL_LINKS.signup} className="w-full md:w-auto bg-brand-yellow text-brand-black px-10 py-5 rounded-full text-xl font-bold hover:bg-[#fcd34d] transition-all hover:scale-105 active:scale-95 inline-flex justify-center items-center">
+            <button onClick={onGetStarted} className="w-full md:w-auto bg-brand-yellow text-brand-black px-10 py-5 rounded-full text-xl font-bold hover:bg-[#fcd34d] transition-all hover:scale-105 active:scale-95 inline-flex justify-center items-center">
               Start Free Trial
-            </a>
+            </button>
             <Button 
                 onClick={onBookDemo}
                 asBookingButton

@@ -5,7 +5,7 @@ import Button from './Button';
 import { DemoBookingProps } from '../types/index';
 import { calculateWastedSpend, parseNumberInput, formatNumber } from '../utils/helpers';
 
-const Hero: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
+const Hero: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => {
   const [showCalculatorModal, setShowCalculatorModal] = useState(false);
   const [adSpend, setAdSpend] = useState('');
   const [wastedAmount, setWastedAmount] = useState<number>(0);

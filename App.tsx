@@ -33,6 +33,11 @@ const App: React.FC = () => {
   // No-op function since Cal.com handles the modal via data attributes
   const handleBookDemo = () => {};
 
+  // Open the Get Started Modal
+  const handleGetStarted = () => {
+    setIsGetStartedOpen(true);
+  };
+
   const handleCloseGetStarted = () => {
     setIsGetStartedOpen(false);
     // Reset the flow state after modal closes
@@ -108,7 +113,7 @@ const App: React.FC = () => {
         onNavigate={handleNavigate} 
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
-        onGetStarted={() => setIsGetStartedOpen(true)}
+        onGetStarted={handleGetStarted}
       />
       
       {/* Global Notification Bar - Resets on page change, hides when mobile menu is open */}
@@ -118,9 +123,9 @@ const App: React.FC = () => {
       />
       
       <main className="pt-32 pb-20 px-4 md:px-6 flex-grow">
-        {currentPage === 'home' && <HomePage onBookDemo={handleBookDemo} />}
-        {currentPage === 'performance' && <PerformancePage onBookDemo={handleBookDemo} />}
-        {currentPage === 'cases' && <CasesPage onBookDemo={handleBookDemo} />}
+        {currentPage === 'home' && <HomePage onBookDemo={handleBookDemo} onGetStarted={handleGetStarted} />}
+        {currentPage === 'performance' && <PerformancePage onBookDemo={handleBookDemo} onGetStarted={handleGetStarted} />}
+        {currentPage === 'cases' && <CasesPage onBookDemo={handleBookDemo} onGetStarted={handleGetStarted} />}
       </main>
       <Footer onNavigate={handleNavigate} />
 

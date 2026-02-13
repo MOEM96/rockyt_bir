@@ -4,7 +4,7 @@ import { DemoBookingProps } from '../types/index';
 import { COMPANY_STATS, CUSTOMER_LOGOS, CASE_STUDIES, EXTERNAL_LINKS, CAL_CONFIG } from '../constants/index';
 import { usePrefersReducedMotion } from '../hooks/index';
 
-const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
+const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => {
   const prefersReducedMotion = usePrefersReducedMotion();
   
   // Prepare case studies for marquee (duplicate for seamless loop)
@@ -401,7 +401,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
           </div>
       </div>
 
-      <div className="col-span-1 md:col-span-4 bg-[#FFE241] rounded-[32px] p-8 flex items-center justify-center hover:bg-[#fcd34d] hover:-translate-y-1 transition-all duration-300 cursor-pointer min-h-[180px] shadow-lg hover:shadow-yellow-400/30" onClick={() => window.location.href = EXTERNAL_LINKS.signup}>
+      <div className="col-span-1 md:col-span-4 bg-[#FFE241] rounded-[32px] p-8 flex items-center justify-center hover:bg-[#fcd34d] hover:-translate-y-1 transition-all duration-300 cursor-pointer min-h-[180px] shadow-lg hover:shadow-yellow-400/30" onClick={onGetStarted}>
           <h3 className="text-2xl md:text-3xl font-bold text-black flex items-center gap-2">
             Start Free Trial <iconify-icon icon="solar:arrow-right-linear" class="text-xl"></iconify-icon>
           </h3>

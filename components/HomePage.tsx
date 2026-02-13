@@ -1,16 +1,13 @@
 import React from 'react';
 import Hero from './Hero';
 import BentoGrid from './BentoGrid';
+import { DemoBookingProps } from '../types/index';
 
-interface HomePageProps {
-  onBookDemo: () => void;
-}
-
-const HomePage: React.FC<HomePageProps> = ({ onBookDemo }) => {
+const HomePage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => {
   return (
     <div className="max-w-[1200px] mr-auto ml-auto">
-      <Hero onBookDemo={onBookDemo} />
-      <BentoGrid onBookDemo={onBookDemo} />
+      <Hero onBookDemo={onBookDemo} onGetStarted={onGetStarted} />
+      <BentoGrid onBookDemo={onBookDemo} onGetStarted={onGetStarted} />
     </div>
   );
 };
