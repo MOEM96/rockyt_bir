@@ -29,9 +29,9 @@
       };
 
       // Suppress "ResizeObserver loop completed with undelivered notifications" error
-      // This is often caused by third-party libraries (like Wistia/Lottie) and is generally benign
+      // Also suppress generic "Script error." which is often caused by third-party scripts (Iconify/Wistia) from different origins
       window.addEventListener('error', (e) => {
-        if (e.message === 'ResizeObserver loop completed with undelivered notifications.') {
+        if (e.message === 'ResizeObserver loop completed with undelivered notifications.' || e.message === 'Script error.') {
           e.stopImmediatePropagation();
         }
       });
@@ -139,6 +139,8 @@
               if (typeof fbq === 'function') {
                 fbq('track', 'Schedule');
               }
+              // Dispatch event to React app
+              window.dispatchEvent(new CustomEvent('rockyt:bookingSuccessful'));
             }
           });
 
