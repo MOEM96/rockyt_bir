@@ -137,38 +137,36 @@ const App: React.FC = () => {
         className="h-[85vh] md:h-[90vh] flex flex-col overflow-hidden p-0"
         showCloseButton={true}
       >
-          {/* Header Steps */}
-          <div className="bg-[#121212] border-b border-white/10 px-4 py-5 md:py-6 shrink-0 relative z-20">
-              <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-center gap-3 md:gap-8">
+          {/* Header Steps - Optimized for Mobile (2 Steps, Compact) */}
+          <div className="bg-[#121212] border-b border-white/10 px-3 py-3 md:px-4 md:py-6 shrink-0 relative z-20">
+              <div className="max-w-3xl mx-auto flex flex-row items-center justify-center gap-2 md:gap-8">
                   
                   {/* Step 1: Book Onboarding */}
-                  <div className={`flex items-center gap-3 relative group transition-opacity duration-300 ${isBookingConfirmed ? 'opacity-50' : 'opacity-100'}`}>
-                      <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-black transition-all duration-300 ${isBookingConfirmed ? 'bg-green-500 text-white shadow-none' : 'bg-brand-yellow text-black shadow-[0_0_15px_rgba(255,226,65,0.4)]'}`}>
+                  <div className={`flex items-center gap-2 md:gap-3 relative group transition-opacity duration-300 ${isBookingConfirmed ? 'opacity-50' : 'opacity-100'}`}>
+                      <div className={`w-6 h-6 md:w-7 md:h-7 rounded-full flex items-center justify-center text-[10px] md:text-xs font-black transition-all duration-300 ${isBookingConfirmed ? 'bg-green-500 text-white shadow-none' : 'bg-brand-yellow text-black shadow-[0_0_15px_rgba(255,226,65,0.4)]'}`}>
                           {isBookingConfirmed ? <iconify-icon icon="solar:check-read-bold"></iconify-icon> : '1'}
                       </div>
-                      <span className="text-white font-bold text-sm tracking-wide uppercase">Book Onboarding</span>
+                      <span className="text-white font-bold text-[10px] md:text-sm tracking-wide uppercase whitespace-nowrap">Book Onboarding</span>
                   </div>
 
                   {/* Connector */}
-                  <div className="hidden md:block w-12 h-px bg-white/10"></div>
-                  <div className="md:hidden w-px h-3 bg-white/10 my-1"></div>
+                  <div className="w-4 h-px bg-white/10 md:w-12"></div>
 
                   {/* Step 2: Create Account */}
-                  <div className={`flex items-center gap-3 transition-opacity duration-300 ${isBookingConfirmed ? 'opacity-100' : 'opacity-40'}`}>
-                      <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs border transition-all duration-300 ${isBookingConfirmed ? 'bg-brand-yellow text-black border-brand-yellow shadow-[0_0_15px_rgba(255,226,65,0.4)] font-black' : 'bg-white/10 text-white border-white/10 font-bold'}`}>
+                  <div className={`flex items-center gap-2 md:gap-3 transition-opacity duration-300 ${isBookingConfirmed ? 'opacity-100' : 'opacity-40'}`}>
+                      <div className={`w-6 h-6 md:w-7 md:h-7 rounded-full flex items-center justify-center text-[10px] md:text-xs border transition-all duration-300 ${isBookingConfirmed ? 'bg-brand-yellow text-black border-brand-yellow shadow-[0_0_15px_rgba(255,226,65,0.4)] font-black' : 'bg-white/10 text-white border-white/10 font-bold'}`}>
                           2
                       </div>
-                      <span className={`${isBookingConfirmed ? 'text-white' : 'text-gray-300'} font-medium text-sm tracking-wide uppercase transition-colors`}>Create Account</span>
+                      <span className={`${isBookingConfirmed ? 'text-white' : 'text-gray-300'} font-medium text-[10px] md:text-sm tracking-wide uppercase transition-colors whitespace-nowrap`}>Create Account</span>
                   </div>
 
-                   {/* Connector */}
-                  <div className="hidden md:block w-12 h-px bg-white/10"></div>
-                  <div className="md:hidden w-px h-3 bg-white/10 my-1"></div>
-
-                  {/* Step 3: Scale Ads */}
-                  <div className="flex items-center gap-3 opacity-40">
-                      <div className="w-7 h-7 rounded-full bg-white/10 text-white font-bold flex items-center justify-center text-xs border border-white/10">3</div>
-                      <span className="text-gray-300 font-medium text-sm tracking-wide uppercase">Scale Ads</span>
+                   {/* Step 3: Scale Ads - HIDDEN ON MOBILE */}
+                  <div className="hidden md:flex items-center gap-3">
+                      <div className="w-12 h-px bg-white/10"></div>
+                      <div className="flex items-center gap-3 opacity-40">
+                          <div className="w-7 h-7 rounded-full bg-white/10 text-white font-bold flex items-center justify-center text-xs border border-white/10">3</div>
+                          <span className="text-gray-300 font-medium text-sm tracking-wide uppercase">Scale Ads</span>
+                      </div>
                   </div>
 
               </div>
@@ -193,8 +191,8 @@ const App: React.FC = () => {
                    ></iframe>
                </div>
 
-               {/* Bottom Action Bar */}
-               <div className="shrink-0 p-6 bg-[#121212] border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 z-20 shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
+               {/* Bottom Action Bar - Compact on Mobile */}
+               <div className="shrink-0 p-3 md:p-6 bg-[#121212] border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4 z-20 shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
                     <div className="text-sm text-gray-400 hidden md:block">
                         {isBookingConfirmed 
                             ? <span className="text-green-400 font-bold flex items-center gap-2 animate-fade-in"><iconify-icon icon="solar:check-circle-bold" width="18"></iconify-icon> Booking Confirmed! You can now proceed.</span>
@@ -206,7 +204,7 @@ const App: React.FC = () => {
                         href={isBookingConfirmed ? EXTERNAL_LINKS.getStarted : '#'}
                         onClick={(e) => !isBookingConfirmed && e.preventDefault()}
                         className={`
-                            w-full md:w-auto px-8 py-4 rounded-full text-base font-bold uppercase tracking-wide flex items-center justify-center gap-2 transition-all duration-300
+                            w-full md:w-auto px-4 py-3 md:px-8 md:py-4 rounded-full text-xs md:text-base font-bold uppercase tracking-wide flex items-center justify-center gap-2 transition-all duration-300
                             ${isBookingConfirmed 
                                 ? 'bg-[#FFE241] text-black hover:bg-[#ffeb7a] shadow-[0_0_20px_rgba(255,226,65,0.4)] cursor-pointer transform hover:-translate-y-1' 
                                 : 'bg-white/5 text-gray-500 border border-white/10 cursor-not-allowed grayscale opacity-50'
@@ -215,7 +213,7 @@ const App: React.FC = () => {
                         aria-disabled={!isBookingConfirmed}
                     >
                         <span>Create Your Account</span>
-                        <iconify-icon icon="solar:arrow-right-bold" class="text-xl"></iconify-icon>
+                        <iconify-icon icon="solar:arrow-right-bold" class="text-sm md:text-xl"></iconify-icon>
                     </a>
                </div>
           </div>

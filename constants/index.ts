@@ -100,10 +100,15 @@ export const CUSTOMER_LOGOS: CustomerLogo[] = [
   { name: "Liven", src: "https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848beced_6720e123b0ca4231f3a00bc7_Logo%202%202.png", alt: "Liven" },
   { name: "Scentbird", src: "https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848bece7_scentbird.png", alt: "Scentbird" },
   { name: "Loop", src: "https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e630347ae261f1cba047d3_loop-earplugs-svg.svg", alt: "Loop" },
-  { name: "Keiki", src: "https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bb67180715f131e3e1e9_keiki_logotype.svg", alt: "Keiki" },
   { name: "Plantin", src: "https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bea94c7fbfef848becd9_plantin.avif", alt: "Plantin" },
   { name: "AdParlor", src: "https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e51ce0ac361e304aab6dd1_adparlor_new_logo_white_text.svg", alt: "AdParlor" },
   { name: "Partner", src: "https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5beaa4c7fbfef848becf1_Design%20290x292.png", alt: "Partner" },
+  { name: "Customer 8", src: "https://cdn.prod.website-files.com/6798ff28c64131df111e57cc/6852442e820f97f798a9352e_Plai%20Customers.png", alt: "Customer Logo" },
+  { name: "Customer 9", src: "https://cdn.prod.website-files.com/6798ff28c64131df111e57cc/6852d790d8fdbaa07646c663_4.png", alt: "Customer Logo" },
+  { name: "Customer 10", src: "https://cdn.prod.website-files.com/6798ff28c64131df111e57cc/6852df2bcf90e788987ff6ad_Plai%20Customers%20(5).png", alt: "Customer Logo" },
+  { name: "Customer 11", src: "https://cdn.prod.website-files.com/6798ff28c64131df111e57cc/6852d78e89b3b2b8d9c47800_3.png", alt: "Customer Logo" },
+  { name: "Customer 12", src: "https://cdn.prod.website-files.com/6798ff28c64131df111e57cc/6852dc1222513658079c43cb_Plai%20Customers%20(2).png", alt: "Customer Logo" },
+  { name: "Customer 13", src: "https://cdn.prod.website-files.com/6798ff28c64131df111e57cc/6852d78e4b43b0dbb0cdafd6_2.png", alt: "Customer Logo" },
 ];
 
 export const CASE_STUDIES: CaseStudy[] = [

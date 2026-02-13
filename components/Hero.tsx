@@ -119,7 +119,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => {
                             <iconify-icon icon="solar:star-bold"></iconify-icon>
                             <iconify-icon icon="solar:star-bold"></iconify-icon>
                             <iconify-icon icon="solar:star-bold"></iconify-icon>
-                            <span className="text-gray-400 font-bold ml-1.5 text-xs">5.0</span>
+                            <span className="text-gray-400 font-bold ml-1.5 text-xs">4.6</span>
                         </div>
                         <div className="text-xs text-gray-400 font-medium">
                             <span className="text-white font-bold">15,000+</span> advertisers

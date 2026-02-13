@@ -241,7 +241,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => 
                   <div className="w-16 h-16 rounded-full bg-[#1A1A1A] border-2 border-white/10 flex items-center justify-center text-2xl font-black mb-6 group-hover:border-brand-yellow group-hover:text-brand-yellow transition-all duration-300 shadow-xl z-10">
                       1
                   </div>
-                  <h3 className="text-xl font-bold mb-3">Import</h3>
+                  <h3 className="text-xl font-bold mb-3">Connect</h3>
                   <p className="text-gray-500 font-medium">Connect your ad accounts in one click.</p>
               </div>
               
@@ -249,16 +249,16 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => 
                   <div className="w-16 h-16 rounded-full bg-[#1A1A1A] border-2 border-white/10 flex items-center justify-center text-2xl font-black mb-6 group-hover:border-brand-yellow group-hover:text-brand-yellow transition-all duration-300 shadow-xl z-10">
                       2
                   </div>
-                  <h3 className="text-xl font-bold mb-3">Connect</h3>
-                  <p className="text-gray-500 font-medium">Link your analytics and creative library.</p>
+                  <h3 className="text-xl font-bold mb-3">Import</h3>
+                  <p className="text-gray-500 font-medium">Import your running campaigns from any ad platform.</p>
               </div>
               
               <div className="flex flex-col items-center group relative">
                   <div className="w-16 h-16 rounded-full bg-[#1A1A1A] border-2 border-white/10 flex items-center justify-center text-2xl font-black mb-6 group-hover:border-brand-yellow group-hover:text-brand-yellow transition-all duration-300 shadow-xl z-10">
                       3
                   </div>
-                  <h3 className="text-xl font-bold mb-3">Optimize</h3>
-                  <p className="text-gray-500 font-medium">Let AI protect your budget & scale profitably.</p>
+                  <h3 className="text-xl font-bold mb-3">Scale</h3>
+                  <p className="text-gray-500 font-medium">Let Rockyt protect your budget & scale profitably.</p>
               </div>
           </div>
           {/* Background Glow */}
