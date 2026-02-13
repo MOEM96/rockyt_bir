@@ -9,9 +9,10 @@ import { EXTERNAL_LINKS } from '../constants/index';
 interface NavbarProps extends NavigationProps, DemoBookingProps {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: (isOpen: boolean) => void;
+  onGetStarted: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate, isMobileMenuOpen, setIsMobileMenuOpen }) => {
+const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate, isMobileMenuOpen, setIsMobileMenuOpen, onGetStarted }) => {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useScrollLock(isMobileMenuOpen);
@@ -33,6 +34,12 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate, isMobileMenuOpe
     e.preventDefault();
     onNavigate(page);
     scrollToTop();
+  };
+
+  const handleGetStartedClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onGetStarted();
+    if (isMobileMenuOpen) setIsMobileMenuOpen(false);
   };
 
   return (
@@ -107,7 +114,8 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate, isMobileMenuOpe
 
             {/* Get Started - High Visibility & Clear */}
             <a 
-                href={EXTERNAL_LINKS.getStarted}
+                href="#"
+                onClick={handleGetStartedClick}
                 className="relative px-6 py-3 rounded-full bg-[#FFE241] text-black text-sm font-black uppercase tracking-wide hover:bg-[#ffeb7a] transition-all shadow-[0_0_20px_rgba(255,226,65,0.4)] hover:shadow-[0_0_30px_rgba(255,226,65,0.6)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-none flex items-center gap-2 group overflow-hidden"
             >
                 <span className="relative z-10">Get Started</span>
@@ -182,7 +190,8 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate, isMobileMenuOpe
 
                   {/* Get Started - Mobile High Visibility */}
                   <a 
-                    href={EXTERNAL_LINKS.getStarted}
+                    href="#"
+                    onClick={handleGetStartedClick}
                     className="w-full py-5 rounded-full bg-[#FFE241] text-black text-xl font-black uppercase tracking-widest hover:bg-[#ffeb7a] transition-all text-center shadow-[0_0_30px_rgba(255,226,65,0.4)] flex items-center justify-center gap-3 relative overflow-hidden group"
                   >
                     <span className="relative z-10">Get Started</span>
