@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { RockytLogo } from './Logo';
 import Button from './Button';
 import { NavigationProps, DemoBookingProps, PageType } from '../types/index';
@@ -6,10 +6,12 @@ import { useScrollLock, useFocusTrap, useKeyPress } from '../hooks/index';
 import { scrollToTop } from '../utils/helpers';
 import { EXTERNAL_LINKS } from '../constants/index';
 
-interface NavbarProps extends NavigationProps, DemoBookingProps {}
+interface NavbarProps extends NavigationProps, DemoBookingProps {
+  isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: (isOpen: boolean) => void;
+}
 
-const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate }) => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate, isMobileMenuOpen, setIsMobileMenuOpen }) => {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useScrollLock(isMobileMenuOpen);
@@ -82,34 +84,36 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate }) => {
             </div>
           </div>
 
-          {/* Actions Island - Login, Book Demo, Get Started */}
-          <div className="hidden lg:flex items-center gap-1.5 p-1.5 bg-[#161616]/80 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl pointer-events-auto">
+          {/* Actions Island - Catchy Redesign */}
+          <div className="hidden lg:flex items-center gap-3 p-2 bg-[#161616]/90 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl pointer-events-auto">
             {/* Login */}
             <a 
                 href={EXTERNAL_LINKS.login}
-                className="px-5 py-2.5 text-sm font-bold text-gray-300 hover:text-white transition-colors"
+                className="px-4 py-2.5 text-sm font-bold text-white/70 hover:text-white transition-colors uppercase tracking-wide"
             >
                 Login
             </a>
 
-            {/* Book a Demo */}
+            {/* Book a Demo - Glassmorphic */}
             <Button 
                 onClick={onBookDemo} 
                 asBookingButton 
                 size="sm"
                 variant="outline"
-                className="bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-semibold"
+                className="bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/30 text-white font-bold tracking-wide shadow-lg hover:shadow-white/10 transition-all"
             >
               Book a demo
             </Button>
 
-            {/* Get Started */}
+            {/* Get Started - High Visibility & Clear */}
             <a 
                 href={EXTERNAL_LINKS.getStarted}
-                className="px-5 py-2.5 rounded-full bg-brand-yellow text-brand-black text-sm font-bold hover:bg-[#fcd34d] transition-all shadow-[0_0_15px_rgba(255,226,65,0.2)] hover:shadow-[0_0_25px_rgba(255,226,65,0.4)] hover:-translate-y-0.5 flex items-center gap-1.5"
+                className="relative px-6 py-3 rounded-full bg-[#FFE241] text-black text-sm font-black uppercase tracking-wide hover:bg-[#ffeb7a] transition-all shadow-[0_0_20px_rgba(255,226,65,0.4)] hover:shadow-[0_0_30px_rgba(255,226,65,0.6)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-none flex items-center gap-2 group overflow-hidden"
             >
-                Get Started
-                <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+                <span className="relative z-10">Get Started</span>
+                <iconify-icon icon="solar:arrow-right-bold" class="relative z-10 text-lg group-hover:translate-x-1 transition-transform"></iconify-icon>
+                {/* Shine effect */}
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
             </a>
           </div>
 
@@ -117,19 +121,21 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate }) => {
           <div className="lg:hidden pointer-events-auto">
               <button 
                   onClick={toggleMobileMenu}
-                  className="w-12 h-12 flex flex-col justify-center items-center gap-1.5 bg-[#161616]/80 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+                  className="w-12 h-12 flex flex-col justify-center items-center gap-1.5 bg-[#161616]/80 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-brand-yellow relative overflow-hidden group"
                   aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                   aria-expanded={isMobileMenuOpen}
               >
                   {isMobileMenuOpen ? (
-                      <iconify-icon icon="solar:close-circle-bold" width="28" class="text-white"></iconify-icon>
+                      <iconify-icon icon="solar:close-circle-bold" width="28" class="text-white relative z-10"></iconify-icon>
                   ) : (
-                      <div className="flex flex-col gap-1.5">
+                      <div className="flex flex-col gap-1.5 relative z-10">
+                        <span className="block w-5 h-0.5 bg-white rounded-full group-hover:w-6 transition-all"></span>
                         <span className="block w-5 h-0.5 bg-white rounded-full"></span>
-                        <span className="block w-5 h-0.5 bg-white rounded-full"></span>
-                        <span className="block w-5 h-0.5 bg-white rounded-full"></span>
+                        <span className="block w-5 h-0.5 bg-white rounded-full group-hover:w-3 transition-all self-end"></span>
                       </div>
                   )}
+                  {/* Toggle glow */}
+                  <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </button>
           </div>
         </div>
@@ -138,23 +144,27 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate }) => {
       {/* Mobile Menu Overlay */}
       <div 
         ref={mobileMenuRef}
-        className={`fixed inset-0 bg-[#161616]/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
+        className={`fixed inset-0 bg-[#0a0a0a]/98 backdrop-blur-2xl z-40 flex flex-col items-center justify-center transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
         aria-hidden={!isMobileMenuOpen}
       >
-           <div className="flex flex-col items-center gap-8 text-2xl font-bold text-white w-full px-6 max-w-sm">
-              <a href="#" onClick={(e) => { e.preventDefault(); handleMobileNavigate('performance'); }} className="hover:text-brand-yellow transition-colors">Performance</a>
-              <a href="#" onClick={(e) => { e.preventDefault(); handleMobileNavigate('cases'); }} className="hover:text-brand-yellow transition-colors">Cases</a>
+           {/* Background gradient blob */}
+           <div className="absolute top-0 left-0 w-full h-1/2 bg-brand-blue/10 blur-[100px] pointer-events-none"></div>
+           <div className="absolute bottom-0 right-0 w-full h-1/2 bg-brand-yellow/5 blur-[100px] pointer-events-none"></div>
+
+           <div className="flex flex-col items-center gap-8 text-2xl font-bold text-white w-full px-6 max-w-sm relative z-10">
+              <a href="#" onClick={(e) => { e.preventDefault(); handleMobileNavigate('performance'); }} className="hover:text-brand-yellow transition-colors hover:scale-105 transform">Performance</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); handleMobileNavigate('cases'); }} className="hover:text-brand-yellow transition-colors hover:scale-105 transform">Cases</a>
               <a 
                 href="https://aiads.tawk.help/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 onClick={() => setIsMobileMenuOpen(false)} 
-                className="hover:text-brand-yellow transition-colors"
+                className="hover:text-brand-yellow transition-colors hover:scale-105 transform"
               >
                 Help Center
               </a>
               
-              <div className="w-full h-px bg-white/10 my-2"></div>
+              <div className="w-full h-px bg-white/10 my-4"></div>
 
               <div className="flex flex-col w-full gap-4">
                   {/* Order: Login -> Book -> Get Started (or prioritized for mobile) */}
@@ -165,24 +175,24 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate }) => {
                     asBookingButton 
                     fullWidth
                     variant="outline"
-                    className="border-white/20"
+                    className="border-white/20 hover:bg-white/10 py-4 text-base"
                   >
                     Book a demo
                   </Button>
 
-                  {/* Get Started */}
+                  {/* Get Started - Mobile High Visibility */}
                   <a 
                     href={EXTERNAL_LINKS.getStarted}
-                    className="w-full py-4 rounded-full bg-brand-yellow text-brand-black text-lg font-bold hover:bg-[#fcd34d] transition-colors text-center shadow-lg shadow-brand-yellow/20 flex items-center justify-center gap-2"
+                    className="w-full py-5 rounded-full bg-[#FFE241] text-black text-xl font-black uppercase tracking-widest hover:bg-[#ffeb7a] transition-all text-center shadow-[0_0_30px_rgba(255,226,65,0.4)] flex items-center justify-center gap-3 relative overflow-hidden group"
                   >
-                    Get Started
-                    <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                    <span className="relative z-10">Get Started</span>
+                    <iconify-icon icon="solar:arrow-right-bold" class="relative z-10 text-2xl group-hover:translate-x-1 transition-transform"></iconify-icon>
                   </a>
                   
                   {/* Login */}
                   <a 
                     href={EXTERNAL_LINKS.login}
-                    className="text-sm font-semibold text-gray-500 hover:text-white transition-colors text-center mt-2"
+                    className="text-sm font-bold text-gray-400 hover:text-white transition-colors text-center mt-4 uppercase tracking-widest"
                   >
                     Login to existing account
                   </a>

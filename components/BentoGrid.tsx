@@ -2,8 +2,16 @@ import React from 'react';
 import Button from './Button';
 import { DemoBookingProps } from '../types/index';
 import { COMPANY_STATS, CUSTOMER_LOGOS, CASE_STUDIES, EXTERNAL_LINKS, CAL_CONFIG } from '../constants/index';
+import { usePrefersReducedMotion } from '../hooks/index';
 
 const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
+  const prefersReducedMotion = usePrefersReducedMotion();
+  
+  // Prepare case studies for marquee (duplicate for seamless loop)
+  // We use specific case studies from the design: Keiki, Loop, AdParlor
+  const showcaseStudies = CASE_STUDIES.filter(c => ['keiki', 'loop', 'adparlor'].includes(c.id));
+  const marqueeStudies = [...showcaseStudies, ...showcaseStudies, ...showcaseStudies]; // Triple for smoothness
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-min relative z-10 font-poppins pb-20">
       
@@ -48,7 +56,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
           </h2>
       </div>
 
-      {/* Pain Card 1: Creative Fatigue */}
+      {/* Pain Cards */}
       <div className="col-span-1 md:col-span-4 bg-[#0F0F0F] rounded-[32px] p-8 border border-white/5 hover:border-red-500/30 transition-all duration-300 group shadow-lg hover:shadow-red-900/10 hover:-translate-y-1">
           <div className="w-14 h-14 rounded-full bg-red-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <iconify-icon icon="solar:gallery-remove-bold" class="text-red-500 text-2xl"></iconify-icon>
@@ -59,7 +67,6 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
           </p>
       </div>
 
-      {/* Pain Card 2: Delayed Analytics */}
       <div className="col-span-1 md:col-span-4 bg-[#0F0F0F] rounded-[32px] p-8 border border-white/5 hover:border-red-500/30 transition-all duration-300 group shadow-lg hover:shadow-red-900/10 hover:-translate-y-1">
           <div className="w-14 h-14 rounded-full bg-red-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                <iconify-icon icon="solar:graph-down-bold" class="text-red-500 text-2xl"></iconify-icon>
@@ -70,7 +77,6 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
           </p>
       </div>
 
-      {/* Pain Card 3: Slow Optimizations */}
       <div className="col-span-1 md:col-span-4 bg-[#0F0F0F] rounded-[32px] p-8 border border-white/5 hover:border-red-500/30 transition-all duration-300 group shadow-lg hover:shadow-red-900/10 hover:-translate-y-1">
           <div className="w-14 h-14 rounded-full bg-red-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                <iconify-icon icon="solar:hourglass-line-bold" class="text-red-500 text-2xl"></iconify-icon>
@@ -82,10 +88,10 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
       </div>
 
 
-      {/* 3. SOLUTION: CREATIVES (Col 6) */}
-      <div className="col-span-1 md:col-span-6 bg-[#FFE241] rounded-[32px] p-8 flex flex-col min-h-[420px] group overflow-hidden relative hover:-translate-y-2 transition-transform duration-500 shadow-lg text-black">
-         <div className="relative z-10">
-             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/10 text-black text-[10px] font-bold uppercase tracking-wider mb-4 border border-black/10">
+      {/* 3. SOLUTION: CREATIVES (Col 6) - Updated Visual */}
+      <div className="col-span-1 md:col-span-6 bg-[#FFE241] rounded-[32px] p-8 flex flex-col group overflow-hidden relative hover:-translate-y-2 transition-transform duration-500 shadow-lg text-black">
+         <div className="relative z-10 flex flex-col h-full">
+             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/10 text-black text-[10px] font-bold uppercase tracking-wider mb-4 border border-black/10 w-fit">
                 <iconify-icon icon="solar:magic-stick-3-bold"></iconify-icon> AI Creative Studio
              </div>
              <h3 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
@@ -95,28 +101,23 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                 Access Shutterstock Library, 5+ AI tools, and a built-in editor. Create AI UGC, Product Images, Voice overs, Reels, Hooks, Ad Copy, and Memes in minutes.
              </p>
 
-             <div className="grid grid-cols-2 gap-3">
-                 {[
-                     { icon: 'solar:videocamera-record-bold', label: 'AI UGC Avatars' },
-                     { icon: 'solar:gallery-wide-bold', label: 'Shutterstock Lib' },
-                     { icon: 'solar:microphone-3-bold', label: 'AI Voice Overs' },
-                     { icon: 'solar:pen-new-square-bold', label: 'AI Ad Copy' },
-                 ].map((tool, i) => (
-                     <div key={i} className="bg-black/5 border border-black/5 rounded-xl p-3 flex items-center gap-2 transition-colors hover:bg-black/10">
-                         <iconify-icon icon={tool.icon} width="20"></iconify-icon>
-                         <span className="text-xs font-bold">{tool.label}</span>
-                     </div>
-                 ))}
+             {/* Replaced Icon Grid with GIF */}
+             <div className="mt-auto rounded-xl overflow-hidden shadow-2xl border border-black/5 relative group-hover:scale-[1.02] transition-transform duration-500">
+                 <img 
+                    src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc/685484896afd50a61f5760f5_AI%20Creative%20Studio%20copy%2011.gif" 
+                    alt="AI Creative Studio Demo" 
+                    className="w-full h-auto object-cover"
+                    loading="lazy"
+                 />
              </div>
          </div>
-         <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-white/40 blur-3xl rounded-full pointer-events-none"></div>
       </div>
 
 
-      {/* 4. SOLUTION: ANALYTICS (Col 6) */}
-      <div className="col-span-1 md:col-span-6 bg-[#161616] border border-white/10 rounded-[32px] p-8 flex flex-col min-h-[420px] group overflow-hidden relative hover:-translate-y-2 transition-transform duration-500 shadow-lg">
-         <div className="relative z-10">
-             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue text-[10px] font-bold uppercase tracking-wider mb-4 border border-brand-blue/20">
+      {/* 4. SOLUTION: ANALYTICS (Col 6) - Updated Visual */}
+      <div className="col-span-1 md:col-span-6 bg-[#161616] border border-white/10 rounded-[32px] p-8 flex flex-col group overflow-hidden relative hover:-translate-y-2 transition-transform duration-500 shadow-lg">
+         <div className="relative z-10 flex flex-col h-full">
+             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue text-[10px] font-bold uppercase tracking-wider mb-4 border border-brand-blue/20 w-fit">
                 <iconify-icon icon="solar:chart-2-bold"></iconify-icon> Advanced Analytics
              </div>
              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
@@ -126,34 +127,21 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                 Overwhelmed by multiple ad managers? Get one real-time view revealing the full customer journey. Simple, data-driven recommendations to know exactly what to scale.
              </p>
 
-             <div className="bg-[#050505] rounded-xl p-5 border border-white/10 mt-auto transform group-hover:scale-[1.02] transition-transform duration-500">
-                <div className="flex items-center justify-between mb-4 border-b border-white/5 pb-3">
-                    <span className="text-xs font-bold text-gray-500 uppercase flex items-center gap-2">
-                        <iconify-icon icon="solar:globus-bold"></iconify-icon> Cross-Channel View
-                    </span>
-                    <span className="text-[10px] text-green-400 bg-green-500/10 px-2 py-0.5 rounded-full animate-pulse">Live</span>
-                </div>
-                <div className="grid grid-cols-3 gap-4 text-center">
-                    <div className="p-2 rounded-lg hover:bg-white/5 transition-colors">
-                        <div className="text-[10px] text-gray-500 mb-1 uppercase font-bold">LTV</div>
-                        <div className="text-xl font-bold text-white">$450</div>
-                    </div>
-                    <div className="p-2 rounded-lg bg-brand-yellow/10 border border-brand-yellow/20">
-                        <div className="text-[10px] text-brand-yellow mb-1 uppercase font-bold">ROAS</div>
-                        <div className="text-xl font-bold text-brand-yellow">4.2x</div>
-                    </div>
-                    <div className="p-2 rounded-lg hover:bg-white/5 transition-colors">
-                        <div className="text-[10px] text-gray-500 mb-1 uppercase font-bold">CAC</div>
-                        <div className="text-xl font-bold text-white">$32</div>
-                    </div>
-                </div>
+             {/* Replaced UI with WebP */}
+             <div className="mt-auto rounded-xl overflow-hidden shadow-2xl border border-white/10 transform group-hover:scale-[1.02] transition-transform duration-500">
+                <img 
+                    src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc/688575265c8fc879372bc4a0_6-p-800.webp" 
+                    alt="Analytics Dashboard" 
+                    className="w-full h-auto object-cover"
+                    loading="lazy"
+                />
              </div>
          </div>
          <div className="absolute top-0 right-0 w-64 h-64 bg-brand-blue/5 rounded-full blur-[80px] pointer-events-none"></div>
       </div>
 
 
-      {/* 5. SOLUTION: OPTIMIZATION (Full Width) */}
+      {/* 5. SOLUTION: OPTIMIZATION (Full Width) - Updated Visual */}
       <div className="col-span-1 md:col-span-12 bg-[#1D2E5C] text-white rounded-[32px] p-8 md:p-12 overflow-hidden relative group border border-white/10 shadow-2xl">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
@@ -184,70 +172,73 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
                               <p className="text-sm text-blue-200/70 mt-1">Shift spend instantly between Meta, Google, TikTok, and Snapchat based on performance.</p>
                           </div>
                       </div>
-                      <div className="flex items-start gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
-                          <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-0.5 border border-blue-400/20">
-                              <iconify-icon icon="solar:magic-stick-3-bold" class="text-blue-300 text-lg"></iconify-icon>
-                          </div>
-                          <div>
-                              <h4 className="font-bold text-white text-base">Creative Optimizations</h4>
-                              <p className="text-sm text-blue-200/70 mt-1">Tests and rotates new ad copy & formats. Pauses losers instantly and scales winners.</p>
-                          </div>
-                      </div>
                   </div>
               </div>
 
-              {/* Visual Side */}
-              <div className="relative h-full min-h-[350px] bg-black/30 rounded-2xl border border-white/10 p-6 flex flex-col justify-center backdrop-blur-sm">
-                   <div className="flex items-center justify-between mb-6">
-                       <span className="text-xs font-bold text-gray-300 uppercase tracking-widest">AI Optimization Log</span>
-                       <div className="flex items-center gap-1.5">
-                           <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
-                           <span className="text-[10px] text-green-400 font-bold uppercase">Active</span>
-                       </div>
-                   </div>
-                   <div className="space-y-3 font-mono">
-                       <div className="flex items-center gap-3 p-4 bg-red-500/10 border border-red-500/20 rounded-lg backdrop-blur-md">
-                           <iconify-icon icon="solar:close-circle-bold" class="text-red-500 text-lg"></iconify-icon>
-                           <div className="text-xs text-white leading-relaxed">
-                               <span className="text-red-400 font-bold">PAUSED:</span> Ad Set "Broad_v2"<br/>
-                               <span className="opacity-60">Reason: CPA $45 &gt; Target $30</span>
-                           </div>
-                       </div>
-                       <div className="flex items-center gap-3 p-4 bg-green-500/10 border border-green-500/20 rounded-lg backdrop-blur-md">
-                           <iconify-icon icon="solar:check-circle-bold" class="text-green-500 text-lg"></iconify-icon>
-                           <div className="text-xs text-white leading-relaxed">
-                               <span className="text-green-400 font-bold">SCALED:</span> Ad "UGC_Hook_3"<br/>
-                               <span className="opacity-60">Action: +20% Budget Increase</span>
-                           </div>
-                       </div>
-                       <div className="flex items-center gap-3 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg backdrop-blur-md">
-                           <iconify-icon icon="solar:refresh-circle-bold" class="text-blue-400 text-lg animate-spin-slow"></iconify-icon>
-                           <div className="text-xs text-white leading-relaxed">
-                               <span className="text-blue-300 font-bold">SHIFTED:</span> Budget reallocation<br/>
-                               <span className="opacity-60">Action: $500 Meta → TikTok</span>
-                           </div>
-                       </div>
-                   </div>
+              {/* Visual Side - Replaced with MP4 */}
+              <div className="relative h-full min-h-[350px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                   <video 
+                     autoPlay 
+                     loop 
+                     muted 
+                     playsInline 
+                     className="w-full h-full object-cover"
+                   >
+                     <source src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-transcode.mp4" type="video/mp4" />
+                   </video>
               </div>
           </div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none -z-10"></div>
       </div>
 
-      {/* 6. SETUP (Col 12) */}
-      <div className="col-span-1 md:col-span-12 bg-white rounded-[32px] p-8 md:p-16 text-center text-black flex flex-col items-center justify-center">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-black/5 text-gray-500 text-xs font-bold uppercase tracking-widest mb-6">
+      {/* 6. NEW: MULTI-PLATFORM (Full Width) */}
+      <div className="col-span-1 md:col-span-12 bg-[#161616] border border-white/10 rounded-[32px] p-8 md:p-12 overflow-hidden relative group hover:border-white/20 transition-all duration-500 shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+               <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-purple/10 text-brand-purple text-[10px] font-bold uppercase tracking-wider mb-6 border border-brand-purple/20">
+                    <iconify-icon icon="solar:layers-minimalistic-bold"></iconify-icon> Unified Management
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                      Manage 11+ Platforms in One View
+                  </h3>
+                  <p className="text-gray-400 text-lg leading-relaxed mb-8">
+                      Total control and visibility. Easily understand your data and scale across all major advertising channels without the headache of switching between multiple dashboards.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                      {['Meta', 'Google', 'TikTok', 'Snapchat', 'LinkedIn', 'Spotify', 'Bing', 'Pinterest'].map((p) => (
+                          <span key={p} className="px-3 py-1 bg-white/5 rounded-lg text-xs text-gray-400 border border-white/5">{p}</span>
+                      ))}
+                      <span className="px-3 py-1 bg-white/5 rounded-lg text-xs text-brand-yellow border border-white/5">+3 more</span>
+                  </div>
+               </div>
+               
+               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 transform group-hover:scale-[1.01] transition-transform duration-500">
+                    <img 
+                        src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc/68857526114ee66a928eea93_4-p-800.webp" 
+                        alt="Multi-platform management" 
+                        className="w-full h-auto object-cover"
+                        loading="lazy"
+                    />
+               </div>
+          </div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-purple/10 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+      </div>
+
+      {/* 7. SETUP (Col 12) - Redesigned to Dark Theme */}
+      <div className="col-span-1 md:col-span-12 bg-[#161616] border border-white/10 rounded-[32px] p-8 md:p-16 text-center text-white flex flex-col items-center justify-center relative overflow-hidden">
+          <div className="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-400 text-xs font-bold uppercase tracking-widest mb-6">
               Get Started
           </div>
           <h2 className="text-3xl md:text-5xl font-black mb-16 tracking-tight max-w-3xl">
               1 Min Set-up. 2x ROAS.<br/>3 Simple Steps.
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-4xl relative">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-4xl relative z-10">
               {/* Connector Line (Desktop) */}
-              <div className="hidden md:block absolute top-8 left-0 w-full h-0.5 bg-gray-100 -z-10"></div>
+              <div className="hidden md:block absolute top-8 left-0 w-full h-0.5 bg-white/10 -z-10"></div>
               
               <div className="flex flex-col items-center group relative">
-                  <div className="w-16 h-16 rounded-full bg-white border-2 border-gray-100 flex items-center justify-center text-2xl font-black mb-6 group-hover:border-brand-yellow group-hover:bg-brand-yellow transition-all duration-300 shadow-xl shadow-gray-200/50 z-10">
+                  <div className="w-16 h-16 rounded-full bg-[#1A1A1A] border-2 border-white/10 flex items-center justify-center text-2xl font-black mb-6 group-hover:border-brand-yellow group-hover:text-brand-yellow transition-all duration-300 shadow-xl z-10">
                       1
                   </div>
                   <h3 className="text-xl font-bold mb-3">Import</h3>
@@ -255,7 +246,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
               </div>
               
               <div className="flex flex-col items-center group relative">
-                  <div className="w-16 h-16 rounded-full bg-white border-2 border-gray-100 flex items-center justify-center text-2xl font-black mb-6 group-hover:border-brand-yellow group-hover:bg-brand-yellow transition-all duration-300 shadow-xl shadow-gray-200/50 z-10">
+                  <div className="w-16 h-16 rounded-full bg-[#1A1A1A] border-2 border-white/10 flex items-center justify-center text-2xl font-black mb-6 group-hover:border-brand-yellow group-hover:text-brand-yellow transition-all duration-300 shadow-xl z-10">
                       2
                   </div>
                   <h3 className="text-xl font-bold mb-3">Connect</h3>
@@ -263,135 +254,100 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
               </div>
               
               <div className="flex flex-col items-center group relative">
-                  <div className="w-16 h-16 rounded-full bg-white border-2 border-gray-100 flex items-center justify-center text-2xl font-black mb-6 group-hover:border-brand-yellow group-hover:bg-brand-yellow transition-all duration-300 shadow-xl shadow-gray-200/50 z-10">
+                  <div className="w-16 h-16 rounded-full bg-[#1A1A1A] border-2 border-white/10 flex items-center justify-center text-2xl font-black mb-6 group-hover:border-brand-yellow group-hover:text-brand-yellow transition-all duration-300 shadow-xl z-10">
                       3
                   </div>
                   <h3 className="text-xl font-bold mb-3">Optimize</h3>
                   <p className="text-gray-500 font-medium">Let AI protect your budget & scale profitably.</p>
               </div>
           </div>
+          {/* Background Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-3xl bg-brand-blue/5 blur-[100px] rounded-full pointer-events-none -z-0"></div>
       </div>
 
-      {/* 7. THEY KNOW HOW IT WORKS (Case Studies) */}
+      {/* 8. CASE STUDIES - Animated Auto Scroll */}
       <div className="col-span-1 md:col-span-12 text-center mt-8 mb-4">
           <h2 className="text-2xl md:text-3xl font-bold text-white">They know how it works</h2>
           <p className="text-gray-500 mt-2">Who can explain it better than our users?</p>
       </div>
 
-      {/* Keiki */}
-      <div className="col-span-1 md:col-span-4 bg-[#8B5CF6] text-white rounded-[32px] p-8 flex flex-col min-h-[400px] relative overflow-hidden group hover:shadow-[0_10px_40px_rgba(139,92,246,0.4)] transition-all duration-500">
-        <div className="mb-auto relative z-10">
-          <h4 className="text-sm font-bold opacity-80 uppercase tracking-wider mb-2">Mobile App</h4>
-          <div className="h-8 mb-6">
-            <img 
-              src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/67c5bb67180715f131e3e1e9_keiki_logotype.svg" 
-              className="h-full w-auto brightness-0 invert" 
-              alt="Keiki"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <div className="rounded-xl overflow-hidden mb-6 aspect-video shadow-lg group-hover:scale-[1.03] transition-transform duration-500">
-             <img 
-                src={CASE_STUDIES.find(c => c.id === 'keiki')?.image} 
-                alt="" 
-                className="w-full h-full object-cover" 
-                loading="lazy"
-                decoding="async"
-             />
-          </div>
-        </div>
-        <div className="relative z-10">
-           <p className="text-lg font-medium leading-tight mb-4">"We spend 30% less time managing ads and scaled 2.7x faster."</p>
-           <p className="text-sm opacity-80 mb-6">Daryna Bondar, Head of Growth</p>
-           <button 
-             data-cal-link={CAL_CONFIG.link}
-             data-cal-namespace={CAL_CONFIG.namespace}
-             data-cal-config={JSON.stringify(CAL_CONFIG.config)}
-             className="bg-white text-[#8B5CF6] px-6 py-2 rounded-full font-bold text-sm hover:bg-opacity-90 transition-colors"
-           >
-             Read Case Study
-           </button>
-        </div>
-        <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-colors"></div>
+      <div className="col-span-1 md:col-span-12 overflow-hidden w-full relative -mx-6 md:mx-0 mask-gradient-x">
+         <style>{`
+            .mask-gradient-x {
+               mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+               -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            }
+            @keyframes marquee {
+               0% { transform: translateX(0); }
+               100% { transform: translateX(-33.33%); } /* Move 1/3 of the width (original set) */
+            }
+            .animate-marquee {
+               animation: marquee 40s linear infinite;
+            }
+            .animate-marquee:hover {
+               animation-play-state: paused;
+            }
+         `}</style>
+         
+         <div className="flex gap-6 w-max animate-marquee py-4 px-6 md:px-0">
+            {marqueeStudies.map((cs, idx) => {
+               // Render logic based on original design but mapped for marquee
+               // We force a consistent 'small' card style for the marquee to ensure alignment
+               
+               // Customize card based on type
+               let bgColor = 'bg-[#1D2E5C]'; // Default AdParlor style
+               let textColor = 'text-white';
+               
+               if (cs.id === 'keiki') {
+                  bgColor = 'bg-[#8B5CF6]';
+               } else if (cs.id === 'loop') {
+                  bgColor = 'bg-white';
+                  textColor = 'text-black';
+               }
+
+               return (
+                  <div 
+                     key={`${cs.id}-${idx}`}
+                     className={`w-[320px] md:w-[400px] rounded-[32px] p-8 flex flex-col flex-shrink-0 relative overflow-hidden group hover:shadow-2xl transition-all duration-500 border border-white/5 ${bgColor} ${textColor}`}
+                  >
+                     <div className="mb-6 relative z-10 h-8">
+                         <img 
+                           src={cs.logo} 
+                           alt="Logo" 
+                           className={`h-full w-auto object-contain ${cs.id === 'loop' ? '' : 'brightness-0 invert'}`} 
+                        />
+                     </div>
+                     
+                     <div className="rounded-xl overflow-hidden mb-6 aspect-video shadow-lg group-hover:scale-[1.03] transition-transform duration-500 bg-black/10">
+                        <img 
+                           src={cs.image} 
+                           alt="" 
+                           className="w-full h-full object-cover" 
+                           loading="lazy"
+                        />
+                     </div>
+
+                     <div className="relative z-10 mt-auto">
+                        <p className="text-lg font-medium leading-tight mb-4">
+                           {cs.title}
+                        </p>
+                        <button 
+                           className={`px-5 py-2 rounded-full font-bold text-sm transition-colors ${cs.id === 'loop' ? 'bg-black text-white hover:bg-gray-800' : 'bg-white text-black hover:bg-gray-100'}`}
+                           data-cal-link={CAL_CONFIG.link}
+                           data-cal-namespace={CAL_CONFIG.namespace}
+                           data-cal-config={JSON.stringify(CAL_CONFIG.config)}
+                        >
+                           Read Case Study
+                        </button>
+                     </div>
+                  </div>
+               );
+            })}
+         </div>
       </div>
 
-      {/* Loop */}
-      <div className="col-span-1 md:col-span-4 bg-white text-black rounded-[32px] p-8 flex flex-col min-h-[400px] relative overflow-hidden group hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border border-gray-100">
-        <div className="mb-auto">
-          <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">E-commerce</h4>
-          <div className="h-8 mb-6">
-            <img 
-              src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e630347ae261f1cba047d3_loop-earplugs-svg.svg" 
-              className="h-full w-auto" 
-              alt="Loop"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <div className="rounded-xl overflow-hidden mb-6 aspect-video bg-gray-100 shadow-md group-hover:scale-[1.03] transition-transform duration-500">
-             <img 
-                src={CASE_STUDIES.find(c => c.id === 'loop')?.image} 
-                alt="" 
-                className="w-full h-full object-cover" 
-                loading="lazy"
-                decoding="async"
-             />
-          </div>
-        </div>
-        <div>
-           <p className="text-lg font-medium leading-tight mb-4">"Rockyt helped us scale 200% faster with complete automation."</p>
-           <p className="text-sm text-gray-500 mb-6">Alexander L., Global Head of Performance</p>
-           <button 
-             data-cal-link={CAL_CONFIG.link}
-             data-cal-namespace={CAL_CONFIG.namespace}
-             data-cal-config={JSON.stringify(CAL_CONFIG.config)}
-             className="bg-[#161616] text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-opacity-90 transition-colors"
-           >
-             Read Case Study
-           </button>
-        </div>
-      </div>
 
-      {/* AdParlor */}
-      <div className="col-span-1 md:col-span-4 bg-[#1D2E5C] text-white rounded-[32px] p-8 flex flex-col min-h-[400px] relative overflow-hidden group hover:shadow-[0_10px_40px_rgba(29,46,92,0.5)] transition-all duration-500">
-        <div className="mb-auto relative z-10">
-          <h4 className="text-sm font-bold opacity-80 uppercase tracking-wider mb-2">Agency</h4>
-          <div className="h-8 mb-6">
-            <img 
-              src="https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/68e51ce0ac361e304aab6dd1_adparlor_new_logo_white_text.svg" 
-              className="h-full w-auto" 
-              alt="AdParlor"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <div className="rounded-xl overflow-hidden mb-6 aspect-video bg-white/10 shadow-lg group-hover:scale-[1.03] transition-transform duration-500">
-             <img 
-                src={CASE_STUDIES.find(c => c.id === 'adparlor')?.image} 
-                alt="" 
-                className="w-full h-full object-cover" 
-                loading="lazy"
-                decoding="async"
-             />
-          </div>
-        </div>
-        <div className="relative z-10">
-           <p className="text-lg font-medium leading-tight mb-4">"High-volume campaign management is finally seamless."</p>
-           <p className="text-sm opacity-80 mb-6">Sidharth Sharma, Senior Campaign Mgr</p>
-           <button 
-             data-cal-link={CAL_CONFIG.link}
-             data-cal-namespace={CAL_CONFIG.namespace}
-             data-cal-config={JSON.stringify(CAL_CONFIG.config)}
-             className="bg-[#1D2E5C] border border-white text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-white hover:text-[#1D2E5C] transition-colors"
-           >
-             Read Case Study
-           </button>
-        </div>
-        <div className="absolute -top-20 -left-20 w-64 h-64 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-colors"></div>
-      </div>
-
-      {/* 6. Stats Row */}
+      {/* 9. Stats Row */}
       {COMPANY_STATS.map((stat, index) => (
         <div key={index} className="col-span-1 md:col-span-4 bg-[#161616] rounded-[32px] p-8 aspect-square flex flex-col items-center justify-center text-center border border-white/5 hover:border-white/20 transition-all duration-500 hover:-translate-y-2 group">
             <div className={`text-5xl md:text-6xl font-semibold tracking-tighter mb-4 text-brand-${stat.color} group-hover:scale-110 transition-transform duration-500`}>
@@ -407,7 +363,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
         </div>
       ))}
 
-      {/* 7. Customers */}
+      {/* 10. Customers */}
       <div className="col-span-1 md:col-span-12 bg-white rounded-[32px] p-12 flex flex-col items-center justify-center relative overflow-hidden group">
          <div className="text-xl font-bold text-black mb-8 relative z-10">Trusted by over 15,000 businesses</div>
          <div className="flex flex-wrap justify-center items-center gap-12 max-w-5xl relative z-10">
@@ -424,7 +380,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo }) => {
          </div>
       </div>
 
-      {/* 8. Bottom CTA */}
+      {/* 11. Bottom CTA */}
       <div 
         className="col-span-1 md:col-span-4 border-2 border-dashed border-white/20 rounded-[32px] p-8 flex items-center justify-center hover:border-white/50 hover:bg-white/5 transition-all duration-300 cursor-pointer group min-h-[180px]" 
         data-cal-link={CAL_CONFIG.link}

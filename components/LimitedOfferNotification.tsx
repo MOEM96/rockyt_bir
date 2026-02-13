@@ -4,9 +4,10 @@ import { PageType } from '../types/index';
 
 interface LimitedOfferNotificationProps {
   currentPage: PageType;
+  isMobileMenuOpen: boolean;
 }
 
-const LimitedOfferNotification: React.FC<LimitedOfferNotificationProps> = ({ currentPage }) => {
+const LimitedOfferNotification: React.FC<LimitedOfferNotificationProps> = ({ currentPage, isMobileMenuOpen }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
 
@@ -79,9 +80,10 @@ const LimitedOfferNotification: React.FC<LimitedOfferNotificationProps> = ({ cur
       </div>
 
       {/* Mobile Version: Compact pill repositioned lower (top-[95px]) to clear logo/menu */}
+      {/* Hide when mobile menu is open to prevent overlap/clutter */}
       <div 
-        className={`lg:hidden fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-          isVisible ? 'top-[95px] opacity-100' : 'top-[50px] opacity-0 pointer-events-none'
+        className={`lg:hidden fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+          isVisible && !isMobileMenuOpen ? 'top-[95px] opacity-100 scale-100' : 'top-[80px] opacity-0 scale-95 pointer-events-none'
         }`}
       >
          <button

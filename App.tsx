@@ -9,6 +9,7 @@ import { PageType } from './types/index';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNavigate = (page: PageType) => {
     setCurrentPage(page);
@@ -20,10 +21,18 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#161616] flex flex-col">
-      <Navbar onBookDemo={handleBookDemo} onNavigate={handleNavigate} />
+      <Navbar 
+        onBookDemo={handleBookDemo} 
+        onNavigate={handleNavigate} 
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
       
-      {/* Global Notification Bar - Resets on page change */}
-      <LimitedOfferNotification currentPage={currentPage} />
+      {/* Global Notification Bar - Resets on page change, hides when mobile menu is open */}
+      <LimitedOfferNotification 
+        currentPage={currentPage} 
+        isMobileMenuOpen={isMobileMenuOpen}
+      />
       
       <main className="pt-32 pb-20 px-4 md:px-6 flex-grow">
         {currentPage === 'home' && <HomePage onBookDemo={handleBookDemo} />}
