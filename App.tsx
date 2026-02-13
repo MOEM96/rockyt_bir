@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
 import PerformancePage from './components/PerformancePage';
@@ -9,11 +9,21 @@ import Modal from './components/Modal';
 import { PageType } from './types/index';
 import { EXTERNAL_LINKS } from './constants/index';
 
+// Declare fbq for TypeScript
+declare global {
+  interface Window {
+    fbq?: (type: string, eventName: string, params?: any) => void;
+  }
+}
+
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isGetStartedOpen, setIsGetStartedOpen] = useState(false);
   const [isBookingConfirmed, setIsBookingConfirmed] = useState(false);
+  
+  // Ref to prevent double-firing pixel events (debounce)
+  const lastBookingTimeRef = useRef<number>(0);
 
   const handleNavigate = (page: PageType) => {
     setCurrentPage(page);
@@ -31,9 +41,26 @@ const App: React.FC = () => {
     }, 300);
   };
 
+  const trackBookingSuccess = () => {
+    const now = Date.now();
+    // Debounce: prevent firing if tracked in the last 5 seconds
+    if (now - lastBookingTimeRef.current < 5000) {
+      return;
+    }
+    
+    lastBookingTimeRef.current = now;
+    
+    if (window.fbq) {
+      console.log('Rockyt: Tracking Schedule event');
+      window.fbq('track', 'Schedule');
+    }
+    
+    setIsBookingConfirmed(true);
+  };
+
   // Handle Cal.com booking success events
   useEffect(() => {
-    // Handler 1: Listen for direct PostMessages from iframe
+    // Handler 1: Listen for direct PostMessages from iframe (Works for Get Started Modal & Popups)
     const handleCalPostMessage = (e: MessageEvent) => {
       if (!e.data) return;
 
@@ -56,14 +83,13 @@ const App: React.FC = () => {
         type === 'cal:bookingSuccessful' || 
         type === 'bookingSuccessful'
       ) {
-        setIsBookingConfirmed(true);
+        trackBookingSuccess();
       }
     };
 
-    // Handler 2: Listen for Custom Event dispatched from index.html (Global Cal script)
-    // This serves as a backup if the postMessage is intercepted by the global script
+    // Handler 2: Listen for Custom Event dispatched from index.html (Works for Global Popups like Book Demo / Offer)
     const handleCalCustomEvent = () => {
-      setIsBookingConfirmed(true);
+      trackBookingSuccess();
     };
 
     window.addEventListener('message', handleCalPostMessage);

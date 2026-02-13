@@ -136,10 +136,8 @@
           Cal.ns["15min"]("on", {
             action: "bookingSuccessful",
             callback: (e) => {
-              if (typeof fbq === 'function') {
-                fbq('track', 'Schedule');
-              }
               // Dispatch event to React app
+              // We removed the direct fbq call here to centralize it in App.tsx
               window.dispatchEvent(new CustomEvent('rockyt:bookingSuccessful'));
             }
           });
