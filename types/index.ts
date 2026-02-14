@@ -117,15 +117,3 @@ declare global {
     }
   }
 }
-
-// Augment React namespace for newer TypeScript/React versions
-declare module 'react' {
-  namespace JSX {
-    interface IntrinsicElements {
-      'iconify-icon': IconifyIconProps;
-      'lottie-player': LottiePlayerProps;
-      'wistia-player': WistiaPlayerProps;
-      'dotlottie-player': DotLottiePlayerProps;
-    }
-  }
-}
