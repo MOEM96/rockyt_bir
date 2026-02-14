@@ -73,6 +73,10 @@ export const HUB_FAQ_ITEMS: FAQItem[] = [
     question: "Is it GDPR compliant?", 
     answer: "Signals Gateway and first-party data help with compliance by reducing reliance on third-party cookies, ensuring user consent, and giving businesses full control over their data." 
   },
+  {
+    question: "Do I need technical skills to set this up?",
+    answer: "Not at all. Rockyt is designed for marketers, not developers. Our one-click setup connects your ad accounts instantly. For the advanced tracking features (Signals Gateway), our team handles the technical implementation for you during onboarding."
+  }
 ];
 
 export const HUB_CAROUSEL_IMAGES = [

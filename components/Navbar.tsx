@@ -159,51 +159,68 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate, isMobileMenuOpe
            <div className="absolute top-0 left-0 w-full h-1/2 bg-brand-blue/10 blur-[100px] pointer-events-none"></div>
            <div className="absolute bottom-0 right-0 w-full h-1/2 bg-brand-yellow/5 blur-[100px] pointer-events-none"></div>
 
-           <div className="flex flex-col items-center gap-8 text-2xl font-bold text-white w-full px-6 max-w-sm relative z-10">
-              <a href="#" onClick={(e) => { e.preventDefault(); handleMobileNavigate('performance'); }} className="hover:text-brand-yellow transition-colors hover:scale-105 transform">Performance</a>
-              <a href="#" onClick={(e) => { e.preventDefault(); handleMobileNavigate('cases'); }} className="hover:text-brand-yellow transition-colors hover:scale-105 transform">Cases</a>
-              <a 
-                href="https://aiads.tawk.help/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                onClick={() => setIsMobileMenuOpen(false)} 
-                className="hover:text-brand-yellow transition-colors hover:scale-105 transform"
-              >
-                Help Center
-              </a>
+           <div className="flex flex-col items-center w-full px-8 max-w-xs relative z-10">
               
-              <div className="w-full h-px bg-white/10 my-4"></div>
+              {/* Navigation Links - Compact & Minimal */}
+              <div className="flex flex-col items-center gap-5 w-full">
+                  <a 
+                    href="#" 
+                    onClick={(e) => { e.preventDefault(); handleMobileNavigate('performance'); }} 
+                    className="text-lg font-medium text-gray-300 hover:text-white transition-colors w-full text-center py-2 border-b border-white/5"
+                  >
+                    Performance
+                  </a>
+                  <a 
+                    href="#" 
+                    onClick={(e) => { e.preventDefault(); handleMobileNavigate('cases'); }} 
+                    className="text-lg font-medium text-gray-300 hover:text-white transition-colors w-full text-center py-2 border-b border-white/5"
+                  >
+                    Cases
+                  </a>
+                  <a 
+                    href="https://aiads.tawk.help/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    onClick={() => setIsMobileMenuOpen(false)} 
+                    className="text-lg font-medium text-gray-300 hover:text-white transition-colors w-full text-center py-2 border-b border-white/5"
+                  >
+                    Help Center
+                  </a>
+              </div>
+              
+              {/* Spacer */}
+              <div className="h-10"></div>
 
-              <div className="flex flex-col w-full gap-4">
-                  {/* Order: Login -> Book -> Get Started (or prioritized for mobile) */}
+              {/* CTAs - Compact Size */}
+              <div className="flex flex-col w-full gap-3">
                   
-                  {/* Book Demo */}
+                  {/* Get Started - Primary */}
+                  <a 
+                    href="#"
+                    onClick={handleGetStartedClick}
+                    className="w-full py-3 rounded-full bg-[#FFE241] text-black text-sm font-bold uppercase tracking-wide hover:bg-[#ffeb7a] transition-all text-center shadow-[0_0_20px_rgba(255,226,65,0.2)] flex items-center justify-center gap-2 group"
+                  >
+                    <span>Get Started</span>
+                    <iconify-icon icon="solar:arrow-right-bold" class="text-base group-hover:translate-x-0.5 transition-transform"></iconify-icon>
+                  </a>
+                  
+                  {/* Book Demo - Secondary */}
                   <Button 
                     onClick={() => { onBookDemo(); setIsMobileMenuOpen(false); }} 
                     asBookingButton 
                     fullWidth
                     variant="outline"
-                    className="border-white/20 hover:bg-white/10 py-4 text-base"
+                    className="border-white/10 hover:bg-white/5 py-3 text-sm font-semibold h-auto"
                   >
                     Book a demo
                   </Button>
 
-                  {/* Get Started - Mobile High Visibility */}
-                  <a 
-                    href="#"
-                    onClick={handleGetStartedClick}
-                    className="w-full py-5 rounded-full bg-[#FFE241] text-black text-xl font-black uppercase tracking-widest hover:bg-[#ffeb7a] transition-all text-center shadow-[0_0_30px_rgba(255,226,65,0.4)] flex items-center justify-center gap-3 relative overflow-hidden group"
-                  >
-                    <span className="relative z-10">Get Started</span>
-                    <iconify-icon icon="solar:arrow-right-bold" class="relative z-10 text-2xl group-hover:translate-x-1 transition-transform"></iconify-icon>
-                  </a>
-                  
-                  {/* Login */}
+                  {/* Login - Tertiary */}
                   <a 
                     href={EXTERNAL_LINKS.login}
-                    className="text-sm font-bold text-gray-400 hover:text-white transition-colors text-center mt-4 uppercase tracking-widest"
+                    className="text-xs font-semibold text-gray-500 hover:text-white transition-colors text-center mt-3 uppercase tracking-wider"
                   >
-                    Login to existing account
+                    Login
                   </a>
               </div>
            </div>

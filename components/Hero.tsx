@@ -207,7 +207,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => {
             fullWidth
             className="h-10 md:h-14 text-xs md:text-base font-bold uppercase tracking-wide btn-hover-skew shadow-[0_0_20px_rgba(255,226,65,0.1)] group"
         >
-            <span>Fix My Ad Spend Now</span>
+            <span>Optimize for me</span>
             <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
         </Button>
         

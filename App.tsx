@@ -5,6 +5,8 @@ import PerformancePage from './components/PerformancePage';
 import CasesPage from './components/CasesPage';
 import Footer from './components/Footer';
 import LimitedOfferNotification from './components/LimitedOfferNotification';
+import SocialProofWidget from './components/SocialProofWidget';
+import ChatWidget from './components/ChatWidget';
 import Modal from './components/Modal';
 import { PageType } from './types/index';
 import { EXTERNAL_LINKS } from './constants/index';
@@ -128,6 +130,9 @@ const App: React.FC = () => {
         {currentPage === 'cases' && <CasesPage onBookDemo={handleBookDemo} onGetStarted={handleGetStarted} />}
       </main>
       <Footer onNavigate={handleNavigate} />
+      
+      <SocialProofWidget />
+      <ChatWidget />
 
       {/* Get Started / Onboarding Modal */}
       <Modal 
