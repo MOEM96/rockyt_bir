@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from './Button';
 import { DemoBookingProps } from '../types/index';
 import { formatNumber, formatCurrency } from '../utils/helpers';
+import { CAL_CONFIG } from '../constants/index';
 
 const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => {
   const [isAnnual, setIsAnnual] = useState(true);
@@ -301,15 +302,40 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
                             </div>
                         </div>
 
-                        <Button 
+                        {/* Tech-Forward 3D CTA Button */}
+                        <button 
                             onClick={onBookDemo}
-                            asBookingButton
-                            fullWidth
-                            size="lg"
-                            className="mt-2 bg-brand-yellow text-black hover:bg-[#FFE241] shadow-[0_0_30px_rgba(255,226,65,0.3)] border-none"
+                            className="relative w-full group mt-4 h-20 perspective-500"
+                            data-cal-link={CAL_CONFIG.link}
+                            data-cal-namespace={CAL_CONFIG.namespace}
+                            data-cal-config={JSON.stringify(CAL_CONFIG.config)}
                         >
-                            Start Performance Plan
-                        </Button>
+                            {/* 3D Depth / Shadow Block */}
+                            <div className="absolute inset-0 bg-[#c2a100] rounded-2xl transform translate-y-2 transition-transform duration-150 group-hover:translate-y-2.5 group-active:translate-y-0.5 shadow-xl"></div>
+                            
+                            {/* Main Button Surface */}
+                            <div className="absolute inset-0 bg-[#FFE241] rounded-2xl transform transition-transform duration-150 group-hover:-translate-y-0.5 group-active:translate-y-2 flex items-center justify-center overflow-hidden border border-[#fffec9] shadow-[inset_0_2px_0_rgba(255,255,255,0.5)]">
+                                
+                                {/* Tech Grid Pattern Overlay */}
+                                <div className="absolute inset-0 opacity-[0.15]" style={{backgroundImage: 'linear-gradient(rgba(0,0,0,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.5) 1px, transparent 1px)', backgroundSize: '16px 16px'}}></div>
+                                
+                                {/* Animated Shine Effect */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:animate-shine z-10 transform -skew-x-12"></div>
+
+                                {/* Content */}
+                                <div className="relative z-20 flex items-center gap-3">
+                                    <span className="text-xl md:text-2xl font-black text-black uppercase tracking-wider drop-shadow-sm flex items-center gap-2">
+                                        Start Performance Plan
+                                    </span>
+                                    <div className="w-10 h-10 rounded-full bg-black/10 flex items-center justify-center group-hover:bg-black/20 transition-colors border border-black/5">
+                                        <iconify-icon icon="solar:rocket-2-bold-duotone" class="text-2xl text-black group-hover:animate-pulse"></iconify-icon>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            {/* Ambient Glow */}
+                            <div className="absolute -inset-1 bg-brand-yellow rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-300 -z-10"></div>
+                        </button>
                     </div>
                </div>
           </div>
@@ -370,6 +396,13 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
         @keyframes bounce-slow {
             0%, 100% { transform: translateY(0) rotate(6deg); }
             50% { transform: translateY(-4px) rotate(6deg); }
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) skewX(-15deg); }
+            100% { transform: translateX(200%) skewX(-15deg); }
+        }
+        .animate-shine {
+            animation: shine 2s infinite;
         }
       `}</style>
 

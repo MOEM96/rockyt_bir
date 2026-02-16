@@ -110,9 +110,8 @@ export interface CustomerLogo {
   alt: string;
 }
 
-// Fix: Use global augmentation for JSX namespace
-// This is the standard way to add IntrinsicElements in a module file.
-declare global {
+// Fix: Augment React module directly to extend IntrinsicElements
+declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
       'iconify-icon': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { [key: string]: any };
