@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
 import PerformancePage from './components/PerformancePage';
 import CasesPage from './components/CasesPage';
+import PricingPage from './components/PricingPage';
 import Footer from './components/Footer';
 import LimitedOfferNotification from './components/LimitedOfferNotification';
 import SocialProofWidget from './components/SocialProofWidget';
@@ -128,6 +129,7 @@ const App: React.FC = () => {
         {currentPage === 'home' && <HomePage onBookDemo={handleBookDemo} onGetStarted={handleGetStarted} />}
         {currentPage === 'performance' && <PerformancePage onBookDemo={handleBookDemo} onGetStarted={handleGetStarted} />}
         {currentPage === 'cases' && <CasesPage onBookDemo={handleBookDemo} onGetStarted={handleGetStarted} />}
+        {currentPage === 'pricing' && <PricingPage onBookDemo={handleBookDemo} onGetStarted={handleGetStarted} />}
       </main>
       <Footer onNavigate={handleNavigate} />
       

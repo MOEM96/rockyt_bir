@@ -10,6 +10,7 @@ export interface IconifyIconProps extends React.DetailedHTMLProps<React.HTMLAttr
   'aria-label'?: string;
   'aria-hidden'?: boolean | 'true' | 'false';
   style?: React.CSSProperties;
+  [key: string]: any;
 }
 
 export interface LottiePlayerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
@@ -25,9 +26,12 @@ export interface LottiePlayerProps extends React.DetailedHTMLProps<React.HTMLAtt
   class?: string;
   className?: string;
   style?: React.CSSProperties;
+  [key: string]: any;
 }
 
 export interface WistiaPlayerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+  'media-id'?: string;
+  aspect?: string;
   [key: string]: any;
 }
 
@@ -43,7 +47,7 @@ export interface DotLottiePlayerProps extends React.DetailedHTMLProps<React.HTML
 }
 
 // Page types
-export type PageType = 'home' | 'performance' | 'cases';
+export type PageType = 'home' | 'performance' | 'cases' | 'pricing';
 export type CaseCategory = 'all' | 'agency' | 'ecom' | 'app';
 export type Platform = 'meta' | 'tiktok' | 'snapchat';
 
@@ -106,14 +110,15 @@ export interface CustomerLogo {
   alt: string;
 }
 
-// Augment the global JSX namespace to add custom elements
+// Fix: Use global augmentation for JSX namespace
+// This is the standard way to add IntrinsicElements in a module file.
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'iconify-icon': IconifyIconProps;
-      'lottie-player': LottiePlayerProps;
-      'wistia-player': WistiaPlayerProps;
-      'dotlottie-player': DotLottiePlayerProps;
+      'iconify-icon': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { [key: string]: any };
+      'lottie-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { [key: string]: any };
+      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { [key: string]: any };
+      'dotlottie-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { [key: string]: any };
     }
   }
 }
