@@ -302,19 +302,20 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
                             </div>
                         </div>
 
-                        {/* Tech-Forward 3D CTA Button */}
+                        {/* Tech-Forward 3D CTA Button - Optimized for Mobile */}
                         <button 
                             onClick={onBookDemo}
-                            className="relative w-full group mt-4 h-20 perspective-500"
+                            className="relative w-full group mt-6 h-16 md:h-20 z-10 select-none touch-manipulation"
                             data-cal-link={CAL_CONFIG.link}
                             data-cal-namespace={CAL_CONFIG.namespace}
                             data-cal-config={JSON.stringify(CAL_CONFIG.config)}
+                            style={{ perspective: '1000px' }}
                         >
                             {/* 3D Depth / Shadow Block */}
-                            <div className="absolute inset-0 bg-[#c2a100] rounded-2xl transform translate-y-2 transition-transform duration-150 group-hover:translate-y-2.5 group-active:translate-y-0.5 shadow-xl"></div>
+                            <div className="absolute inset-0 bg-[#c2a100] rounded-xl md:rounded-2xl transform translate-y-1.5 md:translate-y-2 transition-transform duration-150 group-hover:translate-y-2 md:group-hover:translate-y-2.5 group-active:translate-y-0.5 shadow-xl"></div>
                             
                             {/* Main Button Surface */}
-                            <div className="absolute inset-0 bg-[#FFE241] rounded-2xl transform transition-transform duration-150 group-hover:-translate-y-0.5 group-active:translate-y-2 flex items-center justify-center overflow-hidden border border-[#fffec9] shadow-[inset_0_2px_0_rgba(255,255,255,0.5)]">
+                            <div className="absolute inset-0 bg-[#FFE241] rounded-xl md:rounded-2xl transform transition-transform duration-150 group-hover:-translate-y-0.5 group-active:translate-y-1 md:group-active:translate-y-2 flex items-center justify-center overflow-hidden border border-[#fffec9] shadow-[inset_0_2px_0_rgba(255,255,255,0.5)]">
                                 
                                 {/* Tech Grid Pattern Overlay */}
                                 <div className="absolute inset-0 opacity-[0.15]" style={{backgroundImage: 'linear-gradient(rgba(0,0,0,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.5) 1px, transparent 1px)', backgroundSize: '16px 16px'}}></div>
@@ -323,12 +324,12 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:animate-shine z-10 transform -skew-x-12"></div>
 
                                 {/* Content */}
-                                <div className="relative z-20 flex items-center gap-3">
-                                    <span className="text-xl md:text-2xl font-black text-black uppercase tracking-wider drop-shadow-sm flex items-center gap-2">
-                                        Start Performance Plan
+                                <div className="relative z-20 flex items-center justify-center gap-2 md:gap-3 px-2 w-full">
+                                    <span className="text-base sm:text-lg md:text-2xl font-black text-black uppercase tracking-wider drop-shadow-sm flex items-center gap-2 truncate">
+                                        Start Now
                                     </span>
-                                    <div className="w-10 h-10 rounded-full bg-black/10 flex items-center justify-center group-hover:bg-black/20 transition-colors border border-black/5">
-                                        <iconify-icon icon="solar:rocket-2-bold-duotone" class="text-2xl text-black group-hover:animate-pulse"></iconify-icon>
+                                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/10 flex items-center justify-center group-hover:bg-black/20 transition-colors border border-black/5 shrink-0">
+                                        <iconify-icon icon="solar:rocket-2-bold-duotone" class="text-lg md:text-2xl text-black group-hover:animate-pulse"></iconify-icon>
                                     </div>
                                 </div>
                             </div>

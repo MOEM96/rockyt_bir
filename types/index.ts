@@ -110,14 +110,15 @@ export interface CustomerLogo {
   alt: string;
 }
 
-// Fix: Augment React module directly to extend IntrinsicElements
-declare module 'react' {
+// Fix: Augment global JSX namespace
+declare global {
   namespace JSX {
     interface IntrinsicElements {
       'iconify-icon': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { [key: string]: any };
       'lottie-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { [key: string]: any };
       'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { [key: string]: any };
       'dotlottie-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { [key: string]: any };
+      [elemName: string]: any;
     }
   }
 }
