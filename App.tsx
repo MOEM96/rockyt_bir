@@ -6,7 +6,6 @@ import CasesPage from './components/CasesPage';
 import PricingPage from './components/PricingPage';
 import PartnersPage from './components/PartnersPage';
 import Footer from './components/Footer';
-import LimitedOfferNotification from './components/LimitedOfferNotification';
 import SocialProofWidget from './components/SocialProofWidget';
 import Modal from './components/Modal';
 import { PageType } from './types/index';
@@ -119,12 +118,6 @@ const App: React.FC = () => {
         onGetStarted={handleGetStarted}
       />
       
-      {/* Global Notification Bar - Resets on page change, hides when mobile menu is open */}
-      <LimitedOfferNotification 
-        currentPage={currentPage} 
-        isMobileMenuOpen={isMobileMenuOpen}
-      />
-      
       <main className="pt-32 pb-20 px-4 md:px-6 flex-grow">
         {currentPage === 'home' && <HomePage onBookDemo={handleBookDemo} onGetStarted={handleGetStarted} />}
         {currentPage === 'performance' && <PerformancePage onBookDemo={handleBookDemo} onGetStarted={handleGetStarted} />}
@@ -211,16 +204,25 @@ const App: React.FC = () => {
                         href={isBookingConfirmed ? EXTERNAL_LINKS.getStarted : '#'}
                         onClick={(e) => !isBookingConfirmed && e.preventDefault()}
                         className={`
-                            w-full md:w-auto px-4 py-3 md:px-8 md:py-4 rounded-full text-xs md:text-base font-bold uppercase tracking-wide flex items-center justify-center gap-2 transition-all duration-300
+                            w-full md:w-auto px-4 py-3 md:px-8 md:py-4 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide flex items-center justify-center gap-2 transition-all duration-300
                             ${isBookingConfirmed 
                                 ? 'bg-[#FFE241] text-black hover:bg-[#ffeb7a] shadow-[0_0_20px_rgba(255,226,65,0.4)] cursor-pointer transform hover:-translate-y-1' 
-                                : 'bg-white/5 text-gray-500 border border-white/10 cursor-not-allowed grayscale opacity-50'
+                                : 'bg-white/5 text-gray-400 border border-white/10 cursor-not-allowed'
                             }
                         `}
                         aria-disabled={!isBookingConfirmed}
                     >
-                        <span>Create Your Account</span>
-                        <iconify-icon icon="solar:arrow-right-bold" class="text-sm md:text-xl"></iconify-icon>
+                         {isBookingConfirmed ? (
+                            <>
+                                <span>Create Your Account</span>
+                                <iconify-icon icon="solar:arrow-right-bold" class="text-sm md:text-xl"></iconify-icon>
+                            </>
+                         ) : (
+                            <span className="flex items-center gap-2 text-center">
+                                <iconify-icon icon="solar:lock-keyhole-minimalistic-bold" class="text-base shrink-0"></iconify-icon>
+                                <span><span className="text-white">Create your account + $100 Ad Credits</span></span>
+                            </span>
+                         )}
                     </a>
                </div>
           </div>

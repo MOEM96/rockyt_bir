@@ -88,110 +88,277 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => 
       </div>
 
 
-      {/* 3. SOLUTION: CREATIVES (Col 6) - Updated Visual */}
-      <div className="col-span-1 md:col-span-6 bg-[#FFE241] rounded-[32px] p-8 flex flex-col group overflow-hidden relative hover:-translate-y-2 transition-transform duration-500 shadow-lg text-black">
-         <div className="relative z-10 flex flex-col h-full">
+      {/* 3. SOLUTION: CREATIVES (Full Width) */}
+      <div className="col-span-1 md:col-span-12 bg-[#FFE241] rounded-[32px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-16 group overflow-hidden relative hover:-translate-y-2 transition-transform duration-500 shadow-lg text-black">
+         <div className="w-full md:w-1/2 relative z-10 flex flex-col justify-center text-left">
              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/10 text-black text-[10px] font-bold uppercase tracking-wider mb-4 border border-black/10 w-fit">
                 <iconify-icon icon="solar:magic-stick-3-bold"></iconify-icon> AI Creative Studio
              </div>
              <h3 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
                 Generate Evergreen Winning Creatives in Mins
              </h3>
-             <p className="text-black/70 font-medium mb-8 leading-relaxed">
+             <p className="text-black/70 font-medium leading-relaxed">
                 Access Shutterstock Library, 5+ AI tools, and a built-in editor. Create AI UGC, Product Images, Voice overs, Reels, Hooks, Ad Copy, and Memes in minutes.
              </p>
+         </div>
+         <div className="w-full md:w-1/2 relative z-10">
+             {/* Interactive Visual Container */}
+             <div className="w-full h-[350px] bg-[#0A0A0A] rounded-2xl shadow-2xl border border-black/10 overflow-hidden flex flex-col relative group/studio transform md:rotate-1 hover:rotate-0 transition-transform duration-500">
+                {/* Window Header */}
+                <div className="h-8 bg-[#141414] border-b border-white/5 flex items-center px-4 gap-2 shrink-0">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                    <div className="ml-auto text-[10px] text-gray-600 font-mono">Rockyt Studio v2.0</div>
+                </div>
 
-             {/* Replaced Icon Grid with GIF */}
-             <div className="mt-auto rounded-xl overflow-hidden shadow-2xl border border-black/5 relative group-hover:scale-[1.02] transition-transform duration-500">
-                 <img 
-                    src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc/685484896afd50a61f5760f5_AI%20Creative%20Studio%20copy%2011.gif" 
-                    alt="AI Creative Studio Demo" 
-                    className="w-full h-auto object-cover"
-                    loading="lazy"
-                 />
-             </div>
+                <div className="flex flex-1 overflow-hidden">
+                    {/* Sidebar */}
+                    <div className="w-14 bg-[#111] border-r border-white/5 flex flex-col items-center py-4 gap-6 shrink-0 z-10">
+                        <div className="w-8 h-8 rounded-lg bg-brand-yellow/10 text-brand-yellow flex items-center justify-center border border-brand-yellow/20">
+                            <iconify-icon icon="solar:magic-stick-3-bold" class="text-lg"></iconify-icon>
+                        </div>
+                        <div className="w-px h-4 bg-white/5"></div>
+                        <iconify-icon icon="solar:gallery-bold" class="text-gray-600 hover:text-white transition-colors text-xl"></iconify-icon>
+                        <iconify-icon icon="solar:clapperboard-play-bold" class="text-gray-600 hover:text-white transition-colors text-xl"></iconify-icon>
+                        <iconify-icon icon="solar:text-square-bold" class="text-gray-600 hover:text-white transition-colors text-xl"></iconify-icon>
+                    </div>
+
+                    {/* Canvas Area */}
+                    <div className="flex-1 p-4 relative bg-[#050505] flex flex-col gap-4">
+                        {/* Prompt Input */}
+                        <div className="w-full h-10 bg-[#1A1A1A] rounded-lg border border-white/10 flex items-center px-3 gap-3 shrink-0">
+                            <span className="text-brand-blue font-bold text-xs">PROMPT</span>
+                            <div className="h-4 w-px bg-white/10"></div>
+                            <span className="text-gray-400 text-xs truncate typing-cursor">Generate viral nike sneaker ad, cinematic lighting...</span>
+                            <button className="ml-auto bg-brand-blue text-white px-3 py-1 rounded text-[10px] font-bold hover:bg-brand-blue/80 transition-colors">
+                                GENERATE
+                            </button>
+                        </div>
+
+                        {/* Asset Grid */}
+                        <div className="grid grid-cols-2 gap-3 flex-1 min-h-0">
+                            {/* Image Generation */}
+                            <div className="bg-[#111] rounded-xl border border-white/5 relative overflow-hidden group/item hover:border-brand-yellow/30 transition-colors">
+                                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80" className="w-full h-full object-cover opacity-60 group-hover/item:opacity-100 transition-opacity duration-500 scale-105" loading="lazy" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                <div className="absolute bottom-2 left-2 right-2 flex justify-between items-end">
+                                    <span className="text-[10px] text-white font-medium">Product Shot</span>
+                                    <div className="flex items-center gap-1 bg-black/60 backdrop-blur px-1.5 py-0.5 rounded border border-white/10">
+                                        <iconify-icon icon="simple-icons:midjourney" class="text-white text-[10px]"></iconify-icon>
+                                        <span className="text-[8px] text-gray-300">v6.0</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Video Generation */}
+                            <div className="bg-[#111] rounded-xl border border-white/5 relative overflow-hidden group/item hover:border-brand-blue/30 transition-colors">
+                                <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/20 to-purple-900/20"></div>
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur flex items-center justify-center border border-white/20 group-hover/item:scale-110 transition-transform">
+                                        <iconify-icon icon="solar:play-bold" class="text-white ml-0.5"></iconify-icon>
+                                    </div>
+                                </div>
+                                <div className="absolute bottom-2 left-2 right-2 flex justify-between items-end">
+                                    <span className="text-[10px] text-white font-medium">Video Ad</span>
+                                    <div className="flex items-center gap-1 bg-black/60 backdrop-blur px-1.5 py-0.5 rounded border border-white/10">
+                                        <iconify-icon icon="simple-icons:openai" class="text-white text-[10px]"></iconify-icon>
+                                        <span className="text-[8px] text-gray-300">Sora</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Copy Generation */}
+                            <div className="bg-[#111] rounded-xl border border-white/5 p-3 relative overflow-hidden group/item hover:border-brand-pink/30 transition-colors">
+                                <div className="space-y-2">
+                                    <div className="h-1.5 w-1/3 bg-gray-700 rounded-full"></div>
+                                    <div className="h-1.5 w-full bg-gray-800 rounded-full"></div>
+                                    <div className="h-1.5 w-5/6 bg-gray-800 rounded-full"></div>
+                                    <div className="h-1.5 w-4/5 bg-gray-800 rounded-full"></div>
+                                </div>
+                                <div className="absolute bottom-2 right-2 flex items-center gap-1 bg-black/60 backdrop-blur px-1.5 py-0.5 rounded border border-white/10">
+                                        <iconify-icon icon="simple-icons:anthropic" class="text-white text-[10px]"></iconify-icon>
+                                        <span className="text-[8px] text-gray-300">Claude 3</span>
+                                </div>
+                            </div>
+
+                            {/* Voice Generation */}
+                            <div className="bg-[#111] rounded-xl border border-white/5 relative overflow-hidden group/item hover:border-green-500/30 transition-colors flex items-center justify-center">
+                                <div className="flex items-center gap-1">
+                                    <div className="w-1 h-3 bg-brand-yellow rounded-full animate-pulse"></div>
+                                    <div className="w-1 h-6 bg-brand-yellow rounded-full animate-pulse delay-75"></div>
+                                    <div className="w-1 h-4 bg-brand-yellow rounded-full animate-pulse delay-150"></div>
+                                    <div className="w-1 h-5 bg-brand-yellow rounded-full animate-pulse delay-100"></div>
+                                </div>
+                                <div className="absolute bottom-2 right-2 flex items-center gap-1 bg-black/60 backdrop-blur px-1.5 py-0.5 rounded border border-white/10">
+                                        <span className="text-[10px] text-white">11</span>
+                                        <span className="text-[8px] text-gray-300">Labs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
          </div>
       </div>
 
 
-      {/* 4. SOLUTION: ANALYTICS (Col 6) - Updated Visual */}
-      <div className="col-span-1 md:col-span-6 bg-[#161616] border border-white/10 rounded-[32px] p-8 flex flex-col group overflow-hidden relative hover:-translate-y-2 transition-transform duration-500 shadow-lg">
-         <div className="relative z-10 flex flex-col h-full">
+      {/* 4. SOLUTION: ANALYTICS (Full Width) - Redesigned Dashboard */}
+      <div className="col-span-1 md:col-span-12 bg-[#161616] border border-white/10 rounded-[32px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-16 group overflow-hidden relative hover:-translate-y-2 transition-transform duration-500 shadow-lg">
+         <div className="w-full md:w-1/2 relative z-10 flex flex-col justify-center text-left">
              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue text-[10px] font-bold uppercase tracking-wider mb-4 border border-brand-blue/20 w-fit">
                 <iconify-icon icon="solar:chart-2-bold"></iconify-icon> Advanced Analytics
              </div>
              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
                 Analytics That Bring Customers, Not Confusion
              </h3>
-             <p className="text-gray-400 font-medium mb-8 leading-relaxed">
+             <p className="text-gray-400 font-medium leading-relaxed">
                 Overwhelmed by multiple ad managers? Get one real-time view revealing the full customer journey. Simple, data-driven recommendations to know exactly what to scale.
              </p>
+         </div>
+         <div className="w-full md:w-1/2 relative z-10">
+             {/* Dashboard Visualization */}
+             <div className="rounded-2xl bg-[#0F0F0F] border border-white/10 p-6 shadow-2xl relative overflow-hidden group-hover:border-brand-blue/30 transition-colors duration-500">
+                 {/* Background Grid Pattern */}
+                 <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle, #4450F2 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+                 
+                 {/* Dashboard Header */}
+                 <div className="flex justify-between items-center mb-6 relative z-10 border-b border-white/5 pb-4">
+                     <div className="flex items-center gap-3">
+                         <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+                         <span className="text-sm font-bold text-white tracking-wide">Live Performance</span>
+                     </div>
+                     <div className="flex gap-2">
+                          <span className="px-2 py-1 rounded bg-white/5 text-[10px] text-gray-400 border border-white/5">Today</span>
+                          <span className="px-2 py-1 rounded bg-brand-blue/20 text-[10px] text-brand-blue border border-brand-blue/20">Last 7D</span>
+                     </div>
+                 </div>
 
-             {/* Replaced UI with WebP */}
-             <div className="mt-auto rounded-xl overflow-hidden shadow-2xl border border-white/10 transform group-hover:scale-[1.02] transition-transform duration-500">
-                <img 
-                    src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc/688575265c8fc879372bc4a0_6-p-800.webp" 
-                    alt="Analytics Dashboard" 
-                    className="w-full h-auto object-cover"
-                    loading="lazy"
-                />
+                 {/* ROAS Highlight */}
+                 <div className="flex items-end gap-4 mb-8 relative z-10">
+                     <div>
+                         <div className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1">Total ROAS</div>
+                         <div className="text-5xl font-black text-white tracking-tighter flex items-center gap-2">
+                             4.82
+                             <iconify-icon icon="solar:trending-up-bold" class="text-green-400 text-2xl"></iconify-icon>
+                         </div>
+                     </div>
+                     <div className="pb-2">
+                         <span className="text-green-400 text-sm font-bold bg-green-400/10 px-2 py-1 rounded-full border border-green-400/20">+32.4%</span>
+                     </div>
+                 </div>
+
+                 {/* Secondary Metrics */}
+                 <div className="grid grid-cols-3 gap-4 mb-8 relative z-10">
+                      <div className="bg-white/5 rounded-xl p-3 border border-white/5">
+                          <div className="text-[10px] text-gray-500 uppercase font-bold mb-1">Spend</div>
+                          <div className="text-lg font-bold text-white">$14.2k</div>
+                      </div>
+                      <div className="bg-white/5 rounded-xl p-3 border border-white/5">
+                          <div className="text-[10px] text-gray-500 uppercase font-bold mb-1">Revenue</div>
+                          <div className="text-lg font-bold text-white">$68.5k</div>
+                      </div>
+                      <div className="bg-white/5 rounded-xl p-3 border border-white/5">
+                          <div className="text-[10px] text-gray-500 uppercase font-bold mb-1">CPA</div>
+                          <div className="text-lg font-bold text-white">$12.40</div>
+                      </div>
+                 </div>
+
+                 {/* Simple Chart Visualization */}
+                 <div className="relative h-24 w-full z-10">
+                      {/* Chart Line SVG */}
+                      <svg className="w-full h-full overflow-visible" viewBox="0 0 300 100" preserveAspectRatio="none">
+                          <defs>
+                              <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                                  <stop offset="0%" stopColor="#4450F2" stopOpacity="0.5"/>
+                                  <stop offset="100%" stopColor="#4450F2" stopOpacity="0"/>
+                              </linearGradient>
+                          </defs>
+                          <path d="M0,80 C20,75 40,85 60,60 C80,40 100,50 120,30 C140,10 160,20 180,40 C200,60 220,50 240,20 C260,-10 280,10 300,5" fill="url(#chartGradient)" stroke="none" className="opacity-30" />
+                          <path d="M0,80 C20,75 40,85 60,60 C80,40 100,50 120,30 C140,10 160,20 180,40 C200,60 220,50 240,20 C260,-10 280,10 300,5" fill="none" stroke="#4450F2" strokeWidth="3" vectorEffect="non-scaling-stroke" />
+                      </svg>
+                      
+                      {/* Data Point Tooltip Simulation */}
+                      <div className="absolute top-[10%] right-[20%] bg-[#1A1A1A] border border-brand-blue/30 px-3 py-1.5 rounded-lg shadow-xl flex flex-col items-center">
+                           <style>{`
+                              @keyframes float-tooltip {
+                                  0%, 100% { transform: translateY(0); }
+                                  50% { transform: translateY(-5px); }
+                              }
+                           `}</style>
+                           <div style={{ animation: 'float-tooltip 3s ease-in-out infinite' }} className="flex flex-col items-center">
+                               <span className="text-[10px] text-gray-400 font-bold uppercase">ROAS</span>
+                               <span className="text-sm font-bold text-white">5.1x</span>
+                               <div className="w-2 h-2 bg-[#1A1A1A] border-r border-b border-brand-blue/30 transform rotate-45 -mt-1 translate-y-1"></div>
+                           </div>
+                      </div>
+                 </div>
              </div>
          </div>
          <div className="absolute top-0 right-0 w-64 h-64 bg-brand-blue/5 rounded-full blur-[80px] pointer-events-none"></div>
       </div>
 
 
-      {/* 5. SOLUTION: OPTIMIZATION (Full Width) - Updated Visual */}
-      <div className="col-span-1 md:col-span-12 bg-[#1D2E5C] text-white rounded-[32px] p-8 md:p-12 overflow-hidden relative group border border-white/10 shadow-2xl">
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-400/20 text-blue-200 text-[10px] font-bold uppercase tracking-wider mb-6 border border-blue-400/30">
-                    <iconify-icon icon="solar:shield-check-bold"></iconify-icon> 24/7 Budget Protection
+      {/* 5. SOLUTION: OPTIMIZATION (Full Width) - Restructured Layout */}
+      <div className="col-span-1 md:col-span-12 bg-[#1D2E5C] text-white rounded-[32px] p-8 md:p-12 overflow-hidden relative group border border-white/10 shadow-2xl flex flex-col gap-10">
+          
+          {/* Header Section */}
+          <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-400/20 text-blue-200 text-[10px] font-bold uppercase tracking-wider mb-6 border border-blue-400/30">
+                <iconify-icon icon="solar:shield-check-bold"></iconify-icon> 24/7 Budget Protection
+              </div>
+              <h3 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">Cut Wasted Ad Spend by 90%</h3>
+              <p className="text-blue-100 text-lg font-medium leading-relaxed opacity-90 max-w-2xl">
+                  Humans react after performance drops. Rockyt’s AI reacts <span className="text-white font-bold underline decoration-blue-400 underline-offset-4">while it's happening</span>. We leverage advanced ML models to audit your account & maximize performance on multiple levels.
+              </p>
+          </div>
+
+          {/* Optimizations Horizontal Grid */}
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+              <div className="bg-white/5 border border-white/5 rounded-2xl p-6 hover:bg-white/10 transition-colors backdrop-blur-sm">
+                  <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center mb-4 border border-blue-400/20">
+                      <iconify-icon icon="solar:users-group-rounded-bold" class="text-blue-300 text-2xl"></iconify-icon>
                   </div>
-                  <h3 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">Cut Wasted Ad Spend by 90%</h3>
-                  <p className="text-blue-100 text-lg mb-8 font-medium leading-relaxed opacity-90">
-                      Humans react after performance drops. Rockyt’s AI reacts <span className="text-white font-bold underline decoration-blue-400 underline-offset-4">while it's happening</span>. We leverage advanced ML models to audit your account & maximize performance on multiple levels.
-                  </p>
-                  
-                  <div className="space-y-5">
-                      <div className="flex items-start gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
-                          <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-0.5 border border-blue-400/20">
-                              <iconify-icon icon="solar:users-group-rounded-bold" class="text-blue-300 text-lg"></iconify-icon>
-                          </div>
-                          <div>
-                              <h4 className="font-bold text-white text-base">Audience Optimizations</h4>
-                              <p className="text-sm text-blue-200/70 mt-1">Adjusts targeting (audiences, interests, locations, placements) for best results in real-time.</p>
-                          </div>
-                      </div>
-                      <div className="flex items-start gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
-                          <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-0.5 border border-blue-400/20">
-                              <iconify-icon icon="solar:globus-bold" class="text-blue-300 text-lg"></iconify-icon>
-                          </div>
-                          <div>
-                              <h4 className="font-bold text-white text-base">Platform Optimizations</h4>
-                              <p className="text-sm text-blue-200/70 mt-1">Shift spend instantly between Meta, Google, TikTok, and Snapchat based on performance.</p>
-                          </div>
-                      </div>
-                  </div>
+                  <h4 className="font-bold text-white text-lg mb-2">Audience Optimizations</h4>
+                  <p className="text-sm text-blue-100/70 leading-relaxed">Adjusts targeting (audiences, interests, locations, placements) for best results in real-time.</p>
               </div>
 
-              {/* Visual Side - Replaced with MP4 */}
-              <div className="relative h-full min-h-[350px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                   <video 
-                     autoPlay 
-                     loop 
-                     muted 
-                     playsInline 
-                     className="w-full h-full object-cover"
-                   >
-                     <source src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-transcode.mp4" type="video/mp4" />
-                   </video>
+              <div className="bg-white/5 border border-white/5 rounded-2xl p-6 hover:bg-white/10 transition-colors backdrop-blur-sm">
+                  <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center mb-4 border border-blue-400/20">
+                      <iconify-icon icon="solar:magic-stick-3-bold" class="text-blue-300 text-2xl"></iconify-icon>
+                  </div>
+                  <h4 className="font-bold text-white text-lg mb-2">Creative Optimizations</h4>
+                  <p className="text-sm text-blue-100/70 leading-relaxed">Automatically pauses fatigue creatives and scales winning variations based on ROAS.</p>
+              </div>
+
+              <div className="bg-white/5 border border-white/5 rounded-2xl p-6 hover:bg-white/10 transition-colors backdrop-blur-sm">
+                  <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center mb-4 border border-blue-400/20">
+                      <iconify-icon icon="solar:globus-bold" class="text-blue-300 text-2xl"></iconify-icon>
+                  </div>
+                  <h4 className="font-bold text-white text-lg mb-2">Platform Optimizations</h4>
+                  <p className="text-sm text-blue-100/70 leading-relaxed">Shift spend instantly between Meta, Google, TikTok, and Snapchat based on performance.</p>
               </div>
           </div>
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+
+          {/* Full Width Visual */}
+          <div className="relative z-10 w-full h-[300px] md:h-[500px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl mt-2 group-hover:scale-[1.01] transition-transform duration-700">
+               <video 
+                 autoPlay 
+                 loop 
+                 muted 
+                 playsInline 
+                 className="w-full h-full object-cover"
+               >
+                 <source src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc%2F68856e2581a36b66731c485a_OptimizationFolder-transcode.mp4" type="video/mp4" />
+               </video>
+               {/* Overlay Gradient for integration */}
+               <div className="absolute inset-0 bg-gradient-to-t from-[#1D2E5C]/50 to-transparent pointer-events-none"></div>
+          </div>
+
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none -z-0"></div>
       </div>
 
-      {/* 6. NEW: MULTI-PLATFORM (Full Width) */}
+      {/* 6. NEW: MULTI-PLATFORM (Full Width) - Interactive Visualization */}
       <div className="col-span-1 md:col-span-12 bg-[#161616] border border-white/10 rounded-[32px] p-8 md:p-12 overflow-hidden relative group hover:border-white/20 transition-all duration-500 shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
                <div>
@@ -206,19 +373,61 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => 
                   </p>
                   <div className="flex flex-wrap gap-2">
                       {['Meta', 'Google', 'TikTok', 'Snapchat', 'LinkedIn', 'Spotify', 'Bing', 'Pinterest'].map((p) => (
-                          <span key={p} className="px-3 py-1 bg-white/5 rounded-lg text-xs text-gray-400 border border-white/5">{p}</span>
+                          <span key={p} className="px-3 py-1 bg-white/5 rounded-lg text-xs text-gray-400 border border-white/5 hover:bg-white/10 transition-colors cursor-default">{p}</span>
                       ))}
                       <span className="px-3 py-1 bg-white/5 rounded-lg text-xs text-brand-yellow border border-white/5">+3 more</span>
                   </div>
                </div>
                
-               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 transform group-hover:scale-[1.01] transition-transform duration-500">
-                    <img 
-                        src="https://cdn.prod.website-files.com/6798ff28c64131df111e57cc/68857526114ee66a928eea93_4-p-800.webp" 
-                        alt="Multi-platform management" 
-                        className="w-full h-auto object-cover"
-                        loading="lazy"
-                    />
+               {/* Interactive Network Graph Visual */}
+               <div className="relative h-[300px] md:h-[400px] w-full flex items-center justify-center bg-white/5 rounded-2xl border border-white/5 overflow-hidden group-hover:border-white/10 transition-colors">
+                    <style>{`
+                        @keyframes float-1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-5px, -10px); } }
+                        @keyframes float-2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(5px, 8px); } }
+                        @keyframes float-3 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-8px, 5px); } }
+                        .animate-float-1 { animation: float-1 4s ease-in-out infinite; }
+                        .animate-float-2 { animation: float-2 5s ease-in-out infinite; }
+                        .animate-float-3 { animation: float-3 4.5s ease-in-out infinite; }
+                    `}</style>
+                    
+                    {/* Background Grid */}
+                    <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, #ffffff10 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+                    
+                    {/* Connecting Lines SVG */}
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
+                        <line x1="50%" y1="50%" x2="20%" y2="25%" stroke="#8B5CF6" strokeWidth="1" strokeDasharray="4 4" />
+                        <line x1="50%" y1="50%" x2="80%" y2="25%" stroke="#8B5CF6" strokeWidth="1" strokeDasharray="4 4" />
+                        <line x1="50%" y1="50%" x2="85%" y2="50%" stroke="#8B5CF6" strokeWidth="1" strokeDasharray="4 4" />
+                        <line x1="50%" y1="50%" x2="80%" y2="75%" stroke="#8B5CF6" strokeWidth="1" strokeDasharray="4 4" />
+                        <line x1="50%" y1="50%" x2="20%" y2="75%" stroke="#8B5CF6" strokeWidth="1" strokeDasharray="4 4" />
+                        <line x1="50%" y1="50%" x2="15%" y2="50%" stroke="#8B5CF6" strokeWidth="1" strokeDasharray="4 4" />
+                    </svg>
+
+                    {/* Central Hub Node */}
+                    <div className="relative z-20 w-24 h-24 bg-[#161616] rounded-full border-2 border-brand-purple shadow-[0_0_50px_rgba(139,92,246,0.3)] flex items-center justify-center">
+                        <div className="absolute inset-0 rounded-full border border-brand-purple/50 animate-ping opacity-20"></div>
+                        <span className="font-black text-white text-xl tracking-tight">Rockyt</span>
+                    </div>
+
+                    {/* Orbiting Platform Icons */}
+                    <div className="absolute top-[20%] left-[20%] p-3 bg-[#1A1A1A] rounded-xl border border-white/10 shadow-xl animate-float-1">
+                        <iconify-icon icon="logos:meta-icon" width="24"></iconify-icon>
+                    </div>
+                    <div className="absolute top-[20%] right-[20%] p-3 bg-[#1A1A1A] rounded-xl border border-white/10 shadow-xl animate-float-2">
+                        <iconify-icon icon="logos:google-icon" width="24"></iconify-icon>
+                    </div>
+                    <div className="absolute bottom-[20%] left-[20%] p-3 bg-[#1A1A1A] rounded-xl border border-white/10 shadow-xl animate-float-3">
+                        <iconify-icon icon="logos:tiktok-icon" width="24"></iconify-icon>
+                    </div>
+                    <div className="absolute bottom-[20%] right-[20%] p-3 bg-[#1A1A1A] rounded-xl border border-white/10 shadow-xl animate-float-1">
+                        <iconify-icon icon="logos:linkedin-icon" width="24"></iconify-icon>
+                    </div>
+                    <div className="absolute top-[50%] right-[10%] transform -translate-y-1/2 p-3 bg-[#1A1A1A] rounded-xl border border-white/10 shadow-xl animate-float-2">
+                        <iconify-icon icon="fa-brands:snapchat-ghost" class="text-yellow-400 text-2xl"></iconify-icon>
+                    </div>
+                    <div className="absolute top-[50%] left-[10%] transform -translate-y-1/2 p-3 bg-[#1A1A1A] rounded-xl border border-white/10 shadow-xl animate-float-3">
+                        <iconify-icon icon="logos:pinterest" width="24"></iconify-icon>
+                    </div>
                </div>
           </div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-purple/10 rounded-full blur-[100px] pointer-events-none -z-10"></div>

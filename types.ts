@@ -1,2 +1,2 @@
-// This file is deprecated. Please use types/index.ts
-export {};
+// This file is deprecated but re-exports types/index.ts to ensure backward compatibility and type discovery
+export * from './types/index';

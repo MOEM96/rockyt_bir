@@ -125,3 +125,15 @@ declare global {
     }
   }
 }
+
+// Augment React module for newer React types (React 18+)
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'iconify-icon': IconifyIconProps;
+      'lottie-player': LottiePlayerProps;
+      'wistia-player': WistiaPlayerProps;
+      'dotlottie-player': DotLottiePlayerProps;
+    }
+  }
+}

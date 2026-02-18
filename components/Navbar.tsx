@@ -43,15 +43,15 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate, isMobileMenuOpe
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 h-28 flex items-center pointer-events-none" role="navigation" aria-label="Main navigation">
-        <div className="max-w-[1200px] w-full mx-auto px-6 flex justify-between items-center h-full">
+      <nav className="fixed top-0 left-0 right-0 z-50 h-24 md:h-28 flex items-center pointer-events-none" role="navigation" aria-label="Main navigation">
+        <div className="max-w-[1200px] w-full mx-auto px-4 md:px-6 flex justify-between items-center h-full gap-2">
           
           {/* Logo Island */}
           <div className="pointer-events-auto">
              <a 
                href="#" 
                onClick={(e) => handleDesktopNavigate(e, 'home')}
-               className="flex items-center gap-3 bg-[#161616]/80 backdrop-blur-xl border border-white/10 pl-4 pr-6 py-3 rounded-full shadow-2xl hover:-translate-y-1 transition-transform duration-300 group"
+               className="flex items-center gap-3 bg-[#161616]/80 backdrop-blur-xl border border-white/10 pl-3 pr-3 md:pl-4 md:pr-6 py-2 md:py-3 rounded-full shadow-2xl hover:-translate-y-1 transition-transform duration-300 group"
                aria-label="Go to homepage"
              >
                 <div className="w-8 h-8 flex items-center justify-center text-brand-blue group-hover:text-white transition-colors relative">
@@ -104,7 +104,24 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate, isMobileMenuOpe
             </div>
           </div>
 
-          {/* Actions Island - Catchy Redesign */}
+          {/* NEW: Mobile 3D Floating CTA (Between Logo and Burger) */}
+          <div className="lg:hidden pointer-events-auto flex-grow flex justify-center">
+             <a
+                href="#"
+                onClick={handleGetStartedClick}
+                className="
+                    relative bg-[#FFE241] text-black font-black uppercase text-[10px] tracking-widest px-5 py-2.5 rounded-full 
+                    shadow-[0_4px_0_rgb(180,160,30)] active:shadow-none active:translate-y-[4px] 
+                    transition-all duration-150 flex items-center gap-1.5 border border-[#e0c529]
+                    hover:brightness-110
+                "
+             >
+                <span>Get Started</span>
+                <iconify-icon icon="solar:bolt-bold" class="text-xs"></iconify-icon>
+             </a>
+          </div>
+
+          {/* Desktop Actions Island */}
           <div className="hidden lg:flex items-center gap-3 p-2 bg-[#161616]/90 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl pointer-events-auto">
             {/* Login */}
             <a 
@@ -131,14 +148,14 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate, isMobileMenuOpe
           <div className="lg:hidden pointer-events-auto">
               <button 
                   onClick={toggleMobileMenu}
-                  className="w-12 h-12 flex flex-col justify-center items-center gap-1.5 bg-[#161616]/80 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-brand-yellow relative overflow-hidden group"
+                  className="w-10 h-10 md:w-12 md:h-12 flex flex-col justify-center items-center gap-1.5 bg-[#161616]/80 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-brand-yellow relative overflow-hidden group"
                   aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                   aria-expanded={isMobileMenuOpen}
               >
                   {isMobileMenuOpen ? (
-                      <iconify-icon icon="solar:close-circle-bold" width="28" class="text-white relative z-10"></iconify-icon>
+                      <iconify-icon icon="solar:close-circle-bold" width="24" class="text-white relative z-10"></iconify-icon>
                   ) : (
-                      <div className="flex flex-col gap-1.5 relative z-10">
+                      <div className="flex flex-col gap-1.5 relative z-10 scale-90">
                         <span className="block w-5 h-0.5 bg-white rounded-full group-hover:w-6 transition-all"></span>
                         <span className="block w-5 h-0.5 bg-white rounded-full"></span>
                         <span className="block w-5 h-0.5 bg-white rounded-full group-hover:w-3 transition-all self-end"></span>
@@ -207,25 +224,15 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate, isMobileMenuOpe
               {/* Spacer */}
               <div className="h-10"></div>
 
-              {/* CTAs - Compact Size */}
+              {/* CTAs */}
               <div className="flex flex-col w-full gap-3">
-                  
-                  {/* Get Started - Primary */}
-                  <a 
-                    href="#"
-                    onClick={handleGetStartedClick}
-                    className="w-full py-3 rounded-full bg-[#FFE241] text-black text-sm font-bold uppercase tracking-wide hover:bg-[#ffeb7a] transition-all text-center shadow-[0_0_20px_rgba(255,226,65,0.2)] flex items-center justify-center gap-2 group"
-                  >
-                    <span>Get Started</span>
-                    <iconify-icon icon="solar:arrow-right-bold" class="text-base group-hover:translate-x-0.5 transition-transform"></iconify-icon>
-                  </a>
-
-                  {/* Login - Tertiary */}
+                  {/* Login - Enhanced Style for Mobile */}
                   <a 
                     href={EXTERNAL_LINKS.login}
-                    className="text-xs font-semibold text-gray-500 hover:text-white transition-colors text-center mt-3 uppercase tracking-wider"
+                    className="w-full py-3 rounded-full border border-white/20 text-white hover:bg-white/10 hover:border-white transition-all text-center font-bold text-base tracking-wide flex items-center justify-center gap-2 group"
                   >
-                    Login
+                    <iconify-icon icon="solar:user-circle-bold" class="text-lg text-brand-yellow"></iconify-icon>
+                    <span>Login</span>
                   </a>
               </div>
            </div>

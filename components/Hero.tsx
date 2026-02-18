@@ -27,7 +27,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => {
 
   const handleFixItNow = () => {
     handleModalClose();
-    onBookDemo();
+    onGetStarted();
   };
 
   return (
@@ -203,7 +203,6 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => {
 
         <Button 
             onClick={handleFixItNow}
-            asBookingButton
             fullWidth
             className="h-10 md:h-14 text-xs md:text-base font-bold uppercase tracking-wide btn-hover-skew shadow-[0_0_20px_rgba(255,226,65,0.1)] group"
         >
