@@ -64,7 +64,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => {
 
             {/* Subheadline */}
             <p className="text-lg md:text-2xl text-gray-400 font-light max-w-3xl mx-auto mb-12 leading-relaxed">
-                Scale From $1K to $1M in Ad Spend <span className="text-white font-medium">Faster & Profitable</span>
+                Import running campaigns & Scale From $1K to $1M in Ad Spend <span className="text-white font-medium">Faster & Profitable</span>
             </p>
 
             {/* NEW SWITCH-STYLE INPUT DESIGN */}

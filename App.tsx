@@ -191,12 +191,12 @@ const App: React.FC = () => {
                    ></iframe>
                </div>
 
-               {/* Bottom Action Bar - Compact on Mobile */}
-               <div className="shrink-0 p-3 md:p-6 bg-[#121212] border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4 z-20 shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
-                    <div className="text-sm text-gray-400 hidden md:block">
+               {/* Bottom Action Bar - Compact & Minimal */}
+               <div className="shrink-0 p-3 md:py-4 bg-[#121212] border-t border-white/10 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 z-20 shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
+                    <div className="text-xs text-gray-400 flex items-center gap-2">
                         {isBookingConfirmed 
-                            ? <span className="text-green-400 font-bold flex items-center gap-2 animate-fade-in"><iconify-icon icon="solar:check-circle-bold" width="18"></iconify-icon> Booking Confirmed! You can now proceed.</span>
-                            : <span>Please <span className="text-white font-bold">confirm your booking</span> above to unlock account creation.</span>
+                            ? <span className="text-green-400 font-bold flex items-center gap-1.5 animate-fade-in"><iconify-icon icon="solar:check-circle-bold" width="14"></iconify-icon> Booking Confirmed! Proceed to next step.</span>
+                            : <span>Please <span className="text-white font-bold">confirm booking</span> above to unlock:</span>
                         }
                     </div>
                     
@@ -204,23 +204,23 @@ const App: React.FC = () => {
                         href={isBookingConfirmed ? EXTERNAL_LINKS.getStarted : '#'}
                         onClick={(e) => !isBookingConfirmed && e.preventDefault()}
                         className={`
-                            w-full md:w-auto px-4 py-3 md:px-8 md:py-4 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide flex items-center justify-center gap-2 transition-all duration-300
+                            px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wide flex items-center justify-center gap-2 transition-all duration-300
                             ${isBookingConfirmed 
-                                ? 'bg-[#FFE241] text-black hover:bg-[#ffeb7a] shadow-[0_0_20px_rgba(255,226,65,0.4)] cursor-pointer transform hover:-translate-y-1' 
-                                : 'bg-white/5 text-gray-400 border border-white/10 cursor-not-allowed'
+                                ? 'bg-[#FFE241] text-black hover:bg-[#ffeb7a] shadow-[0_0_15px_rgba(255,226,65,0.4)] cursor-pointer transform hover:-translate-y-0.5' 
+                                : 'bg-white/5 text-gray-500 border border-white/10 cursor-not-allowed'
                             }
                         `}
                         aria-disabled={!isBookingConfirmed}
                     >
                          {isBookingConfirmed ? (
                             <>
-                                <span>Create Your Account</span>
-                                <iconify-icon icon="solar:arrow-right-bold" class="text-sm md:text-xl"></iconify-icon>
+                                <span>Create Account</span>
+                                <iconify-icon icon="solar:arrow-right-bold" class="text-sm"></iconify-icon>
                             </>
                          ) : (
-                            <span className="flex items-center gap-2 text-center">
-                                <iconify-icon icon="solar:lock-keyhole-minimalistic-bold" class="text-base shrink-0"></iconify-icon>
-                                <span><span className="text-white">Create your account + $100 Ad Credits</span></span>
+                            <span className="flex items-center gap-1.5">
+                                <iconify-icon icon="solar:lock-keyhole-minimalistic-bold" class="text-sm shrink-0"></iconify-icon>
+                                <span>Create Account + $100 Credit</span>
                             </span>
                          )}
                     </a>
