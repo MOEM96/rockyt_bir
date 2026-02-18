@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Define custom element props interfaces
-export interface IconifyIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+export interface IconifyIconProps extends React.HTMLAttributes<HTMLElement> {
   icon?: string;
   width?: string | number;
   height?: string | number;
@@ -13,8 +13,7 @@ export interface IconifyIconProps extends React.DetailedHTMLProps<React.HTMLAttr
   [key: string]: any;
 }
 
-export interface LottiePlayerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
-  ref?: any;
+export interface LottiePlayerProps extends React.HTMLAttributes<HTMLElement> {
   src?: string;
   background?: string;
   speed?: string | number;
@@ -29,13 +28,16 @@ export interface LottiePlayerProps extends React.DetailedHTMLProps<React.HTMLAtt
   [key: string]: any;
 }
 
-export interface WistiaPlayerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+export interface WistiaPlayerProps extends React.HTMLAttributes<HTMLElement> {
   'media-id'?: string;
   aspect?: string;
+  class?: string;
+  className?: string;
+  style?: React.CSSProperties;
   [key: string]: any;
 }
 
-export interface DotLottiePlayerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+export interface DotLottiePlayerProps extends React.HTMLAttributes<HTMLElement> {
   src?: string;
   background?: string;
   speed?: string | number;
@@ -43,11 +45,13 @@ export interface DotLottiePlayerProps extends React.DetailedHTMLProps<React.HTML
   loop?: boolean;
   autoplay?: boolean;
   mode?: string;
+  class?: string;
+  className?: string;
   [key: string]: any;
 }
 
 // Page types
-export type PageType = 'home' | 'performance' | 'cases' | 'pricing';
+export type PageType = 'home' | 'performance' | 'cases' | 'pricing' | 'partners';
 export type CaseCategory = 'all' | 'agency' | 'ecom' | 'app';
 export type Platform = 'meta' | 'tiktok' | 'snapchat';
 
@@ -110,15 +114,14 @@ export interface CustomerLogo {
   alt: string;
 }
 
-// Fix: Augment global JSX namespace
+// Augment global JSX namespace
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'iconify-icon': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { [key: string]: any };
-      'lottie-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { [key: string]: any };
-      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { [key: string]: any };
-      'dotlottie-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { [key: string]: any };
-      [elemName: string]: any;
+      'iconify-icon': IconifyIconProps;
+      'lottie-player': LottiePlayerProps;
+      'wistia-player': WistiaPlayerProps;
+      'dotlottie-player': DotLottiePlayerProps;
     }
   }
 }
