@@ -4,7 +4,6 @@ import HomePage from './components/HomePage';
 import PerformancePage from './components/PerformancePage';
 import CasesPage from './components/CasesPage';
 import PricingPage from './components/PricingPage';
-import PartnersPage from './components/PartnersPage';
 import Footer from './components/Footer';
 import SocialProofWidget from './components/SocialProofWidget';
 import Modal from './components/Modal';
@@ -123,7 +122,6 @@ const App: React.FC = () => {
         {currentPage === 'performance' && <PerformancePage onBookDemo={handleBookDemo} onGetStarted={handleGetStarted} />}
         {currentPage === 'cases' && <CasesPage onBookDemo={handleBookDemo} onGetStarted={handleGetStarted} />}
         {currentPage === 'pricing' && <PricingPage onBookDemo={handleBookDemo} onGetStarted={handleGetStarted} />}
-        {currentPage === 'partners' && <PartnersPage onBookDemo={handleBookDemo} onGetStarted={handleGetStarted} />}
       </main>
       <Footer onNavigate={handleNavigate} />
       

@@ -87,13 +87,6 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate, isMobileMenuOpe
                 Pricing
               </a>
               <a 
-                href="#" 
-                onClick={(e) => handleDesktopNavigate(e, 'partners')}
-                className="px-6 py-2.5 rounded-full text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300 capitalize"
-              >
-                Partners
-              </a>
-              <a 
                 href="https://aiads.tawk.help/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -202,13 +195,6 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo, onNavigate, isMobileMenuOpe
                     className="text-lg font-medium text-gray-300 hover:text-white transition-colors w-full text-center py-2 border-b border-white/5"
                   >
                     Pricing
-                  </a>
-                  <a 
-                    href="#" 
-                    onClick={(e) => { e.preventDefault(); handleMobileNavigate('partners'); }} 
-                    className="text-lg font-medium text-gray-300 hover:text-white transition-colors w-full text-center py-2 border-b border-white/5"
-                  >
-                    Partners
                   </a>
                   <a 
                     href="https://aiads.tawk.help/" 

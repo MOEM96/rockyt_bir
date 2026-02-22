@@ -57,7 +57,6 @@ const Footer: React.FC<NavigationProps> = ({ onNavigate }) => {
                     <button onClick={() => handleNavigate('performance')} className="text-left text-gray-400 hover:text-brand-yellow transition-colors text-sm">Performance</button>
                     <button onClick={() => handleNavigate('cases')} className="text-left text-gray-400 hover:text-brand-yellow transition-colors text-sm">Case Studies</button>
                     <button onClick={() => handleNavigate('pricing')} className="text-left text-gray-400 hover:text-brand-yellow transition-colors text-sm">Pricing</button>
-                    <button onClick={() => handleNavigate('partners')} className="text-left text-gray-400 hover:text-brand-yellow transition-colors text-sm">Partners</button>
                     <a href="https://aiads.tawk.help/" target="_blank" rel="noopener noreferrer" className="text-left text-gray-400 hover:text-brand-yellow transition-colors text-sm">Help Center</a>
                 </div>
             </div>

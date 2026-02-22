@@ -51,7 +51,7 @@ export interface DotLottiePlayerProps extends React.HTMLAttributes<HTMLElement> 
 }
 
 // Page types
-export type PageType = 'home' | 'performance' | 'cases' | 'pricing' | 'partners';
+export type PageType = 'home' | 'performance' | 'cases' | 'pricing';
 export type CaseCategory = 'all' | 'agency' | 'ecom' | 'app';
 export type Platform = 'meta' | 'tiktok' | 'snapchat';
 
