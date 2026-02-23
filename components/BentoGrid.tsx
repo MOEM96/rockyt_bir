@@ -45,42 +45,110 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                 </div>
             </div>
 
-            {/* 2. THE PAIN SECTION */}
-            <div className="col-span-1 md:col-span-12 flex flex-col items-center text-center mt-6 md:mt-8 mb-2">
-                <h2 className="text-xl md:text-3xl font-bold text-white px-4">
-                    According to Meta <span className="text-red-500">20-50%</span> of ad-spend is wasted
+            {/* 2. THE PAIN SECTION - UPDATED TO MATCH REFERENCE IMAGE */}
+            <div className="col-span-1 md:col-span-12 flex flex-col items-center text-center mt-12 md:mt-20 mb-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6 border border-red-500/20">
+                    <iconify-icon icon="solar:danger-bold"></iconify-icon> Sound familiar?
+                </div>
+                <h2 className="text-3xl md:text-6xl font-black text-white px-4 mb-6 tracking-tighter">
+                    Ads shouldn't be <span className="text-red-500">this frustrating</span>
                 </h2>
-            </div>
-
-            {/* Pain Cards */}
-            <div className="col-span-1 md:col-span-4 bg-[#0F0F0F] rounded-[24px] md:rounded-[32px] p-6 md:p-8 border border-white/5 hover:border-red-500/30 transition-all duration-300 group shadow-lg hover:shadow-red-900/10 hover:-translate-y-1">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-red-500/10 flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <iconify-icon icon="solar:gallery-remove-bold" class="text-red-500 text-xl md:text-2xl"></iconify-icon>
-                </div>
-                <h3 className="text-lg md:text-xl font-bold text-white mb-2 md:mb-3">Creative Fatigue</h3>
-                <p className="text-gray-400 text-xs md:text-sm leading-relaxed">
-                    Limited & Poor Creatives. Your ads die faster than you can make them.
+                <p className="text-gray-400 text-sm md:text-lg max-w-2xl mx-auto px-6 font-medium leading-relaxed">
+                    You're not alone. These are the exact problems killing ROAS for thousands of direct response advertisers.
                 </p>
             </div>
 
-            <div className="col-span-1 md:col-span-4 bg-[#0F0F0F] rounded-[24px] md:rounded-[32px] p-6 md:p-8 border border-white/5 hover:border-red-500/30 transition-all duration-300 group shadow-lg hover:shadow-red-900/10 hover:-translate-y-1">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-red-500/10 flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <iconify-icon icon="solar:graph-down-bold" class="text-red-500 text-xl md:text-2xl"></iconify-icon>
-                </div>
-                <h3 className="text-lg md:text-xl font-bold text-white mb-2 md:mb-3">Delayed Analytics</h3>
-                <p className="text-gray-400 text-xs md:text-sm leading-relaxed">
-                    Inaccurate & Delayed Data. Making blind decisions on yesterday's news.
-                </p>
+            {/* Pain Cards Grid - 6 Items */}
+            <div className="col-span-1 md:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12">
+                {[
+                    { title: 'Burning ad spend on bad targeting', desc: 'Broad audiences eating your budget while your ideal customers never see your ads.', icon: 'solar:dollar-bold', color: 'text-red-500', bg: 'bg-red-500/10' },
+                    { title: 'Hours in Ads Manager', desc: 'Endless campaign setup, A/B testing confusion, and waiting for data that never makes sense.', icon: 'solar:clock-circle-bold', color: 'text-orange-500', bg: 'bg-orange-500/10' },
+                    { title: 'Analysis paralysis', desc: '300+ targeting options. 50 placements. 12 objectives. Which one actually drives sales?', icon: 'solar:brain-bold', color: 'text-purple-500', bg: 'bg-purple-500/10' },
+                    { title: 'CPMs through the roof', desc: 'Costs keep climbing while ROAS keeps dropping. The algorithm seems to hate you.', icon: 'solar:graph-down-bold', color: 'text-red-400', bg: 'bg-red-400/10' },
+                    { title: 'Fear of account bans', desc: 'One wrong move and your ad account is restricted. Rebuilding trust takes months.', icon: 'solar:shield-warning-bold', color: 'text-orange-400', bg: 'bg-orange-400/10' },
+                    { title: 'Creative fatigue', desc: 'Your best performing ad dies after 2 weeks. Now you\'re back to square one.', icon: 'solar:gallery-remove-bold', color: 'text-red-500', bg: 'bg-red-500/10' }
+                ].map((pain, i) => (
+                    <div key={i} className="bg-[#0F0F0F] rounded-[24px] md:rounded-[28px] p-6 md:p-8 border border-white/5 hover:border-white/10 transition-all duration-300 group shadow-lg flex flex-col items-start gap-4">
+                        <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl ${pain.bg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                            <iconify-icon icon={pain.icon} class={`${pain.color} text-xl md:text-2xl`}></iconify-icon>
+                        </div>
+                        <div className="space-y-2">
+                            <h3 className="text-base md:text-lg font-bold text-white leading-tight">{pain.title}</h3>
+                            <p className="text-gray-500 text-xs md:text-sm leading-relaxed font-medium">
+                                {pain.desc}
+                            </p>
+                        </div>
+                    </div>
+                ))}
             </div>
 
-            <div className="col-span-1 md:col-span-4 bg-[#0F0F0F] rounded-[24px] md:rounded-[32px] p-6 md:p-8 border border-white/5 hover:border-red-500/30 transition-all duration-300 group shadow-lg hover:shadow-red-900/10 hover:-translate-y-1">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-red-500/10 flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <iconify-icon icon="solar:hourglass-line-bold" class="text-red-500 text-xl md:text-2xl"></iconify-icon>
+            <div className="col-span-1 md:col-span-12 text-center mb-16 md:mb-24">
+                <p className="text-white text-lg md:text-xl font-black tracking-tight">There's a better way to run direct response ads.</p>
+            </div>
+
+            {/* === END 2 END SOLUTION SECTION (CLEAN & PREMIUM) === */}
+            <div className="col-span-1 md:col-span-12 bg-white rounded-[40px] p-8 md:p-16 mb-12 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24 border border-gray-100 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] relative overflow-hidden group">
+
+                <div className="w-full md:w-1/2 flex flex-col items-start text-left relative z-10">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#4450F2]/10 text-[#4450F2] text-[10px] md:text-xs font-black uppercase tracking-widest mb-8 border border-[#4450F2]/20">
+                        <iconify-icon icon="solar:stars-bold" class="text-sm"></iconify-icon> The Rockyt Standard
+                    </div>
+
+                    <h2 className="text-4xl md:text-7xl font-black text-[#161616] mb-8 tracking-tighter leading-[0.9]">
+                        End 2 End<br /><span className="text-[#4450F2]">Ad Management</span>
+                    </h2>
+
+                    <p className="text-gray-500 text-sm md:text-xl font-medium leading-relaxed mb-10 max-w-lg">
+                        Run winning ads like experts but without the headache. Stop doing ads the hard old way
+                        You've seen what top media buyers do. Now get the same results without the $5k/month agency fee.
+                    </p>
+
+                    <button
+                        onClick={onGetStarted}
+                        className="group relative px-10 py-5 bg-[#4450F2] text-white rounded-full font-black text-xs md:text-sm uppercase tracking-widest hover:bg-[#3340D1] hover:scale-105 active:scale-95 transition-all shadow-[0_20px_40px_rgba(68,80,242,0.3)] flex items-center gap-3 overflow-hidden shadow-xl"
+                    >
+                        <span>Launch Campaign Now</span>
+                        <iconify-icon icon="solar:arrow-right-bold" class="text-xl group-hover:translate-x-1 transition-transform"></iconify-icon>
+                    </button>
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-white mb-2 md:mb-3">Slow Optimizations</h3>
-                <p className="text-gray-400 text-xs md:text-sm leading-relaxed">
-                    Manual Testing. Reacting too late to market changes and bleeding budget.
-                </p>
+
+                <div className="w-full md:w-1/2 relative flex items-center justify-center py-10">
+                    <div className="relative w-full max-w-[440px] aspect-square flex items-center justify-center">
+
+                        {/* Orbital Decor */}
+                        <div className="absolute inset-0 border border-gray-100 rounded-full"></div>
+                        <div className="absolute inset-16 border border-dashed border-gray-200 rounded-full animate-[spin_60s_linear_infinite]"></div>
+
+                        {/* Central Hub */}
+                        <div className="relative z-20 w-32 h-32 md:w-48 md:h-48 bg-white rounded-[44px] shadow-[0_40px_80px_rgba(0,0,0,0.08)] border border-gray-100 flex items-center justify-center p-5">
+                            <div className="w-full h-full bg-[#4450F2] rounded-[32px] flex items-center justify-center text-white shadow-[0_20px_40px_rgba(68,80,242,0.3)]">
+                                <iconify-icon icon="solar:rocket-bold" class="text-5xl md:text-7xl text-white"></iconify-icon>
+                            </div>
+                        </div>
+
+                        {/* Network Nodes (Platforms) */}
+                        {[
+                            { icon: 'logos:facebook', pos: 'top-0 left-1/2 -translate-x-1/2 -translate-y-1/2' },
+                            { icon: 'logos:google-icon', pos: 'bottom-[5%] left-[5%] -translate-x-1/2' },
+                            { icon: 'logos:tiktok-icon', pos: 'bottom-[5%] right-[5%] translate-x-1/2' }
+                        ].map((node, i) => (
+                            <div key={i} className={`absolute ${node.pos} w-16 h-16 md:w-24 md:h-24 bg-white rounded-[24px] shadow-2xl border border-gray-50 flex items-center justify-center p-4 md:p-6 hover:scale-110 transition-all cursor-default z-30`}>
+                                <iconify-icon icon={node.icon} width="100%"></iconify-icon>
+                            </div>
+                        ))}
+
+                        {/* Floating Status Cards */}
+                        <div className="absolute top-[20%] right-[-10%] bg-[#22C55E] text-white text-[10px] md:text-xs font-black px-5 py-2.5 rounded-2xl shadow-xl flex items-center gap-2 animate-bounce z-40">
+                            <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>
+                            Waste-free Scaling
+                        </div>
+
+                        <div className="absolute bottom-[25%] left-[-15%] bg-[#121212] text-white text-[10px] md:text-xs font-black px-5 py-3 rounded-2xl shadow-2xl flex flex-col gap-1 z-40 border border-white/10">
+                            <div className="text-[#FFE241] flex items-center gap-1 uppercase tracking-widest text-[8px]">Status</div>
+                            <div className="text-lg md:text-xl">6.2x ROAS</div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -98,117 +166,93 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                     </p>
                 </div>
                 <div className="w-full md:w-1/2 relative z-10">
-                    {/* === REDESIGNED CREATIVE STUDIO VISUAL === */}
+                    {/* === REDESIGNED LIGHT-THEME CREATIVE STUDIO VISUAL === */}
                     <style>{`
-               @keyframes gen-progress { 0% { width: 0% } 60% { width: 85% } 100% { width: 100% } }
-               .animate-gen { animation: gen-progress 2.5s ease-in-out infinite; }
-               @keyframes shimmer-card { 0%,100% { opacity:.6 } 50% { opacity:1 } }
-               .shimmer-1 { animation: shimmer-card 2s ease-in-out infinite; }
-               .shimmer-2 { animation: shimmer-card 2s ease-in-out .4s infinite; }
-               .shimmer-3 { animation: shimmer-card 2s ease-in-out .8s infinite; }
-             `}</style>
-                    <div className="w-full bg-[#0A0A0A] rounded-2xl shadow-2xl border border-black/20 overflow-hidden transform md:rotate-1 hover:rotate-0 transition-transform duration-500 group/studio">
+               @keyframes gen-progress-light { 0% { width: 0% } 60% { width: 85% } 100% { width: 100% } }
+               .animate-gen-light { animation: gen-progress-light 2.5s ease-in-out infinite; }
+               @keyframes shimmer-light { 0%,100% { opacity:.4 } 50% { opacity:.7 } }
+               .shimmer-light-1 { animation: shimmer-light 2s ease-in-out infinite; }
+              `}</style>
+                    <div className="w-full bg-[#F9FAFB] rounded-2xl shadow-2xl border border-gray-200 overflow-hidden transform md:rotate-1 hover:rotate-0 transition-transform duration-500 group/studio">
 
-                        {/* Top bar */}
-                        <div className="h-8 bg-[#111] border-b border-white/5 flex items-center px-4 gap-2 shrink-0">
-                            <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-                            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
-                            <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-                            <div className="ml-3 flex items-center gap-1.5 bg-white/5 rounded-md px-2 py-0.5 border border-white/5">
-                                <iconify-icon icon="solar:magic-stick-3-bold" class="text-[#FFE241] text-[10px]"></iconify-icon>
-                                <span className="text-[10px] text-gray-400 font-mono">Rockyt Creative Studio</span>
-                            </div>
-                            <div className="ml-auto flex items-center gap-1.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
-                                <span className="text-[9px] text-green-400 font-bold">LIVE</span>
+                        {/* Top bar (Light Tool Style) */}
+                        <div className="h-8 bg-gray-100 border-b border-gray-200 flex items-center px-4 gap-2 shrink-0">
+                            <div className="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
+                            <div className="ml-3 flex items-center gap-1.5 bg-white rounded-md px-2 py-0.5 border border-gray-200">
+                                <iconify-icon icon="solar:magic-stick-3-bold" class="text-[#4450F2] text-[10px]"></iconify-icon>
+                                <span className="text-[10px] text-gray-700 font-bold">Creative Studio v2</span>
                             </div>
                         </div>
 
-                        {/* Prompt bar */}
-                        <div className="flex items-center gap-3 px-4 py-2.5 border-b border-white/5 bg-[#0D0D0D]">
-                            <span className="text-[10px] font-black text-[#4450F2] uppercase tracking-widest shrink-0">AI Prompt</span>
-                            <div className="flex-1 bg-[#1A1A1A] rounded-lg border border-white/10 px-3 py-1.5 flex items-center gap-2">
-                                <span className="text-[11px] text-gray-300 truncate">Generate a high-converting Nike sneaker ad for Instagram Reels...</span>
-                                <span className="shrink-0 w-1 h-4 bg-white/60 rounded animate-pulse"></span>
+                        {/* Prompt bar (Clean Light) */}
+                        <div className="px-4 py-3 border-b border-gray-100 bg-white">
+                            <div className="flex items-center gap-2 mb-2">
+                                <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest">Target Context</span>
+                                <div className="h-px flex-1 bg-gray-100"></div>
                             </div>
-                            <button className="shrink-0 bg-[#FFE241] text-black px-3 py-1.5 rounded-lg text-[10px] font-black hover:brightness-110 transition-all flex items-center gap-1">
-                                <iconify-icon icon="solar:play-bold" class="text-[10px]"></iconify-icon> Generate
-                            </button>
-                        </div>
-
-                        {/* Generation progress */}
-                        <div className="px-4 py-2 bg-[#0A0A0A] border-b border-white/5 flex items-center gap-3">
-                            <span className="text-[9px] text-gray-500 uppercase font-bold tracking-wider shrink-0">Generating</span>
-                            <div className="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
-                                <div className="h-full bg-gradient-to-r from-[#4450F2] to-[#FFE241] rounded-full animate-gen"></div>
-                            </div>
-                            <span className="text-[9px] text-[#FFE241] font-bold shrink-0">4 assets</span>
-                        </div>
-
-                        {/* Asset grid */}
-                        <div className="grid grid-cols-4 gap-2 p-3">
-
-                            {/* Featured large card — Image Ad */}
-                            <div className="col-span-2 row-span-2 relative rounded-xl overflow-hidden border border-white/5 group/c shimmer-1" style={{ minHeight: '160px' }}>
-                                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80" className="w-full h-full object-cover" loading="lazy" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                                {/* Ad frame overlay */}
-                                <div className="absolute top-2 left-2 flex items-center gap-1 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded-full border border-white/10">
-                                    <iconify-icon icon="simple-icons:midjourney" class="text-white text-[9px]"></iconify-icon>
-                                    <span className="text-[8px] text-white font-bold">MidJourney v6</span>
+                            <div className="flex items-center gap-2">
+                                <div className="flex-1 bg-gray-50 rounded-lg border border-gray-200 px-3 py-2 flex items-center gap-2">
+                                    <span className="text-[11px] text-gray-600 truncate">Create 3 high-performance video scripts for Q4 scale...</span>
+                                    <span className="shrink-0 w-0.5 h-3 bg-[#4450F2] rounded animate-pulse"></span>
                                 </div>
-                                <div className="absolute bottom-0 left-0 right-0 p-2">
-                                    <div className="text-[10px] font-black text-white mb-1">Product Image Ad</div>
-                                    <div className="flex items-center justify-between">
-                                        <span className="text-[8px] text-green-400 bg-green-400/10 px-1.5 py-0.5 rounded-full border border-green-400/20 font-bold">✓ Ready</span>
-                                        <span className="text-[8px] text-gray-400">1080×1080</span>
+                                <button className="shrink-0 bg-[#4450F2] text-white px-3 py-2 rounded-lg text-[10px] font-black shadow-lg shadow-blue-500/20 hover:scale-105 transition-all">
+                                    Generate
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Asset grid (Light Card Style) */}
+                        <div className="grid grid-cols-6 gap-2 p-3 bg-gray-50">
+                            {/* Main preview */}
+                            <div className="col-span-4 row-span-2 relative rounded-xl overflow-hidden shadow-sm border border-gray-200 bg-white p-1">
+                                <div className="relative w-full h-full rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80" className="w-full h-full object-cover" loading="lazy" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                                    <div className="absolute top-2 left-2 flex items-center gap-1 bg-white/90 backdrop-blur px-2 py-0.5 rounded-full">
+                                        <iconify-icon icon="solar:gallery-bold" class="text-[#4450F2] text-[8px]"></iconify-icon>
+                                        <span className="text-[8px] text-gray-900 font-bold">Variation A</span>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Video Reel */}
-                            <div className="col-span-2 relative rounded-xl overflow-hidden border border-white/5 bg-gradient-to-br from-indigo-950/80 to-purple-950/80 shimmer-2 flex flex-col items-center justify-center" style={{ minHeight: '76px' }}>
-                                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle, #8B5CF6 1px, transparent 1px)', backgroundSize: '12px 12px' }}></div>
-                                <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center mb-1.5 group/c hover:scale-110 transition-transform">
-                                    <iconify-icon icon="solar:clapperboard-play-bold" class="text-white text-sm"></iconify-icon>
+                            {/* Side assets */}
+                            <div className="col-span-2 space-y-2">
+                                <div className="bg-white rounded-lg border border-gray-200 p-2 shadow-sm">
+                                    <div className="flex items-center gap-1.5 mb-1.5">
+                                        <div className="w-4 h-4 rounded bg-blue-50 flex items-center justify-center">
+                                            <iconify-icon icon="solar:chat-line-bold" class="text-[#4450F2] text-[10px]"></iconify-icon>
+                                        </div>
+                                        <span className="text-[8px] font-bold text-gray-800">Copy</span>
+                                    </div>
+                                    <div className="space-y-1">
+                                        <div className="h-1 w-full bg-gray-100 rounded"></div>
+                                        <div className="h-1 w-2/3 bg-gray-100 rounded"></div>
+                                    </div>
                                 </div>
-                                <span className="relative text-[9px] text-white font-bold">Reels / TikTok</span>
-                                <div className="absolute top-1.5 right-1.5 flex items-center gap-1 bg-black/50 backdrop-blur px-1.5 py-0.5 rounded border border-white/10">
-                                    <iconify-icon icon="simple-icons:openai" class="text-white text-[8px]"></iconify-icon>
-                                    <span className="text-[7px] text-gray-300">Sora</span>
-                                </div>
-                            </div>
-
-                            {/* Voiceover */}
-                            <div className="col-span-1 rounded-xl border border-white/5 bg-[#111] flex flex-col items-center justify-center shimmer-3 p-2 gap-1" style={{ minHeight: '76px' }}>
-                                <div className="flex items-end gap-0.5">
-                                    {[2, 4, 3, 5, 2, 4, 3].map((h, i) => (
-                                        <div key={i} className="w-0.5 bg-[#FFE241] rounded-full animate-pulse" style={{ height: `${h * 4}px`, animationDelay: `${i * 0.1}s` }}></div>
-                                    ))}
-                                </div>
-                                <span className="text-[8px] text-gray-400 font-bold">Voiceover</span>
-                                <span className="text-[7px] text-gray-600">ElevenLabs</span>
-                            </div>
-
-                            {/* Ad Copy */}
-                            <div className="col-span-1 rounded-xl border border-white/5 bg-[#111] p-2 flex flex-col gap-1 shimmer-1" style={{ minHeight: '76px' }}>
-                                <div className="h-1 w-2/3 bg-gray-700 rounded-full"></div>
-                                <div className="h-1 w-full bg-gray-800 rounded-full"></div>
-                                <div className="h-1 w-5/6 bg-gray-800 rounded-full"></div>
-                                <div className="h-1 w-4/5 bg-gray-800 rounded-full"></div>
-                                <div className="mt-auto flex items-center gap-1">
-                                    <iconify-icon icon="simple-icons:anthropic" class="text-white text-[8px]"></iconify-icon>
-                                    <span className="text-[7px] text-gray-500">Claude</span>
+                                <div className="bg-white rounded-lg border border-gray-200 p-2 shadow-sm">
+                                    <div className="flex items-center gap-1.5 mb-1.5">
+                                        <div className="w-4 h-4 rounded bg-green-50 flex items-center justify-center">
+                                            <iconify-icon icon="solar:volume-loud-bold" class="text-green-600 text-[10px]"></iconify-icon>
+                                        </div>
+                                        <span className="text-[8px] font-bold text-gray-800">UGC</span>
+                                    </div>
+                                    <div className="flex items-end gap-0.5 h-4">
+                                        {[2, 4, 3, 5, 2, 4, 3].map((h, i) => (
+                                            <div key={i} className="flex-1 bg-green-500/40 rounded-t" style={{ height: `${h * 20}%` }}></div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
 
-                        </div>
-
-                        {/* AI tool pills footer */}
-                        <div className="px-3 pb-3 flex items-center gap-2 flex-wrap">
-                            {['UGC Video', 'Meme', 'Hook Generator', 'Ad Copy', 'Product Shot'].map(t => (
-                                <span key={t} className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[8px] text-gray-400 hover:border-[#FFE241]/40 hover:text-[#FFE241] transition-colors cursor-default">{t}</span>
-                            ))}
+                            {/* Tool status */}
+                            <div className="col-span-6 px-1 flex items-center gap-2">
+                                <div className="h-1 flex-1 bg-gray-200 rounded-full overflow-hidden">
+                                    <div className="h-full bg-[#4450F2] rounded-full animate-gen-light" style={{ width: '85%' }}></div>
+                                </div>
+                                <span className="text-[8px] font-black text-[#4450F2]">ENHANCING CREATIVE...</span>
+                            </div>
                         </div>
 
                     </div>
@@ -216,105 +260,120 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
             </div>
 
 
-            {/* 4. SOLUTION: ANALYTICS (Full Width) - Redesigned Dashboard */}
+            {/* 4. SOLUTION: ANALYTICS (Full Width) - Redesigned Dashboard Image Style */}
             <div className="col-span-1 md:col-span-12 bg-[#161616] border border-white/10 rounded-[24px] md:rounded-[32px] p-6 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-16 group overflow-hidden relative hover:-translate-y-2 transition-transform duration-500 shadow-lg">
-                <div className="w-full md:w-1/2 relative z-10 flex flex-col justify-center text-left">
+                <div className="w-full md:w-5/12 relative z-10 flex flex-col justify-center text-left">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue text-[10px] font-bold uppercase tracking-wider mb-4 border border-brand-blue/20 w-fit">
-                        <iconify-icon icon="solar:chart-2-bold"></iconify-icon> Advanced Analytics
+                        <iconify-icon icon="solar:chart-2-bold"></iconify-icon> Performance Dashboard
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 leading-tight">
                         Analytics That Bring Customers, Not Confusion
                     </h3>
-                    <p className="text-gray-400 font-medium leading-relaxed text-sm md:text-base">
-                        Overwhelmed by multiple ad managers? Get one real-time view revealing the full customer journey. Simple, data-driven recommendations to know exactly what to scale.
+                    <p className="text-gray-400 font-medium leading-relaxed text-sm md:text-base mb-8">
+                        Stop bouncing between spreadsheets. Get the same clean, actionable dashboard our internal team uses to scale multi-million dollar brands.
                     </p>
+                    <div className="space-y-3">
+                        {['Real-time cross-platform tracking', 'AI-predicted scaling opportunities', 'One-click creative performance audits'].map(item => (
+                            <div key={item} className="flex items-center gap-3 text-sm text-gray-300">
+                                <iconify-icon icon="solar:check-circle-bold" class="text-green-400"></iconify-icon>
+                                <span>{item}</span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                <div className="w-full md:w-1/2 relative z-10">
-                    {/* === COMPACT ANALYTICS DASHBOARD === */}
-                    <div className="rounded-2xl bg-[#0A0A0A] border border-white/10 overflow-hidden shadow-2xl group-hover:border-[#4450F2]/40 transition-colors duration-500">
+                <div className="w-full md:w-7/12 relative z-10">
+                    {/* === WHITE THEME DASHBOARD VISUAL (REF IMAGE STYLE) === */}
+                    <div className="rounded-2xl bg-[#F0F2F5] border border-white/20 p-2 shadow-2xl overflow-hidden transform group-hover:scale-[1.02] transition-transform duration-700">
+                        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col">
 
-                        {/* Window chrome */}
-                        <div className="h-8 bg-[#111] border-b border-white/5 flex items-center px-4 gap-2">
-                            <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-                            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
-                            <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-                            <span className="ml-2 text-[10px] text-gray-500 font-mono">Rockyt Analytics</span>
-                            <div className="ml-auto flex items-center gap-1.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
-                                <span className="text-[9px] text-green-400 font-bold">LIVE</span>
-                            </div>
-                        </div>
-
-                        <div className="p-3 space-y-3">
-
-                            {/* Platform row with icons */}
-                            <div className="flex items-center gap-1.5">
-                                {[
-                                    { icon: 'logos:meta-icon', name: 'Meta', spend: '$6.2k', roas: '5.1x', active: true },
-                                    { icon: 'logos:google-icon', name: 'Google', spend: '$4.8k', roas: '4.2x', active: true },
-                                    { icon: 'logos:tiktok-icon', name: 'TikTok', spend: '$2.1k', roas: '3.8x', active: false },
-                                    { icon: 'fa-brands:snapchat-ghost', name: 'Snap', spend: '$1.1k', roas: '2.9x', active: false },
-                                ].map(p => (
-                                    <div key={p.name} className={`flex-1 rounded-lg p-2 border transition-colors ${p.active ? 'bg-[#4450F2]/10 border-[#4450F2]/30' : 'bg-white/[0.03] border-white/5 hover:border-white/10'}`}>
-                                        <div className="flex items-center gap-1.5 mb-1.5">
-                                            <iconify-icon icon={p.icon} width="12"></iconify-icon>
-                                            <span className="text-[8px] text-gray-400 font-bold uppercase">{p.name}</span>
-                                        </div>
-                                        <div className="text-[10px] font-bold text-white leading-none">{p.spend}</div>
-                                        <div className="text-[8px] text-green-400 font-bold">{p.roas}</div>
+                            {/* Window Header */}
+                            <div className="h-10 bg-gray-50 border-b border-gray-200 px-4 flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                    <div className="flex gap-1.5 font-bold text-gray-400 text-[10px] uppercase tracking-widest">
+                                        <div className="w-2.5 h-2.5 rounded-full bg-red-400/50"></div>
+                                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/50"></div>
+                                        <div className="w-2.5 h-2.5 rounded-full bg-green-400/50"></div>
                                     </div>
-                                ))}
-                            </div>
-
-                            {/* Key metrics row */}
-                            <div className="grid grid-cols-4 gap-1.5">
-                                {[
-                                    { label: 'ROAS', value: '4.82', change: '+32%', color: 'text-green-400', bg: 'bg-green-400/10' },
-                                    { label: 'CPA', value: '$12.4', change: '-18%', color: 'text-green-400', bg: 'bg-green-400/10' },
-                                    { label: 'Revenue', value: '$68.5k', change: '+$14k', color: 'text-[#4450F2]', bg: 'bg-[#4450F2]/10' },
-                                    { label: 'Conv.', value: '1,847', change: '+24%', color: 'text-green-400', bg: 'bg-green-400/10' },
-                                ].map(m => (
-                                    <div key={m.label} className="bg-white/[0.03] rounded-lg p-2 border border-white/5">
-                                        <div className="text-[8px] text-gray-500 uppercase font-black tracking-wider">{m.label}</div>
-                                        <div className="text-sm font-black text-white tracking-tight leading-tight mt-0.5">{m.value}</div>
-                                        <span className={`text-[8px] font-bold ${m.color}`}>{m.change}</span>
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Mini chart */}
-                            <div className="relative h-14 w-full bg-white/[0.02] rounded-lg border border-white/5 overflow-hidden">
-                                <svg className="w-full h-full" viewBox="0 0 300 60" preserveAspectRatio="none">
-                                    <defs>
-                                        <linearGradient id="miniChartGrad" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="0%" stopColor="#4450F2" stopOpacity="0.3" />
-                                            <stop offset="100%" stopColor="#4450F2" stopOpacity="0" />
-                                        </linearGradient>
-                                    </defs>
-                                    <path d="M0,50 C25,48 45,52 70,38 C95,24 115,30 140,16 C165,4 185,10 210,20 C235,32 255,26 275,10 C290,0 295,4 300,2 L300,60 L0,60 Z" fill="url(#miniChartGrad)" />
-                                    <path d="M0,50 C25,48 45,52 70,38 C95,24 115,30 140,16 C165,4 185,10 210,20 C235,32 255,26 275,10 C290,0 295,4 300,2" fill="none" stroke="#4450F2" strokeWidth="2" vectorEffect="non-scaling-stroke" />
-                                </svg>
-                                <div className="absolute top-1 left-2 text-[8px] text-gray-500 font-bold uppercase">30-Day Trend</div>
-                                <div className="absolute top-1 right-2 text-[8px] text-green-400 font-bold">↑ Trending Up</div>
-                            </div>
-
-                            {/* AI Insights */}
-                            <div className="rounded-lg border border-[#4450F2]/20 bg-[#4450F2]/5 p-2.5">
-                                <div className="flex items-center gap-1.5 mb-2">
-                                    <iconify-icon icon="solar:magic-stick-3-bold" class="text-[#4450F2] text-xs"></iconify-icon>
-                                    <span className="text-[9px] text-[#4450F2] font-black uppercase tracking-wider">AI Insights</span>
+                                    <div className="h-4 w-px bg-gray-200"></div>
+                                    <span className="text-[10px] font-bold text-gray-400">ROCKYT DASHBOARD</span>
                                 </div>
-                                <div className="space-y-1.5">
-                                    {[
-                                        { text: 'Scale Meta Campaign #12 — ROAS 5.1x, room to increase 40% spend', type: 'success' },
-                                        { text: 'Pause Google Ad Group "Brand" — CPA spiked 35% in last 48h', type: 'warning' },
-                                        { text: 'TikTok creative #7 showing fatigue — swap with variant B', type: 'info' },
-                                    ].map((insight, i) => (
-                                        <div key={i} className="flex items-start gap-1.5">
-                                            <span className={`mt-0.5 w-1 h-1 rounded-full shrink-0 ${insight.type === 'success' ? 'bg-green-400' : insight.type === 'warning' ? 'bg-yellow-400' : 'bg-[#4450F2]'}`}></span>
-                                            <span className="text-[9px] text-gray-300 leading-tight">{insight.text}</span>
+                                <div className="flex items-center gap-2">
+                                    <div className="px-2 py-0.5 rounded bg-blue-50 text-[#4450F2] text-[9px] font-black">7-DAY VIEW</div>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col md:flex-row h-full">
+                                {/* Left Content: Metrics Grid */}
+                                <div className="flex-grow p-3 bg-white grid grid-cols-2 gap-3 border-r border-gray-100">
+
+                                    {/* Metric Card 1: Spend */}
+                                    <div className="bg-white rounded-xl border border-gray-100 p-3 shadow-sm hover:border-[#4450F2]/20 transition-colors">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <div className="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center">
+                                                <iconify-icon icon="solar:wallet-bold" class="text-[#4450F2] text-sm"></iconify-icon>
+                                            </div>
+                                            <div className="px-1.5 py-0.5 rounded bg-green-50 text-green-600 text-[8px] font-bold">+12%</div>
                                         </div>
-                                    ))}
+                                        <div className="text-[9px] text-gray-500 font-bold uppercase">Monthly Spend</div>
+                                        <div className="text-lg font-black text-gray-900">$142,508</div>
+                                    </div>
+
+                                    {/* Metric Card 2: ROAS */}
+                                    <div className="bg-white rounded-xl border border-gray-100 p-3 shadow-sm hover:border-[#4450F2]/20 transition-colors">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <div className="w-7 h-7 rounded-lg bg-indigo-50 flex items-center justify-center">
+                                                <iconify-icon icon="solar:chart-2-bold" class="text-indigo-600 text-sm"></iconify-icon>
+                                            </div>
+                                            <div className="px-1.5 py-0.5 rounded bg-green-50 text-green-600 text-[8px] font-bold">+0%</div>
+                                        </div>
+                                        <div className="text-[9px] text-gray-500 font-bold uppercase">Avg. ROAS</div>
+                                        <div className="text-lg font-black text-gray-900">4.8x</div>
+                                    </div>
+
+                                    {/* Action Card: Suggestions */}
+                                    <div className="col-span-2 bg-[#4450F2] rounded-xl p-3 text-white shadow-lg overflow-hidden relative">
+                                        <div className="relative z-10">
+                                            <div className="flex items-center gap-2 mb-2">
+                                                <iconify-icon icon="solar:magic-stick-3-bold" class="text-white text-xs"></iconify-icon>
+                                                <span className="text-[9px] font-black uppercase tracking-wider">Recommendations</span>
+                                            </div>
+                                            <p className="text-[10px] font-bold leading-tight opacity-90 mb-3">Scale Meta Campaign #04 by 30%. Predicted 5.2x ROAS maintenance.</p>
+                                            <button className="w-full py-1.5 bg-white/20 hover:bg-white/30 rounded-lg text-[9px] font-black uppercase transition-colors">Apply Optimization</button>
+                                        </div>
+                                        {/* Abstract background shape */}
+                                        <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                                    </div>
+
+                                </div>
+
+                                {/* Right Content: Activity / List style from image */}
+                                <div className="w-full md:w-48 bg-gray-50 p-3 flex flex-col gap-3">
+                                    <h4 className="text-[9px] font-black text-gray-400 uppercase tracking-widest">Campaign Activity</h4>
+                                    <div className="space-y-2">
+                                        {[
+                                            { action: 'Updated campaign', label: 'Meta Scaling Strategy', time: '2m ago', color: 'bg-blue-400' },
+                                            { action: 'Paused creative', label: 'Fatigue Detection', time: '1h ago', color: 'bg-red-400' },
+                                            { action: 'Updated script', label: 'UGC Script Gen', time: '3h ago', color: 'bg-green-400' }
+                                        ].map((act, i) => (
+                                            <div key={i} className="bg-white rounded-lg border border-gray-200 p-2 shadow-sm">
+                                                <div className="flex items-center gap-1.5 mb-1">
+                                                    <div className={`w-1.5 h-1.5 rounded-full ${act.color}`}></div>
+                                                    <span className="text-[8px] font-bold text-gray-700">{act.action}</span>
+                                                </div>
+                                                <div className="text-[8px] text-gray-400 truncate">{act.label}</div>
+                                                <div className="text-[7px] text-gray-300 text-right mt-1">{act.time}</div>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="mt-auto bg-green-100 rounded-lg border border-green-200 p-2">
+                                        <div className="flex items-center gap-1.5 text-green-700 mb-1">
+                                            <iconify-icon icon="solar:dollar-bold" class="text-[10px]"></iconify-icon>
+                                            <span className="text-[9px] font-black">SAVINGS</span>
+                                        </div>
+                                        <div className="text-sm font-black text-green-800">$720.78</div>
+                                        <div className="text-[7px] text-green-600 uppercase font-bold">This week</div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -410,7 +469,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                             Manage 11+ Platforms in One View
                         </h3>
                         <p className="text-gray-400 text-sm md:text-lg leading-relaxed mb-6 md:mb-8">
-                            Total control and visibility. Easily understand your data and scale across all major advertising channels without the headache of switching between multiple dashboards.
+                            Total control and visibility. Easily understand your data and scale across all major advertising channels like experts without the headache of switching between multiple dashboards.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {['Meta', 'Google', 'TikTok', 'Snapchat', 'LinkedIn', 'Spotify', 'Bing', 'Pinterest'].map((p) => (
@@ -598,20 +657,22 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
 
 
             {/* 9. Stats Row */}
-            {COMPANY_STATS.map((stat, index) => (
-                <div key={index} className="col-span-1 md:col-span-4 bg-[#161616] rounded-[24px] md:rounded-[32px] p-6 md:p-8 aspect-square md:aspect-square flex flex-col items-center justify-center text-center border border-white/5 hover:border-white/20 transition-all duration-500 hover:-translate-y-2 group">
-                    <div className={`text-4xl md:text-6xl font-semibold tracking-tighter mb-2 md:mb-4 text-brand-${stat.color} group-hover:scale-110 transition-transform duration-500`}>
-                        {stat.value}
+            {
+                COMPANY_STATS.map((stat, index) => (
+                    <div key={index} className="col-span-1 md:col-span-4 bg-[#161616] rounded-[24px] md:rounded-[32px] p-6 md:p-8 aspect-square md:aspect-square flex flex-col items-center justify-center text-center border border-white/5 hover:border-white/20 transition-all duration-500 hover:-translate-y-2 group">
+                        <div className={`text-4xl md:text-6xl font-semibold tracking-tighter mb-2 md:mb-4 text-brand-${stat.color} group-hover:scale-110 transition-transform duration-500`}>
+                            {stat.value}
+                        </div>
+                        <div className="text-lg md:text-2xl font-bold text-white leading-tight">
+                            {stat.label.split('\n').map((line, i) => (
+                                <React.Fragment key={i}>
+                                    {line}<br />
+                                </React.Fragment>
+                            ))}
+                        </div>
                     </div>
-                    <div className="text-lg md:text-2xl font-bold text-white leading-tight">
-                        {stat.label.split('\n').map((line, i) => (
-                            <React.Fragment key={i}>
-                                {line}<br />
-                            </React.Fragment>
-                        ))}
-                    </div>
-                </div>
-            ))}
+                ))
+            }
 
             {/* 10. Customers */}
             <div className="col-span-1 md:col-span-12 bg-white rounded-[24px] md:rounded-[32px] p-8 md:p-12 flex flex-col items-center justify-center relative overflow-hidden group">
@@ -657,7 +718,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                 </h3>
             </div>
 
-        </div>
+        </div >
     );
 };
 
