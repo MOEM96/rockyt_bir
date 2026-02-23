@@ -17,12 +17,9 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
             {/* 1. Social Proof / Video (Full Width) - KEPT AS IS */}
             <div className="col-span-1 md:col-span-12 bg-[#161616] border border-white/10 rounded-[24px] md:rounded-[32px] p-6 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12 shadow-2xl relative overflow-hidden group hover:border-white/20 transition-all duration-500">
                 <div className="w-full md:w-5/12 relative z-10 flex flex-col items-start text-left">
-                    <h3 className="text-2xl md:text-4xl font-bold text-white mb-4 leading-tight">
-                        See Why 15,000+ Brands Trust Rockyt
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-8 leading-tight tracking-tight">
+                        This is what it looks like when your ads are managed by something that <span className="text-brand-yellow underline decoration-brand-yellow/30 underline-offset-8">never sleeps</span>, never misses a signal, and never charges a retainer.
                     </h3>
-                    <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
-                        Stop guessing. Start scaling. See how top DTC brands use automation to cut CPA by 22% and increase ROAS by 40% in just 7 days.
-                    </p>
                     <div className="flex items-center gap-3 md:gap-4 bg-white/5 pr-4 md:pr-6 pl-2 py-2 rounded-full border border-white/5 backdrop-blur-sm group-hover:bg-white/10 transition-colors w-full md:w-auto">
                         <div className="flex -space-x-2 md:-space-x-3 shrink-0">
                             <img src="https://i.pravatar.cc/100?img=1" alt="" className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-[#161616]" loading="lazy" decoding="async" width="40" height="40" />
@@ -233,129 +230,91 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                     </p>
                 </div>
                 <div className="w-full md:w-1/2 relative z-10">
-                    {/* === REDESIGNED ANALYTICS DASHBOARD VISUAL === */}
-                    <style>{`
-               @keyframes bar-grow-1 { from { height:0 } to { height:55% } }
-               @keyframes bar-grow-2 { from { height:0 } to { height:75% } }
-               @keyframes bar-grow-3 { from { height:0 } to { height:42% } }
-               @keyframes bar-grow-4 { from { height:0 } to { height:88% } }
-               @keyframes bar-grow-5 { from { height:0 } to { height:62% } }
-               .bar-1 { animation: bar-grow-1 1s ease-out forwards; }
-               .bar-2 { animation: bar-grow-2 1s .1s ease-out forwards; }
-               .bar-3 { animation: bar-grow-3 1s .2s ease-out forwards; }
-               .bar-4 { animation: bar-grow-4 1s .3s ease-out forwards; }
-               .bar-5 { animation: bar-grow-5 1s .4s ease-out forwards; }
-               @keyframes float-tip { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-4px) } }
-               .float-tip { animation: float-tip 3s ease-in-out infinite; }
-               @keyframes draw-line {
-                 from { stroke-dashoffset: 400; }
-                 to { stroke-dashoffset: 0; }
-               }
-               .draw-line { stroke-dasharray: 400; animation: draw-line 2s ease-out forwards; }
-             `}</style>
-                    <div className="rounded-2xl bg-[#0C0C0C] border border-white/10 overflow-hidden shadow-2xl group-hover:border-[#4450F2]/40 transition-colors duration-500 relative">
+                    {/* === COMPACT ANALYTICS DASHBOARD === */}
+                    <div className="rounded-2xl bg-[#0A0A0A] border border-white/10 overflow-hidden shadow-2xl group-hover:border-[#4450F2]/40 transition-colors duration-500">
 
-                        {/* dot-grid bg */}
-                        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #4450F2 1px, transparent 1px)', backgroundSize: '18px 18px' }}></div>
-
-                        {/* Header */}
-                        <div className="flex items-center justify-between px-4 py-3 border-b border-white/5 relative z-10">
-                            <div className="flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.8)] animate-pulse"></span>
-                                <span className="text-xs font-bold text-white">Unified Analytics</span>
-                            </div>
-                            <div className="flex gap-1.5">
-                                <span className="px-2 py-0.5 rounded bg-white/5 text-[9px] text-gray-400 border border-white/5">7D</span>
-                                <span className="px-2 py-0.5 rounded bg-[#4450F2]/20 text-[9px] text-[#4450F2] border border-[#4450F2]/20 font-bold">30D</span>
-                                <span className="px-2 py-0.5 rounded bg-white/5 text-[9px] text-gray-400 border border-white/5">90D</span>
+                        {/* Window chrome */}
+                        <div className="h-8 bg-[#111] border-b border-white/5 flex items-center px-4 gap-2">
+                            <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                            <span className="ml-2 text-[10px] text-gray-500 font-mono">Rockyt Analytics</span>
+                            <div className="ml-auto flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+                                <span className="text-[9px] text-green-400 font-bold">LIVE</span>
                             </div>
                         </div>
 
-                        <div className="p-4 space-y-4 relative z-10">
+                        <div className="p-3 space-y-3">
 
-                            {/* ROAS + revenue row */}
-                            <div className="flex items-center gap-3">
-                                <div className="flex-1 bg-white/5 rounded-xl p-3 border border-white/5">
-                                    <div className="text-[9px] text-gray-500 uppercase font-black tracking-widest mb-1">Total ROAS</div>
-                                    <div className="flex items-end gap-2">
-                                        <span className="text-3xl font-black text-white tracking-tighter">4.82</span>
-                                        <span className="text-green-400 text-xs font-bold mb-0.5 bg-green-400/10 px-1.5 py-0.5 rounded-full border border-green-400/20">↑32%</span>
-                                    </div>
-                                </div>
-                                <div className="flex-1 bg-white/5 rounded-xl p-3 border border-white/5">
-                                    <div className="text-[9px] text-gray-500 uppercase font-black tracking-widest mb-1">Revenue</div>
-                                    <div className="flex items-end gap-2">
-                                        <span className="text-3xl font-black text-white tracking-tighter">$68k</span>
-                                        <span className="text-[#4450F2] text-xs font-bold mb-0.5 bg-[#4450F2]/10 px-1.5 py-0.5 rounded-full border border-[#4450F2]/20">+$14k</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Platform Attribution bars */}
-                            <div className="bg-white/5 rounded-xl p-3 border border-white/5">
-                                <div className="text-[9px] text-gray-500 uppercase font-black tracking-widest mb-3">Attribution by Platform</div>
-                                <div className="space-y-2">
-                                    {[
-                                        { label: 'Meta', pct: 88, color: '#4450F2', cls: 'bar-2', revenue: '$38.2k' },
-                                        { label: 'Google', pct: 65, color: '#34D399', cls: 'bar-3', revenue: '$18.1k' },
-                                        { label: 'TikTok', pct: 47, color: '#F472B6', cls: 'bar-4', revenue: '$9.4k' },
-                                        { label: 'Snapchat', pct: 32, color: '#FFE241', cls: 'bar-5', revenue: '$2.8k' },
-                                    ].map(p => (
-                                        <div key={p.label} className="flex items-center gap-2">
-                                            <span className="text-[9px] text-gray-400 font-bold w-14 shrink-0">{p.label}</span>
-                                            <div className="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
-                                                <div className="h-full rounded-full transition-all duration-1000" style={{ width: `${p.pct}%`, backgroundColor: p.color, boxShadow: `0 0 8px ${p.color}60` }}></div>
-                                            </div>
-                                            <span className="text-[9px] text-gray-400 font-bold w-10 text-right shrink-0">{p.revenue}</span>
+                            {/* Platform row with icons */}
+                            <div className="flex items-center gap-1.5">
+                                {[
+                                    { icon: 'logos:meta-icon', name: 'Meta', spend: '$6.2k', roas: '5.1x', active: true },
+                                    { icon: 'logos:google-icon', name: 'Google', spend: '$4.8k', roas: '4.2x', active: true },
+                                    { icon: 'logos:tiktok-icon', name: 'TikTok', spend: '$2.1k', roas: '3.8x', active: false },
+                                    { icon: 'fa-brands:snapchat-ghost', name: 'Snap', spend: '$1.1k', roas: '2.9x', active: false },
+                                ].map(p => (
+                                    <div key={p.name} className={`flex-1 rounded-lg p-2 border transition-colors ${p.active ? 'bg-[#4450F2]/10 border-[#4450F2]/30' : 'bg-white/[0.03] border-white/5 hover:border-white/10'}`}>
+                                        <div className="flex items-center gap-1.5 mb-1.5">
+                                            <iconify-icon icon={p.icon} width="12"></iconify-icon>
+                                            <span className="text-[8px] text-gray-400 font-bold uppercase">{p.name}</span>
                                         </div>
-                                    ))}
-                                </div>
+                                        <div className="text-[10px] font-bold text-white leading-none">{p.spend}</div>
+                                        <div className="text-[8px] text-green-400 font-bold">{p.roas}</div>
+                                    </div>
+                                ))}
                             </div>
 
-                            {/* Trend chart + CPA pill */}
-                            <div className="relative h-20 w-full">
-                                <svg className="w-full h-full overflow-visible" viewBox="0 0 300 80" preserveAspectRatio="none">
+                            {/* Key metrics row */}
+                            <div className="grid grid-cols-4 gap-1.5">
+                                {[
+                                    { label: 'ROAS', value: '4.82', change: '+32%', color: 'text-green-400', bg: 'bg-green-400/10' },
+                                    { label: 'CPA', value: '$12.4', change: '-18%', color: 'text-green-400', bg: 'bg-green-400/10' },
+                                    { label: 'Revenue', value: '$68.5k', change: '+$14k', color: 'text-[#4450F2]', bg: 'bg-[#4450F2]/10' },
+                                    { label: 'Conv.', value: '1,847', change: '+24%', color: 'text-green-400', bg: 'bg-green-400/10' },
+                                ].map(m => (
+                                    <div key={m.label} className="bg-white/[0.03] rounded-lg p-2 border border-white/5">
+                                        <div className="text-[8px] text-gray-500 uppercase font-black tracking-wider">{m.label}</div>
+                                        <div className="text-sm font-black text-white tracking-tight leading-tight mt-0.5">{m.value}</div>
+                                        <span className={`text-[8px] font-bold ${m.color}`}>{m.change}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Mini chart */}
+                            <div className="relative h-14 w-full bg-white/[0.02] rounded-lg border border-white/5 overflow-hidden">
+                                <svg className="w-full h-full" viewBox="0 0 300 60" preserveAspectRatio="none">
                                     <defs>
-                                        <linearGradient id="analyticsGrad" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="0%" stopColor="#4450F2" stopOpacity="0.4" />
+                                        <linearGradient id="miniChartGrad" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stopColor="#4450F2" stopOpacity="0.3" />
                                             <stop offset="100%" stopColor="#4450F2" stopOpacity="0" />
                                         </linearGradient>
                                     </defs>
-                                    <path d="M0,70 C30,65 50,72 80,50 C110,30 130,40 160,18 C190,0 210,12 240,8 C265,-2 280,5 300,2" fill="url(#analyticsGrad)" stroke="none" className="opacity-40" />
-                                    <path d="M0,70 C30,65 50,72 80,50 C110,30 130,40 160,18 C190,0 210,12 240,8 C265,-2 280,5 300,2" fill="none" stroke="#4450F2" strokeWidth="2.5" vectorEffect="non-scaling-stroke" className="draw-line" />
-                                    {/* Glow dot at peak */}
-                                    <circle cx="240" cy="8" r="4" fill="#4450F2" className="opacity-80" />
-                                    <circle cx="240" cy="8" r="8" fill="#4450F2" className="opacity-20 animate-ping" />
+                                    <path d="M0,50 C25,48 45,52 70,38 C95,24 115,30 140,16 C165,4 185,10 210,20 C235,32 255,26 275,10 C290,0 295,4 300,2 L300,60 L0,60 Z" fill="url(#miniChartGrad)" />
+                                    <path d="M0,50 C25,48 45,52 70,38 C95,24 115,30 140,16 C165,4 185,10 210,20 C235,32 255,26 275,10 C290,0 295,4 300,2" fill="none" stroke="#4450F2" strokeWidth="2" vectorEffect="non-scaling-stroke" />
                                 </svg>
-                                {/* Floating tooltip */}
-                                <div className="float-tip absolute top-[-8px] right-[18%] bg-[#1A1A1A] border border-[#4450F2]/40 px-2 py-1 rounded-lg shadow-xl">
-                                    <span className="text-[9px] text-gray-400 uppercase font-bold">ROAS</span>
-                                    <div className="text-xs font-black text-white">5.1x ↑</div>
-                                </div>
+                                <div className="absolute top-1 left-2 text-[8px] text-gray-500 font-bold uppercase">30-Day Trend</div>
+                                <div className="absolute top-1 right-2 text-[8px] text-green-400 font-bold">↑ Trending Up</div>
                             </div>
 
-                            {/* CPA + Conversion funnel mini */}
-                            <div className="grid grid-cols-3 gap-2">
-                                <div className="col-span-1 bg-white/5 rounded-xl p-2.5 border border-white/5 flex flex-col items-center justify-center">
-                                    <div className="text-[9px] text-gray-500 uppercase font-black">CPA</div>
-                                    <div className="text-base font-black text-white">$12.4</div>
-                                    <span className="text-[8px] text-green-400 font-bold">↓ 18%</span>
+                            {/* AI Insights */}
+                            <div className="rounded-lg border border-[#4450F2]/20 bg-[#4450F2]/5 p-2.5">
+                                <div className="flex items-center gap-1.5 mb-2">
+                                    <iconify-icon icon="solar:magic-stick-3-bold" class="text-[#4450F2] text-xs"></iconify-icon>
+                                    <span className="text-[9px] text-[#4450F2] font-black uppercase tracking-wider">AI Insights</span>
                                 </div>
-                                <div className="col-span-2 bg-white/5 rounded-xl p-2.5 border border-white/5">
-                                    <div className="text-[9px] text-gray-500 uppercase font-black mb-1.5">Funnel</div>
-                                    <div className="flex items-end gap-1 h-8">
-                                        {[
-                                            { h: '100%', c: '#4450F2', l: 'Reach' },
-                                            { h: '72%', c: '#4450F2', l: 'Click' },
-                                            { h: '45%', c: '#34D399', l: 'Lead' },
-                                            { h: '28%', c: '#FFE241', l: 'Buy' },
-                                        ].map(b => (
-                                            <div key={b.l} className="flex-1 flex flex-col items-center gap-0.5">
-                                                <div className="w-full rounded-sm" style={{ height: b.h, backgroundColor: b.c, opacity: 0.8, boxShadow: `0 0 6px ${b.c}60` }}></div>
-                                                <span className="text-[7px] text-gray-600">{b.l}</span>
-                                            </div>
-                                        ))}
-                                    </div>
+                                <div className="space-y-1.5">
+                                    {[
+                                        { text: 'Scale Meta Campaign #12 — ROAS 5.1x, room to increase 40% spend', type: 'success' },
+                                        { text: 'Pause Google Ad Group "Brand" — CPA spiked 35% in last 48h', type: 'warning' },
+                                        { text: 'TikTok creative #7 showing fatigue — swap with variant B', type: 'info' },
+                                    ].map((insight, i) => (
+                                        <div key={i} className="flex items-start gap-1.5">
+                                            <span className={`mt-0.5 w-1 h-1 rounded-full shrink-0 ${insight.type === 'success' ? 'bg-green-400' : insight.type === 'warning' ? 'bg-yellow-400' : 'bg-[#4450F2]'}`}></span>
+                                            <span className="text-[9px] text-gray-300 leading-tight">{insight.text}</span>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
 
@@ -375,9 +334,18 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                         <iconify-icon icon="solar:shield-check-bold"></iconify-icon> 24/7 Budget Protection
                     </div>
                     <h3 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6 leading-tight">Cut Wasted Ad Spend by 90%</h3>
-                    <p className="text-blue-100 text-sm md:text-lg font-medium leading-relaxed opacity-90 max-w-2xl">
-                        Humans react after performance drops. Rockyt’s AI reacts <span className="text-white font-bold underline decoration-blue-400 underline-offset-4">while it's happening</span>. We leverage advanced ML models to audit your account & maximize performance on multiple levels.
-                    </p>
+                    <div className="flex flex-wrap justify-center gap-4 md:gap-8 mt-4">
+                        {[
+                            { text: 'Faster Testing', icon: 'solar:bolt-bold', color: 'text-blue-300' },
+                            { text: 'Smarter Spending', icon: 'solar:wallet-bold', color: 'text-green-300' },
+                            { text: 'Profitable Scaling', icon: 'solar:chart-2-bold', color: 'text-brand-yellow' }
+                        ].map((point, i) => (
+                            <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+                                <iconify-icon icon={point.icon} class={`${point.color} text-sm md:text-base`}></iconify-icon>
+                                <span className="text-xs md:text-sm font-bold tracking-wide uppercase">{point.text}</span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Optimizations Horizontal Grid */}
