@@ -51,15 +51,15 @@ const Hero: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) => {
 
             {/* Headline */}
             <h1 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.95] md:leading-[0.9]">
-                Scale Your Campaigns<br className="hidden md:block" />
-                <span className="mx-2 md:mx-4 inline-block relative group">
-                    <span className="relative z-10 animate-gradient-text bg-gradient-to-r from-white via-red-500 to-white bg-[length:200%_auto] bg-clip-text text-transparent pb-1">Without</span>
+                out-perform{' '}
+                <span className="inline-block relative group">
+                    <span className="relative z-10 animate-gradient-text bg-gradient-to-r from-white via-red-500 to-white bg-[length:200%_auto] bg-clip-text text-transparent pb-1">human</span>
                     {/* Subtle underline decoration */}
                     <svg className="absolute w-full h-3 -bottom-1 left-0 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" viewBox="0 0 100 10" preserveAspectRatio="none">
                         <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
                     </svg>
                 </span>
-                Wasting Budget
+                {' '}ad experts
             </h1>
 
             {/* Subheadline */}
