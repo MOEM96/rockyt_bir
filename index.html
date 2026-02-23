@@ -1,123 +1,139 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rockyt - where creativity meets performance</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="manifest" href="/site.webmanifest" />
-    
-    <!-- Fonts - Optimized loading (non-blocking) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    </noscript>
-    
-    <!-- Tailwind CSS - Warning Suppression & CDN -->
-    <script>
-      // Suppress the "cdn.tailwindcss.com should not be used in production" warning
-      // This allows us to use the CDN without console noise while maintaining a zero-dependency setup
-      const originalWarn = console.warn;
-      console.warn = (...args) => {
-        if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com should not be used in production')) {
-          return;
-        }
-        originalWarn.apply(console, args);
-      };
 
-      // Suppress "ResizeObserver loop completed with undelivered notifications" error
-      // Also suppress generic "Script error." which is often caused by third-party scripts (Iconify/Wistia) from different origins
-      window.addEventListener('error', (e) => {
-        if (e.message === 'ResizeObserver loop completed with undelivered notifications.' || e.message === 'Script error.') {
-          e.stopImmediatePropagation();
-        }
-      });
-    </script>
-    <script src="https://cdn.tailwindcss.com" defer></script>
-    
-    <!-- External Scripts - Defer non-critical -->
-    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js" defer crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.2/dist/lottie-player.js" defer crossorigin="anonymous"></script>
-    
-    <!-- Wistia Core Player - Async/Defer -->
-    <script src="https://fast.wistia.com/player.js" defer async></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rockyt - Out-perform human ad experts</title>
 
-    <!-- DataFast Analytics -->
-    <script id="datafast-queue">
-      window.datafast = window.datafast || function() {
-        window.datafast.q = window.datafast.q || [];
-        window.datafast.q.push(arguments);
-      };
-    </script>
-    <script
-      defer
-      data-website-id="dfid_3hyJuq13o6Ftoa3c7h5ED"
-      data-domain="rockyt.io"
-      src="https://datafa.st/js/script.js">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Fonts - Optimized loading (non-blocking) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
+
+  <!-- Tailwind CSS - Warning Suppression & CDN -->
+  <script>
+    // Suppress the "cdn.tailwindcss.com should not be used in production" warning
+    // This allows us to use the CDN without console noise while maintaining a zero-dependency setup
+    const originalWarn = console.warn;
+    console.warn = (...args) => {
+      if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com should not be used in production')) {
+        return;
+      }
+      originalWarn.apply(console, args);
+    };
+
+    // Suppress "ResizeObserver loop completed with undelivered notifications" error
+    // Also suppress generic "Script error." which is often caused by third-party scripts (Iconify/Wistia) from different origins
+    window.addEventListener('error', (e) => {
+      if (e.message === 'ResizeObserver loop completed with undelivered notifications.' || e.message === 'Script error.') {
+        e.stopImmediatePropagation();
+      }
+    });
+  </script>
+  <script src="https://cdn.tailwindcss.com" defer></script>
+
+  <!-- External Scripts - Defer non-critical -->
+  <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js" defer
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.2/dist/lottie-player.js" defer
+    crossorigin="anonymous"></script>
+
+  <!-- Wistia Core Player - Async/Defer -->
+  <script src="https://fast.wistia.com/player.js" defer async></script>
+
+  <!-- DataFast Analytics -->
+  <script id="datafast-queue">
+    window.datafast = window.datafast || function () {
+      window.datafast.q = window.datafast.q || [];
+      window.datafast.q.push(arguments);
+    };
+  </script>
+  <script defer data-website-id="dfid_3hyJuq13o6Ftoa3c7h5ED" data-domain="rockyt.io"
+    src="https://datafa.st/js/script.js">
     </script>
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #161616;
-            color: #ffffff;
-            -webkit-font-smoothing: antialiased;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-            letter-spacing: -0.03em;
-        }
-        .bento-card {
-            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        .bento-card:hover {
-            transform: translateY(-4px);
-        }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        /* Custom Button Styles */
-        .btn-hover-skew span {
-            display: inline-block;
-            transition: transform 0.2s ease;
-        }
-        .btn-hover-skew:hover span {
-            transform: skewX(-10deg);
-        }
-    </style>
-    <script>
-        // Tailwind config defined before the deferred script runs
-        window.tailwind = window.tailwind || {};
-        window.tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            black: '#161616',
-                            pink: '#FF21A6',
-                            blue: '#4450F2',
-                            yellow: '#FFE241',
-                            gray: '#F3F5F7',
-                            darkblue: '#1D2E5C',
-                            purple: '#8B5CF6'
-                        }
-                    },
-                    fontSize: {
-                        'xxs': '0.65rem',
-                    }
-                }
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #161616;
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: -0.03em;
+    }
+
+    .bento-card {
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .bento-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Custom Button Styles */
+    .btn-hover-skew span {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-hover-skew:hover span {
+      transform: skewX(-10deg);
+    }
+  </style>
+  <script>
+    // Tailwind config defined before the deferred script runs
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#161616',
+              pink: '#FF21A6',
+              blue: '#4450F2',
+              yellow: '#FFE241',
+              gray: '#F3F5F7',
+              darkblue: '#1D2E5C',
+              purple: '#8B5CF6'
             }
+          },
+          fontSize: {
+            'xxs': '0.65rem',
+          }
         }
-    </script>
-<script type="importmap">
+      }
+    }
+  </script>
+  <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.2.4",
@@ -130,60 +146,64 @@
 </script>
 
 </head>
-  <body class="selection:bg-brand-yellow selection:text-brand-black">
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=708443675559567&ev=PageView&noscript=1"
-    /></noscript>
-    
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
 
-    <!-- Delayed Third-Party Scripts -->
-    <script>
-      // Load heavy third-party scripts after main content has loaded
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          // 1. Initialize Cal.com
-          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-          Cal("init", "15min", {origin:"https://app.cal.com"});
-          Cal.ns["15min"]("ui", {"theme":"dark","hideEventTypeDetails":true,"layout":"month_view"});
-          
-          Cal.ns["15min"]("on", {
-            action: "bookingSuccessful",
-            callback: (e) => {
-              // Dispatch event to React app
-              // We removed the direct fbq call here to centralize it in App.tsx
-              window.dispatchEvent(new CustomEvent('rockyt:bookingSuccessful'));
-            }
-          });
+<body class="selection:bg-brand-yellow selection:text-brand-black">
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=708443675559567&ev=PageView&noscript=1" /></noscript>
 
-          // 2. Initialize Facebook Pixel
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+
+  <!-- Delayed Third-Party Scripts -->
+  <script>
+    // Load heavy third-party scripts after main content has loaded
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        // 1. Initialize Cal.com
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "15min", { origin: "https://app.cal.com" });
+        Cal.ns["15min"]("ui", { "theme": "dark", "hideEventTypeDetails": true, "layout": "month_view" });
+
+        Cal.ns["15min"]("on", {
+          action: "bookingSuccessful",
+          callback: (e) => {
+            // Dispatch event to React app
+            // We removed the direct fbq call here to centralize it in App.tsx
+            window.dispatchEvent(new CustomEvent('rockyt:bookingSuccessful'));
+          }
+        });
+
+        // 2. Initialize Facebook Pixel
+        !function (f, b, e, v, n, t, s) {
+          if (f.fbq) return; n = f.fbq = function () {
+            n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          };
+          if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+          n.queue = []; t = b.createElement(e); t.async = !0;
+          t.src = v; s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
           'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '708443675559567');
-          fbq('track', 'PageView');
+        fbq('init', '708443675559567');
+        fbq('track', 'PageView');
 
-          // 3. Load Wistia Video Data Scripts (Modules)
-          const w1 = document.createElement('script'); 
-          w1.src = "https://fast.wistia.com/embed/okb9j6qvf5.js"; 
-          w1.async = true; 
-          w1.type = "module";
-          document.body.appendChild(w1);
+        // 3. Load Wistia Video Data Scripts (Modules)
+        const w1 = document.createElement('script');
+        w1.src = "https://fast.wistia.com/embed/okb9j6qvf5.js";
+        w1.async = true;
+        w1.type = "module";
+        document.body.appendChild(w1);
 
-          const w2 = document.createElement('script'); 
-          w2.src = "https://fast.wistia.com/embed/kwbq8jkoy8.js"; 
-          w2.async = true; 
-          w2.type = "module";
-          document.body.appendChild(w2);
+        const w2 = document.createElement('script');
+        w2.src = "https://fast.wistia.com/embed/kwbq8jkoy8.js";
+        w2.async = true;
+        w2.type = "module";
+        document.body.appendChild(w2);
 
-        }, 3500); // Delay execution by 3.5s to prioritize LCP and TTI
-      });
-    </script>
-  </body>
+      }, 3500); // Delay execution by 3.5s to prioritize LCP and TTI
+    });
+  </script>
+</body>
+
 </html>
