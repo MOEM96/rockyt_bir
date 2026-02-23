@@ -20,14 +20,6 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-8 leading-tight tracking-tight">
                         This is what it looks like when your ads are managed by something that <span className="text-brand-yellow underline decoration-brand-yellow/30 underline-offset-8">never sleeps</span>, never misses a signal, and never charges a retainer.
                     </h3>
-                    <div className="flex items-center gap-3 md:gap-4 bg-white/5 pr-4 md:pr-6 pl-2 py-2 rounded-full border border-white/5 backdrop-blur-sm group-hover:bg-white/10 transition-colors w-full md:w-auto">
-                        <div className="flex -space-x-2 md:-space-x-3 shrink-0">
-                            <img src="https://i.pravatar.cc/100?img=1" alt="" className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-[#161616]" loading="lazy" decoding="async" width="40" height="40" />
-                            <img src="https://i.pravatar.cc/100?img=5" alt="" className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-[#161616]" loading="lazy" decoding="async" width="40" height="40" />
-                            <img src="https://i.pravatar.cc/100?img=8" alt="" className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-[#161616]" loading="lazy" decoding="async" width="40" height="40" />
-                        </div>
-                        <span className="text-xs md:text-sm font-semibold text-white whitespace-nowrap">Join the top 1% of advertisers</span>
-                    </div>
                 </div>
 
                 <div className="w-full md:w-7/12 relative z-10">
@@ -63,7 +55,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                 {[
                     { title: 'Burning ad spend on bad targeting', desc: 'Broad audiences eating your budget while your ideal customers never see your ads.', icon: 'solar:dollar-bold', color: 'text-red-500', bg: 'bg-red-500/10' },
                     { title: 'Hours in Ads Manager', desc: 'Endless campaign setup, A/B testing confusion, and waiting for data that never makes sense.', icon: 'solar:clock-circle-bold', color: 'text-orange-500', bg: 'bg-orange-500/10' },
-                    { title: 'Analysis paralysis', desc: '300+ targeting options. 50 placements. 12 objectives. Which one actually drives sales?', icon: 'solar:brain-bold', color: 'text-purple-500', bg: 'bg-purple-500/10' },
+                    { title: 'Analysis paralysis', desc: '300+ targeting options. 50 placements. 12 objectives. Which one actually drives sales?', icon: 'solar:tuning-bold', color: 'text-purple-500', bg: 'bg-purple-500/10' },
                     { title: 'CPMs through the roof', desc: 'Costs keep climbing while ROAS keeps dropping. The algorithm seems to hate you.', icon: 'solar:graph-down-bold', color: 'text-red-400', bg: 'bg-red-400/10' },
                     { title: 'Fear of account bans', desc: 'One wrong move and your ad account is restricted. Rebuilding trust takes months.', icon: 'solar:shield-warning-bold', color: 'text-orange-400', bg: 'bg-orange-400/10' },
                     { title: 'Creative fatigue', desc: 'Your best performing ad dies after 2 weeks. Now you\'re back to square one.', icon: 'solar:gallery-remove-bold', color: 'text-red-500', bg: 'bg-red-500/10' }

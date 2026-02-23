@@ -59,7 +59,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                 </p>
 
                 {/* CTA Section */}
-                <div className="w-full flex justify-center mb-8 relative z-10">
+                <div className="w-full flex flex-col items-center mb-8 relative z-10">
                     <button
                         onClick={handleCalculate}
                         className="relative h-14 md:h-16 px-10 md:px-12 bg-white text-black rounded-full flex items-center justify-center gap-3 font-bold text-sm md:text-base tracking-widest uppercase transition-all duration-300 overflow-hidden group/btn hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:-translate-y-1 active:scale-95 shadow-xl"
@@ -68,6 +68,19 @@ const Hero: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                         <iconify-icon icon="solar:arrow-right-linear" class="relative z-10 text-xl transition-transform duration-300 group-hover/btn:translate-x-1"></iconify-icon>
                         <div className="absolute inset-0 bg-brand-yellow transform -translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300 ease-out z-0"></div>
                     </button>
+
+                    {/* Compact Trust Notes */}
+                    <div className="flex items-center gap-6 mt-4 opacity-50">
+                        <div className="flex items-center gap-2">
+                            <iconify-icon icon="solar:check-read-linear" class="text-white text-xs"></iconify-icon>
+                            <span className="text-[10px] md:text-xs text-white font-bold uppercase tracking-widest">No credit card required</span>
+                        </div>
+                        <div className="w-1 h-1 rounded-full bg-white/20"></div>
+                        <div className="flex items-center gap-2">
+                            <iconify-icon icon="solar:check-read-linear" class="text-white text-xs"></iconify-icon>
+                            <span className="text-[10px] md:text-xs text-white font-bold uppercase tracking-widest">0% commission fee</span>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Social Proof */}
