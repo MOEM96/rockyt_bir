@@ -7,7 +7,6 @@ import { DemoBookingProps } from '../types/index';
 
 const Hero: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
     const [showCalculatorModal, setShowCalculatorModal] = useState(false);
-    const [adSpend, setAdSpend] = useState('');
 
     const handleCalculate = () => {
         // We open the modal to show "how it works"
@@ -59,32 +58,16 @@ const Hero: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                     Humans react after performance drops. Rockyt's AI reacts <span className="text-white font-medium">while it's happening</span>, because every $ counts
                 </p>
 
-                {/* Input Section */}
-                <div className="w-full max-w-[540px] mb-8 relative group/container">
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-transparent rounded-full blur opacity-0 group-hover/container:opacity-100 transition-opacity duration-500"></div>
-
-                    <div className="relative flex flex-col md:flex-row items-stretch md:items-center bg-[#080808] border border-white/10 p-2 rounded-[2rem] md:rounded-full shadow-2xl transition-all duration-300 hover:border-white/20 gap-2 md:gap-0">
-                        <div className="w-full md:w-auto flex-grow flex items-center pl-6 pr-4 h-14 relative z-10">
-                            <span className="text-gray-600 font-medium text-lg md:text-xl mr-2 select-none">$</span>
-                            <input
-                                type="text"
-                                placeholder="Monthly ad spend"
-                                value={adSpend}
-                                onChange={(e) => setAdSpend(e.target.value)}
-                                className="w-full bg-transparent border-none text-white text-lg md:text-xl font-medium placeholder:text-gray-700 focus:outline-none focus:ring-0 p-0 h-full"
-                                aria-label="Enter monthly ad spend"
-                            />
-                        </div>
-
-                        <button
-                            onClick={handleCalculate}
-                            className="w-full md:w-auto relative h-14 px-8 bg-white text-black rounded-full flex items-center justify-center gap-3 font-bold text-xs md:text-sm tracking-widest uppercase transition-all duration-300 overflow-hidden group/btn hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] shrink-0"
-                        >
-                            <span className="relative z-10 transition-colors duration-300">How it works</span>
-                            <iconify-icon icon="solar:arrow-right-linear" class="relative z-10 text-lg transition-transform duration-300 group-hover/btn:translate-x-1"></iconify-icon>
-                            <div className="absolute inset-0 bg-[#FFE241] transform -translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300 ease-out z-0"></div>
-                        </button>
-                    </div>
+                {/* CTA Section */}
+                <div className="w-full flex justify-center mb-8 relative z-10">
+                    <button
+                        onClick={handleCalculate}
+                        className="relative h-14 md:h-16 px-10 md:px-12 bg-white text-black rounded-full flex items-center justify-center gap-3 font-bold text-sm md:text-base tracking-widest uppercase transition-all duration-300 overflow-hidden group/btn hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:-translate-y-1 active:scale-95 shadow-xl"
+                    >
+                        <span className="relative z-10 transition-colors duration-300">How it works</span>
+                        <iconify-icon icon="solar:arrow-right-linear" class="relative z-10 text-xl transition-transform duration-300 group-hover/btn:translate-x-1"></iconify-icon>
+                        <div className="absolute inset-0 bg-brand-yellow transform -translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300 ease-out z-0"></div>
+                    </button>
                 </div>
 
                 {/* Social Proof */}
@@ -127,7 +110,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
             <Modal isOpen={showCalculatorModal} onClose={handleModalClose} size="lg">
                 <div className="p-4 md:p-6 flex flex-col items-center">
                     <div className="mb-4 w-full text-center">
-                        <h3 className="text-xl md:text-2xl font-black text-white tracking-tight">Stop Wasting Budget in 3 Steps</h3>
+                        <h3 className="text-xl md:text-2xl font-black text-white tracking-tight uppercase tracking-[0.2em]">beat the algorithm</h3>
                     </div>
 
                     {/* Wistia Video Embed - Compact */}
@@ -146,9 +129,9 @@ const Hero: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                     {/* Steps Horizontal/Grid */}
                     <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3 mb-6">
                         {[
-                            { step: '01', title: 'Import', desc: 'Sync Meta & Google.', icon: 'solar:import-bold', color: 'text-brand-blue' },
-                            { step: '02', title: 'Audit', desc: 'AI finds leaks.', icon: 'solar:magic-stick-3-bold', color: 'text-brand-yellow' },
-                            { step: '03', title: 'Save', desc: 'Stop the burn.', icon: 'solar:fire-bold', color: 'text-red-500' }
+                            { step: '01', title: 'import', desc: 'Sync Meta & Google.', icon: 'solar:import-bold', color: 'text-brand-blue' },
+                            { step: '02', title: 'optimize', desc: 'AI finds leaks.', icon: 'solar:magic-stick-3-bold', color: 'text-brand-yellow' },
+                            { step: '03', title: 'scale', desc: 'Stop the burn.', icon: 'solar:fire-bold', color: 'text-red-500' }
                         ].map((s) => (
                             <div key={s.step} className="flex flex-row md:flex-col items-center gap-3 md:gap-1.5 bg-white/[0.02] border border-white/5 p-2 rounded-xl text-left md:text-center transition-colors">
                                 <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center shrink-0 bg-white/5 ${s.color}`}>
