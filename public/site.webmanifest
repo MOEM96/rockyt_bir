@@ -3,9 +3,9 @@
     "short_name": "Rockyt",
     "icons": [
         {
-            "src": "/favicon.svg",
+            "src": "/favicon.png",
             "sizes": "any",
-            "type": "image/svg+xml"
+            "type": "image/png"
         }
     ],
     "theme_color": "#161616",
