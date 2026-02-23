@@ -14,6 +14,7 @@ import { EXTERNAL_LINKS } from './constants/index';
 declare global {
   interface Window {
     fbq?: (type: string, eventName: string, params?: any) => void;
+    datafast?: (eventName: string, params?: any) => void;
   }
 }
 
@@ -61,7 +62,21 @@ const App: React.FC = () => {
       window.fbq('track', 'Schedule');
     }
 
+    // DataFast: Schedule Goal
+    if (window.datafast) {
+      console.log('Rockyt: Tracking DataFast Schedule event');
+      window.datafast('schedule');
+    }
+
     setIsBookingConfirmed(true);
+  };
+
+  // Handle Trial Button Click for DataFast
+  const handleTrialClick = () => {
+    if (isBookingConfirmed && window.datafast) {
+      console.log('Rockyt: Tracking DataFast Start Trial event');
+      window.datafast('start_trial');
+    }
   };
 
   // Handle Cal.com booking success events
@@ -200,7 +215,13 @@ const App: React.FC = () => {
 
             <a
               href={isBookingConfirmed ? EXTERNAL_LINKS.getStarted : '#'}
-              onClick={(e) => !isBookingConfirmed && e.preventDefault()}
+              onClick={(e) => {
+                if (!isBookingConfirmed) {
+                  e.preventDefault();
+                } else {
+                  handleTrialClick();
+                }
+              }}
               className={`
                             px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wide flex items-center justify-center gap-2 transition-all duration-300
                             ${isBookingConfirmed
