@@ -696,7 +696,7 @@ const BentoGrid: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
             </div>
 
             <div className="col-span-1 md:col-span-4 bg-[#161616] rounded-[24px] md:rounded-[32px] p-6 md:p-8 flex flex-col items-center justify-center min-h-[140px] md:min-h-[180px] border border-white/5 hover:border-white/20 transition-colors">
-                <div className="text-4xl md:text-5xl font-bold text-[#FFE241] mb-2">14</div>
+                <div className="text-4xl md:text-5xl font-bold text-[#FFE241] mb-2">7</div>
                 <div className="text-white font-medium text-base md:text-lg mb-3 md:mb-4">Days Free Trial</div>
                 <div className="flex gap-2">
                     <span className="bg-white/10 px-2 py-1 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs text-white">Full Access</span>
