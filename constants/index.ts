@@ -14,8 +14,8 @@ export const CAL_CONFIG = {
 export const EXTERNAL_LINKS = {
   signup: 'https://app.bir.ch/signup',
   signupHub: 'https://app.bir.ch/signup?gateway=true',
-  getStarted: 'https://launch.rockyt.io/?ref_id=5DJF2eTqFTSvMFdA5edh3Gti1s82',
-  login: 'https://launch.rockyt.io',
+  getStarted: 'https://smartads.rockyt.io/?ref_id=0k7eNIrqelgzXlfyFFBTNKknE6D2',
+  login: 'https://smartads.rockyt.io',
 };
 
 export const PARTNER_LOGOS: PartnerLogo[] = [
@@ -53,25 +53,25 @@ export const PERFORMANCE_SECTIONS: PerformanceSection[] = [
 ];
 
 export const HUB_FAQ_ITEMS: FAQItem[] = [
-  { 
-    question: "What is 1st party data and 3rd party data?", 
-    answer: "First-party data = You collect it directly from your customers. Third-party data = Someone else collected it and sold it to you. Apple killed third-party cookies. Google is next. If you're still relying on third-party data, you're building your business on quicksand. First-party data (collected server-side) is the ONLY future-proof solution." 
+  {
+    question: "What is 1st party data and 3rd party data?",
+    answer: "First-party data = You collect it directly from your customers. Third-party data = Someone else collected it and sold it to you. Apple killed third-party cookies. Google is next. If you're still relying on third-party data, you're building your business on quicksand. First-party data (collected server-side) is the ONLY future-proof solution."
   },
-  { 
-    question: "Why are marketers switching to server-side tracking?", 
-    answer: "Because their ads stopped working after iOS 14.5. When Apple blocked browser tracking, Meta lost 60% visibility into conversions. The algorithm couldn't optimize properly. CPAs went up. ROAS went down. Advertisers panicked. Server-side tracking bypasses these blocks. You get 100% data again. Your ads work again. It's not optional—it's survival." 
+  {
+    question: "Why are marketers switching to server-side tracking?",
+    answer: "Because their ads stopped working after iOS 14.5. When Apple blocked browser tracking, Meta lost 60% visibility into conversions. The algorithm couldn't optimize properly. CPAs went up. ROAS went down. Advertisers panicked. Server-side tracking bypasses these blocks. You get 100% data again. Your ads work again. It's not optional—it's survival."
   },
-  { 
-    question: "How Signals Gateway helps make advertising more effective?", 
-    answer: "Perfect data → Perfect optimization → Perfect results. Here's the chain reaction: 1. Signal Gateways capture 100% of conversion data. 2. We send it to Meta/Google's algorithms. 3. AI algorithms see complete picture. 4. They optimize for actual conversions (not guesses). 5. They show ads to people who actually buy. 6. Your ROAS goes up, CPA goes down. It's not magic. It's just giving AI the data it needs to work properly." 
+  {
+    question: "How Signals Gateway helps make advertising more effective?",
+    answer: "Perfect data → Perfect optimization → Perfect results. Here's the chain reaction: 1. Signal Gateways capture 100% of conversion data. 2. We send it to Meta/Google's algorithms. 3. AI algorithms see complete picture. 4. They optimize for actual conversions (not guesses). 5. They show ads to people who actually buy. 6. Your ROAS goes up, CPA goes down. It's not magic. It's just giving AI the data it needs to work properly."
   },
   {
     question: "What results can I expect?",
     answer: "Average results across all clients: +40% improvement in event tracking, -22% decrease in CPA, +25% increase in ROAS, <24 hour setup time. Your results may vary based on how broken your current tracking is. The worse your tracking now, the bigger the improvement when you fix it. Book a free audit and we'll show you exactly what you're missing."
   },
-  { 
-    question: "Is it GDPR compliant?", 
-    answer: "Signals Gateway and first-party data help with compliance by reducing reliance on third-party cookies, ensuring user consent, and giving businesses full control over their data." 
+  {
+    question: "Is it GDPR compliant?",
+    answer: "Signals Gateway and first-party data help with compliance by reducing reliance on third-party cookies, ensuring user consent, and giving businesses full control over their data."
   },
   {
     question: "Do I need technical skills to set this up?",
@@ -135,7 +135,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     image: "https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/6981fee63f350af65871c684_e1c44fadef4fdbf83f527f7052580769_the_fabulous-cs-gallery.jpg",
     logo: "https://cdn.prod.website-files.com/6716718ea408f53194adf9a9/6980e060a1565ce1f098d476_Fabulous_Logo_white_background_2.png",
     platforms: ['tiktok', 'snapchat', 'meta'],
-    logoInvert: false 
+    logoInvert: false
   },
   {
     id: 'adparlor',
