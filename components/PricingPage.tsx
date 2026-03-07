@@ -10,13 +10,16 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
         {
             name: "Growth",
             price: 49,
-            description: "Multi-channel scaling for growing teams.",
+            description: "Essential scaling for growing brands.",
             features: [
-                { text: "3 Major Ad Platforms (Meta, Google, TikTok)", icon: "solar:layers-minimalistic-bold" },
-                { text: "3 Multi-brand Workspaces", icon: "solar:folder-with-files-bold" },
-                { text: "Full AI Creative Suite (UGC & Voice AI)", icon: "solar:magic-stick-3-bold" },
-                { text: "Server-side Tracking (10k events)", icon: "solar:server-square-bold", highlight: true },
-                { text: "Priority Support", icon: "solar:delivery-bold" },
+                { text: "1 Brand/Workspace", icon: "solar:folder-bold" },
+                { text: "1 Ad Platform (Meta)", icon: "solar:layers-minimalistic-bold" },
+                { text: "Creative Hub Access (AI Images, Reels, UGC)", icon: "solar:magic-stick-3-bold" },
+                { text: "Template Library (1000+ Winning Ads)", icon: "solar:library-bold" },
+                { text: "Analytics & Insights", icon: "solar:graph-bold" },
+                { text: "AI Optimization (Creative & Audience)", icon: "solar:star-fall-minimalistic-bold" },
+                { text: "Budget Optimizer (Campaign Level)", icon: "solar:card-2-bold" },
+                { text: "No Server-Side Tracking", icon: "solar:server-square-bold-duotone", highlight: false },
                 { text: "0% Commission Fee", icon: "solar:verified-check-bold", highlight: true }
             ],
             color: "brand-blue",
@@ -27,13 +30,13 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
         {
             name: "Scale",
             price: 99,
-            description: "Total dominance for high-volume brands.",
+            description: "Advanced automation for high-volume scaling.",
             features: [
-                { text: "All 11+ Ad Platforms", icon: "solar:globe-bold" },
-                { text: "Unlimited Workspaces", icon: "solar:infinity-bold" },
-                { text: "Proven Winning Ads Library Access", icon: "solar:library-bold" },
-                { text: "High-Volume Tracking (500k events)", icon: "solar:server-path-bold", highlight: true },
-                { text: "24/7 Dedicated Priority Support", icon: "solar:rocket-2-bold" },
+                { text: "Everything in Growth +", icon: "solar:star-bold", highlight: true },
+                { text: "Up to 10 Brands/Workspaces", icon: "solar:folder-with-files-bold" },
+                { text: "All 11+ Ad Platforms (Meta, TikTok, etc.)", icon: "solar:layers-bold" },
+                { text: "Budget Optimizer (Platform & Campaign)", icon: "solar:card-transfer-bold" },
+                { text: "100K Events Server-Side Tracking", icon: "solar:server-path-bold", highlight: true },
                 { text: "0% Commission Fee", icon: "solar:verified-check-bold", highlight: true }
             ],
             color: "brand-pink",
