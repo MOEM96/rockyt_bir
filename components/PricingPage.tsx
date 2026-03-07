@@ -20,7 +20,6 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
                 { text: "AI Optimization (Creative & Audience)", icon: "solar:star-fall-minimalistic-bold" },
                 { text: "Budget Optimizer (Campaign Level)", icon: "solar:card-2-bold" },
                 { text: "No Server-Side Tracking", icon: "solar:server-square-bold-duotone", highlight: false },
-                { text: "0% Commission Fee", icon: "solar:verified-check-bold", highlight: true }
             ],
             color: "brand-blue",
             accent: "#4450F2",
@@ -37,7 +36,6 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
                 { text: "All 11+ Ad Platforms (Meta, TikTok, etc.)", icon: "solar:layers-bold" },
                 { text: "Budget Optimizer (Platform & Campaign)", icon: "solar:card-transfer-bold" },
                 { text: "100K Events Server-Side Tracking", icon: "solar:server-path-bold", highlight: true },
-                { text: "0% Commission Fee", icon: "solar:verified-check-bold", highlight: true }
             ],
             color: "brand-pink",
             accent: "#FF21A6",
@@ -54,7 +52,6 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
                 { text: "Custom Payment Gateways", icon: "solar:card-transfer-bold" },
                 { text: "Custom Integrations & SLA Support", icon: "solar:settings-bold" },
                 { text: "Dedicated Account Manager", icon: "solar:user-id-bold" },
-                { text: "0% Commission Fee", icon: "solar:verified-check-bold", highlight: true }
             ],
             color: "white",
             accent: "#FFFFFF",
@@ -94,14 +91,6 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
 
                 {/* Trust Badges */}
                 <div className="flex flex-wrap justify-center gap-3 md:gap-6 animate-fade-in-up">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 rounded-full border border-green-500/20 hover:bg-green-500/20 transition-colors">
-                        <iconify-icon icon="solar:card-recieved-bold" class="text-green-400"></iconify-icon>
-                        <span className="text-xs md:text-sm font-bold text-green-400">No Credit Card Required</span>
-                    </div>
-                    <div className="flex items-center gap-2 px-4 py-2 bg-brand-yellow/10 rounded-full border border-brand-yellow/20 hover:bg-brand-yellow/20 transition-colors">
-                        <iconify-icon icon="solar:verified-check-bold" class="text-brand-yellow"></iconify-icon>
-                        <span className="text-xs md:text-sm font-bold text-brand-yellow">0% Commission Fee</span>
-                    </div>
                     <div className="flex items-center gap-2 px-4 py-2 bg-brand-blue/10 rounded-full border border-brand-blue/20 hover:bg-brand-blue/20 transition-colors">
                         <iconify-icon icon="solar:calendar-check-bold" class="text-brand-blue"></iconify-icon>
                         <span className="text-xs md:text-sm font-bold text-brand-blue">7-Day Free Trial</span>
@@ -192,7 +181,7 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
                                 <div className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-4 border-b border-white/5 pb-2">Includes</div>
                                 {plan.features.map((feature, i) => (
                                     <div key={i} className="flex items-start gap-3 group/feature opacity-100">
-                                        <div className={`mt-0.5 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-colors ${feature.highlight
+                                        <div className={`mt-0.5 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-colors ${(feature as any).highlight
                                             ? 'bg-green-500/10 text-green-400 group-hover/feature:bg-green-500 group-hover/feature:text-white'
                                             : plan.popular
                                                 ? 'bg-brand-pink/10 text-brand-pink group-hover/feature:bg-brand-pink group-hover/feature:text-white'
@@ -200,7 +189,7 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
                                             }`}>
                                             <iconify-icon icon={feature.icon} width="14"></iconify-icon>
                                         </div>
-                                        <span className={`text-[13px] font-semibold transition-colors ${feature.highlight ? 'text-green-400' : 'text-gray-400 group-hover/feature:text-white'
+                                        <span className={`text-[13px] font-semibold transition-colors ${(feature as any).highlight ? 'text-green-400' : 'text-gray-400 group-hover/feature:text-white'
                                             }`}>
                                             {feature.text}
                                         </span>
@@ -229,7 +218,7 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
                         </h2>
                         <p className="text-gray-400 text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
                             Most ad platforms charge 10-20% of your ad spend as commission — that's $500-$1,000/mo on a $5,000 budget.
-                            With Rockyt, you pay a flat fee. <span className="text-white font-bold">Zero commission. Ever.</span>
+                            With Rockyt, you pay a flat fee. <span className="text-white font-bold">Fast setup. Full control.</span>
                         </p>
 
                         {/* Comparison Cards */}
@@ -242,8 +231,8 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
                             <div className="bg-green-500/5 border border-green-500/20 rounded-2xl p-5 text-center relative overflow-hidden">
                                 <div className="absolute -top-1 -right-1 bg-green-500 text-black text-[9px] font-black px-2 py-0.5 rounded-bl-lg rounded-tr-xl uppercase">You Save</div>
                                 <div className="text-green-400 text-xs font-black uppercase tracking-wider mb-2">Rockyt</div>
-                                <div className="text-3xl font-black text-green-400 mb-1">$0</div>
-                                <div className="text-xs text-gray-500">0% commission, flat monthly fee</div>
+                                <div className="text-3xl font-black text-green-400 mb-1">Flat Fee</div>
+                                <div className="text-xs text-gray-500">Simple monthly subscription</div>
                             </div>
                         </div>
 
@@ -260,7 +249,7 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
 
             <div className="mt-16 text-center pb-8">
                 <p className="text-gray-500 text-sm">
-                    Prices are in USD. No credit card required. Cancel anytime.<br />
+                    Prices are in USD. Cancel anytime.<br />
                     Need help choosing? <button onClick={onBookDemo} className="text-brand-yellow hover:underline font-bold transition-colors">Talk to an expert</button>.
                 </p>
             </div>

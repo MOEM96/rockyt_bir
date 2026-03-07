@@ -31,13 +31,33 @@ const Hero: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
 
             <div className="max-w-6xl w-full mx-auto text-center z-10 flex flex-col items-center">
 
-                {/* Tech Badge */}
-                <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 hover:bg-white/10 transition-all duration-300 group shadow-[0_0_15px_rgba(255,255,255,0.05)]">
-                    <span className="text-gray-400 text-[10px] md:text-xs font-medium tracking-wider uppercase">Powered by</span>
-                    <div className="w-px h-3 bg-white/10"></div>
-                    <div className="flex items-center gap-2">
-                        <iconify-icon icon="simple-icons:openai" width="14" class="text-white group-hover:text-brand-blue transition-colors duration-300"></iconify-icon>
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70 font-bold text-xs md:text-sm tracking-wide">GPT-5.2</span>
+                {/* Running ads? Animated Title */}
+                <div className="mb-8 flex justify-center items-center">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.05)] overflow-hidden">
+                        <div className="flex gap-[2px]">
+                            {"Running ads ?".split("").map((char, i) => {
+                                const colors = [
+                                    'text-[#4450F2]', // Meta Blue
+                                    'text-[#FF21A6]', // TikTok Pink
+                                    'text-[#FFE241]', // Google/Yellow
+                                    'text-[#00F2EA]', // TikTok Cyan
+                                    'text-white',     // White
+                                    'text-red-500',   // YouTube/Google Red
+                                ];
+                                return (
+                                    <span
+                                        key={i}
+                                        className={`inline-block font-black text-xs md:text-sm tracking-wide uppercase opacity-0 animate-pop-in ${colors[i % colors.length]}`}
+                                        style={{
+                                            animationDelay: `${i * 0.05}s`,
+                                            whiteSpace: char === " " ? "pre" : "normal"
+                                        }}
+                                    >
+                                        {char}
+                                    </span>
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
 
@@ -68,19 +88,6 @@ const Hero: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                         <iconify-icon icon="solar:arrow-right-linear" class="relative z-10 text-xl transition-transform duration-300 group-hover/btn:translate-x-1"></iconify-icon>
                         <div className="absolute inset-0 bg-brand-yellow transform -translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300 ease-out z-0"></div>
                     </button>
-
-                    {/* Compact Trust Notes */}
-                    <div className="flex items-center gap-6 mt-4 opacity-50">
-                        <div className="flex items-center gap-2">
-                            <iconify-icon icon="solar:check-read-linear" class="text-white text-xs"></iconify-icon>
-                            <span className="text-[10px] md:text-xs text-white font-bold uppercase tracking-widest">No credit card required</span>
-                        </div>
-                        <div className="w-1 h-1 rounded-full bg-white/20"></div>
-                        <div className="flex items-center gap-2">
-                            <iconify-icon icon="solar:check-read-linear" class="text-white text-xs"></iconify-icon>
-                            <span className="text-[10px] md:text-xs text-white font-bold uppercase tracking-widest">0% commission fee</span>
-                        </div>
-                    </div>
                 </div>
 
                 {/* Social Proof */}
@@ -176,8 +183,15 @@ const Hero: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                     0% { background-position: 0% 50%; }
                     100% { background-position: 200% 50%; }
                 }
+                @keyframes pop-in {
+                    0% { transform: translateY(10px) scale(0.8); opacity: 0; }
+                    100% { transform: translateY(0) scale(1); opacity: 1; }
+                }
                 .animate-gradient-text {
                     animation: gradient-text 3s linear infinite;
+                }
+                .animate-pop-in {
+                    animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
                 }
             `}</style>
         </div>
