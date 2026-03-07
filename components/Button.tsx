@@ -32,17 +32,17 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const sizeClasses = {
-    sm: 'px-4 py-2 text-sm gap-2',
-    md: 'px-8 py-3.5 text-base gap-2',
-    lg: 'px-10 py-5 text-xl gap-3',
+    sm: 'px-3 py-1.5 text-xs gap-1.5',
+    md: 'px-6 py-2.5 text-sm gap-2',
+    lg: 'px-8 py-4 text-lg gap-3',
   };
 
   const bookingAttributes = asBookingButton
     ? {
-        'data-cal-link': CAL_CONFIG.link,
-        'data-cal-namespace': CAL_CONFIG.namespace,
-        'data-cal-config': JSON.stringify(CAL_CONFIG.config),
-      }
+      'data-cal-link': CAL_CONFIG.link,
+      'data-cal-namespace': CAL_CONFIG.namespace,
+      'data-cal-config': JSON.stringify(CAL_CONFIG.config),
+    }
     : {};
 
   return (

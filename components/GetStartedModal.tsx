@@ -75,11 +75,9 @@ const GetStartedModal: React.FC<GetStartedModalProps> = ({ isOpen, onClose }) =>
                 {step === 1 && (
                     <div className="p-6 md:p-12 bg-[#0F0F0F] relative overflow-hidden">
                         {/* Background Glow */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2"></div>
-
-                        <div className="relative z-10 text-center mb-8 md:mb-10">
-                            <h2 className="text-2xl md:text-4xl font-black text-white mb-3 tracking-tight">How would you like<br /><span className="text-brand-yellow">to begin?</span></h2>
-                            <p className="text-gray-400 text-xs md:text-sm max-w-xs mx-auto">Choose your preferred path to start scaling your ads with AI.</p>
+                        <div className="relative z-10 text-center mb-6 md:mb-10">
+                            <h2 className="text-xl md:text-4xl font-black text-white mb-2 md:mb-3 tracking-tight">How would you like<br /><span className="text-brand-yellow">to begin?</span></h2>
+                            <p className="text-gray-400 text-[10px] md:text-sm max-w-xs mx-auto">Choose your preferred path to start scaling your ads with AI.</p>
                         </div>
 
                         <div className="grid grid-cols-1 gap-3 md:gap-4 relative z-10">
@@ -187,9 +185,9 @@ const GetStartedModal: React.FC<GetStartedModalProps> = ({ isOpen, onClose }) =>
                                 </div>
                             </div>
 
-                            <div className="text-center mb-6 md:mb-8">
-                                <h2 className="text-xl md:text-4xl font-black text-white mb-2 tracking-tight">Simple, Clear Pricing</h2>
-                                <p className="text-xs md:text-sm text-gray-400">Unlock full access and start your 7-day free trial.</p>
+                            <div className="text-center mb-4 md:mb-8">
+                                <h2 className="text-lg md:text-4xl font-black text-white mb-1 md:mb-2 tracking-tight">Simple, Clear Pricing</h2>
+                                <p className="text-[10px] md:text-sm text-gray-400">Unlock full access and start your 7-day free trial.</p>
                             </div>
 
                             {/* Minimal Grid */}

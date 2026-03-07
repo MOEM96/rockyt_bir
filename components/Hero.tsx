@@ -62,7 +62,7 @@ const Hero: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                 </div>
 
                 {/* Headline */}
-                <h1 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.95] md:leading-[0.9]">
+                <h1 className="text-3xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white mb-6 md:mb-8 leading-[0.95] md:leading-[0.9]">
                     out-perform{' '}
                     <span className="inline-block relative group">
                         <span className="relative z-10 animate-gradient-text bg-gradient-to-r from-white via-red-500 to-white bg-[length:200%_auto] bg-clip-text text-transparent pb-1">human</span>
@@ -74,15 +74,15 @@ const Hero: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                 </h1>
 
                 {/* Subheadline */}
-                <p className="text-lg md:text-2xl text-gray-400 font-light max-w-3xl mx-auto mb-12 leading-relaxed">
+                <p className="text-base md:text-2xl text-gray-400 font-light max-w-3xl mx-auto mb-10 md:mb-12 leading-relaxed px-4">
                     Humans react after performance drops. Rockyt's AI reacts <span className="text-white font-medium">while it's happening</span>, because every $ counts
                 </p>
 
                 {/* CTA Section */}
-                <div className="w-full flex flex-col items-center mb-8 relative z-10">
+                <div className="w-full flex flex-col items-center mb-6 md:mb-8 relative z-10">
                     <button
                         onClick={handleCalculate}
-                        className="relative h-14 md:h-16 px-10 md:px-12 bg-white text-black rounded-full flex items-center justify-center gap-3 font-bold text-sm md:text-base tracking-widest uppercase transition-all duration-300 overflow-hidden group/btn hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:-translate-y-1 active:scale-95 shadow-xl"
+                        className="relative h-12 md:h-16 px-8 md:px-12 bg-white text-black rounded-full flex items-center justify-center gap-2 md:gap-3 font-bold text-xs md:text-base tracking-widest uppercase transition-all duration-300 overflow-hidden group/btn hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:-translate-y-1 active:scale-95 shadow-xl"
                     >
                         <span className="relative z-10 transition-colors duration-300">How it works</span>
                         <iconify-icon icon="solar:arrow-right-linear" class="relative z-10 text-xl transition-transform duration-300 group-hover/btn:translate-x-1"></iconify-icon>
@@ -91,11 +91,11 @@ const Hero: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                 </div>
 
                 {/* Social Proof */}
-                <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-16 animate-fade-in opacity-90">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-12 md:mb-16 animate-fade-in opacity-90">
                     <div className="flex items-center gap-3">
-                        <div className="flex -space-x-2">
+                        <div className="flex -space-x-1.5">
                             {[12, 25, 43].map((i) => (
-                                <img key={i} src={`https://i.pravatar.cc/64?img=${i}`} alt="Customer" className="w-7 h-7 rounded-full border border-[#161616]" loading="lazy" />
+                                <img key={i} src={`https://i.pravatar.cc/64?img=${i}`} alt="Customer" className="w-6 h-6 rounded-full border border-[#161616]" loading="lazy" />
                             ))}
                         </div>
                         <div className="text-left">
@@ -110,12 +110,12 @@ const Hero: React.FC<DemoBookingProps> = ({ onGetStarted }) => {
                     </div>
                     <div className="hidden md:block w-px h-6 bg-white/10"></div>
                     <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue border border-brand-blue/20">
-                            <iconify-icon icon="solar:chart-2-bold" class="text-sm"></iconify-icon>
+                        <div className="w-7 h-7 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue border border-brand-blue/20">
+                            <iconify-icon icon="solar:chart-2-bold" class="text-xs"></iconify-icon>
                         </div>
                         <div className="text-left">
-                            <div className="text-xs text-white font-bold">$2B+ Ad Spend</div>
-                            <div className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Managed Annually</div>
+                            <div className="text-[10px] md:text-xs text-white font-bold">$2B+ Ad Spend</div>
+                            <div className="text-[8px] md:text-[10px] text-gray-500 uppercase font-bold tracking-wider">Managed Annually</div>
                         </div>
                     </div>
                 </div>

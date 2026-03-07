@@ -80,12 +80,12 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
         <div className="min-h-screen bg-[#161616] pt-24 pb-20 px-4 md:px-6 font-inter">
 
             {/* Header */}
-            <div className="max-w-4xl mx-auto text-center mb-12">
-                <h1 className="text-4xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight">
+            <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+                <h1 className="text-2xl md:text-7xl font-black text-white mb-4 md:mb-6 leading-tight tracking-tight">
                     Pricing that scales<br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-blue animate-gradient-text">with your growth</span>
                 </h1>
-                <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed mb-8">
+                <p className="text-sm md:text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed mb-6 md:mb-8 px-4">
                     Stop overpaying for tools. Get everything you need to automate and scale your ads in one simple subscription.
                 </p>
 
@@ -109,7 +109,7 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
                         <div
                             key={plan.name}
                             className={`
-                        relative flex flex-col bg-[#0F0F0F] rounded-[40px] p-8 md:p-10 border transition-all duration-500 group hover:-translate-y-2
+                        relative flex flex-col bg-[#0F0F0F] rounded-[32px] md:rounded-[40px] p-6 md:p-10 border transition-all duration-500 group hover:-translate-y-2
                         ${plan.popular
                                     ? 'border-brand-pink shadow-[0_0_80px_-20px_rgba(255,33,166,0.3)] z-10 scale-[1.02] md:scale-105'
                                     : 'border-white/5 hover:border-white/20 hover:shadow-2xl'
@@ -123,25 +123,25 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
                             )}
 
                             {/* Header */}
-                            <div className="mb-6 text-center md:text-left">
-                                <h3 className={`text-3xl font-black mb-3 uppercase tracking-tight ${plan.name === 'Growth' ? 'text-brand-blue' :
+                            <div className="mb-4 md:mb-6 text-center md:text-left">
+                                <h3 className={`text-2xl md:text-3xl font-black mb-2 md:mb-3 uppercase tracking-tight ${plan.name === 'Growth' ? 'text-brand-blue' :
                                     plan.name === 'Scale' ? 'text-brand-pink' :
                                         'text-white'
                                     }`}>
                                     {plan.name}
                                 </h3>
-                                <p className="text-gray-400 text-sm leading-relaxed font-medium min-h-[40px]">{plan.description}</p>
+                                <p className="text-xs md:text-sm text-gray-400 leading-relaxed font-medium min-h-0 md:min-h-[40px]">{plan.description}</p>
                             </div>
 
                             {/* Price Block */}
                             <div className="mb-8 text-center md:text-left">
                                 {plan.price !== null ? (
                                     <>
-                                        <div className="flex items-baseline gap-1 justify-center md:justify-start mb-1">
-                                            <span className="text-6xl font-black text-white tracking-tighter">${plan.price}</span>
-                                            <span className="text-gray-500 text-lg font-medium">/mo</span>
+                                        <div className="flex items-baseline gap-1 justify-center md:justify-start mb-0.5">
+                                            <span className="text-4xl md:text-6xl font-black text-white tracking-tighter">${plan.price}</span>
+                                            <span className="text-gray-500 text-base md:text-lg font-medium">/mo</span>
                                         </div>
-                                        <p className="text-gray-400 text-sm font-medium">billed monthly · cancel anytime</p>
+                                        <p className="text-gray-500 text-[10px] md:text-sm font-medium uppercase tracking-wider">billed monthly</p>
                                     </>
                                 ) : (
                                     <div className="mb-1">
@@ -158,7 +158,7 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
                             <button
                                 onClick={() => handlePlanClick(plan)}
                                 disabled={!!isProcessing}
-                                className={`w-full py-4 rounded-full font-bold uppercase tracking-wide transition-all duration-300 mb-10 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 ${plan.popular
+                                className={`w-full py-3 md:py-4 rounded-full font-bold uppercase tracking-wide transition-all duration-300 mb-6 md:mb-10 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 ${plan.popular
                                     ? 'bg-brand-pink text-white hover:bg-pink-600 shadow-brand-pink/20'
                                     : plan.isCustom
                                         ? 'bg-white/10 text-white border border-white/20 hover:bg-white/20'
@@ -177,8 +177,8 @@ const PricingPage: React.FC<DemoBookingProps> = ({ onBookDemo, onGetStarted }) =
                             </button>
 
                             {/* Features List */}
-                            <div className="space-y-4 flex-grow">
-                                <div className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-4 border-b border-white/5 pb-2">Includes</div>
+                            <div className="space-y-3 md:space-y-4 flex-grow">
+                                <div className="text-[9px] md:text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-3 md:mb-4 border-b border-white/5 pb-2">Includes</div>
                                 {plan.features.map((feature, i) => (
                                     <div key={i} className="flex items-start gap-3 group/feature opacity-100">
                                         <div className={`mt-0.5 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-colors ${(feature as any).highlight

@@ -43,7 +43,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, isMobileMenuOpen, setIsMobi
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 h-24 md:h-28 flex items-center pointer-events-none" role="navigation" aria-label="Main navigation">
+      <nav className="fixed top-0 left-0 right-0 z-50 h-20 md:h-28 flex items-center pointer-events-none" role="navigation" aria-label="Main navigation">
         <div className="max-w-[1200px] w-full mx-auto px-4 md:px-6 flex justify-between items-center h-full gap-2">
 
           {/* Logo Island */}
@@ -51,7 +51,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, isMobileMenuOpen, setIsMobi
             <a
               href="#"
               onClick={(e) => handleDesktopNavigate(e, 'home')}
-              className="flex items-center gap-3 bg-[#161616]/80 backdrop-blur-xl border border-white/10 pl-3 pr-3 md:pl-4 md:pr-6 py-2 md:py-3 rounded-full shadow-2xl hover:-translate-y-1 transition-transform duration-300 group"
+              className="flex items-center gap-2 bg-[#161616]/80 backdrop-blur-xl border border-white/10 pl-3 pr-3 md:pl-4 md:pr-6 py-1.5 md:py-3 rounded-full shadow-2xl hover:-translate-y-1 transition-transform duration-300 group"
               aria-label="Go to homepage"
             >
               <div className="w-8 h-8 flex items-center justify-center text-brand-blue group-hover:text-white transition-colors relative">
@@ -141,7 +141,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, isMobileMenuOpen, setIsMobi
           <div className="lg:hidden pointer-events-auto">
             <button
               onClick={toggleMobileMenu}
-              className="w-10 h-10 md:w-12 md:h-12 flex flex-col justify-center items-center gap-1.5 bg-[#161616]/80 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-brand-yellow relative overflow-hidden group"
+              className="w-9 h-9 md:w-12 md:h-12 flex flex-col justify-center items-center gap-1.5 bg-[#161616]/80 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-brand-yellow relative overflow-hidden group"
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileMenuOpen}
             >
