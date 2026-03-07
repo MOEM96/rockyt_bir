@@ -41,7 +41,7 @@ export function initDodoPayments(onTrialClick?: () => void) {
                     // Redirect to the app after a brief delay
                     setTimeout(() => {
                         window.location.href = EXTERNAL_LINKS.getStarted;
-                    }, 2000);
+                    }, 500);
                 }
             }
 
@@ -75,6 +75,7 @@ async function createCheckoutSession(productId: string): Promise<string> {
             customization: {
                 theme: 'dark',
             },
+            redirect_url: EXTERNAL_LINKS.getStarted,
         }),
     });
 
@@ -110,7 +111,7 @@ export async function openCheckout(productId: string): Promise<void> {
         });
     } catch (error) {
         console.error('Failed to open Dodo checkout:', error);
-        // Fallback: redirect to the generic signup page
-        window.open(EXTERNAL_LINKS.getStarted, '_blank');
+        // Fallback: redirect to the generic signup page in same tab
+        window.location.href = EXTERNAL_LINKS.getStarted;
     }
 }
