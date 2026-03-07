@@ -16,7 +16,70 @@ export const EXTERNAL_LINKS = {
   signupHub: 'https://app.bir.ch/signup?gateway=true',
   getStarted: 'https://smartads.rockyt.io/?ref_id=0k7eNIrqelgzXlfyFFBTNKknE6D2',
   login: 'https://smartads.rockyt.io',
+  supportEmail: 'support@rockyt.io',
 };
+
+export const WEBINAR_BENEFITS = [
+  { icon: 'solar:microphone-3-bold', text: 'Discuss latest updates & new features' },
+  { icon: 'solar:user-speak-bold', text: 'Meet the founder — ask anything' },
+  { icon: 'solar:chat-round-dots-bold', text: 'Live Q&A — get your questions answered' },
+  { icon: 'solar:lightbulb-bolt-bold', text: 'Request features & shape the roadmap' },
+];
+
+export const ONBOARDING_PLANS = [
+  {
+    name: 'Growth',
+    price: 49,
+    description: 'Multi-channel scaling for growing teams.',
+    features: [
+      '3 Major Ad Platforms (Meta, Google, TikTok)',
+      '3 Multi-brand Workspaces',
+      'Full AI Creative Suite (UGC & Voice AI)',
+      'Server-side Tracking (10k events)',
+      'Priority Support',
+      '0% Commission Fee',
+    ],
+    color: 'brand-blue',
+    accent: '#4450F2',
+    cta: 'Start with Growth',
+    popular: false,
+  },
+  {
+    name: 'Scale',
+    price: 99,
+    description: 'Total dominance for high-volume brands.',
+    features: [
+      'All 11+ Ad Platforms',
+      'Unlimited Workspaces',
+      'Proven Winning Ads Library Access',
+      'High-Volume Tracking (500k events)',
+      '24/7 Dedicated Priority Support',
+      '0% Commission Fee',
+    ],
+    color: 'brand-pink',
+    accent: '#FF21A6',
+    cta: 'Start with Scale',
+    popular: true,
+  },
+  {
+    name: 'Custom',
+    price: null,
+    description: 'White-label solution for agencies & enterprises.',
+    features: [
+      'White-label Dashboard (Your Domain)',
+      'Full API Access',
+      'Custom Payment Gateways',
+      'Custom Integrations & SLA Support',
+      'Dedicated Account Manager',
+      '0% Commission Fee',
+    ],
+    color: 'white',
+    accent: '#FFFFFF',
+    cta: 'Contact Us',
+    popular: false,
+    isCustom: true,
+  },
+];
 
 export const PARTNER_LOGOS: PartnerLogo[] = [
   { name: 'Meta', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg' },
