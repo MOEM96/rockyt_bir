@@ -75,7 +75,10 @@ async function createCheckoutSession(productId: string): Promise<string> {
             customization: {
                 theme: 'dark',
             },
-            redirect_url: EXTERNAL_LINKS.getStarted,
+            feature_flags: {
+                redirect_immediately: true,
+            },
+            return_url: EXTERNAL_LINKS.getStarted,
         }),
     });
 
