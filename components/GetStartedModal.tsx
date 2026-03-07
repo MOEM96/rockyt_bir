@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
-import { EXTERNAL_LINKS, WEBINAR_BENEFITS, ONBOARDING_PLANS } from '../constants/index';
+import { EXTERNAL_LINKS, ONBOARDING_PLANS } from '../constants/index';
 import { openCheckout, DODO_PRODUCTS } from '../utils/dodoCheckout';
+import { cn } from '../utils/helpers';
 
 interface GetStartedModalProps {
     isOpen: boolean;
@@ -10,17 +11,31 @@ interface GetStartedModalProps {
 }
 
 const GetStartedModal: React.FC<GetStartedModalProps> = ({ isOpen, onClose }) => {
-    const [step, setStep] = useState<1 | 2>(1);
+    const [step, setStep] = useState<1 | 2 | 3>(1);
     const [isProcessing, setIsProcessing] = useState(false);
+
+    // Listen for Cal.com booking success to advance to pricing
+    React.useEffect(() => {
+        const handleCalEvent = (e: MessageEvent) => {
+            if (!e.data) return;
+            let eventData = e.data;
+            if (typeof eventData === 'string') {
+                try { eventData = JSON.parse(eventData); } catch (err) { return; }
+            }
+            const type = eventData.type || eventData.action || eventData.event;
+            console.log('Cal event received:', type);
+            if (type === 'cal:bookingSuccessful' || type === 'bookingSuccessful') {
+                setStep(3);
+            }
+        };
+
+        window.addEventListener('message', handleCalEvent);
+        return () => window.removeEventListener('message', handleCalEvent);
+    }, []);
 
     const handleClose = () => {
         onClose();
-        // Reset step after close animation
         setTimeout(() => setStep(1), 300);
-    };
-
-    const handleSkipToPricing = () => {
-        setStep(2);
     };
 
     const handlePlanSelect = async (plan: typeof ONBOARDING_PLANS[number]) => {
@@ -42,93 +57,84 @@ const GetStartedModal: React.FC<GetStartedModalProps> = ({ isOpen, onClose }) =>
         <Modal
             isOpen={isOpen}
             onClose={handleClose}
-            size="xl"
-            className="h-[85vh] md:h-[90vh] flex flex-col overflow-hidden p-0"
+            size={step === 1 ? "md" : "xl"}
+            className={cn(
+                "transition-all duration-500 flex flex-col overflow-hidden p-0",
+                step === 1 ? "h-auto" : "h-[85vh] md:h-[90vh]"
+            )}
             showCloseButton={true}
         >
-            {/* Header */}
-            <div className="bg-[#121212] border-b border-white/10 px-3 py-3 md:px-6 md:py-5 shrink-0 relative z-20">
-                <div className="max-w-3xl mx-auto flex flex-row items-center justify-center gap-2 md:gap-8">
-
-                    {/* Step 1: Webinar */}
-                    <button
-                        onClick={() => setStep(1)}
-                        className={`flex items-center gap-2 md:gap-3 transition-all duration-300 cursor-pointer group ${step === 1 ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
-                    >
-                        <div className={`w-6 h-6 md:w-7 md:h-7 rounded-full flex items-center justify-center text-[10px] md:text-xs font-black transition-all duration-300 ${step === 1 ? 'bg-brand-yellow text-black shadow-[0_0_15px_rgba(255,226,65,0.4)]' : step === 2 ? 'bg-green-500 text-white' : 'bg-white/10 text-white border border-white/10'}`}>
-                            {step === 2 ? <iconify-icon icon="solar:check-read-bold"></iconify-icon> : '1'}
-                        </div>
-                        <span className="text-white font-bold text-[10px] md:text-sm tracking-wide uppercase whitespace-nowrap">Webinar</span>
-                    </button>
-
-                    {/* Connector */}
-                    <div className="w-4 h-px bg-white/10 md:w-12"></div>
-
-                    {/* Step 2: Choose Plan */}
-                    <div className={`flex items-center gap-2 md:gap-3 transition-opacity duration-300 ${step === 2 ? 'opacity-100' : 'opacity-40'}`}>
-                        <div className={`w-6 h-6 md:w-7 md:h-7 rounded-full flex items-center justify-center text-[10px] md:text-xs border transition-all duration-300 ${step === 2 ? 'bg-brand-yellow text-black border-brand-yellow shadow-[0_0_15px_rgba(255,226,65,0.4)] font-black' : 'bg-white/10 text-white border-white/10 font-bold'}`}>
-                            2
-                        </div>
-                        <span className={`${step === 2 ? 'text-white' : 'text-gray-300'} font-medium text-[10px] md:text-sm tracking-wide uppercase transition-colors whitespace-nowrap`}>Choose Plan</span>
-                    </div>
-
-                    {/* Step 3: Create Account (desktop only) */}
-                    <div className="hidden md:flex items-center gap-3">
-                        <div className="w-12 h-px bg-white/10"></div>
-                        <div className="flex items-center gap-3 opacity-40">
-                            <div className="w-7 h-7 rounded-full bg-white/10 text-white font-bold flex items-center justify-center text-xs border border-white/10">3</div>
-                            <span className="text-gray-300 font-medium text-sm tracking-wide uppercase">Create Account</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
             {/* Modal Content */}
             <div className="flex flex-col flex-grow overflow-hidden relative">
 
-                {/* ===== STEP 1: Webinar Invitation ===== */}
+                {/* ===== STEP 1: The Choice (Decision) ===== */}
                 {step === 1 && (
-                    <div className="flex flex-col md:flex-row flex-grow overflow-hidden">
+                    <div className="p-8 md:p-12 bg-[#0F0F0F] relative overflow-hidden">
+                        {/* Background Glow */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2"></div>
 
-                        {/* Sidebar — Benefits */}
-                        <div className="w-full md:w-[320px] bg-[#0F0F0F] border-b md:border-b-0 md:border-r border-white/10 p-5 md:p-6 flex flex-col shrink-0 overflow-y-auto">
-                            <div className="mb-5">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-yellow/10 text-brand-yellow text-[10px] font-bold uppercase tracking-wider mb-3 border border-brand-yellow/20">
-                                    <iconify-icon icon="solar:calendar-bold"></iconify-icon> Optional
-                                </div>
-                                <h3 className="text-lg md:text-xl font-black text-white mb-2 leading-tight">Join Our Next Webinar</h3>
-                                <p className="text-xs md:text-sm text-gray-400 leading-relaxed">
-                                    Discuss the latest updates, new features & meet the founder. Completely optional — skip anytime.
-                                </p>
-                            </div>
-
-                            <div className="flex flex-col gap-3 mb-6">
-                                {WEBINAR_BENEFITS.map((benefit, i) => (
-                                    <div key={i} className="flex items-start gap-3 group">
-                                        <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center shrink-0 text-brand-yellow group-hover:bg-brand-yellow/10 transition-colors">
-                                            <iconify-icon icon={benefit.icon} width="16"></iconify-icon>
-                                        </div>
-                                        <span className="text-xs md:text-sm text-gray-300 font-medium pt-1.5 leading-tight">{benefit.text}</span>
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Skip CTA */}
-                            <div className="mt-auto pt-4">
-                                <button
-                                    onClick={handleSkipToPricing}
-                                    className="w-full py-3 rounded-full bg-[#FFE241] text-black font-bold text-xs uppercase tracking-wide flex items-center justify-center gap-2 hover:bg-[#ffeb7a] transition-all shadow-[0_0_15px_rgba(255,226,65,0.3)] hover:shadow-[0_0_25px_rgba(255,226,65,0.5)] hover:-translate-y-0.5 active:translate-y-0 group"
-                                >
-                                    <span>Skip → Create Account</span>
-                                    <iconify-icon icon="solar:arrow-right-bold" class="text-sm group-hover:translate-x-1 transition-transform"></iconify-icon>
-                                </button>
-                                <p className="text-[10px] text-gray-500 text-center mt-2">No obligation. No credit card needed.</p>
-                            </div>
+                        <div className="relative z-10 text-center mb-10">
+                            <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">How would you like<br /><span className="text-brand-yellow">to begin?</span></h2>
+                            <p className="text-gray-400 text-sm max-w-xs mx-auto">Choose your preferred path to start scaling your ads with AI.</p>
                         </div>
 
-                        {/* Calendar Embed */}
-                        <div className="flex-grow w-full relative bg-[#161616]">
+                        <div className="grid grid-cols-1 gap-4 relative z-10">
+                            {/* Option: Guided */}
+                            <button
+                                onClick={() => setStep(2)}
+                                className="group relative flex items-center gap-5 p-6 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 hover:border-brand-yellow/30 transition-all duration-300 text-left"
+                            >
+                                <div className="w-14 h-14 rounded-2xl bg-brand-yellow/10 flex items-center justify-center text-brand-yellow shrink-0 group-hover:scale-110 transition-transform">
+                                    <iconify-icon icon="solar:user-speak-bold" width="32"></iconify-icon>
+                                </div>
+                                <div className="flex-grow">
+                                    <h4 className="text-white font-bold text-lg">Guided Onboarding</h4>
+                                    <p className="text-gray-400 text-xs">Personalized demo & setup assist.</p>
+                                </div>
+                                <iconify-icon icon="solar:arrow-right-linear" class="text-gray-500 group-hover:text-brand-yellow group-hover:translate-x-1 transition-all"></iconify-icon>
+                            </button>
+
+                            {/* Option: Start Trial */}
+                            <button
+                                onClick={() => setStep(3)}
+                                className="group relative flex items-center gap-5 p-6 bg-brand-pink/5 border border-brand-pink/10 rounded-3xl hover:bg-brand-pink/10 hover:border-brand-pink/30 transition-all duration-300 text-left"
+                            >
+                                <div className="w-14 h-14 rounded-2xl bg-brand-pink/10 flex items-center justify-center text-brand-pink shrink-0 group-hover:scale-110 transition-transform">
+                                    <iconify-icon icon="solar:rocket-bold" width="32"></iconify-icon>
+                                </div>
+                                <div className="flex-grow">
+                                    <h4 className="text-white font-bold text-lg">Start Free Trial</h4>
+                                    <p className="text-gray-400 text-xs">Jump in and explore by yourself.</p>
+                                </div>
+                                <iconify-icon icon="solar:arrow-right-linear" class="text-gray-500 group-hover:text-brand-pink group-hover:translate-x-1 transition-all"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                )}
+
+                {/* ===== STEP 2: Guided Onboarding (Cal) ===== */}
+                {step === 2 && (
+                    <div className="flex flex-col flex-grow overflow-hidden bg-[#161616]">
+                        {/* Compact Header for Step 2/3 */}
+                        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#121212]">
+                            <button onClick={() => setStep(1)} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider">
+                                <iconify-icon icon="solar:arrow-left-linear"></iconify-icon> Back
+                            </button>
+                            <div className="flex items-center gap-4">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 rounded-full bg-brand-yellow shadow-[0_0_8px_rgba(255,226,65,0.5)]"></div>
+                                    <span className="text-xs font-bold text-white uppercase tracking-widest">Book Demo</span>
+                                </div>
+                                <div className="w-8 h-px bg-white/10"></div>
+                                <div className="flex items-center gap-2 opacity-30">
+                                    <div className="w-2 h-2 rounded-full bg-white"></div>
+                                    <span className="text-xs font-bold text-white uppercase tracking-widest">Pricing</span>
+                                </div>
+                            </div>
+                            <div className="w-10"></div> {/* Spacer */}
+                        </div>
+
+                        <div className="flex-grow relative overflow-hidden">
                             <div className="absolute inset-0 flex items-center justify-center text-gray-500 z-0">
                                 <span className="animate-pulse">Loading calendar...</span>
                             </div>
@@ -145,127 +151,109 @@ const GetStartedModal: React.FC<GetStartedModalProps> = ({ isOpen, onClose }) =>
                     </div>
                 )}
 
-                {/* ===== STEP 2: Pricing Paywall ===== */}
-                {step === 2 && (
-                    <div className="flex-grow overflow-y-auto p-4 md:p-8 bg-[#161616]">
-
-                        {/* Trust Badges */}
-                        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-6 md:mb-8 animate-fade-in">
-                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-green-500/10 rounded-full border border-green-500/20">
-                                <iconify-icon icon="solar:card-recieved-bold" class="text-green-400 text-sm"></iconify-icon>
-                                <span className="text-[10px] md:text-xs font-bold text-green-400 uppercase tracking-wider">No Credit Card</span>
-                            </div>
-                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-brand-yellow/10 rounded-full border border-brand-yellow/20">
-                                <iconify-icon icon="solar:verified-check-bold" class="text-brand-yellow text-sm"></iconify-icon>
-                                <span className="text-[10px] md:text-xs font-bold text-brand-yellow uppercase tracking-wider">0% Commission</span>
-                            </div>
-                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-brand-blue/10 rounded-full border border-brand-blue/20">
-                                <iconify-icon icon="solar:calendar-check-bold" class="text-brand-blue text-sm"></iconify-icon>
-                                <span className="text-[10px] md:text-xs font-bold text-brand-blue uppercase tracking-wider">7-Day Free Trial</span>
-                            </div>
-                        </div>
-
-                        {/* Title */}
-                        <div className="text-center mb-6 md:mb-8">
-                            <h2 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight">Choose Your Plan</h2>
-                            <p className="text-sm text-gray-400 max-w-lg mx-auto">Start scaling your ads today. Upgrade, downgrade, or cancel anytime.</p>
-                        </div>
-
-                        {/* Plans Grid */}
-                        <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-                            {ONBOARDING_PLANS.map((plan) => (
-                                <div
-                                    key={plan.name}
-                                    className={`relative flex flex-col bg-[#0F0F0F] rounded-[24px] p-5 md:p-6 border transition-all duration-500 hover:-translate-y-1 group
-                    ${plan.popular
-                                            ? 'border-brand-pink shadow-[0_0_40px_-10px_rgba(255,33,166,0.3)] scale-[1.02]'
-                                            : 'border-white/5 hover:border-white/20 hover:shadow-xl'
-                                        }`}
-                                >
-                                    {plan.popular && (
-                                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-pink text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-[0_4px_15px_rgba(255,33,166,0.4)] flex items-center gap-1.5">
-                                            <iconify-icon icon="solar:fire-bold"></iconify-icon> Most Popular
-                                        </div>
-                                    )}
-
-                                    {/* Plan Header */}
-                                    <div className="mb-4 text-center">
-                                        <h3 className={`text-xl font-black mb-1 uppercase tracking-tight ${plan.name === 'Growth' ? 'text-brand-blue' :
-                                            plan.name === 'Scale' ? 'text-brand-pink' :
-                                                'text-white'
-                                            }`}>
-                                            {plan.name}
-                                        </h3>
-                                        <p className="text-gray-400 text-xs leading-relaxed">{plan.description}</p>
-                                    </div>
-
-                                    {/* Price */}
-                                    <div className="text-center mb-5">
-                                        {plan.price !== null ? (
-                                            <>
-                                                <div className="flex items-baseline justify-center gap-1">
-                                                    <span className="text-4xl md:text-5xl font-black text-white tracking-tighter">${plan.price}</span>
-                                                    <span className="text-gray-500 text-sm font-medium">/mo</span>
-                                                </div>
-                                                <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider mt-1">billed monthly</p>
-                                            </>
-                                        ) : (
-                                            <div className="flex items-center justify-center gap-2 py-2">
-                                                <iconify-icon icon="solar:letter-bold" class="text-2xl text-white"></iconify-icon>
-                                                <span className="text-lg font-bold text-white">Let's Talk</span>
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    {/* CTA Button */}
-                                    <button
-                                        onClick={() => handlePlanSelect(plan)}
-                                        disabled={isProcessing}
-                                        className={`w-full py-3 rounded-full font-bold uppercase tracking-wide text-xs transition-all duration-300 mb-5 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0
-                      ${plan.popular
-                                                ? 'bg-brand-pink text-white hover:bg-pink-600 shadow-brand-pink/20'
-                                                : (plan as any).isCustom
-                                                    ? 'bg-white/10 text-white border border-white/20 hover:bg-white/20'
-                                                    : 'bg-white text-black hover:bg-gray-200 shadow-white/10'
-                                            } ${isProcessing ? 'opacity-50 cursor-not-allowed' : ''}`}
-                                    >
-                                        {(plan as any).isCustom ? (
-                                            <iconify-icon icon="solar:letter-bold" class="text-sm"></iconify-icon>
-                                        ) : isProcessing ? (
-                                            <iconify-icon icon="solar:spinner-bold-duotone" class="text-sm animate-spin"></iconify-icon>
-                                        ) : null}
-                                        <span>{isProcessing ? 'Processing...' : plan.cta}</span>
-                                        {!(plan as any).isCustom && !isProcessing && (
-                                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm group-hover:translate-x-1 transition-transform"></iconify-icon>
-                                        )}
-                                    </button>
-
-                                    {/* Features */}
-                                    <div className="space-y-2.5 flex-grow">
-                                        <div className="text-[9px] font-black text-gray-500 uppercase tracking-[0.2em] mb-2 border-b border-white/5 pb-1.5">Includes</div>
-                                        {plan.features.map((feature, i) => (
-                                            <div key={i} className="flex items-start gap-2 group/f">
-                                                <iconify-icon
-                                                    icon="solar:check-circle-bold"
-                                                    class={`text-sm mt-0.5 shrink-0 ${feature === '0% Commission Fee' ? 'text-green-400' :
-                                                        plan.popular ? 'text-brand-pink' : 'text-gray-500'
-                                                        }`}
-                                                ></iconify-icon>
-                                                <span className={`text-[11px] md:text-xs font-medium ${feature === '0% Commission Fee' ? 'text-green-400 font-bold' : 'text-gray-400 group-hover/f:text-white transition-colors'
-                                                    }`}>
-                                                    {feature}
-                                                </span>
-                                            </div>
-                                        ))}
-                                    </div>
+                {/* ===== STEP 3: Pricing Paywall (Minimal) ===== */}
+                {step === 3 && (
+                    <div className="flex flex-col flex-grow overflow-hidden bg-[#0A0A0A]">
+                        {/* Compact Header */}
+                        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#121212]">
+                            <button onClick={() => setStep(1)} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider">
+                                <iconify-icon icon="solar:arrow-left-linear"></iconify-icon> Back
+                            </button>
+                            <div className="flex items-center gap-4">
+                                <div className="flex items-center gap-2 opacity-50">
+                                    <iconify-icon icon="solar:check-read-bold" class="text-green-500"></iconify-icon>
+                                    <span className="text-xs font-bold text-white uppercase tracking-widest">Onboarding</span>
                                 </div>
-                            ))}
+                                <div className="w-8 h-px bg-green-500/30"></div>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 rounded-full bg-brand-yellow shadow-[0_0_8px_rgba(255,226,65,0.5)]"></div>
+                                    <span className="text-xs font-bold text-white uppercase tracking-widest">Choose Plan</span>
+                                </div>
+                            </div>
+                            <div className="w-10"></div>
                         </div>
 
-                        {/* Bottom note */}
-                        <p className="text-center text-[10px] md:text-xs text-gray-500 mt-6 md:mt-8">
-                            No credit card required to start. Prices in USD. Cancel anytime.
-                        </p>
+                        <div className="flex-grow overflow-y-auto p-6 md:p-10 scrollbar-thin">
+                            {/* Trust Badge - Compact */}
+                            <div className="flex justify-center mb-8">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-yellow/10 rounded-full border border-brand-yellow/20">
+                                    <iconify-icon icon="solar:shield-check-bold" class="text-brand-yellow text-lg"></iconify-icon>
+                                    <span className="text-xs font-black text-brand-yellow uppercase tracking-widest">30-Day Money Back Guarantee</span>
+                                </div>
+                            </div>
+
+                            <div className="text-center mb-8">
+                                <h2 className="text-2xl md:text-4xl font-black text-white mb-2 tracking-tight">Simple, Clear Pricing</h2>
+                                <p className="text-sm text-gray-400">Unlock full access and start your 7-day free trial.</p>
+                            </div>
+
+                            {/* Minimal Grid */}
+                            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {ONBOARDING_PLANS.map((plan) => (
+                                    <div
+                                        key={plan.name}
+                                        className={`relative flex flex-col bg-[#111111] rounded-[32px] p-6 border transition-all duration-300 group
+                                            ${plan.popular
+                                                ? 'border-brand-pink ring-1 ring-brand-pink/50 shadow-[0_0_40px_rgba(255,33,166,0.15)] bg-[#141414]'
+                                                : 'border-white/5 hover:border-white/10'
+                                            }`}
+                                    >
+                                        {plan.popular && (
+                                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-pink text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg">
+                                                Best Value
+                                            </div>
+                                        )}
+
+                                        <div className="mb-6">
+                                            <h3 className={`text-lg font-black uppercase tracking-wider mb-1 ${plan.name === 'Growth' ? 'text-brand-blue' :
+                                                    plan.name === 'Scale' ? 'text-brand-pink' : 'text-white'
+                                                }`}>{plan.name}</h3>
+                                            <div className="flex items-baseline gap-1">
+                                                {plan.price !== null ? (
+                                                    <>
+                                                        <span className="text-4xl font-black text-white tracking-tighter">${plan.price}</span>
+                                                        <span className="text-gray-500 text-xs font-bold uppercase">/mo</span>
+                                                    </>
+                                                ) : (
+                                                    <span className="text-3xl font-black text-white tracking-tight">Enterprise</span>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            onClick={() => handlePlanSelect(plan)}
+                                            disabled={isProcessing}
+                                            className={`w-full py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all duration-300 mb-6 flex items-center justify-center gap-2
+                                                ${plan.popular
+                                                    ? 'bg-brand-pink text-white hover:bg-white hover:text-black shadow-lg shadow-brand-pink/20'
+                                                    : (plan as any).isCustom
+                                                        ? 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
+                                                        : 'bg-white text-black hover:bg-brand-yellow hover:text-black font-black'
+                                                } ${isProcessing ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                        >
+                                            {isProcessing ? 'Processing' : plan.cta}
+                                            {!isProcessing && <iconify-icon icon="solar:arrow-right-linear" class="text-sm group-hover:translate-x-1 transition-transform"></iconify-icon>}
+                                        </button>
+
+                                        <div className="space-y-3">
+                                            {plan.features.slice(0, 4).map((feature, i) => (
+                                                <div key={i} className="flex items-start gap-2 group/feat">
+                                                    <iconify-icon icon="solar:check-circle-bold" class={`text-sm mt-0.5 ${plan.popular ? 'text-brand-pink' : 'text-gray-600'}`}></iconify-icon>
+                                                    <span className="text-[11px] font-semibold text-gray-400 group-hover/feat:text-white transition-colors leading-tight">{feature}</span>
+                                                </div>
+                                            ))}
+                                            {plan.features.length > 4 && (
+                                                <p className="text-[10px] text-gray-600 font-bold uppercase pt-1">+ {plan.features.length - 4} more features</p>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <p className="text-center text-[10px] text-gray-600 mt-10 font-medium tracking-wide">
+                                7-DAY FREE TRIAL • 100% SECURE CHECKOUT • CANCEL ANYTIME
+                            </p>
+                        </div>
                     </div>
                 )}
             </div>
