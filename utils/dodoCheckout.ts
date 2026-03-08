@@ -36,6 +36,9 @@ export function initDodoPayments(onTrialClick?: () => void) {
                 const status = (event.data as any)?.message?.status;
                 if (status === 'succeeded') {
                     // Fire tracking pixels on successful payment
+                    if (typeof (window as any).fbq === 'function') {
+                        (window as any).fbq('track', 'Purchase', { currency: 'USD' });
+                    }
                     onTrialClick?.();
 
                     // Redirect to the app after a brief delay
@@ -103,6 +106,10 @@ async function createCheckoutSession(productId: string): Promise<string> {
  */
 export async function openCheckout(productId: string): Promise<void> {
     try {
+        if (typeof (window as any).fbq === 'function') {
+            (window as any).fbq('track', 'InitiateCheckout');
+        }
+
         const checkoutUrl = await createCheckoutSession(productId);
 
         DodoPayments.Checkout.open({
