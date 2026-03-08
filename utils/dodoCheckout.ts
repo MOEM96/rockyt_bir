@@ -20,6 +20,9 @@ export const DODO_PRODUCTS = {
 
 let isInitialized = false;
 
+const productDataCache: Record<string, { value: number; currency: string; content_name: string; content_ids: string[]; content_type: string; num_items: number }> = {};
+let currentCheckoutEventId: string | null = null;
+
 /**
  * Initialize the Dodo Payments SDK (call once on app mount).
  */
@@ -36,12 +39,17 @@ export function initDodoPayments(onTrialClick?: () => void) {
                 const status = (event.data as any)?.message?.status;
                 if (status === 'succeeded') {
                     console.log('Payment succeeded! Firing Meta Purchase Pixel...');
+
+                    const payload = currentCheckoutEventId && productDataCache[currentCheckoutEventId]
+                        ? productDataCache[currentCheckoutEventId]
+                        : { value: 0.00, currency: 'USD' }; // Fallback
+
                     // Fire tracking pixels on successful payment
                     if (typeof (window as any).fbq === 'function') {
-                        (window as any).fbq('track', 'Purchase', { value: 0.00, currency: 'USD' });
+                        (window as any).fbq('track', 'Purchase', payload, { eventID: currentCheckoutEventId });
                     }
                     if (typeof (window as any).cbq === 'function') {
-                        (window as any).cbq('track', 'Purchase', { value: 0.00, currency: 'USD' });
+                        (window as any).cbq('track', 'Purchase', payload, { eventID: currentCheckoutEventId });
                     }
                     onTrialClick?.();
 
@@ -101,26 +109,44 @@ async function createCheckoutSession(productId: string): Promise<string> {
 }
 
 /**
+ * Generate full product data based on Dodo ID
+ */
+function getProductPayload(productId: string) {
+    if (productId === DODO_PRODUCTS.growth) {
+        return { value: 49.00, currency: 'USD', content_name: 'Growth', content_ids: [DODO_PRODUCTS.growth], content_type: 'product', num_items: 1 };
+    } else if (productId === DODO_PRODUCTS.scale) {
+        return { value: 99.00, currency: 'USD', content_name: 'Scale', content_ids: [DODO_PRODUCTS.scale], content_type: 'product', num_items: 1 };
+    }
+    return { value: 0.00, currency: 'USD', content_name: 'Custom', content_ids: [productId], content_type: 'product', num_items: 1 };
+}
+
+/**
  * Open the Dodo Payments checkout overlay for a given product.
  * Shows a loading state while the session is being created.
  */
 export async function openCheckout(productId: string): Promise<void> {
     try {
+        // Generate a deduplication ID for this entire flow (Initiate -> Purchase)
+        currentCheckoutEventId = 'chk_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+
+        const payload = getProductPayload(productId);
+        productDataCache[currentCheckoutEventId] = payload;
+
         if (typeof (window as any).fbq === 'function') {
-            (window as any).fbq('track', 'InitiateCheckout');
+            (window as any).fbq('track', 'InitiateCheckout', payload, { eventID: currentCheckoutEventId });
             (window as any).fbq('track', 'StartTrial', {
-                value: 0.00,
+                value: payload.value,
                 currency: 'USD',
-                predicted_ltv: 0.00
-            });
+                predicted_ltv: payload.value * 6 // Estimate 6 months
+            }, { eventID: currentCheckoutEventId });
         }
         if (typeof (window as any).cbq === 'function') {
-            (window as any).cbq('track', 'InitiateCheckout');
+            (window as any).cbq('track', 'InitiateCheckout', payload, { eventID: currentCheckoutEventId });
             (window as any).cbq('track', 'StartTrial', {
-                value: 0.00,
+                value: payload.value,
                 currency: 'USD',
-                predicted_ltv: 0.00
-            });
+                predicted_ltv: payload.value * 6
+            }, { eventID: currentCheckoutEventId });
         }
 
         const checkoutUrl = await createCheckoutSession(productId);

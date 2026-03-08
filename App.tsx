@@ -13,8 +13,8 @@ import { initDodoPayments } from './utils/dodoCheckout';
 // Declare fbq for TypeScript
 declare global {
   interface Window {
-    fbq?: (type: string, eventName: string, params?: any) => void;
-    cbq?: (type: string, eventName: string, params?: any) => void;
+    fbq?: (type: string, eventName: string, params?: any, options?: any) => void;
+    cbq?: (type: string, eventName: string, params?: any, options?: any) => void;
     datafast?: (eventName: string, params?: any) => void;
   }
 }
@@ -53,9 +53,17 @@ const App: React.FC = () => {
 
     lastBookingTimeRef.current = now;
 
+    // Generate deduplication ID for this booking
+    const scheduleEventId = 'sch_' + Math.random().toString(36).substr(2, 9) + '_' + now;
+
     if (window.fbq) {
       console.log('Rockyt: Tracking Schedule event');
-      window.fbq('track', 'Schedule');
+      window.fbq('track', 'Schedule', {}, { eventID: scheduleEventId });
+    }
+
+    if (window.cbq) {
+      console.log('Rockyt: Tracking Signals Gateway Schedule event');
+      window.cbq('track', 'Schedule', {}, { eventID: scheduleEventId });
     }
 
     // DataFast: Schedule Goal

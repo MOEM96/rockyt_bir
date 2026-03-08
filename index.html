@@ -146,6 +146,9 @@
 </script>
   <!-- Signals Gateway Pixel Code -->
   <script>
+    // Generate a unique ID for PageView Deduplication
+    window.pageViewId = 'pv_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+
     !function (a, h, e, v, n, t, s) {
       if (a.cbq) return;
       n = a.cbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
@@ -155,7 +158,7 @@
     }(window, document, 'script', 'https://sgw.stape.bg/sdk/1005236713780864075/events.js');
     cbq('setHost', 'https://sgw.stape.bg/');
     cbq('init', '1005236713780864075');
-    cbq('track', 'PageView');
+    cbq('track', 'PageView', {}, { eventID: window.pageViewId });
   </script>
   <!-- End Signals Gateway Pixel Code -->
 
@@ -200,7 +203,7 @@
         }(window, document, 'script',
           'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '708443675559567');
-        fbq('track', 'PageView');
+        fbq('track', 'PageView', {}, { eventID: window.pageViewId });
 
         // 3. Load Wistia Video Data Scripts (Modules)
         const w1 = document.createElement('script');
