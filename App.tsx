@@ -65,24 +65,7 @@ const App: React.FC = () => {
 
   };
 
-  // Handle Trial Button Click for DataFast and Meta Pixel
-  const handleTrialClick = () => {
-    // DataFast: Start Trial Goal
-    if (window.datafast) {
-      console.log('Rockyt: Tracking DataFast Start Trial event');
-      window.datafast('start_trial');
-    }
 
-    // Meta Pixel: StartTrial Event
-    if (window.fbq) {
-      console.log('Rockyt: Tracking Meta StartTrial event');
-      window.fbq('track', 'StartTrial', {
-        value: 0.00,
-        currency: 'USD',
-        predicted_ltv: 0.00
-      });
-    }
-  };
 
   // Handle Cal.com booking success events
   useEffect(() => {
@@ -129,7 +112,7 @@ const App: React.FC = () => {
 
   // Initialize Dodo Payments
   useEffect(() => {
-    initDodoPayments(() => handleTrialClick());
+    initDodoPayments();
   }, []);
 
   return (

@@ -35,16 +35,17 @@ export function initDodoPayments(onTrialClick?: () => void) {
             if (event.event_type === 'checkout.status') {
                 const status = (event.data as any)?.message?.status;
                 if (status === 'succeeded') {
+                    console.log('Payment succeeded! Firing Meta Purchase Pixel...');
                     // Fire tracking pixels on successful payment
                     if (typeof (window as any).fbq === 'function') {
-                        (window as any).fbq('track', 'Purchase', { currency: 'USD' });
+                        (window as any).fbq('track', 'Purchase', { value: 0.00, currency: 'USD' });
                     }
                     onTrialClick?.();
 
-                    // Redirect to the app after a brief delay
+                    // Redirect to the app after a brief delay (increased to 1.5s to ensure pixel fires)
                     setTimeout(() => {
                         window.location.href = EXTERNAL_LINKS.getStarted;
-                    }, 500);
+                    }, 1500);
                 }
             }
 
@@ -108,6 +109,11 @@ export async function openCheckout(productId: string): Promise<void> {
     try {
         if (typeof (window as any).fbq === 'function') {
             (window as any).fbq('track', 'InitiateCheckout');
+            (window as any).fbq('track', 'StartTrial', {
+                value: 0.00,
+                currency: 'USD',
+                predicted_ltv: 0.00
+            });
         }
 
         const checkoutUrl = await createCheckoutSession(productId);
