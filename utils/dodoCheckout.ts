@@ -56,6 +56,13 @@ export function initDodoPayments(onTrialClick?: () => void) {
                     // Redirect to the app after a brief delay (increased to 1.5s to ensure pixel fires)
                     setTimeout(() => {
                         console.log('Redirecting to Onboarding App...');
+                        try {
+                            // Automatically close the overlay iframe if possible to escape it
+                            if ((window as any).DodoPayments && (window as any).DodoPayments.Checkout) {
+                                (window as any).DodoPayments.Checkout.close();
+                            }
+                        } catch (e) { }
+
                         if (window.top) {
                             window.top.location.href = EXTERNAL_LINKS.getStarted;
                         } else {
@@ -92,6 +99,7 @@ async function createCheckoutSession(productId: string): Promise<string> {
                     quantity: 1,
                 },
             ],
+            return_url: EXTERNAL_LINKS.getStarted,
             customization: {
                 theme: 'dark',
             }
