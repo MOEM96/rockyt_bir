@@ -78,11 +78,7 @@ async function createCheckoutSession(productId: string): Promise<string> {
             ],
             customization: {
                 theme: 'dark',
-            },
-            feature_flags: {
-                redirect_immediately: true,
-            },
-            return_url: EXTERNAL_LINKS.getStarted,
+            }
         }),
     });
 
