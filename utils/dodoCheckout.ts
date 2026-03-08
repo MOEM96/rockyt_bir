@@ -40,6 +40,9 @@ export function initDodoPayments(onTrialClick?: () => void) {
                     if (typeof (window as any).fbq === 'function') {
                         (window as any).fbq('track', 'Purchase', { value: 0.00, currency: 'USD' });
                     }
+                    if (typeof (window as any).cbq === 'function') {
+                        (window as any).cbq('track', 'Purchase', { value: 0.00, currency: 'USD' });
+                    }
                     onTrialClick?.();
 
                     // Redirect to the app after a brief delay (increased to 1.5s to ensure pixel fires)
@@ -106,6 +109,14 @@ export async function openCheckout(productId: string): Promise<void> {
         if (typeof (window as any).fbq === 'function') {
             (window as any).fbq('track', 'InitiateCheckout');
             (window as any).fbq('track', 'StartTrial', {
+                value: 0.00,
+                currency: 'USD',
+                predicted_ltv: 0.00
+            });
+        }
+        if (typeof (window as any).cbq === 'function') {
+            (window as any).cbq('track', 'InitiateCheckout');
+            (window as any).cbq('track', 'StartTrial', {
                 value: 0.00,
                 currency: 'USD',
                 predicted_ltv: 0.00

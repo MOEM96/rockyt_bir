@@ -14,6 +14,7 @@ import { initDodoPayments } from './utils/dodoCheckout';
 declare global {
   interface Window {
     fbq?: (type: string, eventName: string, params?: any) => void;
+    cbq?: (type: string, eventName: string, params?: any) => void;
     datafast?: (eventName: string, params?: any) => void;
   }
 }
