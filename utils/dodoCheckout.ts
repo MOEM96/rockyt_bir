@@ -55,7 +55,12 @@ export function initDodoPayments(onTrialClick?: () => void) {
 
                     // Redirect to the app after a brief delay (increased to 1.5s to ensure pixel fires)
                     setTimeout(() => {
-                        window.location.href = EXTERNAL_LINKS.getStarted;
+                        console.log('Redirecting to Onboarding App...');
+                        if (window.top) {
+                            window.top.location.href = EXTERNAL_LINKS.getStarted;
+                        } else {
+                            window.location.href = EXTERNAL_LINKS.getStarted;
+                        }
                     }, 1500);
                 }
             }
